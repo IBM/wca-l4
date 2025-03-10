@@ -664,15 +664,22 @@
 </div>
 <h2 id="on-premises-1-i-introduction-and-hands-on-objectives"><strong>i. Introduction and hands-on objectives</strong></h2>
 <p>The <em>On-Premises Installation and Deployment</em> module provides comprehensive instructions for how to prepare, configure, and deploy a simulated on-premises cluster for <em>IBM watsonx Code Assistant</em> (WCA) on environments hosted by <em>IBM Technology Zone</em> (ITZ). The complete stack of technologies and services that you will deploy include:</p>
-<div class="highlight"><pre><span></span><code>- &lt;a href=&quot;https://docs.redhat.com/en/documentation/openshift_container_platform/4.18&quot; target=&quot;_blank&gt;**Red Hat OpenShift Container Platform v4.18**&lt;/a&gt;: a unified application development platform that lets clients build, modernize, and deploy applications at scale on their choice of hybrid cloud infrastructure.
-
-- &lt;a href=&quot;https://www.ibm.com/docs/en/cloud-paks/cp-data/5.1.x&quot; target=&quot;_blank&gt;**IBM Cloud Pak for Data v5.1.x**&lt;/a&gt;: a set of services comprising a data fabric solution for data governance, data engineering, data analysis, and AI lifecycle tasks.
-
-- &lt;a href=&quot;https://www.ibm.com/docs/en/software-hub/5.1.x&quot; target=&quot;_blank&gt;**IBM Software Hub v5.1**&lt;/a&gt;: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform.
-
-- &lt;a href=&quot;https://www.ibm.com/docs/en/wx-code-assistant/5.1.x&quot; target=&quot;_blank&gt;**IBM watsonx Code Assistant v5.1**&lt;/a&gt;: a generative AI coding companion that provides contextually aware assistance for programming languages.
-</code></pre></div>
-<p><strong> ---INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE--- </strong></p>
+<ul>
+<li>
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.18" target="_blank><strong>Red Hat OpenShift Container Platform v4.18</strong></a>: a unified application development platform that lets clients build, modernize, and deploy applications at scale on their choice of hybrid cloud infrastructure.</p>
+</li>
+<li>
+<p><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data/5.1.x" target="_blank><strong>IBM Cloud Pak for Data v5.1.x</strong></a>: a set of services comprising a data fabric solution for data governance, data engineering, data analysis, and AI lifecycle tasks.</p>
+</li>
+<li>
+<p><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank><strong>IBM Software Hub v5.1</strong></a>: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform.</p>
+</li>
+<li>
+<p><a href="https://www.ibm.com/docs/en/wx-code-assistant/5.1.x" target="_blank><strong>IBM watsonx Code Assistant v5.1</strong></a>: a generative AI coding companion that provides contextually aware assistance for programming languages.</p>
+</li>
+</ul>
+<p><strong> INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE </strong></p>
+<p>Special acknowledgement and thanks to IBM colleagues Coralie Jonvel, Nelson Nunes, and Noe Samaille for adaptation of their <a href="https://github.ibm.com/CESC-Infrastructure-Services/Installation-CP4D-WatsonX" target="_blank>deployment instructions</a> for IBM watsonx.ai on Red Hat OpenShift.</p>
 <h2 id="on-premises-1-ii-part-2"><strong>ii. Part 2</strong></h2>
 <p>test</p>
 <p>An <strong>Ansible Task</strong> is a statement in Ansible's automation script (the YAML-based Playbooks you will be working with) that declares a single action to be executed. This might be installing a package, copying a file, or shutting down a service on a remote machine. Each <em>Task</em> represents an idempotent operation (an action that can be repeated multiple times and deliver the same result every time) that aligns the remote managed node to the specified state. Idempotent operations also ensure consistency across multiple executions, guaranteeing the same steps are taken on each execution of the task.</p>
