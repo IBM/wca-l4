@@ -1,0 +1,80 @@
+# Project info
+site_name: IBM watsonx Code Assistant for Practitioners Level 4
+site_description: IBM watsonx Code Assistant for Practitioners Level 4
+site_author: Christopher Bienko (cdbienko@us.ibm.com)
+copyright: Copyright &copy; 2025 IBM
+
+# Repository
+repo_name: IBM/wca-l4
+#repo_url: https://github.com/IBM/wca-l4
+#edit_uri: edit/master/docs
+docs_dir: docs
+
+nav:
+  - Introduction: 'index.md'
+  - Evaluation: 'evaluation.md'
+  - Setup and Troubleshooting: 'setup.md'
+  - Generating Code: 'generating.md'
+  - Content Source Matching and Post-Processing: 'source-matching-post-processing.md'
+  - Task Description Tuning and Model Customization: 'customizing.md'
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - navigation.footer
+  palette:
+      scheme: default
+
+plugins:
+  - mkdocs-video:
+      is_video: True
+      video_autoplay: False
+  - macros
+  - search
+  - glightbox
+  - print-site:
+      add_to_navigation: false
+      print_page_title: 'IBM watsonx Code Assistant for Practitioners Level 4 Lab Guide'
+      add_print_site_banner: false
+      # Table of contents
+      add_table_of_contents: false
+      toc_title: 'Table of Contents'
+      toc_depth: 6
+      # Content-related
+      add_full_urls: false
+      enumerate_headings: false
+      enumerate_figures: false
+      add_cover_page: true
+      cover_page_template: ""
+      path_to_pdf: ""
+      include_css: true
+      enabled: true
+
+markdown_extensions:
+  - markdown_fenced_code_tabs
+  - sane_lists
+  - pymdownx.details
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - def_list
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - tables
