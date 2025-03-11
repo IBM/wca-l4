@@ -687,12 +687,12 @@
 <p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <div class="admonition note">
 <p>Requirements specific to the hands-on environment are outlined in the section below. Comprehensive details about the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services" target="_blank"><strong>hardware requirements for x86_64 cluster services</strong></a> are available from IBM Software Hub documentation.</p>
+</div>
 <p><strong>IBM watsonx Code Assistant</strong></p>
 <p>| vCPU                    | Memory                      | Storage                                     | Notes                                                                   |
 | Operator pods: 0.1 vCPU | Operator pods: 0.256 GB RAM | Persistent storage: 120 GB                  | Minimum resources for an installation with a single replica per service |
 | Catalog pods: 0.01 vCPU | Catalog pods: 0.05 GB RAM   | Ephemeral storage: 0.4 GB                   | The service requires at least two GPUs                                  |
 | Operand: 7 vCPU         | Operand: 25 GB RAM          | Image storage: Up to 107 GB with all models | GPU support is limited to: NVIDIA H100 GPUs with 80 GB RAM              |</p>
-</div>
 <ol>
 <li>
 <p><strong>Register for an IBM Technology Zone account</strong></p>
