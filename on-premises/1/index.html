@@ -551,7 +551,7 @@
 </div>
 <p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <p></br></p>
-<p><strong>IBM Software Hub platform hardware requirements</strong>
+<p><strong>IBM Software Hub platform</strong>
 </br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform" target="_blank">IBM Documentation</a>.</p>
 <table>
 <thead>
@@ -591,6 +591,54 @@
 <td>2 vCPU per node</td>
 <td>4 GB RAM per node. Add another 4 GB of RAM for access restrictions and security control.</td>
 <td>Add 100 GB of root storage for access restrictions and security control.</td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
+<p><strong>Red Hat OpenShift Container Platform (single node)</strong>
+</br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform__sno-reqs__title__1" target="_blank">IBM Documentation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>VM Role</th>
+<th>Minimum Available vCPU</th>
+<th>Minimum Memory</th>
+<th>Minimum Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bastion node</strong></td>
+<td>4 vCPU</td>
+<td>8 GB RAM</td>
+<td>Allocate a minimum of 500 GB of disk space. The disk can be: in the same disk as the general bastion node storage; in a separate disk on the bastion node; or on external storage.</td>
+</tr>
+<tr>
+<td><strong>Worker (compute)</strong></td>
+<td>16 vCPU</td>
+<td>64 GB RAM</td>
+<td>Allocate a minimum of 300 GB of disk space on the node for image storage.</td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
+<p><strong>IBM Cloud Pak Foundational Services</strong>
+</br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#instance-prereq__cpfs__title__1" target="_blank">IBM Documentation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>vCPU</th>
+<th>Memory</th>
+<th>Storage</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 vCPU</td>
+<td>5 GB RAM</td>
+<td>Reference the <a href="https://www.ibm.com/docs/SSRV9V_4.10/installer/hardware_sizing_reqs.html" target="_blank">v4.10 hardware requirements and recommendations</a> for IBM Cloud Pak Foundational Services.</td>
+<td><strong>Required.</strong> The IBM Cloud Pak Foundational Services are installed once for each instance of IBM Software Hub on the cluster.</td>
 </tr>
 </tbody>
 </table>
