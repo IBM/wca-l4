@@ -846,12 +846,11 @@
 </ul>
 </div>
 <h2 id="on-premises-2-i-configuring-the-ibm-technology-zone-reservation"><strong>i. Configuring the IBM Technology Zone reservation</strong></h2>
+<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
 <hr />
 <ol>
 <li>
-<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
-<p></br>
-<strong>Click</strong> the link below to request a reservation directly from ITZ:</p>
+<p><strong>Click</strong> the link below to request a reservation directly from ITZ:</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></p>
 </div>
@@ -929,9 +928,6 @@
 </tbody>
 </table>
 </li>
-</ol>
-<hr />
-<ol start="4">
 <li>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <div class="admonition note">
@@ -942,13 +938,11 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </div>
 </li>
 </ol>
-<hr />
 <h2 id="on-premises-2-ii-accessing-the-cluster"><strong>ii. Accessing the cluster</strong></h2>
+<p>Once the cluster has been successfully deployed, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. </p>
+<hr />
 <ol start="5">
-<li>
-<p>Once the cluster has been successfully deployed, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>.</p>
-<p>Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</p>
-</li>
+<li>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</li>
 </ol>
 <hr />
 <ol start="6">
@@ -960,8 +954,8 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <p>Click the blue <strong>Open your IBM Cloud environment</strong> button at the top of the page to launch a new browser window for accessing the OCP cluster.</p>
 <p>Choose the <strong>kube:admin</strong> log in option and then provide the following credentials:</p>
 <ul>
-<li><strong>Username:</strong> <code>kubeadmin</code></li>
-<li><strong>Password:</strong> password recorded in Step 6</li>
+<li><em>Username:</em> <code>kubeadmin</code></li>
+<li><em>Password:</em> password recorded in Step 6</li>
 </ul>
 <p>At this stage, you should have successfully logged in to the OCP dashboard.</p>
 </li>
