@@ -12,11 +12,16 @@ docs_dir: docs
 
 nav:
   - Introduction: 'index.md'
-  - Evaluation: 'evaluation.md'
-  - Setup and Troubleshooting: 'setup.md'
-  - Generating Code: 'generating.md'
-  - Content Source Matching and Post-Processing: 'source-matching-post-processing.md'
-  - Task Description Tuning and Model Customization: 'customizing.md'
+  - On-Premises Installation and Deployment:
+    - 1. Objectives and requirements: 'on-premises/1.md'
+    - 2. Reserve an environment: 'on-premises/2.md'
+    - 3. Bastion host setup: 'on-premises/3.md'
+    - 4. Cluster preparation: 'on-premises/4.md'
+    - 5. Install prerequisite software: 'on-premises/5.md'
+    - 6. Install shared components: 'on-premises/6.md'
+    - 7. Install IBM Software Hub: 'on-premises/7.md'
+    - 8. Install watsonx Code Assistant: 'on-premises/8.md'
+    - 9. Conclusion: 'on-premises/9.md'
 
 theme:
   name: material
