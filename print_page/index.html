@@ -834,14 +834,144 @@
 <hr />
 <h2 id="on-premises-1-iv-next-steps"><strong>iv. Next steps</strong></h2>
 <p>In the following module, you will provision an OpenShift Container Platform cluster via IBM Technology Zone, which will serve as the basis for the on-premises environment.</p></section><section class="print-page" id="on-premises-2"><h1 id="on-premises-2-reserve-an-environmenton-premises-installation-and-deployment"><strong>Reserve an Environment</strong></br><em>On-Premises Installation and Deployment</em></h1>
-<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
-<div class="admonition quote">
-<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
+<div class="admonition note">
+<p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
+<ul>
+<li>
+<p><strong>Environment issues:</strong> The lab environment is managed by IBM Technology Zone. <a href="https://techzone.ibm.com/help" target="_blank">Opening a support case ticket</a> is recommended for issues related to the hands-on environment (provisioning, running, and so on.)</p>
+</li>
+<li>
+<p><strong>Documentation issues:</strong> If there is an error in the lab documentation, or if you require additional support in completing the material, open a thread on the <a href="https://ibm.enterprise.slack.com/archives/C063VF1G54J" target="_blank">#wca-ansible-techzone-support</a> Slack channel.</p>
+</li>
+</ul>
 </div>
-<h2 id="on-premises-2-i-part-1"><strong>i. Part 1</strong></h2>
-<p>And </p>
-<h2 id="on-premises-2-ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p></section><section class="print-page" id="on-premises-3"><h1 id="on-premises-3-bastion-host-setupon-premises-installation-and-deployment"><strong>Bastion Host Setup</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<p>There are <strong>TWO</strong> environments that you must reserve from ITZ:</p>
+<ul>
+<li>
+<p><code>Request a Red Hat Account</code>: responsible for generating unique access credentials for <em>IBM watsonx Code Assistant</em> and <em>Red Hat Ansible Lightspeed</em> authorizations</p>
+</li>
+<li>
+<p><code>WCA for Ansible Essentials Plan - Visual Studio Desktop 1.5</code>: virtualized machine prepared with Visual Studio Code and lab demonstration scripts pre-installed; you will authenticate within this environment using the Red Hat account requested from ITZ</p>
+</li>
+</ul>
+<p>Follow along with the instructions below to request and configure these environments.</p>
+<hr />
+<h2 id="on-premises-2-i-reserving-the-lab-environments"><strong>i. Reserving the lab environments</strong></h2>
+<ol>
+<li>
+<p>Click the IBM Technology Zone link below to request a reservation directly from the collection of <em>TechZone Certified Base Images</em>:</p>
+<div class="admonition warning">
+<p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></p>
+</div>
+<p><br/></p>
+<div class="admonition note inline end">
+<p class="admonition-title">FULLSCREEN IMAGES</p>
+<p>Click on any of the screenshots within this documentation to enlarge the image.</p>
+</div>
+<p><a class="glightbox" href="../on-premises/2/_attachments/setupAAP-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/2/_attachments/setupAAP-1.png" width="450" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>From the <em>Single environment reservation options</em>, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../on-premises/2/_attachments/setup2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/2/_attachments/setup2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Supply additional details about your ITZ reservation request:</p>
+<div class="admonition warning">
+<p class="admonition-title">RESERVATON POLICY NOTICE</p>
+<p>After selecting <em>Education</em> for the <code>Purpose</code> field, you may receive a pop-up notification stating that <code>this environment is now being redirected to the OCPv base image hosted On-Prem for Education and Test</code>. You can safely <strong>ignore</strong> this notice and close it by clicking the <em>X</em> in the top-right corner. <strong>Do not</strong> configure using the Poughkeepsie-based resource that the notice attempts to redirect you to — it will not allow you to configure the necessary hardware specifications. Continue with the ITZ reservation request form as detailed below. If the pop-up appears again later in the configuration steps, continue to disregard the notice.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Name</code></td>
+<td>Give your reservation a unique name.</td>
+</tr>
+<tr>
+<td><code>Purpose</code></td>
+<td>If reserving for L3 training, select <em>Education</em>. If delivering a PoC, select <em>Pilot</em> and provide a Sales Opportunity number.</td>
+</tr>
+<tr>
+<td><code>Describe</code></td>
+<td>If reserving for L3, enter <em>WCA for Ansible Lightspeed training</em>. If delivering a PoC, enter the PoC and client details.</td>
+</tr>
+<tr>
+<td><code>Preferred Geography</code></td>
+<td>Select the region and data center geographically closest to your location.</td>
+</tr>
+<tr>
+<td><code>End Date and Time</code></td>
+<td>Select a time and date for when the reservation will expire.</td>
+</tr>
+<tr>
+<td><code>OpenShift Version</code></td>
+<td><code>4.16</code></td>
+</tr>
+<tr>
+<td><code>Worker Node Count</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>Worker Node Flavor</code></td>
+<td><code>32 vCPU x 128 GB - 300 GB ephemeral storage</code></td>
+</tr>
+<tr>
+<td><code>Storage</code></td>
+<td><code>ODF - 2 TB</code></td>
+</tr>
+<tr>
+<td><code>OCP/Kubernetes Cluster Network</code></td>
+<td><code>10.128.0.0/14</code></td>
+</tr>
+<tr>
+<td><code>OCP/Kubernetes Service Network</code></td>
+<td><code>172.30.0.0/16</code></td>
+</tr>
+<tr>
+<td><code>Enable nested hardware virtualization on workers</code></td>
+<td><code>No</code></td>
+</tr>
+</tbody>
+</table>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">PROVISIONING TIMES</p>
+<p>Cluster provisioning and deployment takes approximately <strong>90 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation.
+</br>
+Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting to start the lab.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>When the Red Hat account request has been processed by IBM Technology Zone, you will receive a <strong>pair</strong> of emails: one from ITZ and a second from Red Hat.</p>
+<ul>
+<li>
+<p><code>Reservation Ready on IBM Technology Zone</code> : You can ignore the contents of this email, as the relevant account and licensing information are contained in the Red Hat email. Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>.</p>
+</li>
+<li>
+<p><code>Red Hat Login Email Verification</code> : This email, addressed from a <code>no-reply@redhat.com</code> account<sup>[B]</sup>, contains the resources necessary for accessing your uniquely-generated Red Hat credentials. The lab guide steps that follow will instruct you on how to set those up and how to use them for accessing your <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> entitlements inside VS Code.</p>
+<p><br/>
+<a class="glightbox" href="../on-premises/2/_attachments/setupAAP-4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/2/_attachments/setupAAP-4a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../on-premises/2/_attachments/setupAAP-4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/2/_attachments/setupAAP-4b.png" width="600" /></a></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr /></section><section class="print-page" id="on-premises-3"><h1 id="on-premises-3-bastion-host-setupon-premises-installation-and-deployment"><strong>Bastion Host Setup</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
