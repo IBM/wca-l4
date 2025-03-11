@@ -290,8 +290,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-infrastructure-and-resource-requirements-for-ibm-software-hub" class="md-nav__link">
-    ii. Infrastructure and resource requirements for IBM Software Hub
+  <a href="#ii-infrastructure-and-resource-requirements" class="md-nav__link">
+    ii. Infrastructure and resource requirements
   </a>
   
 </li>
@@ -478,8 +478,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-infrastructure-and-resource-requirements-for-ibm-software-hub" class="md-nav__link">
-    ii. Infrastructure and resource requirements for IBM Software Hub
+  <a href="#ii-infrastructure-and-resource-requirements" class="md-nav__link">
+    ii. Infrastructure and resource requirements
   </a>
   
 </li>
@@ -545,13 +545,58 @@
 <p><strong> INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE </strong></p>
 <p><strong> NEEDS DISCLAIMER THAT INSTALLATION WILL NOT RESULT IN A FULLY FUNCTIONAL CLUSTER (GPUs) </strong></p>
 <hr />
-<h2 id="ii-infrastructure-and-resource-requirements-for-ibm-software-hub"><strong>ii. Infrastructure and resource requirements for IBM Software Hub</strong></h2>
+<h2 id="ii-infrastructure-and-resource-requirements"><strong>ii. Infrastructure and resource requirements</strong></h2>
 <p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <div class="admonition note">
 <p>Requirements specific to the hands-on environment are outlined in the section below. Comprehensive details about the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services" target="_blank"><strong>hardware requirements for x86_64 cluster services</strong></a> are available from IBM Software Hub documentation.</p>
 </div>
 <hr />
-<p><strong>IBM watsonx Code Assistant</strong></p>
+<p><strong>IBM Software Hub platform hardware requirements</strong>
+Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform" target="_blank">IBM Documentation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Node Role</th>
+<th>Number of Services</th>
+<th>Minimum Available vCPU</th>
+<th>Minimum Memory</th>
+<th>Minimum Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control plane</td>
+<td>3 (for high availability)</td>
+<td>4 vCPU per node</br>(This configuration supports up to 24 worker nodes.)</td>
+<td>16 GB RAM per node</br>(This configuration supports up to 24 worker nodes.)</td>
+<td>No additional storage is needed for IBM Software Hub.</td>
+</tr>
+<tr>
+<td>Infra</td>
+<td>3 (recommended)</td>
+<td>4 vCPU per node</br>(This configuration supports up to 27 worker nodes.)</td>
+<td>24 GB RAM per node</br>(This configuration supports up to 27 worker nodes.)</td>
+<td>See the Red Hat OpenShift Container Platform documentation for sizing guidance.</td>
+</tr>
+<tr>
+<td>Worker (compute)</td>
+<td>3 or more worker (compute) nodes</td>
+<td>16 vCPU per node</td>
+<td>Minimum: 64 GB RAM per node</br>Recommended: 128 GB RAM per node</td>
+<td>300 GB of storage space per node for storing container images locally. If you plan to install watsonx.ai, increase the storage to 500 GB per node.</td>
+</tr>
+<tr>
+<td>Load balancer</td>
+<td>2 load balancer nodes</td>
+<td>2 vCPU per node</td>
+<td>4 GB RAM per node. Add another 4 GB of RAM for access restrictions and security control.</td>
+<td>Add 100 GB of root storage for access restrictions and security control.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>IBM watsonx Code Assistant</strong>
+Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services__wxca__title__1" target="_blank">IBM Documentation</a>.</p>
 <table>
 <thead>
 <tr>
