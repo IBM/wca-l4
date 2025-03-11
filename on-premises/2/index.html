@@ -303,6 +303,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ii-accessing-the-cluster" class="md-nav__link">
+    ii. Accessing the cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-next-steps" class="md-nav__link">
+    iii. Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -449,6 +463,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ii-accessing-the-cluster" class="md-nav__link">
+    ii. Accessing the cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-next-steps" class="md-nav__link">
+    iii. Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -479,7 +507,7 @@
 <hr />
 <ol>
 <li>
-<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">ITZ Certified Base Images</a>.</p>
+<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
 <p></br>
 <strong>Click</strong> the link below to request a reservation directly from ITZ:</p>
 <div class="admonition warning">
@@ -494,7 +522,7 @@
 <hr />
 <ol start="3">
 <li>
-<p>Supply additional details about your ITZ reservation request:</p>
+<p>Supply additional details about the ITZ reservation request:</p>
 <div class="admonition note">
 <p class="admonition-title">RESERVATON POLICY NOTICE</p>
 <p>After selecting <code>Education</code> for the <em>Purpose</em> field, you may receive a pop-up notification stating that <code>this environment is now being redirected to the OCPv base image hosted On-Prem for Education and Test</code>. You can safely <strong>ignore</strong> this notice and close it by clicking the <em>X</em> in the top-right corner.</p>
@@ -573,23 +601,32 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </li>
 </ol>
 <hr />
+<h2 id="ii-accessing-the-cluster"><strong>ii. Accessing the cluster</strong></h2>
 <ol start="5">
 <li>
-<p>When the Red Hat account request has been processed by IBM Technology Zone, you will receive a <strong>pair</strong> of emails: one from ITZ and a second from Red Hat.</p>
-<ul>
-<li>
-<p><code>Reservation Ready on IBM Technology Zone</code> : You can ignore the contents of this email, as the relevant account and licensing information are contained in the Red Hat email. Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>.</p>
-</li>
-<li>
-<p><code>Red Hat Login Email Verification</code> : This email, addressed from a <code>no-reply@redhat.com</code> account<sup>[B]</sup>, contains the resources necessary for accessing your uniquely-generated Red Hat credentials. The lab guide steps that follow will instruct you on how to set those up and how to use them for accessing your <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> entitlements inside VS Code.</p>
-<p><br/>
-<a class="glightbox" href="_attachments/setupAAP-4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="_attachments/setupAAP-4a.png" width="600" /></a></p>
-<p><a class="glightbox" href="_attachments/setupAAP-4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="_attachments/setupAAP-4b.png" width="600" /></a></p>
-</li>
-</ul>
+<p>Once the cluster has been successfully deployed, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>.</p>
+<p>Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</p>
 </li>
 </ol>
 <hr />
+<ol start="6">
+<li>Record the <strong>Username</strong> and <strong>Password</strong> variables for the OpenShift Container Platform (OCP) cluster to a notepad.</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Click the blue <strong>Open your IBM Cloud environment</strong> button at the top of the page to launch a new browser window for accessing the OCP cluster.</p>
+<p>Choose the <strong>kube:admin</strong> log in option and then provide the following credentials:</p>
+<ul>
+<li><strong>Username:</strong> <code>kubeadmin</code></li>
+<li><strong>Password:</strong> password recorded in Step 6</li>
+</ul>
+<p>At this stage, you should have successfully logged in to the OCP dashboard.</p>
+</li>
+</ol>
+<hr />
+<h2 id="iii-next-steps"><strong>iii. Next steps</strong></h2>
+<p>In the following module, you will access and configure the cluster's bastion node.</p>
 
 
 
