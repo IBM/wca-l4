@@ -551,49 +551,16 @@
 </div>
 <p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <hr />
-<p><strong>IBM Software Hub platform hardware requirements</strong>
-</br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform" target="_blank">IBM Documentation</a>.</p>
-<table>
-<thead>
-<tr>
-<th>Node Role</th>
-<th>Number of Services</th>
-<th>Minimum Available vCPU</th>
-<th>Minimum Memory</th>
-<th>Minimum Storage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Control plane</strong></td>
-<td>3 (for high availability)</td>
-<td>4 vCPU per node</br>(This configuration supports up to 24 worker nodes.)</td>
-<td>16 GB RAM per node. This configuration supports up to 24 worker nodes.</td>
-<td>No additional storage is needed for IBM Software Hub.</td>
-</tr>
-<tr>
-<td><strong>Infra</strong></td>
-<td>3 (recommended)</td>
-<td>4 vCPU per node. This configuration supports up to 27 worker nodes.</td>
-<td>24 GB RAM per node</br>(This configuration supports up to 27 worker nodes.)</td>
-<td>See the Red Hat OpenShift Container Platform documentation for sizing guidance.</td>
-</tr>
-<tr>
-<td><strong>Worker (compute)</strong></td>
-<td>3 or more worker (compute) nodes</td>
-<td>16 vCPU per node</td>
-<td><strong>Minimum</strong>: 64 GB RAM per node</br><strong>Recommended</strong>: 128 GB RAM per node</td>
-<td>300 GB of storage space per node for storing container images locally. If you plan to install watsonx.ai, increase the storage to 500 GB per node.</td>
-</tr>
-<tr>
-<td><strong>Load balancer</strong></td>
-<td>2 load balancer nodes</td>
-<td>2 vCPU per node</td>
-<td>4 GB RAM per node. Add another 4 GB of RAM for access restrictions and security control.</td>
-<td>Add 100 GB of root storage for access restrictions and security control.</td>
-</tr>
-</tbody>
-</table>
+<div class="highlight"><pre><span></span><code>**IBM Software Hub platform hardware requirements**
+&lt;/br&gt;Additional details available from &lt;a href=&quot;https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform&quot; target=&quot;_blank&quot;&gt;IBM Documentation&lt;/a&gt;.
+
+| Node Role | Number of Services | Minimum Available vCPU | Minimum Memory | Minimum Storage |
+| - | - | - | - | - |
+| **Control plane** | 3 (for high availability) | 4 vCPU per node&lt;/br&gt;(This configuration supports up to 24 worker nodes.) | 16 GB RAM per node. This configuration supports up to 24 worker nodes. | No additional storage is needed for IBM Software Hub. |
+| **Infra** | 3 (recommended) | 4 vCPU per node. This configuration supports up to 27 worker nodes. | 24 GB RAM per node&lt;/br&gt;(This configuration supports up to 27 worker nodes.) | See the Red Hat OpenShift Container Platform documentation for sizing guidance. |
+| **Worker (compute)** | 3 or more worker (compute) nodes | 16 vCPU per node | **Minimum**: 64 GB RAM per node&lt;/br&gt;**Recommended**: 128 GB RAM per node | 300 GB of storage space per node for storing container images locally. If you plan to install watsonx.ai, increase the storage to 500 GB per node. |
+| **Load balancer** | 2 load balancer nodes | 2 vCPU per node | 4 GB RAM per node. Add another 4 GB of RAM for access restrictions and security control. | Add 100 GB of root storage for access restrictions and security control. |
+</code></pre></div>
 <hr />
 <p><strong>IBM watsonx Code Assistant</strong>
 </br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services__wxca__title__1" target="_blank">IBM Documentation</a>.</p>
