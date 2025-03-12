@@ -1290,6 +1290,23 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
+<ol start="14">
+<li>
+<p>Source your variables with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-3-__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Test that the login for <code>oc</code> command line is now functioning properly with the newly-set variables:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-3-__codelineno-10-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
+</code></pre></div>
+<p>The command line should return back with a prompt describing <code>You have access to ... projects</code> which indicates that <code>oc</code> and the environment variables have been correctly configured.</p>
+</li>
+</ol>
+<hr />
 <h2 id="on-premises-3-vi-next-steps"><strong>vi. Next steps </strong></h2>
 <p>At this stage the bastion host node has been fully configured ahead of installing the necessary software, which will be covered in the subsequent modules.</p>
 <details class="warning">
@@ -1298,41 +1315,66 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-3-__codelineno-9-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-3-__codelineno-11-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-3-__codelineno-10-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#on-premises-3-__codelineno-12-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-3-__codelineno-11-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-3-__codelineno-13-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#on-premises-3-__codelineno-12-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-3-__codelineno-14-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-3-__codelineno-13-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#on-premises-3-__codelineno-15-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
 </details></section><section class="print-page" id="on-premises-4"><h1 id="on-premises-4-cluster-preparationon-premises-installation-and-deployment"><strong>Cluster Preparation</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
-<p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift Container Platform cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
+<p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="on-premises-4-i-change-the-process-ids-limit"><strong>i. Change the process IDs limit</strong></h2>
 <ol>
-<li></li>
-</ol>
-<p>And </p>
-<h2 id="on-premises-4-ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<li>
+<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<div class="admonition note">
+<p>You can test whether a <em>KubeletConfig</em> file exists on the system by executing the following command:</p>
+<div class="highlight"><pre><span></span><code>``` shell
+oc get kubeletconfig
+```
+</code></pre></div>
+</div>
+<p>Copy the contents of the following code block and then execute within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
+<div class="highlight"><pre><span></span><code>``` shell
+oc apply -f - &lt;&lt; EOF
+apiVersion: machineconfiguration.openshift.io/v1
+kind: KubeletConfig
+metadata:
+name: cpd-watsonx-kubeletconfig
+spec:
+kubeletConfig:
+    podPidsLimit: 16384
+    podsPerCore: 0
+    maxPods: 500
+machineConfigPoolSelector:
+    matchExpressions:
+    - key: pools.operator.machineconfiguration.openshift.io/worker
+    operator: Exists
+EOF
+```
+</code></pre></div>
+</li>
+</ol></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>

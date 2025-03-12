@@ -331,13 +331,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#ii-part-2" class="md-nav__link">
-    ii. Part 2
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -456,13 +449,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#ii-part-2" class="md-nav__link">
-    ii. Part 2
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -479,15 +465,40 @@
 
 <h1 id="cluster-preparationon-premises-installation-and-deployment"><strong>Cluster Preparation</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
-<p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift Container Platform cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
+<p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="i-change-the-process-ids-limit"><strong>i. Change the process IDs limit</strong></h2>
 <ol>
-<li></li>
+<li>
+<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<div class="admonition note">
+<p>You can test whether a <em>KubeletConfig</em> file exists on the system by executing the following command:</p>
+<div class="highlight"><pre><span></span><code>``` shell
+oc get kubeletconfig
+```
+</code></pre></div>
+</div>
+<p>Copy the contents of the following code block and then execute within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
+<div class="highlight"><pre><span></span><code>``` shell
+oc apply -f - &lt;&lt; EOF
+apiVersion: machineconfiguration.openshift.io/v1
+kind: KubeletConfig
+metadata:
+name: cpd-watsonx-kubeletconfig
+spec:
+kubeletConfig:
+    podPidsLimit: 16384
+    podsPerCore: 0
+    maxPods: 500
+machineConfigPoolSelector:
+    matchExpressions:
+    - key: pools.operator.machineconfiguration.openshift.io/worker
+    operator: Exists
+EOF
+```
+</code></pre></div>
+</li>
 </ol>
-<p>And </p>
-<h2 id="ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p>
 
 
 
