@@ -1030,8 +1030,9 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 <li>
 <p>Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a>https://console-openshift-console.apps.**678a250b79141644e78804e0.ocp.techzone.ibm.com**
-</code></pre></div>
+<div class="admonition warning">
+<p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
+</div>
 </li>
 <li>
 <p>In this example, the value of the <em>OpenShift base domain</em> is <code>678a250b79141644e78804e0.ocp.techzone.ibm.com</code></p>
@@ -1048,11 +1049,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>The following instruction set, when executed within a Terminal window, will install the OpenShift CLI on the bastion host node. However, the instructions require some modification before they will successfully execute.</p>
 <p></br>
 <strong>Install OpenShift CLI</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
-</span><a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-3-__codelineno-1-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-3-__codelineno-1-3"></a>tar -xvf oc.tar
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-3-__codelineno-1-4"></a>chmod +x oc
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#on-premises-3-__codelineno-1-5"></a>sudo mv oc /usr/local/bin/oc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
+</span><a id="__codelineno-0-2" name="__codelineno-0-2" href="#on-premises-3-__codelineno-0-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#on-premises-3-__codelineno-0-3"></a>tar -xvf oc.tar
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#on-premises-3-__codelineno-0-4"></a>chmod +x oc
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#on-premises-3-__codelineno-0-5"></a>sudo mv oc /usr/local/bin/oc
 </code></pre></div></p>
 <ul>
 <li>
