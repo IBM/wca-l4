@@ -946,7 +946,13 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </ol>
 <hr />
 <ol start="6">
-<li>Record the <strong>Username</strong> and <strong>Password</strong> variables for the OpenShift Container Platform (OCP) cluster to a notepad.</li>
+<li>
+<p>Record the following connection details variables for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
+<ul>
+<li><em>Username</em></li>
+<li><em>Password</em></li>
+</ul>
+</li>
 </ol>
 <hr />
 <ol start="7">
@@ -961,6 +967,10 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </li>
 </ol>
 <hr />
+<ol start="8">
+<li>After logging into the OCP dashboard, copy the <strong>URL</strong> of the page (from your web browser) and record that to a notepad as <em>OCP dashboard URL</em>. This will be referenced in subsequent modules.</li>
+</ol>
+<hr />
 <h2 id="on-premises-2-iii-next-steps"><strong>iii. Next steps</strong></h2>
 <p>In the following module, you will access and configure the cluster's bastion node.</p></section><section class="print-page" id="on-premises-3"><h1 id="on-premises-3-bastion-host-setupon-premises-installation-and-deployment"><strong>Bastion Host Setup</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
@@ -969,7 +979,100 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <h2 id="on-premises-3-i-connect-to-the-bastion-host"><strong>i. Connect to the bastion host</strong></h2>
 <ol>
 <li>Before configuring the bastion host node, you will need to retrieve its connectivity and access control details. Return to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> page on the IBM Technology Zone (ITZ) and open the dashboard for the OpenShift Container Platform (OCP) cluster.</li>
-</ol></section><section class="print-page" id="on-premises-4"><h1 id="on-premises-4-cluster-preparationon-premises-installation-and-deployment"><strong>Cluster Preparation</strong></br><em>On-Premises Installation and Deployment</em></h1>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Scroll down to the bottom of the summary page and locate the following key-value pairs related to the bastion host node. Copy these to a notepad for reference later:</p>
+<ul>
+<li><em>Bastion Password</em></li>
+<li><em>Bastion RDP Address</em></li>
+<li><em>Bastion SSH Connection</em></li>
+<li><em>Bastion Username</em></li>
+</ul>
+<p>There are also key-value pairs related to the OCP cluster that, for convenience, you should also record at this time — they will be used in later parts of the lab:</p>
+<ul>
+<li><em>Cluster Admin Username</em></li>
+<li><em>Cluster Admin Password</em></li>
+<li><em>OCP Console</em></li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Open a Terminal (Windows Terminal or the Terminal built into VS Code are good alternatives if you're on a PC). Copy the <em>Bastion SSH Connection</em> recorded in Step 2 and paste it into the terminal console. Hit +return+ to execute and create an SSH connection to the bastion host.</p>
+<ul>
+<li>
+<p>When prompted <em>Are you sure you want to continue connecting (yes/no/fingerprint)?</em>, enter <code>yes</code> and hit +return+ to proceed.</p>
+</li>
+<li>
+<p>The console will return a <em>Welcome to IBM Technology Zone</em> once connected to the bastion host, at which point you must authenticate.</p>
+</li>
+<li>
+<p><strong>Authenticate</strong> when prompted to do so by providing the <em>Bastion Password</em> recorded in Step 2.</p>
+</li>
+<li>
+<p>If the console now reads <code>[itzuser@localhost ~]$</code> then you have successfully accessed the bastion host.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="on-premises-3-ii-openshift-cli"><strong>ii. OpenShift CLI</strong></h2>
+<ol start="4">
+<li>
+<p>Next, install the OpenShift Command Line Interface (CLI) to programmatically perform work with the bastion node.</p>
+<ul>
+<li>
+<p>Retrieve the <em>OCP dashboard URL</em> (recorded in Step 8 of the previous module).</p>
+</li>
+<li>
+<p>Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a>https://console-openshift-console.apps.**678a250b79141644e78804e0.ocp.techzone.ibm.com**
+</code></pre></div>
+</li>
+<li>
+<p>In this example, the value of the <em>OpenShift base domain</em> is <code>678a250b79141644e78804e0.ocp.techzone.ibm.com</code></p>
+</li>
+<li>
+<p>Record <em>your</em> OCP cluster's value to a notepad for future reference.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>The following instruction set, when executed within a Terminal window, will install the OpenShift CLI on the bastion host node. However, the instructions require some modification before they will successfully execute.</p>
+<p><strong>Install OpenShift CLI</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
+</span><a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-3-__codelineno-1-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-3-__codelineno-1-3"></a>tar -xvf oc.tar
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-3-__codelineno-1-4"></a>chmod +x oc
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#on-premises-3-__codelineno-1-5"></a>sudo mv oc /usr/local/bin/oc
+</code></pre></div></p>
+<ul>
+<li>
+<p>Copy the instructions above and paste into a notepad.</p>
+</li>
+<li>
+<p>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 4.</p>
+</li>
+<li>
+<p>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</p>
+</li>
+<li>
+<p>Press +return+ to execute the instructions.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>The installation should only take a few minutes to complete. Once finished, try typing <code>oc</code> into the console window and hit +return+. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
+</ol>
+<hr /></section><section class="print-page" id="on-premises-4"><h1 id="on-premises-4-cluster-preparationon-premises-installation-and-deployment"><strong>Cluster Preparation</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
