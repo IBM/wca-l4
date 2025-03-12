@@ -1107,8 +1107,6 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 <li>
 <p>To save, press <span class="keys"><kbd class="key-escape">Esc</kbd></span> and then type <code>:wq</code> followed by <span class="keys"><kbd class="key-enter">Enter</kbd></span> to write and exit.</p>
-</li>
-</ul>
 <p><strong>CP4D Environment Variables</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-3-__codelineno-3-1"></a>#===============================================================================
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-3-__codelineno-3-2"></a># Cloud Pak for Data installation variables
@@ -1173,25 +1171,29 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <a id="__codelineno-3-61" name="__codelineno-3-61" href="#on-premises-3-__codelineno-3-61"></a>export COMPONENTS=cpd_platform,watsonx_ai
 </code></pre></div></p>
 </li>
+</ul>
+</li>
 </ol>
 <h2 id="on-premises-3-v-cloud-pak-for-data-command-line-interface-cpd-cli"><strong>v. Cloud Pak for Data command line interface (cpd-cli) </strong></h2>
 <ol start="9">
 <li>
 <p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>).</p>
 <ul>
-<li>First, execute the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</li>
-</ul>
+<li>
+<p>First, execute the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-3-__codelineno-4-1"></a>sudo bash
 </code></pre></div>
-<ul>
-<li>Then copy the following code block and execute within the console to install <code>cpd-cli</code>:</li>
-</ul>
+</li>
+<li>
+<p>Then copy the following code block and execute within the console to install <code>cpd-cli</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-3-__codelineno-5-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#on-premises-3-__codelineno-5-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#on-premises-3-__codelineno-5-3"></a>export PATH=&quot;$(pwd)/cpd-cli-linux-EE-14.1.0-1189&quot;:$PATH
 </code></pre></div>
-<ul>
-<li>Installation should only take a few moments to complete.</li>
+</li>
+<li>
+<p>Installation should only take a few moments to complete.</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -1203,8 +1205,10 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="11">
 <li>
 <p>Start the command line and ensure that your console is operating with root privileges before continuing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-3-__codelineno-6-1"></a>echo $PATH
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#on-premises-3-__codelineno-6-2"></a>cpd-cli manage restart-container
+<div class="highlight"><pre><span></span><code>``` script
+echo $PATH
+cpd-cli manage restart-container
+```
 </code></pre></div>
 <ul>
 <li>This step will take a minute or two before completing. Once it has completed, you can verify the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</li>
