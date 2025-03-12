@@ -762,8 +762,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="c1">#------------------------------------------------------------------------------</span>
 <a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="c1"># IBM Entitled Registry</span>
 <a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>XXX.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3MDU5MzkzNzcsImp0aSI6IjVjM2EzMzQ1MzdlNTQ5ZWE5MzRmNGZmYzNmYzc5MWNjIn0.Xa0C23QmwCsOR9whmf8OkiId--SXVZ4pxw6lrIvvb_M
-<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="hll"><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>XXX.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3MDU5MzkzNzcsImp0aSI6IjVjM2EzMzQ1MzdlNTQ5ZWE5MzRmNGZmYzNmYzc5MWNjIn0.Xa0C23QmwCsOR9whmf8OkiId--SXVZ4pxw6lrIvvb_M
+</span><a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1">#------------------------------------------------------------------------------</span>
 <a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="c1"># Cloud Pak for Data version</span>
 <a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="c1">#------------------------------------------------------------------------------</span>
 <a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="nb">export</span> <span class="nv">VERSION</span><span class="o">=</span><span class="m">5</span>.1.0
@@ -781,7 +781,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <ol start="9">
 <li>
-<p>You must make <strong>modifications</strong> to <strong>Line 19</strong> and <strong>Line 23</strong> of the <em>CP4D Environment Variables</em> to tailor the variables to <em>your</em> specific cluster.</p>
+<p>You must make <strong>modifications</strong> to <strong>Line 19</strong>, <strong>Line 23</strong>, and <strong>Line 49</strong> of the <em>CP4D Environment Variables</em> to tailor the variables to <em>your</em> specific cluster.</p>
 <ul>
 <li>
 <p><strong>Line 19:</strong> set the value of <code>export OCP_URL=</code> equal to the value of <em>OCP dashboard URL</em> that was recorded in Step 8 of the previous module. For example:</p>
@@ -797,6 +797,13 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </code></pre></div>
 </div>
 </li>
+<li>
+<p><strong>Line 49:</strong> set the value of <code>export IBM_ENTITLEMENT_KEY=</code> equal to the value of the key specific to <em>your</em> IBM account. Reference the <em>IBM Entitlement API Key</em> that was generated in the <a href="https://ibm.github.io/wca-l4/on-premises/1/#ii-infrastructure-and-resource-requirements" target="_blank"><strong>iii. Prerequisites checklist</strong></a> section of <strong>Module 1 (Objectives and Requirements)</strong>. Instructions for how to generate an <em>IBM Entitlement API Key</em> are provided in that section. For example:</p>
+<div class="admonition warning">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>verylongAPIkey1234
+</code></pre></div>
+</div>
+</li>
 </ul>
 </li>
 </ol>
@@ -804,7 +811,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="10">
 <li>
 <p>With your Terminal console, execute the following instruction to open the <strong>vi</strong> editor and create a shell script named <code>cpd_vars.sh</code> on the bastion host:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vi cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vi cpd_vars.sh
 </code></pre></div>
 <ul>
 <li>
@@ -827,12 +834,12 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="11">
 <li>
 <p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>). First, execute the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo bash
 </code></pre></div>
 <p>Then copy the following code block and execute it within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
 </code></pre></div>
 </li>
 </ol>
@@ -844,8 +851,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="13">
 <li>
 <p>Engage the command line interface and ensure that the Terminal console is executing all subsequent instructions with full (root) privileges:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cpd-cli manage restart-container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cpd-cli manage restart-container
 </code></pre></div>
 <p>This step will take a minute or two before completing. Once it has completed, you can verify the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</p>
 </li>
@@ -854,7 +861,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="14">
 <li>
 <p>Source the newly-configured environment variables with the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 </ol>
@@ -862,7 +869,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="15">
 <li>
 <p>Test that the login for <code>oc</code> command line is now functioning properly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
 </code></pre></div>
 <p>The command line should return back with a prompt describing <code>You have access to ... projects</code> which indicates that <code>oc</code> and the environment variables have been correctly configured.</p>
 </li>
@@ -876,27 +883,27 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
