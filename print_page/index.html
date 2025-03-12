@@ -990,7 +990,8 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <li><em>Bastion SSH Connection</em></li>
 <li><em>Bastion Username</em></li>
 </ul>
-<p>There are also key-value pairs related to the OCP cluster that, for convenience, you should also record at this time — they will be used in later parts of the lab:</p>
+<p></br>
+There are also key-value pairs related to the OCP cluster that, for convenience, you should also record at this time — they will be used in later parts of the lab:</p>
 <ul>
 <li><em>Cluster Admin Username</em></li>
 <li><em>Cluster Admin Password</em></li>
@@ -1045,7 +1046,8 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <ol start="5">
 <li>
 <p>The following instruction set, when executed within a Terminal window, will install the OpenShift CLI on the bastion host node. However, the instructions require some modification before they will successfully execute.</p>
-<p><strong>Install OpenShift CLI</strong>
+<p></br>
+<strong>Install OpenShift CLI</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
 </span><a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-3-__codelineno-1-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-3-__codelineno-1-3"></a>tar -xvf oc.tar
