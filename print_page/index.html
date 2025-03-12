@@ -1181,17 +1181,13 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>).</p>
 <p></br>
 First, execute the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
-<div class="highlight"><pre><span></span><code>``` shell
-sudo bash
-```
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-3-__codelineno-4-1"></a>sudo bash
 </code></pre></div>
 <p></br>
 Then copy the following code block and execute within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
-<div class="highlight"><pre><span></span><code>``` shell
-wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
-tar -xzf cpd-cli-linux-EE-14.1.0.tgz
-export PATH=&quot;$(pwd)/cpd-cli-linux-EE-14.1.0-1189&quot;:$PATH
-```
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-3-__codelineno-5-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#on-premises-3-__codelineno-5-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#on-premises-3-__codelineno-5-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
 </code></pre></div>
 </li>
 </ol>
