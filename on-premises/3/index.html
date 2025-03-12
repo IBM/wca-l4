@@ -345,6 +345,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#vi-nest-steps" class="md-nav__link">
+    vi. Nest steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -505,6 +512,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#vi-nest-steps" class="md-nav__link">
+    vi. Nest steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -654,7 +668,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 <li>
 <p>To save, press <span class="keys"><kbd class="key-escape">Esc</kbd></span> and then type <code>:wq</code> followed by <span class="keys"><kbd class="key-enter">Enter</kbd></span> to write and exit.</p>
-<p><strong>CP4D Environment Variables</strong>
+<p></br>
+<strong>CP4D Environment Variables</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#===============================================================================</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Cloud Pak for Data installation variables</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#===============================================================================</span>
@@ -732,33 +747,62 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </code></pre></div>
 </li>
 <li>
-<p>Then copy the following code block and execute within the console to install <code>cpd-cli</code>:</p>
+<p>Then copy the following code block and execute within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>export PATH=&quot;$(pwd)/cpd-cli-linux-EE-14.1.0-1189&quot;:$PATH
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
 </code></pre></div>
-</li>
-<li>
-<p>Installation should only take a few moments to complete.</p>
 </li>
 </ul>
 </li>
 </ol>
 <hr />
 <ol start="10">
-<li>Verify the CLI is successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
+<li>Verify that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
 </ol>
 <hr />
 <ol start="11">
 <li>
-<p>Start the command line and ensure that your console is operating with root privileges before continuing:</p>
+<p>Engage the command line interface and ensure that the Terminal console is executing all subsequent instructions with full (root) privileges:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cpd-cli manage restart-container
 </code></pre></div>
 <p>This step will take a minute or two before completing. Once it has completed, you can verify the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</p>
 </li>
 </ol>
-<hr />
+<h2 id="vi-nest-steps"><strong>vi. Nest steps </strong></h2>
+<div class="admonition note">
+<p class="admonition-title">SESSION TIMEOUTS</p>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</div>
+<p>At this stage the bastion host node has been fully configured ahead of installing the necessary software, which will be covered in the subsequent modules.</p>
 
 
 
