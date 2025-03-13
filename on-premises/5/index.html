@@ -359,6 +359,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iv-install-the-nvidia-gpu-operator" class="md-nav__link">
+    iv. Install the NVIDIA GPU Operator
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -473,6 +480,13 @@
         <li class="md-nav__item">
   <a href="#iii-installing-the-node-feature-discovery-operator" class="md-nav__link">
     iii. Installing the Node Feature Discovery Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-install-the-nvidia-gpu-operator" class="md-nav__link">
+    iv. Install the NVIDIA GPU Operator
   </a>
   
 </li>
@@ -757,7 +771,66 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </li>
 </ol>
 <hr />
+<h2 id="iv-install-the-nvidia-gpu-operator"><strong>iv. Install the NVIDIA GPU Operator</strong></h2>
+<div class="admonition note">
+<p>The following section is based off a selection of the complete NVIDIA Corporation documentation for <a href="https://docs.nvidia.com/datacenter/cloud-native/openshift/24.9.1/install-gpu-ocp.html" target="_blank"><strong>Installing the NVIDIA GPU Operator on OpenShift</strong></a>.</p>
+</div>
 <ol start="17">
+<li>
+<p>Create the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">apiVersion: v1</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">kind: Namespace</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">    name: nvidia-gpu-operator</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>Define the <strong>OperatorGroup</strong> within the same namespace:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">    name: nvidia-gpu-operator-group</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s">spec:</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s">    targetNamespaces:</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s">    - nvidia-gpu-operator</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>Execute the following code block within a Terminal console to get the channel version (required for Step 20):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s">metadata:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s">spec:</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s">    channel: &quot;${CHANNEL}&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s">    installPlanApproval: Manual</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">    source: certified-operators</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s">    startingCSV: &quot;${CURRENT_CSV}&quot;</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="20">
 <li></li>
 </ol>
 
