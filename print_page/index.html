@@ -1722,7 +1722,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="19">
 <li>
-<p>Execute the following code block within a Terminal console to get the channel version (required for Step 20):</p>
+<p>Execute the following code block within a Terminal console to get the channel version (required for Step 20), as well as create the <code>gpu-operator-certified</code> Operator within the <code>nvidia-gpu-operator</code> namespace:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-5-__codelineno-10-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#on-premises-5-__codelineno-10-2"></a>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#on-premises-5-__codelineno-10-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
@@ -1746,6 +1746,56 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </ol>
 <hr />
 <ol start="20">
+<li>
+<p>Execute the following command to verify the status of the install plan:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-5-__codelineno-11-1"></a>oc get installplan -n nvidia-gpu-operator
+</code></pre></div>
+<p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>). Therefore, you will need to approve the install plan by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#on-premises-5-__codelineno-12-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#on-premises-5-__codelineno-12-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
+</code></pre></div>
+<p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>Create a <strong>ClusterPolicy</strong> by executing the following instructions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-5-__codelineno-13-1"></a>oc get csv -n nvidia-gpu-operator <span class="si">${</span><span class="nv">CURRENT_CSV</span><span class="si">}</span> -ojsonpath<span class="o">={</span>.metadata.annotations.alm-examples<span class="o">}</span> <span class="p">|</span> jq .<span class="o">[</span><span class="m">0</span><span class="o">]</span> &gt; clusterpolicy.json
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#on-premises-5-__codelineno-13-2"></a>oc apply -f clusterpolicy.json
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>ATTENTION:</strong> It will take approximately 5 to 10 minutes for the ClusterPolicy effects to initialize. Take a 10 minute break and then return to carry out Step 22.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>After waiting, check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out. Execute the following command with the Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-5-__codelineno-14-1"></a>oc get pods -n nvidia-gpu-operator
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<div class="admonition warning">
+<p class="admonition-title">NOTE TO THE AUTHOR</p>
+<p><strong> THIS WILL BE THE SECTION YOU WILL NEED TO FILL OUT WITH A DEDICATED CLUSTER WITH GPU ACCESS, PURELY FOR DEMONSTRATION PURPOSES. REFER TO 00:21:00 TIMESTAMP IN THE RECORDING.</strong></p>
+</div>
+<hr />
+<h2 id="on-premises-5-v-install-red-hat-openshift-ai"><strong>v. Install Red Hat OpenShift AI</strong></h2>
+<p>IBM watsonx Code Assistant (on-premises) requires installation and configuration of <strong>Red Hat OpenShift AI</strong> on the OCP cluster. In the following section, you will:</p>
+<ul>
+<li>Install the Operator for Red Hat OpenShift AI</li>
+<li>Create a <em>DSCInitialization</em> instance</li>
+<li>Create a <em>DataScienceCluster</em> instance</li>
+<li>Edit the model inferencing configuration</li>
+</ul>
+<div class="admonition note">
+<p>The following steps are extracted from the complete documentation available from IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-red-hat-openshift-ai" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a>.</p>
+</div>
+<hr />
+<ol start="23">
 <li></li>
 </ol></section><section class="print-page" id="on-premises-6"><h1 id="on-premises-6-install-shared-componentson-premises-installation-and-deployment"><strong>Install Shared Components</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
