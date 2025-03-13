@@ -1395,7 +1395,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <h2 id="on-premises-4-ii-update-cluster-global-pull-secret"><strong>ii. Update cluster global pull secret</strong></h2>
 <ol start="3">
 <li>
-<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command. Execute the following command within the Terminal console:</p>
+<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
+<p>Execute the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 </li>
