@@ -591,7 +591,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 <li>
 <p>Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
-<div class="admonition warning">
+<div class="admonition note">
 <p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
 </div>
 </li>
@@ -785,21 +785,21 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ul>
 <li>
 <p><strong>Line 19:</strong> set the value of <code>export OCP_URL=</code> equal to the value of <em>OCP dashboard URL</em> that was recorded in Step 8 of the previous module. For example:</p>
-<div class="admonition warning">
+<div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>https://console-openshift-console.apps.678a250b79141644e78804e0.ocp.techzone.ibm.com
 </code></pre></div>
 </div>
 </li>
 <li>
 <p><strong>Line 23:</strong> set the value of <code>export OCP_PASSWORD=</code> equal to the value of <em>Cluster Admin Password</em> recorded in Step 2 of this module. For example:</p>
-<div class="admonition warning">
+<div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>password1234
 </code></pre></div>
 </div>
 </li>
 <li>
 <p><strong>Line 49:</strong> set the value of <code>export IBM_ENTITLEMENT_KEY=</code> equal to the value of the key specific to <em>your</em> IBM account. Reference the <em>IBM Entitlement API Key</em> that was generated in the <a href="https://ibm.github.io/wca-l4/on-premises/1/#ii-infrastructure-and-resource-requirements" target="_blank"><strong>iii. Prerequisites checklist</strong></a> section of <strong>Module 1 (Objectives and Requirements)</strong>. Instructions for how to generate an <em>IBM Entitlement API Key</em> are provided in that section. For example:</p>
-<div class="admonition warning">
+<div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>verylongAPIkey1234
 </code></pre></div>
 </div>
