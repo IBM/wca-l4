@@ -339,15 +339,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-part-1" class="md-nav__link">
-    i. Part 1
+  <a href="#i-red-hat-openshift-cert-manager" class="md-nav__link">
+    i. Red Hat OpenShift cert-manager
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-part-2" class="md-nav__link">
-    ii. Part 2
+  <a href="#ii-operators-for-gpus" class="md-nav__link">
+    ii. Operators for GPUs
   </a>
   
 </li>
@@ -450,15 +450,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-part-1" class="md-nav__link">
-    i. Part 1
+  <a href="#i-red-hat-openshift-cert-manager" class="md-nav__link">
+    i. Red Hat OpenShift cert-manager
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-part-2" class="md-nav__link">
-    ii. Part 2
+  <a href="#ii-operators-for-gpus" class="md-nav__link">
+    ii. Operators for GPUs
   </a>
   
 </li>
@@ -478,14 +478,84 @@
 
 
 <h1 id="install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
-<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
-<div class="admonition quote">
-<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
-</div>
-<h2 id="i-part-1"><strong>i. Part 1</strong></h2>
-<p>And </p>
-<h2 id="ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p>
+<h2 id="i-red-hat-openshift-cert-manager"><strong>i. Red Hat OpenShift cert-manager</strong></h2>
+<p>Following the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered to with the following hands-on instructions.</p>
+<div class="highlight"><pre><span></span><code>!!! quote &quot;&quot;
+    Review the &lt;a href=&quot;https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator&quot; target=&quot;_blank&quot;&gt;latest documentation on IBM Software Hub&lt;/a&gt; to determine the appropriate version needed for your client opportunity and OpenShift cluster version.
+</code></pre></div>
+<p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank">follows the documentation</a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
+<hr />
+<ol>
+<li>Return to the OCP Dashboard (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank">Step 8 of Module 2</a>) with a web browser.</li>
+</ol>
+<hr />
+<ol start="2">
+<li>From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong>.</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Into the filter box, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p>Select the filtered result with the same name.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>From the configuration screen, select the following options:</p>
+<ul>
+<li><em>Channel:</em> <code>stable-v1</code></li>
+<li><em>Version:</em> <code>1.13.0</code></li>
+<li>When ready, click the blue <strong>Install</strong> button in the top-left corner</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>A new page will load, summarizing the settings of the proposed Operator. Verify that the details are correct, scroll down to the bottom of the page, and click the blue <strong>Install</strong> button to execute. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>You can track the progress of the Operator installation by drilling down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> from the left-hand side of the OCP Dashboard. Scroll down until you locate the <code>openshift-cert-manager-operator</code> entry in the table.</p>
+<p>Monitor the progress by observing changes to the fourth column of the table. <strong>Wait</strong> until Operator shows a status of <code>Upgrade Available</code> — then click the hyperlinked text to navigate to the <em>Subscription Details</em> panel.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Under the <em>Subscription Details</em> header, you should see three panels: <em>Update Channel</em>, <em>Update Approval</em>, and <em>Update Status</em>*.</p>
+<p>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel.</p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>A new page, <em>InstallPlan details</em> for <code>install-49nfj</code>, will load. Click the blue <strong>Preview InstallPlan</strong> button.</p>
+<p>When the panel refreshes, click the blue <strong>Approve</strong> button.</p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code>.</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Verify that <code>cert-manager</code> pods are up and running by executing the following command with your Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>oc get pods -n cert-manager
+</code></pre></div>
+<p>The console should return output closely resembling the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>NAME                                       READY   STATUS    RESTARTS   AGE
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cert-manager-bd7fbb9fc-wvbbt               <span class="m">1</span>/1     Running   <span class="m">0</span>          3m39s
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cert-manager-cainjector-56cc5f9868-7g9z7   <span class="m">1</span>/1     Running   <span class="m">0</span>          4m5s
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cert-manager-webhook-d4f79d7f7-9dg9w       <span class="m">1</span>/1     Running   <span class="m">0</span>          4m9s
+</code></pre></div>
+<p>At this point, the OpenShift <code>cert-manager</code> has been successfully deployed on the cluster.</p>
+</li>
+</ol>
+<hr />
+<h2 id="ii-operators-for-gpus"><strong>ii. Operators for GPUs</strong></h2>
 
 
 
