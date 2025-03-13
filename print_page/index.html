@@ -1382,7 +1382,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <ol start="2">
 <li>
-<p>Use the CP4D command line (<code>cpd-cli</code>) to log into OCP by <strong>executing</strong> the following code block:</p>
+<p>Use the CP4D command line (<code>cpd-cli</code>) to log into OCP by <strong>executing</strong> the following code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-4-__codelineno-2-1"></a>cpd-cli manage login-to-ocp <span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#on-premises-4-__codelineno-2-2"></a>--username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-4-__codelineno-2-3"></a>--password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span> <span class="se">\</span>
@@ -1396,7 +1396,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="3">
 <li>
 <p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
-<p><strong>Execute</strong> the following command within the Terminal console:</p>
+<p></br>
+<strong>Execute</strong> the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
@@ -1405,7 +1406,9 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <ol start="4">
 <li>
-<p>Now you must update all nodes across the OCP cluster using the OpenShift command line (<code>oc</code>). <strong>Execute</strong> the following instructions via the Terminal console:</p>
+<p>Now you must update all nodes across the cluster using OpenShift command line (<code>oc</code>).</p>
+<p></br>
+<strong>Execute</strong> the following instructions via the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-4-__codelineno-4-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> --username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> --password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-4-__codelineno-4-2"></a>oc get mcp
 </code></pre></div>
