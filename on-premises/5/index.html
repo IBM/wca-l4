@@ -592,7 +592,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <h2 id="iii-installing-the-node-feature-discovery-operator"><strong>iii. Installing the Node Feature Discovery Operator</strong></h2>
 <ol start="11">
 <li>
-<p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a Namespace custom resource (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
+<p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF </span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">apiVersion: v1</span>
@@ -610,7 +610,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="12">
 <li>
-<p>Install the NDF Operator within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
+<p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
@@ -629,7 +629,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="13">
 <li>
-<p>Create a Subscription CR and save the YAML file to <code>nfd-sub.yaml</code>.</p>
+<p>Create a <strong>Subscription CR</strong> and save the YAML file to <code>nfd-sub.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
@@ -653,12 +653,20 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>Check on the status of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>od get pods -n openshift-nfd
 </code></pre></div>
+<p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
+<ul>
+<li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong></li>
+<li>Within the table, look for a resource named <code>nfd</code></li>
+<li>If the code from Step 13 was only recently executed, the <em>Managed Namespaces</em> of this resource may be showing as <code>None</code> and the <em>Status</em> as <code>Unknown</code></li>
+<li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
+<li>Try executing the instruction from Step 14 a second time within the Terminal console and observe the updated pod status</li>
+</ul>
 </li>
 </ol>
 <hr />
 <ol start="15">
 <li>
-<p>Create a NodeFeatureDiscovery Custom Resource and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
+<p>Create a <strong>NodeFeatureDiscovery CR</strong> and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">    apiVersion: nfd.openshift.io/v1</span>
@@ -747,6 +755,10 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>od get pods -n openshift-nfd
 </code></pre></div>
 </li>
+</ol>
+<hr />
+<ol start="17">
+<li></li>
 </ol>
 
 
