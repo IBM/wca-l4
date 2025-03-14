@@ -1421,15 +1421,15 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <h2 id="on-premises-4-iii-next-steps"><strong>iii. Next steps</strong></h2>
 <p>In the following module, you will install the necessary prerequisite software required to deploy IBM Cloud Pak for Data and IBM watsonx Code Assistant.</p></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
-<h2 id="on-premises-5-i-red-hat-openshift-cert-manager"><strong>i. Red Hat OpenShift cert-manager</strong></h2>
+<h2 id="on-premises-5-i-install-the-red-hat-openshift-cert-manager"><strong>i. Install the Red Hat OpenShift cert-manager</strong></h2>
 <p>Following the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered to with the following hands-on instructions.</p>
 <div class="admonition note">
-<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank">latest documentation on IBM Software Hub</a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.</p>
+<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank"><strong>latest documentation on IBM Software Hub</strong></a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.</p>
 </div>
-<p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank">follows the documentation</a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
+<p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
 <hr />
 <ol>
-<li>Return to the OCP Dashboard (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank">Step 8 of Module 2</a>) with a web browser.</li>
+<li>Return to the OCP Dashboard (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>) with a web browser.</li>
 </ol>
 <hr />
 <ol start="2">
@@ -1518,7 +1518,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
     - <em>Red Hat OpenShift AI</em></p>
 <p>The following section will provide the instructions necessary to replicate this procedure. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
 <hr />
-<h2 id="on-premises-5-iii-installing-the-node-feature-discovery-operator"><strong>iii. Installing the Node Feature Discovery Operator</strong></h2>
+<h2 id="on-premises-5-iii-install-the-node-feature-discovery-operator"><strong>iii. Install the Node Feature Discovery Operator</strong></h2>
 <ol start="11">
 <li>
 <p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
