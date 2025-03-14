@@ -825,9 +825,10 @@
 </ul>
 </div>
 <h2 id="on-premises-2-i-configuring-the-ibm-technology-zone-reservation"><strong>i. Configuring the IBM Technology Zone reservation</strong></h2>
+<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
+<hr />
 <ol>
 <li>
-<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
 <p><strong>Click</strong> the link below to request a reservation directly from ITZ:</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></p>
@@ -917,11 +918,10 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </li>
 </ol>
 <h2 id="on-premises-2-ii-accessing-the-cluster"><strong>ii. Accessing the cluster</strong></h2>
-<ol start="5">
-<li>
 <p>Once the cluster has been successfully deployed, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. </p>
-<p>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</p>
-</li>
+<hr />
+<ol start="5">
+<li>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</li>
 </ol>
 <hr />
 <ol start="6">
@@ -947,7 +947,7 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 </ol>
 <hr />
 <ol start="8">
-<li>After logging into the OCP dashboard, copy the <strong>URL</strong> of the page (from your web browser) and record that to a notepad as <em>OCP dashboard URL</em>. This will be referenced in subsequent modules.</li>
+<li>After logging into the OCP dashboard, copy the <strong>URL</strong> of the page (from your web browser) and record that to a notepad as <strong>OCP Dashboard URL</strong>.</li>
 </ol>
 <hr />
 <h2 id="on-premises-2-iii-next-steps"><strong>iii. Next steps</strong></h2>
@@ -956,8 +956,10 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <p>The following section is based off of IBM Documentation write-ups that detail how to install IBM Software Hub on a Red Hat OpenShift Container Platform cluster. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=workstation-installing-software-hub-cli" target="_blank"><strong>Installing the IBM Software Hub command-line interface</strong></a>.</p>
 </div>
 <h2 id="on-premises-3-i-connect-to-the-bastion-host"><strong>i. Connect to the bastion host</strong></h2>
+<p>Before configuring the bastion host node, you will need to retrieve its connectivity and access control details.</p>
+<hr />
 <ol>
-<li>Before configuring the bastion host node, you will need to retrieve its connectivity and access control details. Return to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> page on the IBM Technology Zone (ITZ) and open the dashboard for the OpenShift Container Platform (OCP) cluster.</li>
+<li>Return to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> page on the IBM Technology Zone (ITZ) and open the dashboard for the OpenShift Container Platform (OCP) cluster.</li>
 </ol>
 <hr />
 <ol start="2">
@@ -1000,19 +1002,15 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-3-ii-openshift-command-line-interface-oc"><strong>ii. OpenShift command line interface (oc)</strong></h2>
+<p>Next, install the OpenShift Command Line Interface (CLI), designated <code>oc</code>, to programmatically perform work with the bastion node.</p>
+<hr />
 <ol start="4">
 <li>
-<p>Next, install the OpenShift Command Line Interface (CLI), designated <code>oc</code>, to programmatically perform work with the bastion node.</p>
-<ul>
-<li>
-<p>Retrieve the <em>OCP dashboard URL</em> (recorded in Step 8 of the previous module).</p>
-</li>
-<li>
-<p>Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
+<p><strong>Retrieve</strong> the <em>OCP dashboard URL</em> (recorded in Step 8 of the previous module). Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
 <div class="admonition note">
 <p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
 </div>
-</li>
+<ul>
 <li>
 <p>In this example, the value of the <em>OpenShift base domain</em> is <code>678a250b79141644e78804e0.ocp.techzone.ibm.com</code></p>
 </li>
@@ -1056,9 +1054,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-3-iii-podman-install"><strong>iii. Podman install </strong></h2>
+<p>IBM Cloud Pak for Data (CP4D)'s installer requires containers and as such Podman must be set up on the bastion host ahead of time. </p>
+<hr />
 <ol start="7">
 <li>
-<p>IBM Cloud Pak for Data (CP4D)'s installer requires containers and as such Podman must be set up on the bastion host ahead of time. Using the connected Terminal console, execute the following instruction to install Podman:</p>
+<p>Using the connected Terminal console, <strong>execute</strong> the following instruction to install Podman:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a>sudo yum install -y podman
 </code></pre></div>
 <p>The process will take approximately 1 minute to complete.</p>
@@ -1066,10 +1066,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-3-iv-environment-variables"><strong>iv. Environment variables </strong></h2>
+<p>Next, you must set the environment variables needed for installation of CP4D on the cluster. The list is quite extensive and long, so rather than set these one at a time it's recommended that you first compile them into a single file on the bastion host. Afterwards you can set all the variables automatically using the single file.</p>
+<hr />
 <ol start="8">
 <li>
-<p>Next, you must set the environment variables needed for installation of CP4D on the cluster. The list is quite extensive and long, so rather than set these one at a time it's recommended that you first compile them into a single file on the bastion host. Afterwards you can set all the variables automatically using the single file.</p>
-<p>Below is a code block containing all of the necessary CP4D environment variables. Copy the contents of the entire block to your clipboard and paste into a notepad.</p>
+<p>Below is a code block containing all of the necessary CP4D environment variables. <strong>Copy</strong> the contents of the entire block to your clipboard and <strong>paste</strong> into a notepad.</p>
 <p></br>
 <strong>CP4D Environment Variables</strong>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#on-premises-3-__codelineno-2-1"> 1</a></span>
@@ -1249,9 +1250,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-3-v-cloud-pak-for-data-command-line-interface-cpd-cli"><strong>v. Cloud Pak for Data command line interface (cpd-cli) </strong></h2>
+<p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>). </p>
+<hr />
 <ol start="11">
 <li>
-<p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>). First, execute the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
+<p><strong>Execute</strong> the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-3-__codelineno-7-1"></a>sudo bash
 </code></pre></div>
 <p>Then copy the following code block and execute it within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
@@ -1295,8 +1298,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <h2 id="on-premises-3-vi-next-steps"><strong>vi. Next steps </strong></h2>
 <p>At this stage the bastion host node has been fully configured ahead of installing the necessary software, which will be covered in the subsequent modules.</p>
-<details class="warning">
-<summary>SESSION TIMEOUTS AND LOGGING BACK IN</summary>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
 <p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
 <ol>
 <li>
@@ -1330,32 +1333,33 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="on-premises-4-i-change-the-process-ids-limit"><strong>i. Change the process IDs limit</strong></h2>
+<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<hr />
 <ol>
 <li>
-<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<p>Copy the contents of the following code block and then <strong>execute</strong> within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-4-__codelineno-0-1"></a>oc apply -f - <span class="s">&lt;&lt; EOF</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#on-premises-4-__codelineno-0-2"></a><span class="s">apiVersion: machineconfiguration.openshift.io/v1</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#on-premises-4-__codelineno-0-3"></a><span class="s">kind: KubeletConfig</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#on-premises-4-__codelineno-0-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#on-premises-4-__codelineno-0-5"></a><span class="s">name: cpd-watsonx-kubeletconfig</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#on-premises-4-__codelineno-0-6"></a><span class="s">spec:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#on-premises-4-__codelineno-0-7"></a><span class="s">kubeletConfig:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#on-premises-4-__codelineno-0-8"></a><span class="s">    podPidsLimit: 16384</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#on-premises-4-__codelineno-0-9"></a><span class="s">    podsPerCore: 0</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#on-premises-4-__codelineno-0-10"></a><span class="s">    maxPods: 500</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#on-premises-4-__codelineno-0-11"></a><span class="s">machineConfigPoolSelector:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#on-premises-4-__codelineno-0-12"></a><span class="s">    matchExpressions:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#on-premises-4-__codelineno-0-13"></a><span class="s">    - key: pools.operator.machineconfiguration.openshift.io/worker</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#on-premises-4-__codelineno-0-14"></a><span class="s">    operator: Exists</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#on-premises-4-__codelineno-0-15"></a><span class="s">EOF</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">KUBELETCONFIG TEST</p>
 <p>You can test whether a <em>KubeletConfig</em> file exists on the system by executing the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-4-__codelineno-0-1"></a>oc get kubeletconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-4-__codelineno-1-1"></a>oc get kubeletconfig
 </code></pre></div>
 </div>
-<p>Copy the contents of the following code block and then <strong>execute</strong> within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-4-__codelineno-1-1"></a>oc apply -f - <span class="s">&lt;&lt; EOF</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-4-__codelineno-1-2"></a><span class="s">apiVersion: machineconfiguration.openshift.io/v1</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-4-__codelineno-1-3"></a><span class="s">kind: KubeletConfig</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-4-__codelineno-1-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#on-premises-4-__codelineno-1-5"></a><span class="s">name: cpd-watsonx-kubeletconfig</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#on-premises-4-__codelineno-1-6"></a><span class="s">spec:</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#on-premises-4-__codelineno-1-7"></a><span class="s">kubeletConfig:</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#on-premises-4-__codelineno-1-8"></a><span class="s">    podPidsLimit: 16384</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#on-premises-4-__codelineno-1-9"></a><span class="s">    podsPerCore: 0</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#on-premises-4-__codelineno-1-10"></a><span class="s">    maxPods: 500</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#on-premises-4-__codelineno-1-11"></a><span class="s">machineConfigPoolSelector:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#on-premises-4-__codelineno-1-12"></a><span class="s">    matchExpressions:</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#on-premises-4-__codelineno-1-13"></a><span class="s">    - key: pools.operator.machineconfiguration.openshift.io/worker</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#on-premises-4-__codelineno-1-14"></a><span class="s">    operator: Exists</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#on-premises-4-__codelineno-1-15"></a><span class="s">EOF</span>
-</code></pre></div>
 </li>
 </ol>
 <hr />
@@ -1372,11 +1376,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-4-ii-update-cluster-global-pull-secret"><strong>ii. Update cluster global pull secret</strong></h2>
+<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
+<hr />
 <ol start="3">
 <li>
-<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
-<p></br>
-<strong>Execute</strong> the following command within the Terminal console:</p>
+<p><strong>Execute</strong> the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
@@ -1399,13 +1403,45 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 <hr />
 <h2 id="on-premises-4-iii-next-steps"><strong>iii. Next steps</strong></h2>
-<p>In the following module, you will install the necessary prerequisite software required to deploy IBM Cloud Pak for Data and IBM watsonx Code Assistant.</p></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
-<h2 id="on-premises-5-i-install-the-red-hat-openshift-cert-manager"><strong>i. Install the Red Hat OpenShift cert-manager</strong></h2>
-<p>Following the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered to with the following hands-on instructions.</p>
-<div class="admonition note">
-<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank"><strong>latest documentation on IBM Software Hub</strong></a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.</p>
+<p>In the following module, you will install the necessary prerequisite software required to deploy IBM Cloud Pak for Data and IBM watsonx Code Assistant.</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-4-__codelineno-6-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-4-__codelineno-7-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-4-__codelineno-8-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-4-__codelineno-9-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-4-__codelineno-10-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<div class="admonition quote">
+<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank"><strong>latest documentation on IBM Software Hub</strong></a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.
+</br>
+The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
 </div>
-<p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
+<h2 id="on-premises-5-i-install-the-red-hat-openshift-cert-manager"><strong>i. Install the Red Hat OpenShift cert-manager</strong></h2>
+<p>After the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered in the following section.</p>
 <hr />
 <ol>
 <li>Return to the <strong>OCP Dashboard</strong> (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>) with a web browser.</li>
@@ -1440,7 +1476,8 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="6">
 <li>
 <p>You can track the progress of the Operator installation by drilling down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> from the left-hand side of the OCP Dashboard. Scroll down until you locate the <code>openshift-cert-manager-operator</code> entry in the table.</p>
-<p>Monitor the progress by observing changes to the fourth column of the table. <strong>Wait</strong> until Operator shows a status of <code>Upgrade Available</code> — then click the hyperlinked text to navigate to the <em>Subscription Details</em> panel.</p>
+<p></br>
+Monitor the progress by observing changes to the fourth column of the table. <strong>Wait</strong> until Operator shows a status of <code>Upgrade Available</code> — then click the hyperlinked text to navigate to the <em>Subscription Details</em> panel.</p>
 </li>
 </ol>
 <hr />
@@ -1486,18 +1523,19 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </div>
 <p></br>
 Although GPUs will not be available to deploy or interact with for the <em>On-Premises Installation and Deployment</em> L4 training modules, participants will still be able to practice and learn the skills needed to prepare a cluster for GPUs.</p>
-<div class="admonition note">
-<p>The following section is based off a selection of the complete IBM Documentation available for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-operators-services-that-require-gpus" target="_blank"><strong>Installing operators for services that require GPUs</strong></a>.</p>
-</div>
 <p>This section will cover all of the necessary configuration and setup required to make GPUs available to an IBM watsonx Code Asssitant service — shy of actually getting to use the GPUs with the on-premises deployment. Participants will still be able to interact with GPU-powered instances in the latter IBM Cloud (SaaS) modules of the L4 curriculum.</p>
 <p>Services such as IBM watsonx Code Assistant (on-premises), which requires access to GPUs, need to install several Operators on the OpenShift cluster to support the management of NVIDIA software components. Those components, in turn, are needed to provision the GPUs for access by the cluster.</p>
 <p>IBM watsonx Code Assistant requires that the following Operators be installed:
     - <em>Node Feature Discovery Operator</em>: within the <code>openshift-nfd</code> namespace
     - <em>NVIDIA GPU Operator</em>: within the <code>nvidia-gpu-operator</code> namespace
     - <em>Red Hat OpenShift AI</em></p>
-<p>The following section will provide the instructions necessary to replicate this procedure. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
 <hr />
 <h2 id="on-premises-5-iii-install-the-node-feature-discovery-operator"><strong>iii. Install the Node Feature Discovery Operator</strong></h2>
+<div class="admonition note">
+<p>The following section is based off a selection of the complete IBM Documentation available for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-operators-services-that-require-gpus" target="_blank"><strong>Installing operators for services that require GPUs</strong></a>.</p>
+</div>
+<p>The following section will provide the instructions necessary to replicate this procedure. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
+<hr />
 <ol start="11">
 <li>
 <p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
@@ -1669,6 +1707,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <div class="admonition note">
 <p>The following section is based off a selection of the complete NVIDIA Corporation documentation for <a href="https://docs.nvidia.com/datacenter/cloud-native/openshift/24.9.1/install-gpu-ocp.html" target="_blank"><strong>Installing the NVIDIA GPU Operator on OpenShift</strong></a>.</p>
 </div>
+<hr />
 <ol start="17">
 <li>
 <p><strong>Create</strong> the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
@@ -1938,7 +1977,38 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </ol>
 <hr />
 <h2 id="on-premises-5-vi-next-steps"><strong>vi. Next steps</strong></h2>
-<p>At this stage, all of the necessary prerequisites have been installed and you are ready to begin installation of an IBM Software Hub instance on the OCP cluster.</p></section><section class="print-page" id="on-premises-6"><h1 id="on-premises-6-install-ibm-software-hubon-premises-installation-and-deployment"><strong>Install IBM Software Hub</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<p>At this stage, all of the necessary prerequisites have been installed and you are ready to begin installation of an IBM Software Hub instance on the OCP cluster.</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#on-premises-5-__codelineno-29-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#on-premises-5-__codelineno-30-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details></section><section class="print-page" id="on-premises-6"><h1 id="on-premises-6-install-ibm-software-hubon-premises-installation-and-deployment"><strong>Install IBM Software Hub</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-install-instance-software-hub" target="_blank"><strong>Preparing to install an instance of IBM Software Hub</strong></a>.</p>
 </div>
@@ -2025,7 +2095,38 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </ol>
 <hr />
 <h2 id="on-premises-6-iii-next-steps"><strong>iii. Next steps</strong></h2>
-<p>With IBM Software Hub now successfully deployed on the OCP cluster, the environment is primed for the installation of IBM watsonx Code Assistant.</p></section><section class="print-page" id="on-premises-7"><h1 id="on-premises-7-install-ibm-watsonx-code-assistanton-premises-installation-and-deployment"><strong>Install IBM watsonx Code Assistant</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<p>With IBM Software Hub now successfully deployed on the OCP cluster, the environment is primed for the installation of IBM watsonx Code Assistant.</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-6-__codelineno-6-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-6-__codelineno-7-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-6-__codelineno-8-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-6-__codelineno-9-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-6-__codelineno-10-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details></section><section class="print-page" id="on-premises-7"><h1 id="on-premises-7-install-ibm-watsonx-code-assistanton-premises-installation-and-deployment"><strong>Install IBM watsonx Code Assistant</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
@@ -2033,7 +2134,38 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <h2 id="on-premises-7-i-part-1"><strong>i. Part 1</strong></h2>
 <p>And </p>
 <h2 id="on-premises-7-ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p></section><section class="print-page" id="on-premises-8"><h1 id="on-premises-8-conclusionon-premises-installation-and-deployment"><strong>Conclusion</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<p>test</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-7-__codelineno-0-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-7-__codelineno-1-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-7-__codelineno-2-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-7-__codelineno-3-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-7-__codelineno-4-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details></section><section class="print-page" id="on-premises-8"><h1 id="on-premises-8-conclusionon-premises-installation-and-deployment"><strong>Conclusion</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
@@ -2041,7 +2173,38 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <h2 id="on-premises-8-i-part-1"><strong>i. Part 1</strong></h2>
 <p>And </p>
 <h2 id="on-premises-8-ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p></section><h1 class='nav-section-title-end'>Ended: On-Premises Installation and Deployment</h1></div>
+<p>test</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-8-__codelineno-0-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-8-__codelineno-1-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-8-__codelineno-2-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-8-__codelineno-3-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-8-__codelineno-4-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details></section><h1 class='nav-section-title-end'>Ended: On-Premises Installation and Deployment</h1></div>
 
 
 

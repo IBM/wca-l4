@@ -482,32 +482,33 @@
 <p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="i-change-the-process-ids-limit"><strong>i. Change the process IDs limit</strong></h2>
+<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<hr />
 <ol>
 <li>
-<p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
+<p>Copy the contents of the following code block and then <strong>execute</strong> within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>oc apply -f - <span class="s">&lt;&lt; EOF</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s">apiVersion: machineconfiguration.openshift.io/v1</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s">kind: KubeletConfig</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s">name: cpd-watsonx-kubeletconfig</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s">spec:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s">kubeletConfig:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s">    podPidsLimit: 16384</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s">    podsPerCore: 0</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s">    maxPods: 500</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s">machineConfigPoolSelector:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s">    matchExpressions:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s">    - key: pools.operator.machineconfiguration.openshift.io/worker</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s">    operator: Exists</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s">EOF</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">KUBELETCONFIG TEST</p>
 <p>You can test whether a <em>KubeletConfig</em> file exists on the system by executing the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>oc get kubeletconfig
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>oc get kubeletconfig
 </code></pre></div>
 </div>
-<p>Copy the contents of the following code block and then <strong>execute</strong> within your Terminal console to generate a new <em>KubeletConfig</em> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>oc apply -f - <span class="s">&lt;&lt; EOF</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="s">apiVersion: machineconfiguration.openshift.io/v1</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s">kind: KubeletConfig</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">name: cpd-watsonx-kubeletconfig</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s">spec:</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">kubeletConfig:</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">    podPidsLimit: 16384</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s">    podsPerCore: 0</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s">    maxPods: 500</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s">machineConfigPoolSelector:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">    matchExpressions:</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">    - key: pools.operator.machineconfiguration.openshift.io/worker</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">    operator: Exists</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s">EOF</span>
-</code></pre></div>
 </li>
 </ol>
 <hr />
@@ -524,11 +525,11 @@
 </ol>
 <hr />
 <h2 id="ii-update-cluster-global-pull-secret"><strong>ii. Update cluster global pull secret</strong></h2>
+<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
+<hr />
 <ol start="3">
 <li>
-<p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
-<p></br>
-<strong>Execute</strong> the following command within the Terminal console:</p>
+<p><strong>Execute</strong> the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
@@ -552,6 +553,37 @@
 <hr />
 <h2 id="iii-next-steps"><strong>iii. Next steps</strong></h2>
 <p>In the following module, you will install the necessary prerequisite software required to deploy IBM Cloud Pak for Data and IBM watsonx Code Assistant.</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
 
 
 

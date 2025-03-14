@@ -472,6 +472,37 @@
 <p>And </p>
 <h2 id="ii-part-2"><strong>ii. Part 2</strong></h2>
 <p>test</p>
+<details class="note">
+<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
+<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;...&gt;</code> placeholders with values specific to <em>your</em> environment.</p>
+<ol>
+<li>
+<p>Log back into the bastion node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Engage the <code>sudo</code> (privileged access) session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo bash
+</code></pre></div>
+</li>
+<li>
+<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span> cpd_vars.sh
+</code></pre></div>
+</li>
+<li>
+<p>Log back into OpenShift:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Log back into <code>cpd-cli</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
 
 
 
