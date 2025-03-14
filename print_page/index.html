@@ -1945,7 +1945,6 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <h2 id="on-premises-6-i-install-shared-components"><strong>i. Install shared components</strong></h2>
 <p>Before an instance of IBM Software Hub can be installed, you need to install a set of shared services on the Red Hat OpenShift Container Platform (OCP) cluster: a <strong>license service</strong> and a <strong>scheduler</strong>.</p>
 <hr />
-<p><strong>Preparing the license service</strong></p>
 <ol>
 <li>
 <p>Three environment variables were "set" earlier in this lab, which are pertinent now to the license service (as well as the scheduler) that IBM Software Hub requires. These include:</p>
@@ -1965,7 +1964,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="2">
 <li>
-<p>Install the license service components by executing the following command:</p>
+<p>Install the <strong>license service</strong> components by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-6-__codelineno-1-1"></a>cpd-cli manage apply-cluster-components <span class="se">\</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-6-__codelineno-1-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-6-__codelineno-1-3"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span> --licensing_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_LICENSE_SERVICE</span><span class="si">}</span>
@@ -1976,10 +1975,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </li>
 </ol>
 <hr />
-<p><strong> Preparing the scheduler</strong></p>
 <ol start="3">
 <li>
-<p>Install the scheduling service by executing the following command:</p>
+<p>Install the <strong>scheduling service</strong> by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-6-__codelineno-2-1"></a>cpd-cli manage apply-scheduler <span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#on-premises-6-__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-6-__codelineno-2-3"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
@@ -1988,7 +1986,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>The scheduler service should be installed and deployed relatively quickly. At this stage, the cluster is ready for installation of IBM Software Hub.</p>
 </li>
 </ol>
-<p>--</p>
+<hr />
 <h2 id="on-premises-6-ii-install-an-instance-of-ibm-software-hub"><strong>ii. Install an instance of IBM Software Hub</strong></h2>
 <p>Before an instance of IBM Software Hub can be installed, you need to install a set of shared services on the Red Hat OpenShift Container Platform (OCP) cluster: a <strong>license service</strong> and a <strong>scheduler</strong>.</p></section><section class="print-page" id="on-premises-7"><h1 id="on-premises-7-install-ibm-watsonx-code-assistanton-premises-installation-and-deployment"><strong>Install IBM watsonx Code Assistant</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
