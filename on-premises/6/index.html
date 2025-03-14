@@ -366,6 +366,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iii-next-steps" class="md-nav__link">
+    iii. Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -449,6 +456,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iii-next-steps" class="md-nav__link">
+    iii. Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -511,7 +525,46 @@
 </ol>
 <hr />
 <h2 id="ii-install-an-instance-of-ibm-software-hub"><strong>ii. Install an instance of IBM Software Hub</strong></h2>
-<p>Before an instance of IBM Software Hub can be installed, you need to install a set of shared services on the Red Hat OpenShift Container Platform (OCP) cluster: a <strong>license service</strong> and a <strong>scheduler</strong>.</p>
+<p>Finally, the cluster has been prepared to a state where it is ready to install an instance of IBM Software Hub. Although the following section requires relatively few inputs from the participant, it will take approximately 45 minutes for the installation process to complete.</p>
+<hr />
+<ol start="4">
+<li>
+<p>Create the two new projects that will host your instance by <strong>executing</strong> the following instructions within a Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>oc new-project <span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>oc new-project <span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Apply the required permissions to the project namespaces for an instance of IBM Software Hub:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage authorize-instance-topology <span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span>
+</code></pre></div>
+<p>This operation will take approximately 1 minute to complete.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Create the instance by <strong>executing</strong> the following code block:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cpd-cli manage setup-instance <span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>--run_storage_tests<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<p>This operation will take approximately 45 minutes to complete.</p>
+</li>
+</ol>
+<hr />
+<h2 id="iii-next-steps"><strong>iii. Next steps</strong></h2>
+<p>With IBM Software Hub now successfully deployed on the OCP cluster, the environment is primed for the installation of IBM watsonx Code Assistant.</p>
 
 
 
