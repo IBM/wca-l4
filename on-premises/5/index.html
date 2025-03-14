@@ -885,7 +885,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <h2 id="v-install-red-hat-openshift-ai"><strong>v. Install Red Hat OpenShift AI</strong></h2>
 <p>IBM watsonx Code Assistant (on-premises) requires installation and configuration of <strong>Red Hat OpenShift AI</strong> on the OCP cluster. In the following section, you will:</p>
 <ul>
-<li>Install the Operator for Red Hat OpenShift AI</li>
+<li>Install the Operator for Red Hat OpenShift AI (v2.13)</li>
 <li>Create a <em>DSCInitialization</em> instance</li>
 <li>Create a <em>DataScienceCluster</em> instance</li>
 <li>Edit the model inferencing configuration</li>
@@ -895,6 +895,124 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </div>
 <hr />
 <ol start="23">
+<li>
+<p>Create the <code>redhat-ods-operator</code> <strong>Project</strong> on the OCP cluster with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>oc new-project redhat-ods-operator
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Define the <code>rhods-operator</code> <strong>Operator Group</strong> within the project defined in Step 23:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>Create the <strong>Operator Subscription</strong> for <code>rhods-operator</code> within the same project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="s">spec:</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s">    channel: stable-2.13</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s">    source: redhat-operators</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="s">    config:</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="s">        env:</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="s">            - name: &quot;DISABLE_DSC_CONFIG&quot;</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="s">EOF</span>
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>ATTENTION:</strong> It will take approximately 5 minutes for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the deployment.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>
+<p>Create a <strong>DSCInitialization</strong> object named <code>default-dsci</code> in the <code>redhat-ods-monitoring</code> project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s">apiVersion: dscinitialization.opendatahub.io/v1</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">kind: DSCInitialization</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">    name: default-dsci</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">spec:</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="s">    applicationsNamespace: redhat-ods-applications</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s">    monitoring:</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="s">        namespace: redhat-ods-monitoring</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="s">    serviceMesh:</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="s">        managementState: Removed</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="s">    trustedCABundle:</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>Monitor the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>oc get dscinitialization
+</code></pre></div>
+<p>Wait for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Create a <strong>DataScienceCluster</strong> object named <code>default-dsc</code> within the same project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="s">apiVersion: datasciencecluster.opendatahub.io/v1</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="s">kind: DataScienceCluster</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="s">    name: default-dsc</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="s">spec:</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="s">    components:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="s">        codeflare:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s">        dashboard:</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="s">        datasciencepipelines:</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="s">        kserve:</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="s">            defaultDeploymentMode: RawDeployment</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="s">            serving:</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="s">                managementState: Removed</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="s">                name: knative-serving</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="s">        kueue:</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="s">        modelmeshserving:</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="s">        ray:</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="s">        trainingoperator:</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a><span class="s">        trustyai:</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a><span class="s">        workbenches:</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
+<p>Monitor the progress of the <em>DataScienceCluster</em> object by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>oc get default-dsc
+</code></pre></div>
+<p>Wait for the <em>DataScienceCluster</em> object (<code>default-dsc</code>) to return a <code>Ready</code> status before continuing on to Step 28.</p>
+</li>
+</ol>
+<hr />
+<ol start="28">
 <li></li>
 </ol>
 
