@@ -654,7 +654,7 @@
 <p><a href="https://www.ibm.com/docs/en/wx-code-assistant/5.1.x" target="_blank"><strong>IBM watsonx Code Assistant v5.1</strong></a>: a generative AI coding companion that provides contextually aware assistance for programming languages.</p>
 </li>
 </ul>
-<p>Special acknowledgement and thanks to IBM colleagues Coralie Jonvel, Nelson Nunes, and Noe Samaille for adaptation of their <a href="https://github.ibm.com/CESC-Infrastructure-Services/Installation-CP4D-WatsonX" target="_blank">deployment instructions</a> for watsonx.ai on Red Hat OpenShift.</p>
+<p>Special acknowledgement and thanks to IBM colleagues Coralie Jonvel, Nelson Nunes, and Noe Samaille for adaptation of their <a href="https://github.ibm.com/CESC-Infrastructure-Services/Installation-CP4D-WatsonX" target="_blank"><strong>deployment instructions</strong></a> for watsonx.ai on Red Hat OpenShift.</p>
 <hr />
 <p><strong> INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE </strong></p>
 <hr />
@@ -831,13 +831,13 @@
 </ul>
 </div>
 <h2 id="on-premises-2-i-configuring-the-ibm-technology-zone-reservation"><strong>i. Configuring the IBM Technology Zone reservation</strong></h2>
-<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank">IBM Technolgy Zone (ITZ) Certified Base Images</a>.</p>
+<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank"><strong>IBM Technolgy Zone (ITZ) Certified Base Images</strong></a>.</p>
 <hr />
 <ol>
 <li>
 <p><strong>Click</strong> the link below to request a reservation directly from ITZ:</p>
 <div class="admonition warning">
-<p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></p>
+<p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank"><strong>https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</strong></a></p>
 </div>
 </li>
 </ol>
@@ -1223,7 +1223,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </div>
 </li>
 <li>
-<p><strong>Line 49:</strong> set the value of <code>export IBM_ENTITLEMENT_KEY=</code> equal to the value of the key specific to <em>your</em> IBM account. Reference the <em>IBM Entitlement API Key</em> that was generated in the <a href="https://ibm.github.io/wca-l4/on-premises/1/#ii-infrastructure-and-resource-requirements" target="_blank"><strong>iii. Prerequisites checklist</strong></a> section of <strong>Module 1 (Objectives and Requirements)</strong>. Instructions for how to generate an <em>IBM Entitlement API Key</em> are provided in that section. For example:</p>
+<p><strong>Line 49:</strong> set the value of <code>export IBM_ENTITLEMENT_KEY=</code> equal to the value of the key specific to <em>your</em> IBM account. Reference the <em>IBM Entitlement API Key</em> that was generated in the <a href="https://ibm.github.io/wca-l4/on-premises/1/#ii-infrastructure-and-resource-requirements" target="_blank"><strong>iii. Prerequisites checklist section of Module 1 (Objectives and Requirements)</strong></a>. Instructions for how to generate an <em>IBM Entitlement API Key</em> are provided in that section. For example:</p>
 <div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-3-__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>verylongAPIkey1234
 </code></pre></div>
@@ -1442,9 +1442,10 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </ol>
 </details></section><section class="print-page" id="on-premises-5"><h1 id="on-premises-5-install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
-<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank"><strong>latest documentation on IBM Software Hub</strong></a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.
-</br>
-The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
+<ul>
+<li>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank"><strong>latest documentation on IBM Software Hub</strong></a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.</li>
+<li>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</li>
+</ul>
 </div>
 <h2 id="on-premises-5-i-install-the-red-hat-openshift-cert-manager"><strong>i. Install the Red Hat OpenShift cert-manager</strong></h2>
 <p>After the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered in the following section.</p>
@@ -2080,7 +2081,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-6-__codelineno-4-2"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#on-premises-6-__codelineno-4-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span>
 </code></pre></div>
-<p>This operation will take approximately 1 minute to complete.</p>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>1 minute</strong> to complete.</p>
+</div>
 </li>
 </ol>
 <hr />
@@ -2096,7 +2099,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#on-premises-6-__codelineno-5-7"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#on-premises-6-__codelineno-5-8"></a>--run_storage_tests<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<p>This operation will take approximately 45 minutes to complete.</p>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>45 minutes</strong> to complete.</p>
+</div>
 </li>
 </ol>
 <hr />
@@ -2158,7 +2163,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-7-__codelineno-1-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-7-__codelineno-1-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
 </code></pre></div>
+<div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>10 minutes</strong>.</p>
+</div>
 </li>
 </ol>
 <hr />
@@ -2176,9 +2183,11 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#on-premises-7-__codelineno-2-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#on-premises-7-__codelineno-2-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<p>Completion of this operation will take approximately <strong>1 hour</strong>, at which point the console will return the following message:</p>
+<div class="admonition warning">
+<p>Completion of this operation will take approximately <strong>1 hour</strong>, at which point the console will return the following message:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-7-__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
-</code></pre></div>
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <hr />
