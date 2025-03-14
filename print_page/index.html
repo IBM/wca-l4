@@ -1943,7 +1943,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-install-instance-software-hub" target="_blank"><strong>Preparing to install an instance of IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="on-premises-6-i-install-shared-components"><strong>i. Install shared components</strong></h2>
-<p>Before an instance of IBM Software Hub can be installed, you need to install a set of shared services on the Red Hat OpenShift Container Platform (OCP) cluster: a <strong>license service</strong> and a <strong>scheduler</strong>.</p>
+<p>Before an instance of IBM Software Hub can be installed, you need to install a set of shared services on the OpenShift Container Platform (OCP) cluster: a <strong>license service</strong> and a <strong>scheduler</strong>.</p>
 <hr />
 <ol>
 <li>
@@ -1954,7 +1954,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li><code>$VERSION</code></li>
 </ul>
 <p>These variables were defined within the Cloud Pak for Data (CP4D) Environment Variable (<a href="https://ibm.github.io/wca-l4/on-premises/3/#iv-environment-variables" target="_blank"><strong>Step 8 of Module 3</strong></a>) on Lines 35, 36, and 53, respectively.</p>
-<p>Refresh yourself on these variable's values by <strong>executing</strong> the following within a Terminal console:</p>
+<p>Refresh yourself on these variable's values by <strong>executing</strong> the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-6-__codelineno-0-1"></a><span class="nb">echo</span> <span class="nv">$PROJECT_LICENSE_SERVICE</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#on-premises-6-__codelineno-0-2"></a><span class="nb">echo</span> <span class="nv">$PROJECT_SCHEDULING_SERVICE</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#on-premises-6-__codelineno-0-3"></a><span class="nb">echo</span> <span class="nv">$VERSION</span>
@@ -1969,9 +1969,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-6-__codelineno-1-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-6-__codelineno-1-3"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span> --licensing_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_LICENSE_SERVICE</span><span class="si">}</span>
 </code></pre></div>
-<div class="admonition warning">
-<p><strong>ATTENTION:</strong> The installation process will take approximately 6 minutes to complete.</p>
-</div>
+<p>The installation process will take approximately 6 minutes to complete.</p>
 </li>
 </ol>
 <hr />
