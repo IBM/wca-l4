@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-syntax-error" class="md-skip">
+        <a href="#install-prerequisite-softwareon-premises-installation-and-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -314,9 +314,75 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5. Install prerequisite software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         5. Install prerequisite software
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-red-hat-openshift-cert-manager" class="md-nav__link">
+    i. Red Hat OpenShift cert-manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-operators-for-gpus" class="md-nav__link">
+    ii. Operators for GPUs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-installing-the-node-feature-discovery-operator" class="md-nav__link">
+    iii. Installing the Node Feature Discovery Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-install-the-nvidia-gpu-operator" class="md-nav__link">
+    iv. Install the NVIDIA GPU Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-install-red-hat-openshift-ai" class="md-nav__link">
+    v. Install Red Hat OpenShift AI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -405,6 +471,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-red-hat-openshift-cert-manager" class="md-nav__link">
+    i. Red Hat OpenShift cert-manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-operators-for-gpus" class="md-nav__link">
+    ii. Operators for GPUs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-installing-the-node-feature-discovery-operator" class="md-nav__link">
+    iii. Installing the Node Feature Discovery Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-install-the-nvidia-gpu-operator" class="md-nav__link">
+    iv. Install the NVIDIA GPU Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-install-red-hat-openshift-ai" class="md-nav__link">
+    v. Install Red Hat OpenShift AI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -417,10 +533,545 @@
                 
 
 
-<h1 id="macro-syntax-error"><em>Macro Syntax Error</em></h1>
-<p><em>Line 559 in Markdown file:</em> <strong>unexpected '.'</strong> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    <span class="o">**</span><span class="s2">&quot;domainTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ .Name }}-{{ .Namespace }}.{{ .IngressDomain }}&quot;</span><span class="p">,</span><span class="o">**</span>
-</code></pre></div></p>
+<h1 id="install-prerequisite-softwareon-premises-installation-and-deployment"><strong>Install Prerequisite Software</strong></br><em>On-Premises Installation and Deployment</em></h1>
+<h2 id="i-red-hat-openshift-cert-manager"><strong>i. Red Hat OpenShift cert-manager</strong></h2>
+<p>Following the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered to with the following hands-on instructions.</p>
+<div class="admonition note">
+<p>Review the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=cluster-installing-cert-manager-operator" target="_blank">latest documentation on IBM Software Hub</a> to determine the appropriate version needed for your client opportunity and OpenShift cluster version.</p>
+</div>
+<p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank">follows the documentation</a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
+<hr />
+<ol>
+<li>Return to the OCP Dashboard (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank">Step 8 of Module 2</a>) with a web browser.</li>
+</ol>
+<hr />
+<ol start="2">
+<li>From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong>.</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Into the filter box, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p>Select the filtered result with the same name.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>From the configuration screen, select the following options:</p>
+<ul>
+<li><em>Channel:</em> <code>stable-v1</code></li>
+<li><em>Version:</em> <code>1.13.0</code></li>
+<li>When ready, click the blue <strong>Install</strong> button in the top-left corner</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>A new page will load, summarizing the settings of the proposed Operator. Verify that the details are correct, scroll down to the bottom of the page, and click the blue <strong>Install</strong> button to execute. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>You can track the progress of the Operator installation by drilling down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> from the left-hand side of the OCP Dashboard. Scroll down until you locate the <code>openshift-cert-manager-operator</code> entry in the table.</p>
+<p>Monitor the progress by observing changes to the fourth column of the table. <strong>Wait</strong> until Operator shows a status of <code>Upgrade Available</code> — then click the hyperlinked text to navigate to the <em>Subscription Details</em> panel.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Under the <em>Subscription Details</em> header, you should see three panels: <em>Update Channel</em>, <em>Update Approval</em>, and <em>Update Status</em>*.</p>
+<p>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel.</p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>A new page, <em>InstallPlan details</em> for <code>install-49nfj</code>, will load. Click the blue <strong>Preview InstallPlan</strong> button.</p>
+<p>When the panel refreshes, click the blue <strong>Approve</strong> button.</p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code>.</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Verify that <code>cert-manager</code> pods are up and running by executing the following command with your Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>oc get pods -n cert-manager
+</code></pre></div>
+<p>The console should return output closely resembling the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>NAME                                       READY   STATUS    RESTARTS   AGE
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cert-manager-bd7fbb9fc-wvbbt               <span class="m">1</span>/1     Running   <span class="m">0</span>          3m39s
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cert-manager-cainjector-56cc5f9868-7g9z7   <span class="m">1</span>/1     Running   <span class="m">0</span>          4m5s
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cert-manager-webhook-d4f79d7f7-9dg9w       <span class="m">1</span>/1     Running   <span class="m">0</span>          4m9s
+</code></pre></div>
+<p>At this point, the OpenShift <code>cert-manager</code> has been successfully deployed on the cluster.</p>
+</li>
+</ol>
+<hr />
+<h2 id="ii-operators-for-gpus"><strong>ii. Operators for GPUs</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
+</div>
+<p></br>
+Although GPUs will not be available to deploy or interact with for the <em>On-Premises Installation and Deployment</em> L4 training modules, participants will still be able to practice and learn the skills needed to prepare a cluster for GPUs.</p>
+<div class="admonition note">
+<p>The following section is based off a selection of the complete IBM Documentation available for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-operators-services-that-require-gpus" target="_blank"><strong>Installing operators for services that require GPUs</strong></a>.</p>
+</div>
+<p>This section will cover all of the necessary configuration and setup required to make GPUs available to an IBM watsonx Code Asssitant service — shy of actually getting to use the GPUs with the on-premises deployment. Participants will still be able to interact with GPU-powered instances in the latter IBM Cloud (SaaS) modules of the L4 curriculum.</p>
+<p>Services such as IBM watsonx Code Assistant (on-premises), which requires access to GPUs, need to install several Operators on the OpenShift cluster to support the management of NVIDIA software components. Those components, in turn, are needed to provision the GPUs for access by the cluster.</p>
+<p>IBM watsonx Code Assistant requires that the following Operators be installed:
+    - <em>Node Feature Discovery Operator</em>: within the <code>openshift-nfd</code> namespace
+    - <em>NVIDIA GPU Operator</em>: within the <code>nvidia-gpu-operator</code> namespace
+    - <em>Red Hat OpenShift AI</em></p>
+<p>The following section will provide the instructions necessary to replicate this procedure. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
+<hr />
+<h2 id="iii-installing-the-node-feature-discovery-operator"><strong>iii. Installing the Node Feature Discovery Operator</strong></h2>
+<ol start="11">
+<li>
+<p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">apiVersion: v1</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">kind: Namespace</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">    name: openshift-nfd</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s">    labels:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">        name: openshift-nfd</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">        openshift.io/cluster-monitoring: &quot;true&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">    generateName: openshift-nfd-</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">    name: openshift-nfd</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">    namespace: openshift-nfd</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">spec:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">    targetNamespaces:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">    - openshift-nfd</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>Create a <strong>Subscription CR</strong> and save the YAML file to <code>nfd-sub.yaml</code>.</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">    name: nfd</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">    namespace: openshift-nfd</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">spec:</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">    channel: &quot;stable&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">    installPlanApproval: Automatic</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">    name: nfd</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">    source: redhat-operators</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>Check on the status of the OpenShift pods with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>od get pods -n openshift-nfd
+</code></pre></div>
+<p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
+<ul>
+<li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong></li>
+<li>Within the table, look for a resource named <code>nfd</code></li>
+<li>If the code from Step 13 was only recently executed, the <em>Managed Namespaces</em> of this resource may be showing as <code>None</code> and the <em>Status</em> as <code>Unknown</code></li>
+<li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
+<li>Try executing the instruction from Step 14 a second time within the Terminal console and observe the updated pod status</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Create a <strong>NodeFeatureDiscovery CR</strong> and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">    apiVersion: nfd.openshift.io/v1</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">    kind: NodeFeatureDiscovery</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s">    metadata:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">        name: nfd-instance</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">        namespace: openshift-nfd</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">    spec:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">        instance: &quot;&quot; # instance is empty by default</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">        operand:</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s">            image: registry.redhat.io/openshift4/ose-node-feature-discovery-rhel9:v4.16 </span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="s">            imagePullPolicy: Always</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="s">        workerConfig:</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="s">            configData: |</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="s">                core:</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="s">                #  labelWhiteList:</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">                #  noPublish: false</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s">                    sleepInterval: 60s</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="s">                #  sources: [all]</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="s">                #  klog:</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="s">                #    addDirHeader: false</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="s">                #    alsologtostderr: false</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="s">                #    logBacktraceAt:</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="s">                #    logtostderr: true</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s">                #    skipHeaders: false</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="s">                #    stderrthreshold: 2</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="s">                #    v: 0</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="s">                #    vmodule:</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="s">                ##   NOTE: the following options are not dynamically run-time configurable</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="s">                ##         and require a nfd-worker restart to take effect after being changed</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="s">                #    logDir:</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="s">                #    logFile:</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="s">                #    logFileMaxSize: 1800</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="s">                #    skipLogHeaders: false</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="s">                sources:</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="s">                    cpu:</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="s">                        cpuid:</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="s">                            # NOTE: whitelist has priority over blacklist</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="s">                            attributeBlacklist:</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="s">                                - &quot;BMI1&quot;</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="s">                                - &quot;BMI2&quot;</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="s">                                - &quot;CLMUL&quot;</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="s">                                - &quot;CMOV&quot;</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="s">                                - &quot;CX16&quot;</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="s">                                - &quot;ERMS&quot;</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="s">                                - &quot;F16C&quot;</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="s">                                - &quot;HTT&quot;</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="s">                                - &quot;LZCNT&quot;</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a><span class="s">                                - &quot;MMX&quot;</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a><span class="s">                                - &quot;MMXEXT&quot;</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a><span class="s">                                - &quot;NX&quot;</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="s">                                - &quot;POPCNT&quot;</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a><span class="s">                                - &quot;RDRAND&quot;</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="s">                                - &quot;RDSEED&quot;</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="s">                                - &quot;RDTSCP&quot;</span>
+<a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a><span class="s">                                - &quot;SGX&quot;</span>
+<a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a><span class="s">                                - &quot;SSE&quot;</span>
+<a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a><span class="s">                                - &quot;SSE2&quot;</span>
+<a id="__codelineno-6-58" name="__codelineno-6-58" href="#__codelineno-6-58"></a><span class="s">                                - &quot;SSE3&quot;</span>
+<a id="__codelineno-6-59" name="__codelineno-6-59" href="#__codelineno-6-59"></a><span class="s">                                - &quot;SSE4.1&quot;</span>
+<a id="__codelineno-6-60" name="__codelineno-6-60" href="#__codelineno-6-60"></a><span class="s">                                - &quot;SSE4.2&quot;</span>
+<a id="__codelineno-6-61" name="__codelineno-6-61" href="#__codelineno-6-61"></a><span class="s">                                - &quot;SSSE3&quot;</span>
+<a id="__codelineno-6-62" name="__codelineno-6-62" href="#__codelineno-6-62"></a><span class="s">                            attributeWhitelist:</span>
+<a id="__codelineno-6-63" name="__codelineno-6-63" href="#__codelineno-6-63"></a><span class="s">                        kernel:</span>
+<a id="__codelineno-6-64" name="__codelineno-6-64" href="#__codelineno-6-64"></a><span class="s">                            kconfigFile: &quot;/path/to/kconfig&quot;</span>
+<a id="__codelineno-6-65" name="__codelineno-6-65" href="#__codelineno-6-65"></a><span class="s">                            configOpts:</span>
+<a id="__codelineno-6-66" name="__codelineno-6-66" href="#__codelineno-6-66"></a><span class="s">                                - &quot;NO_HZ&quot;</span>
+<a id="__codelineno-6-67" name="__codelineno-6-67" href="#__codelineno-6-67"></a><span class="s">                                - &quot;X86&quot;</span>
+<a id="__codelineno-6-68" name="__codelineno-6-68" href="#__codelineno-6-68"></a><span class="s">                                - &quot;DMI&quot;</span>
+<a id="__codelineno-6-69" name="__codelineno-6-69" href="#__codelineno-6-69"></a><span class="s">                        pci:</span>
+<a id="__codelineno-6-70" name="__codelineno-6-70" href="#__codelineno-6-70"></a><span class="s">                            deviceClassWhitelist:</span>
+<a id="__codelineno-6-71" name="__codelineno-6-71" href="#__codelineno-6-71"></a><span class="s">                                - &quot;0200&quot;</span>
+<a id="__codelineno-6-72" name="__codelineno-6-72" href="#__codelineno-6-72"></a><span class="s">                                - &quot;03&quot;</span>
+<a id="__codelineno-6-73" name="__codelineno-6-73" href="#__codelineno-6-73"></a><span class="s">                                - &quot;12&quot;</span>
+<a id="__codelineno-6-74" name="__codelineno-6-74" href="#__codelineno-6-74"></a><span class="s">                            deviceLabelFields:           </span>
+<a id="__codelineno-6-75" name="__codelineno-6-75" href="#__codelineno-6-75"></a><span class="s">                                - &quot;class&quot;</span>
+<a id="__codelineno-6-76" name="__codelineno-6-76" href="#__codelineno-6-76"></a><span class="s">                                - &quot;vendor&quot;</span>
+<a id="__codelineno-6-77" name="__codelineno-6-77" href="#__codelineno-6-77"></a><span class="s">    EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>As before, check on the status of the OpenShift pods with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>od get pods -n openshift-nfd
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="iv-install-the-nvidia-gpu-operator"><strong>iv. Install the NVIDIA GPU Operator</strong></h2>
+<div class="admonition note">
+<p>The following section is based off a selection of the complete NVIDIA Corporation documentation for <a href="https://docs.nvidia.com/datacenter/cloud-native/openshift/24.9.1/install-gpu-ocp.html" target="_blank"><strong>Installing the NVIDIA GPU Operator on OpenShift</strong></a>.</p>
+</div>
+<ol start="17">
+<li>
+<p>Create the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">apiVersion: v1</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">kind: Namespace</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">    name: nvidia-gpu-operator</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>Define the <strong>OperatorGroup</strong> within the same namespace:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">    name: nvidia-gpu-operator-group</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s">spec:</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s">    targetNamespaces:</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s">    - nvidia-gpu-operator</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>Execute the following code block within a Terminal console to get the channel version (required for Step 20), as well as create the <code>gpu-operator-certified</code> Operator within the <code>nvidia-gpu-operator</code> namespace:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s">metadata:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s">spec:</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s">    channel: &quot;${CHANNEL}&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s">    installPlanApproval: Manual</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">    source: certified-operators</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s">    startingCSV: &quot;${CURRENT_CSV}&quot;</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>Execute the following command to verify the status of the install plan:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc get installplan -n nvidia-gpu-operator
+</code></pre></div>
+<p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>). Therefore, you will need to approve the install plan by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
+</code></pre></div>
+<p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>Create a <strong>ClusterPolicy</strong> by executing the following instructions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc get csv -n nvidia-gpu-operator <span class="si">${</span><span class="nv">CURRENT_CSV</span><span class="si">}</span> -ojsonpath<span class="o">={</span>.metadata.annotations.alm-examples<span class="o">}</span> <span class="p">|</span> jq .<span class="o">[</span><span class="m">0</span><span class="o">]</span> &gt; clusterpolicy.json
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>oc apply -f clusterpolicy.json
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>ATTENTION:</strong> It will take approximately 5 to 10 minutes for the ClusterPolicy effects to initialize. Take a 10 minute break and then return to carry out Step 22.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>After waiting, check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out. Execute the following command with the Terminal console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>oc get pods -n nvidia-gpu-operator
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<div class="admonition warning">
+<p class="admonition-title">NOTE TO THE AUTHOR</p>
+<p><strong> THIS WILL BE THE SECTION YOU WILL NEED TO FILL OUT WITH A DEDICATED CLUSTER WITH GPU ACCESS, PURELY FOR DEMONSTRATION PURPOSES. REFER TO 00:21:00 TIMESTAMP IN THE RECORDING.</strong></p>
+</div>
+<hr />
+<h2 id="v-install-red-hat-openshift-ai"><strong>v. Install Red Hat OpenShift AI</strong></h2>
+<p>IBM watsonx Code Assistant (on-premises) requires installation and configuration of <strong>Red Hat OpenShift AI</strong> on the OCP cluster. In the following section, you will:</p>
+<ul>
+<li>Install the Operator for Red Hat OpenShift AI (v2.13)</li>
+<li>Create a <em>DSCInitialization</em> instance</li>
+<li>Create a <em>DataScienceCluster</em> instance</li>
+<li>Edit the model inferencing configuration</li>
+</ul>
+<div class="admonition note">
+<p>The following steps are extracted from the complete documentation available from IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-red-hat-openshift-ai" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a>.</p>
+</div>
+<hr />
+<ol start="23">
+<li>
+<p>Create the <code>redhat-ods-operator</code> <strong>Project</strong> on the OCP cluster with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>oc new-project redhat-ods-operator
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Define the <code>rhods-operator</code> <strong>Operator Group</strong> within the project defined in Step 23:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="s">EOF</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>Create the <strong>Operator Subscription</strong> for <code>rhods-operator</code> within the same project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="s">spec:</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s">    channel: stable-2.13</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s">    source: redhat-operators</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="s">    config:</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="s">        env:</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="s">            - name: &quot;DISABLE_DSC_CONFIG&quot;</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="s">EOF</span>
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>ATTENTION:</strong> It will take approximately 5 minutes for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the deployment.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>
+<p>Create a <strong>DSCInitialization</strong> object named <code>default-dsci</code> in the <code>redhat-ods-monitoring</code> project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s">apiVersion: dscinitialization.opendatahub.io/v1</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">kind: DSCInitialization</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">    name: default-dsci</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">spec:</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="s">    applicationsNamespace: redhat-ods-applications</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s">    monitoring:</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="s">        namespace: redhat-ods-monitoring</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="s">    serviceMesh:</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="s">        managementState: Removed</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="s">    trustedCABundle:</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>Monitor the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>oc get dscinitialization
+</code></pre></div>
+<p>Wait for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Create a <strong>DataScienceCluster</strong> object named <code>default-dsc</code> within the same project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="s">apiVersion: datasciencecluster.opendatahub.io/v1</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="s">kind: DataScienceCluster</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="s">    name: default-dsc</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="s">spec:</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="s">    components:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="s">        codeflare:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="s">        dashboard:</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="s">        datasciencepipelines:</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="s">        kserve:</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="s">            defaultDeploymentMode: RawDeployment</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="s">            serving:</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="s">                managementState: Removed</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="s">                name: knative-serving</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="s">        kueue:</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="s">        modelmeshserving:</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="s">        ray:</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="s">        trainingoperator:</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a><span class="s">        trustyai:</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a><span class="s">        workbenches:</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
+<p>Monitor the progress of the <em>DataScienceCluster</em> object by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>oc get default-dsc
+</code></pre></div>
+<p>Wait for the <em>DataScienceCluster</em> object (<code>default-dsc</code>) to return a <code>Ready</code> status before continuing on to Step 28.</p>
+</li>
+</ol>
+<hr />
+<ol start="28">
+<li>
+<p>Execute the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>oc get pods -n redhat-ods-applications
+</code></pre></div>
+<p>Confirm that the following pods are deployed and have a running (<code>Ready</code>) status:
+- <code>kserve-controller-manager-0123xyz...</code>
+- <code>kubeflow-training-operator-0123xyz...</code>
+- <code>odh-model-controller-0123xyz...</code></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Now you must edit the <code>inferenceservice-config</code> configuration map within the <code>redhat-ods-applications</code> project. This is best achieved by using the OCP Dashboard web interface.</p>
+<ul>
+<li>From the OCP Dashboard, navigate into <strong>Workloads</strong> &gt; Configmaps**</li>
+<li>From the <em>Project</em> list, select <code>redhat-ods-applications</code></li>
+<li>Click the <code>inferenceservice-config</code> resource and open the <strong>YAML</strong> tab</li>
+<li>In the <code>metadata.annotations</code> section of the file, add a line which reads <code>opendatahub.io/managed: 'false'</code></li>
+<li>The resulting YAML file should resemble the following:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousKinds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inferenceservice-config</span><span class="w"></span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opendatahub</span><span class="w"></span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="hll"><span class="w">    </span><span class="nt">opendatahub.io/managed</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w"></span>
+</span></code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="30">
+<li>
+<p>Within the same YAML file, look for the following line (under the <em>ingress</em> section):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Replace</strong> the line with the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
+</code></pre></div>
+<p>Click <strong>Save</strong> to finalize the changes to the YAML file.</p>
+</li>
+</ol>
+<hr />
+<h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
+<p>At this stage, all of the necessary prerequisites have been installed and you are ready to begin installation of an IBM Software Hub instance on the OCP cluster.</p>
 
 
 
