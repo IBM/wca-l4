@@ -1429,7 +1429,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>The following module <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift#cert-manager-operator-install" target="_blank"><strong>follows the documentation</strong></a> for installing IBM Software Hub's <code>cert-manager-operator.v.13.0</code> for OpenShift Container Platform (OCP) v4.16.</p>
 <hr />
 <ol>
-<li>Return to the OCP Dashboard (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>) with a web browser.</li>
+<li>Return to the <strong>OCP Dashboard</strong> (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>) with a web browser.</li>
 </ol>
 <hr />
 <ol start="2">
@@ -1439,7 +1439,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <ol start="3">
 <li>
 <p>Into the filter box, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
-<p>Select the filtered result with the same name.</p>
+<p><strong>Click</strong> the filtered result with the same name.</p>
 </li>
 </ol>
 <hr />
@@ -1485,7 +1485,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <hr />
 <ol start="10">
 <li>
-<p>Verify that <code>cert-manager</code> pods are up and running by executing the following command with your Terminal console:</p>
+<p><strong>Verify</strong> that <code>cert-manager</code> pods are up and running by executing the following command with your Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-5-__codelineno-0-1"></a>oc get pods -n cert-manager
 </code></pre></div>
 <p>The console should return output closely resembling the following:</p>
@@ -1579,7 +1579,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="14">
 <li>
-<p>Check on the status of the OpenShift pods with the following command:</p>
+<p>Check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-5-__codelineno-5-1"></a>od get pods -n openshift-nfd
 </code></pre></div>
 <p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
@@ -1680,7 +1680,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="16">
 <li>
-<p>As before, check on the status of the OpenShift pods with the following command:</p>
+<p>As before, check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-5-__codelineno-7-1"></a>od get pods -n openshift-nfd
 </code></pre></div>
 </li>
@@ -1692,7 +1692,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </div>
 <ol start="17">
 <li>
-<p>Create the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
+<p><strong>Create</strong> the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-5-__codelineno-8-2"></a><span class="s">apiVersion: v1</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-5-__codelineno-8-3"></a><span class="s">kind: Namespace</span>
@@ -1722,7 +1722,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="19">
 <li>
-<p>Execute the following code block within a Terminal console to get the channel version (required for Step 20), as well as create the <code>gpu-operator-certified</code> Operator within the <code>nvidia-gpu-operator</code> namespace:</p>
+<p><strong>Execute</strong> the following code block within a Terminal console to get the channel version (required for Step 20), as well as create the <code>gpu-operator-certified</code> Operator within the <code>nvidia-gpu-operator</code> namespace:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-5-__codelineno-10-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#on-premises-5-__codelineno-10-2"></a>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#on-premises-5-__codelineno-10-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
@@ -1747,7 +1747,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="20">
 <li>
-<p>Execute the following command to verify the status of the install plan:</p>
+<p><strong>Execute</strong> the following command to verify the status of the install plan:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-5-__codelineno-11-1"></a>oc get installplan -n nvidia-gpu-operator
 </code></pre></div>
 <p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>). Therefore, you will need to approve the install plan by executing the following command:</p>
@@ -1772,7 +1772,8 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="22">
 <li>
-<p>After waiting, check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out. Execute the following command with the Terminal console:</p>
+<p>After waiting, check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out.</p>
+<p><strong>Execute</strong> the following command with the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-5-__codelineno-14-1"></a>oc get pods -n nvidia-gpu-operator
 </code></pre></div>
 </li>
@@ -1784,6 +1785,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </div>
 <hr />
 <h2 id="on-premises-5-v-install-red-hat-openshift-ai"><strong>v. Install Red Hat OpenShift AI</strong></h2>
+<div class="admonition note">
+<p>The following steps are extracted from the complete documentation available from IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-red-hat-openshift-ai" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a>.</p>
+</div>
 <p>IBM watsonx Code Assistant (on-premises) requires installation and configuration of <strong>Red Hat OpenShift AI</strong> on the OCP cluster. In the following section, you will:</p>
 <ul>
 <li>Install the Operator for Red Hat OpenShift AI (v2.13)</li>
@@ -1791,9 +1795,6 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>Create a <em>DataScienceCluster</em> instance</li>
 <li>Edit the model inferencing configuration</li>
 </ul>
-<div class="admonition note">
-<p>The following steps are extracted from the complete documentation available from IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-red-hat-openshift-ai" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a>.</p>
-</div>
 <hr />
 <ol start="23">
 <li>
@@ -1844,7 +1845,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="26">
 <li>
-<p>Create a <strong>DSCInitialization</strong> object named <code>default-dsci</code> in the <code>redhat-ods-monitoring</code> project:</p>
+<p>Create a <strong>DSCInitialization</strong> object <code>default-dsci</code> in <code>redhat-ods-monitoring</code> project:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#on-premises-5-__codelineno-18-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#on-premises-5-__codelineno-18-2"></a><span class="s">apiVersion: dscinitialization.opendatahub.io/v1</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#on-premises-5-__codelineno-18-3"></a><span class="s">kind: DSCInitialization</span>
@@ -1862,10 +1863,10 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#on-premises-5-__codelineno-18-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#on-premises-5-__codelineno-18-16"></a><span class="s">EOF</span>
 </code></pre></div>
-<p>Monitor the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
+<p><strong>Monitor</strong> the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#on-premises-5-__codelineno-19-1"></a>oc get dscinitialization
 </code></pre></div>
-<p>Wait for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
+<p><strong>Wait</strong> for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
 </li>
 </ol>
 <hr />
@@ -1906,16 +1907,16 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-20-32" name="__codelineno-20-32" href="#on-premises-5-__codelineno-20-32"></a><span class="s">EOF</span>
 </code></pre></div>
 <p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
-<p>Monitor the progress of the <em>DataScienceCluster</em> object by executing the following command:</p>
+<p><strong>Monitor</strong> the progress of the <em>DataScienceCluster</em> object by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#on-premises-5-__codelineno-21-1"></a>oc get default-dsc
 </code></pre></div>
-<p>Wait for the <em>DataScienceCluster</em> object (<code>default-dsc</code>) to return a <code>Ready</code> status before continuing on to Step 28.</p>
+<p><strong>Wait</strong> for the <em>DataScienceCluster</em> object (<code>default-dsc</code>) to return a <code>Ready</code> status before continuing on to Step 28.</p>
 </li>
 </ol>
 <hr />
 <ol start="28">
 <li>
-<p>Execute the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
+<p><strong>Execute</strong> the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get pods -n redhat-ods-applications
 </code></pre></div>
 <p>Confirm that the following pods are deployed and have a running (<code>Ready</code>) status:
