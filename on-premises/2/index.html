@@ -574,11 +574,10 @@
 </li>
 <li>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
-<div class="admonition note">
+<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation. Wait for the ITZ reservation to be marked as <em>"Ready"</em> before continuing.</p>
+<div class="admonition warning">
 <p class="admonition-title">PROVISIONING TIMES</p>
-<p>Cluster provisioning and deployment takes approximately <strong>90 to 120 minutes</strong> to complete from the time that you click submit. Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation.
-</br>
-Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting to start the lab.</p>
+<p>This operation will take approximately <strong>90 - 120 minutes</strong> to complete.</p>
 </div>
 </li>
 </ol>
@@ -591,10 +590,15 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <hr />
 <ol start="6">
 <li>
-<p>Record the following connection details variables for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
+<p>Scroll down the page until you reach the <strong>Reservation Details</strong> section. Record the following connection details for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
 <ul>
-<li><em>Username</em></li>
-<li><em>Password</em></li>
+<li><em>Desktop URL</em> — the <strong>OCP Dashboard URL</strong></li>
+<li><em>Cluster Admin Username</em></li>
+<li><em>Cluster Admin Password</em></li>
+<li><em>API URL</em></li>
+<li><em>Bastion Username</em></li>
+<li><em>Bastion Password</em></li>
+<li><em>Bastion SSH Connection</em></li>
 </ul>
 </li>
 </ol>
@@ -605,14 +609,10 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <p>Choose the <strong>kube:admin</strong> log in option and then provide the following credentials:</p>
 <ul>
 <li><em>Username:</em> <code>kubeadmin</code></li>
-<li><em>Password:</em> password recorded in Step 6</li>
+<li><em>Password:</em> <em>Cluster Admin Password</em> recorded in Step 6</li>
 </ul>
-<p>At this stage, you should have successfully logged in to the OCP dashboard.</p>
+<p>At this stage, you should have successfully logged in to the OCP Dashboard.</p>
 </li>
-</ol>
-<hr />
-<ol start="8">
-<li>After logging into the OCP dashboard, copy the <strong>URL</strong> of the page (from your web browser) and record that to a notepad as <strong>OCP Dashboard URL</strong>.</li>
 </ol>
 <hr />
 <h2 id="iii-next-steps"><strong>iii. Next steps</strong></h2>

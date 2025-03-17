@@ -918,11 +918,10 @@
 </li>
 <li>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
-<div class="admonition note">
+<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation. Wait for the ITZ reservation to be marked as <em>"Ready"</em> before continuing.</p>
+<div class="admonition warning">
 <p class="admonition-title">PROVISIONING TIMES</p>
-<p>Cluster provisioning and deployment takes approximately <strong>90 to 120 minutes</strong> to complete from the time that you click submit. Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation.
-</br>
-Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting to start the lab.</p>
+<p>This operation will take approximately <strong>90 - 120 minutes</strong> to complete.</p>
 </div>
 </li>
 </ol>
@@ -935,10 +934,15 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <hr />
 <ol start="6">
 <li>
-<p>Record the following connection details variables for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
+<p>Scroll down the page until you reach the <strong>Reservation Details</strong> section. Record the following connection details for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
 <ul>
-<li><em>Username</em></li>
-<li><em>Password</em></li>
+<li><em>Desktop URL</em> — the <strong>OCP Dashboard URL</strong></li>
+<li><em>Cluster Admin Username</em></li>
+<li><em>Cluster Admin Password</em></li>
+<li><em>API URL</em></li>
+<li><em>Bastion Username</em></li>
+<li><em>Bastion Password</em></li>
+<li><em>Bastion SSH Connection</em></li>
 </ul>
 </li>
 </ol>
@@ -949,14 +953,10 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <p>Choose the <strong>kube:admin</strong> log in option and then provide the following credentials:</p>
 <ul>
 <li><em>Username:</em> <code>kubeadmin</code></li>
-<li><em>Password:</em> password recorded in Step 6</li>
+<li><em>Password:</em> <em>Cluster Admin Password</em> recorded in Step 6</li>
 </ul>
-<p>At this stage, you should have successfully logged in to the OCP dashboard.</p>
+<p>At this stage, you should have successfully logged in to the OCP Dashboard.</p>
 </li>
-</ol>
-<hr />
-<ol start="8">
-<li>After logging into the OCP dashboard, copy the <strong>URL</strong> of the page (from your web browser) and record that to a notepad as <strong>OCP Dashboard URL</strong>.</li>
 </ol>
 <hr />
 <h2 id="on-premises-2-iii-next-steps"><strong>iii. Next steps</strong></h2>
@@ -965,34 +965,11 @@ Wait for the ITZ reservation to be marked as <em>"Ready"</em> before attempting 
 <p>The following section is based off of IBM Documentation write-ups that detail how to install IBM Software Hub on a Red Hat OpenShift Container Platform cluster. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=workstation-installing-software-hub-cli" target="_blank"><strong>Installing the IBM Software Hub command-line interface</strong></a>.</p>
 </div>
 <h2 id="on-premises-3-i-connect-to-the-bastion-host"><strong>i. Connect to the bastion host</strong></h2>
-<p>Before configuring the bastion host node, you will need to retrieve its connectivity and access control details.</p>
+<p>To access and configure the bastion host node, <strong>open a Terminal</strong> (Windows Terminal or the Terminal built into VS Code are good alternatives if you're on a PC).</p>
 <hr />
 <ol>
-<li>Return to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> page on the IBM Technology Zone (ITZ) and open the dashboard for the OpenShift Container Platform (OCP) cluster.</li>
-</ol>
-<hr />
-<ol start="2">
 <li>
-<p>Scroll down to the bottom of the summary page and locate the following key-value pairs related to the bastion host node. Copy these to a notepad for reference later:</p>
-<ul>
-<li><em>Bastion Password</em></li>
-<li><em>Bastion RDP Address</em></li>
-<li><em>Bastion SSH Connection</em></li>
-<li><em>Bastion Username</em></li>
-</ul>
-<p></br>
-There are also key-value pairs related to the OCP cluster that, for convenience, you should also record at this time — they will be used in later parts of the lab:</p>
-<ul>
-<li><em>Cluster Admin Username</em></li>
-<li><em>Cluster Admin Password</em></li>
-<li><em>OCP Console</em></li>
-</ul>
-</li>
-</ol>
-<hr />
-<ol start="3">
-<li>
-<p>Open a Terminal (Windows Terminal or the Terminal built into VS Code are good alternatives if you're on a PC). Copy the <em>Bastion SSH Connection</em> recorded in Step 2 and paste it into the terminal console. Hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute and create an SSH connection to the bastion host.</p>
+<p><strong>Copy</strong> the <em>Bastion SSH Connection</em> recorded in Step 6 of the previous module and <strong>paste</strong> it into the terminal console. Hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute and create an SSH connection to the bastion host.</p>
 <ul>
 <li>
 <p>When prompted <em>Are you sure you want to continue connecting (yes/no/fingerprint)?</em>, enter <code>yes</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to proceed.</p>
@@ -1001,7 +978,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>The console will return a <em>Welcome to IBM Technology Zone</em> once connected to the bastion host, at which point you must authenticate.</p>
 </li>
 <li>
-<p><strong>Authenticate</strong> when prompted to do so by providing the <em>Bastion Password</em> recorded in Step 2.</p>
+<p><strong>Authenticate</strong> when prompted to do so by providing the <em>Bastion Password</em>.</p>
 </li>
 <li>
 <p>If the console now reads <code>[itzuser@localhost ~]$</code> then you have successfully accessed the bastion host.</p>
@@ -1013,9 +990,9 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <h2 id="on-premises-3-ii-openshift-command-line-interface-oc"><strong>ii. OpenShift command line interface (oc)</strong></h2>
 <p>Next, install the OpenShift Command Line Interface (CLI), designated <code>oc</code>, to programmatically perform work with the bastion node.</p>
 <hr />
-<ol start="4">
+<ol start="2">
 <li>
-<p><strong>Retrieve</strong> the <em>OCP dashboard URL</em> (recorded in Step 8 of the previous module). Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
+<p><strong>Retrieve</strong> the <em>OCP Dashboard URL</em> (recorded in Step 6 of the previous module). Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
 <div class="admonition note">
 <p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
 </div>
@@ -1030,7 +1007,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="5">
+<ol start="3">
 <li>
 <p>The following instruction set, when executed within a Terminal window, will install the OpenShift CLI on the bastion host node. However, the instructions require some modification before they will successfully execute.</p>
 <p></br>
@@ -1046,7 +1023,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <p>Copy the instructions above and paste into a notepad.</p>
 </li>
 <li>
-<p>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 4.</p>
+<p>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 2.</p>
 </li>
 <li>
 <p>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</p>
@@ -1058,14 +1035,14 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="6">
+<ol start="4">
 <li>The installation should only take a few minutes to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
 </ol>
 <hr />
 <h2 id="on-premises-3-iii-podman-install"><strong>iii. Podman install </strong></h2>
 <p>IBM Cloud Pak for Data (CP4D)'s installer requires containers and as such Podman must be set up on the bastion host ahead of time. </p>
 <hr />
-<ol start="7">
+<ol start="5">
 <li>
 <p>Using the connected Terminal console, <strong>execute</strong> the following instruction to install Podman:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a>sudo yum install -y podman
@@ -1077,7 +1054,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <h2 id="on-premises-3-iv-environment-variables"><strong>iv. Environment variables </strong></h2>
 <p>Next, you must set the environment variables needed for installation of CP4D on the cluster. The list is quite extensive and long, so rather than set these one at a time it's recommended that you first compile them into a single file on the bastion host. Afterwards you can set all the variables automatically using the single file.</p>
 <hr />
-<ol start="8">
+<ol start="6">
 <li>
 <p>Below is a code block containing all of the necessary CP4D environment variables. <strong>Copy</strong> the contents of the entire block to your clipboard and <strong>paste</strong> into a notepad.</p>
 <p></br>
@@ -1207,19 +1184,19 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="9">
+<ol start="7">
 <li>
 <p>You must make <strong>modifications</strong> to <strong>Line 19</strong>, <strong>Line 23</strong>, and <strong>Line 49</strong> of the <em>CP4D Environment Variables</em> to tailor the variables to <em>your</em> specific cluster.</p>
 <ul>
 <li>
-<p><strong>Line 19:</strong> set the value of <code>export OCP_URL=</code> equal to the value of <em>OCP dashboard URL</em> that was recorded in Step 8 of the previous module. For example:</p>
+<p><strong>Line 19:</strong> set the value of <code>export OCP_URL=</code> equal to the value of <em>OCP Dashboard URL</em> that was recorded in Step 6 of the previous module. For example:</p>
 <div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>https://console-openshift-console.apps.678a250b79141644e78804e0.ocp.techzone.ibm.com
 </code></pre></div>
 </div>
 </li>
 <li>
-<p><strong>Line 23:</strong> set the value of <code>export OCP_PASSWORD=</code> equal to the value of <em>Cluster Admin Password</em> recorded in Step 2 of this module. For example:</p>
+<p><strong>Line 23:</strong> set the value of <code>export OCP_PASSWORD=</code> equal to the value of <em>Cluster Admin Password</em> recorded in Step 6 of the previous module. For example:</p>
 <div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-3-__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>password1234
 </code></pre></div>
@@ -1236,14 +1213,14 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="10">
+<ol start="8">
 <li>
 <p>With your Terminal console, execute the following instruction to open the <strong>vi</strong> editor and create a shell script named <code>cpd_vars.sh</code> on the bastion host:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-3-__codelineno-6-1"></a>vi cpd_vars.sh
 </code></pre></div>
 <ul>
 <li>
-<p><strong>Copy</strong> the modified <em>CP4D Environment Variables</em> contents from the notepad (Step 9) to your machine's clipboard.</p>
+<p><strong>Copy</strong> the modified <em>CP4D Environment Variables</em> contents from the notepad (Step 7) to your machine's clipboard.</p>
 </li>
 <li>
 <p>Switch back to the Terminal where the VI editor is now open and press the <span class="keys"><kbd class="key-i">I</kbd></span> key to enable inserting text.</p>
@@ -1261,7 +1238,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 <h2 id="on-premises-3-v-cloud-pak-for-data-command-line-interface-cpd-cli"><strong>v. Cloud Pak for Data command line interface (cpd-cli) </strong></h2>
 <p>Now that the environment variables have been set, the next step towards installing CP4D is preparing the command line interface (<code>cpd-cli</code>). </p>
 <hr />
-<ol start="11">
+<ol start="9">
 <li>
 <p><strong>Execute</strong> the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-3-__codelineno-7-1"></a>sudo bash
@@ -1274,11 +1251,11 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="12">
+<ol start="10">
 <li>Verify that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
 </ol>
 <hr />
-<ol start="13">
+<ol start="11">
 <li>
 <p>Engage the command line interface and ensure that the Terminal console is executing all subsequent instructions with full (root) privileges:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-3-__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
@@ -1288,7 +1265,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="14">
+<ol start="12">
 <li>
 <p>Source the newly-configured environment variables with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-3-__codelineno-10-1"></a><span class="nb">source</span> cpd_vars.sh
@@ -1296,7 +1273,7 @@ There are also key-value pairs related to the OCP cluster that, for convenience,
 </li>
 </ol>
 <hr />
-<ol start="15">
+<ol start="13">
 <li>
 <p>Test that the login for <code>oc</code> command line is now functioning properly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-3-__codelineno-11-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
