@@ -936,7 +936,7 @@
 <li>
 <p>Scroll down the page until you reach the <strong>Reservation Details</strong> section. Record the following connection details for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
 <ul>
-<li><em>Desktop URL</em> — the <strong>OCP Dashboard URL</strong></li>
+<li><em>Desktop URL</em> (interchangeable with <strong>OCP Dashboard URL</strong>)</li>
 <li><em>Cluster Admin Username</em></li>
 <li><em>Cluster Admin Password</em></li>
 <li><em>API URL</em></li>
@@ -969,7 +969,7 @@
 <hr />
 <ol>
 <li>
-<p><strong>Copy</strong> the <em>Bastion SSH Connection</em> recorded in Step 6 of the previous module and <strong>paste</strong> it into the terminal console. Hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute and create an SSH connection to the bastion host.</p>
+<p><strong>Copy</strong> the <em>Bastion SSH Connection</em> recorded in Step 6 of the previous module and <strong>paste</strong> it into the terminal console. Hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to create an SSH connection to the bastion host.</p>
 <ul>
 <li>
 <p>When prompted <em>Are you sure you want to continue connecting (yes/no/fingerprint)?</em>, enter <code>yes</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to proceed.</p>
@@ -983,7 +983,12 @@
 <li>
 <p>If the console now reads <code>[itzuser@localhost ~]$</code> then you have successfully accessed the bastion host.</p>
 </li>
+<li>
+<p><strong>Execute</strong> the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
+</li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a>sudo bash
+</code></pre></div>
 </li>
 </ol>
 <hr />
@@ -992,7 +997,7 @@
 <hr />
 <ol start="2">
 <li>
-<p><strong>Retrieve</strong> the <em>OCP Dashboard URL</em> (recorded in Step 6 of the previous module). Obtain the <em>OpenShift base domain</em> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion after <code>.apps.</code> until the end of the URL. The characters in <em>your</em> OCP dashboard URL will differ.</p>
+<p>Retrieve the <em>OCP Dashboard URL</em> (recorded in Step 6 of the previous module). Obtain the <strong>OpenShift Base Domain</strong> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion between <code>.apps.</code> up to and including <code>.com</code> (exclude the <code>/dashboards</code> addendum). The characters in <em>your</em> OCP dashboard URL will differ.</p>
 <div class="admonition note">
 <p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
 </div>
@@ -1012,11 +1017,11 @@
 <p>The following instruction set, when executed within a Terminal window, will install the OpenShift CLI on the bastion host node. However, the instructions require some modification before they will successfully execute.</p>
 <p></br>
 <strong>Install OpenShift CLI</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
-</span><a id="__codelineno-0-2" name="__codelineno-0-2" href="#on-premises-3-__codelineno-0-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#on-premises-3-__codelineno-0-3"></a>tar -xvf oc.tar
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#on-premises-3-__codelineno-0-4"></a>chmod +x oc
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#on-premises-3-__codelineno-0-5"></a>sudo mv oc /usr/local/bin/oc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a><span class="hll"><span class="nb">export</span> <span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="o">=</span>&lt;CHANGE_ME&gt;
+</span><a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-3-__codelineno-1-2"></a>wget --no-check-certificate https://downloads-openshift-console.apps.<span class="si">${</span><span class="nv">OPENSHIFT_BASE_DOMAIN</span><span class="si">}</span>/amd64/linux/oc.tar
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-3-__codelineno-1-3"></a>tar -xvf oc.tar
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-3-__codelineno-1-4"></a>chmod +x oc
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#on-premises-3-__codelineno-1-5"></a>sudo mv oc /usr/local/bin/oc
 </code></pre></div></p>
 <ul>
 <li>
@@ -1036,150 +1041,152 @@
 </ol>
 <hr />
 <ol start="4">
-<li>The installation should only take a few minutes to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
+<li>The setup should only take a moment to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
 </ol>
 <hr />
 <h2 id="on-premises-3-iii-podman-install"><strong>iii. Podman install </strong></h2>
-<p>IBM Cloud Pak for Data (CP4D)'s installer requires containers and as such Podman must be set up on the bastion host ahead of time. </p>
+<p>IBM Cloud Pak for Data (CP4D)'s installer requires containers, for which you will need to install Podman on the cluster nodes via the bastion host. </p>
 <hr />
 <ol start="5">
 <li>
 <p>Using the connected Terminal console, <strong>execute</strong> the following instruction to install Podman:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-3-__codelineno-1-1"></a>sudo yum install -y podman
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-3-__codelineno-2-1"></a>sudo yum install -y podman
 </code></pre></div>
-<p>The process will take approximately 1 minute to complete.</p>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
+</div>
 </li>
 </ol>
 <hr />
 <h2 id="on-premises-3-iv-environment-variables"><strong>iv. Environment variables </strong></h2>
-<p>Next, you must set the environment variables needed for installation of CP4D on the cluster. The list is quite extensive and long, so rather than set these one at a time it's recommended that you first compile them into a single file on the bastion host. Afterwards, you can set all the variables automatically using the single file.</p>
+<p>Set the environment variables needed for installation of CP4D on the cluster. The list is quite extensive and long, so rather than set these one at a time it's recommended that you first compile them into a single file on the bastion host. Afterwards, you can set all the variables automatically using the single file.</p>
 <hr />
 <ol start="6">
 <li>
 <p>Below is a code block containing all of the necessary CP4D environment variables. <strong>Copy</strong> the contents of the entire block to your clipboard and <strong>paste</strong> into a notepad.</p>
 <p></br>
 <strong>CP4D Environment Variables</strong>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#on-premises-3-__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-33">33</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-34">34</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-35">35</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-36">36</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-38">38</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-39">39</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-41">41</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-42">42</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-43">43</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-44">44</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-45">45</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-46">46</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-47">47</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-48">48</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-49">49</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-50">50</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-51">51</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-52">52</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-53">53</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-54">54</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-55">55</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-56">56</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-57">57</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-58">58</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-59">59</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-60">60</a></span>
-<span class="normal"><a href="#on-premises-3-__codelineno-2-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">#===============================================================================</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># Cloud Pak for Data installation variables</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">#===============================================================================</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># Client workstation</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># Set the following variables if you want to override the default behavior of the Cloud Pak for Data CLI.</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">#</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># To export these variables, you must uncomment each command in this sec-tion.</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1">#export CPD_CLI_MANAGE_WORKSPACE=&lt;enter a fully qualified directory&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1"># following lines could be used for environment with self-signed certificates and hostnames not resolved by DNS server</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="c1">#export OLM_UTILS_LAUNCH_ARGS=&quot;-v ./api-wxai.pem:/etc/k8scert --env K8S_AUTH_SSL_CA_CERT=/etc/k8scert --add-host oauth-openshift.apps.ocpinstall.gym.lan:192.168.252.4 --add-host api.ocpinstall.gym.lan:192.168.252.3&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/itzuser/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">#-----------------------------------------------------------------------------</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1"># Cluster</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="hll"><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>api.ocpinstall.gym.lan:6443
-</span><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="c1">#export OPENSHIFT_TYPE=&lt;enter your deployment type&gt;</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="c1">#export IMAGE_ARCH=amd64</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="nb">export</span> <span class="nv">OCP_USERNAME</span><span class="o">=</span>kubeadmin
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="hll"><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>mcnfM-MdnmC-y6ZES-cAKjj
-</span><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="c1"># export OCP_TOKEN=&lt;enter your token&gt;</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="nb">export</span> <span class="nv">SERVER_ARGUMENTS</span><span class="o">=</span><span class="s2">&quot;--server=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="nb">export</span> <span class="nv">LOGIN_ARGUMENTS</span><span class="o">=</span><span class="s2">&quot;--username=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span><span class="s2"> --password=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="c1"># export LOGIN_ARGUMENTS=&quot;--token=${OCP_TOKEN}&quot;</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="nb">export</span> <span class="nv">CPDM_OC_LOGIN</span><span class="o">=</span><span class="s2">&quot;cpd-cli manage login-to-ocp </span><span class="si">${</span><span class="nv">SERVER_ARGUMENTS</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="nb">export</span> <span class="nv">OC_LOGIN</span><span class="o">=</span><span class="s2">&quot;oc login </span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="c1"># Projects</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="nb">export</span> <span class="nv">PROJECT_LICENSE_SERVICE</span><span class="o">=</span>cpd-license
-<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="nb">export</span> <span class="nv">PROJECT_SCHEDULING_SERVICE</span><span class="o">=</span>cpd-scheduling
-<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="o">=</span>cpd-operators
-<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="o">=</span>cpd-watsonx
-<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED=&lt;enter your tethered project&gt;</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED_LIST=&lt;a comma-separated list of teth-ered projects&gt;</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="c1"># Storage</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="nb">export</span> <span class="nv">STG_CLASS_BLOCK</span><span class="o">=</span>ocs-storagecluster-ceph-rbd
-<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="nb">export</span> <span class="nv">STG_CLASS_FILE</span><span class="o">=</span>ocs-storagecluster-cephfs
-<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="c1"># IBM Entitled Registry</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="hll"><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>XXX.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3MDU5MzkzNzcsImp0aSI6IjVjM2EzMzQ1MzdlNTQ5ZWE5MzRmNGZmYzNmYzc5MWNjIn0.Xa0C23QmwCsOR9whmf8OkiId--SXVZ4pxw6lrIvvb_M
-</span><a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="c1"># Cloud Pak for Data version</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="nb">export</span> <span class="nv">VERSION</span><span class="o">=</span><span class="m">5</span>.1.0
-<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="c1"># Components</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="c1">#------------------------------------------------------------------------------</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57"></a>
-<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="c1">#export COMPONENTS=ibm-cert-manager,ibm-licensing,scheduler,cpfs,cpd_plat-form</span>
-<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="c1"># export COMPONENTS_TO_SKIP=&lt;component-ID-1&gt;,&lt;component-ID-2&gt;</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="c1">#export COMPONENTS=ibm-cert-manager,ibm-licensing,cpfs,scheduler,cpd_plat-form,wml,ws,watsonx_ai</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="nb">export</span> <span class="nv">COMPONENTS</span><span class="o">=</span>cpd_platform,wca
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#on-premises-3-__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#on-premises-3-__codelineno-3-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1"># Cloud Pak for Data installation variables</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># Client workstation</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># Set the following variables if you want to override the default behavior of the Cloud Pak for Data CLI.</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">#</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># To export these variables, you must uncomment each command in this sec-tion.</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">#export CPD_CLI_MANAGE_WORKSPACE=&lt;enter a fully qualified directory&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># following lines could be used for environment with self-signed certificates and hostnames not resolved by DNS server</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1">#export OLM_UTILS_LAUNCH_ARGS=&quot;-v ./api-wxai.pem:/etc/k8scert --env K8S_AUTH_SSL_CA_CERT=/etc/k8scert --add-host oauth-openshift.apps.ocpinstall.gym.lan:192.168.252.4 --add-host api.ocpinstall.gym.lan:192.168.252.3&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/itzuser/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="c1">#-----------------------------------------------------------------------------</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="c1"># Cluster</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="hll"><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>api.&lt;REPLACE THIS VALUE&gt;:6443
+</span><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="c1">#export OPENSHIFT_TYPE=&lt;enter your deployment type&gt;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="c1">#export IMAGE_ARCH=amd64</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="nb">export</span> <span class="nv">OCP_USERNAME</span><span class="o">=</span>kubeadmin
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="hll"><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>&lt;REPLACE THIS VALUE&gt;
+</span><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="c1"># export OCP_TOKEN=&lt;enter your token&gt;</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="nb">export</span> <span class="nv">SERVER_ARGUMENTS</span><span class="o">=</span><span class="s2">&quot;--server=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="nb">export</span> <span class="nv">LOGIN_ARGUMENTS</span><span class="o">=</span><span class="s2">&quot;--username=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span><span class="s2"> --password=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="c1"># export LOGIN_ARGUMENTS=&quot;--token=${OCP_TOKEN}&quot;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="nb">export</span> <span class="nv">CPDM_OC_LOGIN</span><span class="o">=</span><span class="s2">&quot;cpd-cli manage login-to-ocp </span><span class="si">${</span><span class="nv">SERVER_ARGUMENTS</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="nb">export</span> <span class="nv">OC_LOGIN</span><span class="o">=</span><span class="s2">&quot;oc login </span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="c1"># Projects</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="nb">export</span> <span class="nv">PROJECT_LICENSE_SERVICE</span><span class="o">=</span>cpd-license
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="nb">export</span> <span class="nv">PROJECT_SCHEDULING_SERVICE</span><span class="o">=</span>cpd-scheduling
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="o">=</span>cpd-operators
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="o">=</span>cpd-watsonx
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED=&lt;enter your tethered project&gt;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED_LIST=&lt;a comma-separated list of teth-ered projects&gt;</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="c1"># Storage</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="nb">export</span> <span class="nv">STG_CLASS_BLOCK</span><span class="o">=</span>ocs-storagecluster-ceph-rbd
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="nb">export</span> <span class="nv">STG_CLASS_FILE</span><span class="o">=</span>ocs-storagecluster-cephfs
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="c1"># IBM Entitled Registry</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="hll"><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>XXX.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3MDU5MzkzNzcsImp0aSI6IjVjM2EzMzQ1MzdlNTQ5ZWE5MzRmNGZmYzNmYzc5MWNjIn0.Xa0C23QmwCsOR9whmf8OkiId--SXVZ4pxw6lrIvvb_M
+</span><a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="c1"># Cloud Pak for Data version</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="nb">export</span> <span class="nv">VERSION</span><span class="o">=</span><span class="m">5</span>.1.0
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="c1"># Components</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="c1">#------------------------------------------------------------------------------</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="c1">#export COMPONENTS=ibm-cert-manager,ibm-licensing,scheduler,cpfs,cpd_plat-form</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="c1"># export COMPONENTS_TO_SKIP=&lt;component-ID-1&gt;,&lt;component-ID-2&gt;</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="c1">#export COMPONENTS=ibm-cert-manager,ibm-licensing,cpfs,scheduler,cpd_plat-form,wml,ws,watsonx_ai</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="nb">export</span> <span class="nv">COMPONENTS</span><span class="o">=</span>cpd_platform,wca
 </code></pre></div></td></tr></table></div></p>
 </li>
 </ol>
@@ -1189,23 +1196,23 @@
 <p>You must make <strong>modifications</strong> to <strong>Line 19</strong>, <strong>Line 23</strong>, and <strong>Line 49</strong> of the <em>CP4D Environment Variables</em> to tailor the variables to <em>your</em> specific cluster.</p>
 <ul>
 <li>
-<p><strong>Line 19:</strong> set the value of <code>export OCP_URL=</code> equal to the value of <em>OCP Dashboard URL</em> that was recorded in Step 6 of the previous module. For example:</p>
+<p><strong>Line 19:</strong> substitute the <code>&lt;REPLACE THIS VALUE&gt;</code> placeholder for <code>export OCP_URL=</code> with to the value of <em>OpenShift Base Domain</em> that was recorded in Step 2. Do not replace the <code>.api.</code> or <code>:6443:</code> components, as these are required. Your modified Line 19 should resemble the following:</p>
 <div class="admonition note">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>https://console-openshift-console.apps.678a250b79141644e78804e0.ocp.techzone.ibm.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-3-__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>api.678a250b79141644e78804e0.ocp.techzone.ibm.com:6443
 </code></pre></div>
 </div>
 </li>
 <li>
 <p><strong>Line 23:</strong> set the value of <code>export OCP_PASSWORD=</code> equal to the value of <em>Cluster Admin Password</em> recorded in Step 6 of the previous module. For example:</p>
 <div class="admonition note">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-3-__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>password1234
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-3-__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">OCP_PASSWORD</span><span class="o">=</span>password1234
 </code></pre></div>
 </div>
 </li>
 <li>
 <p><strong>Line 49:</strong> set the value of <code>export IBM_ENTITLEMENT_KEY=</code> equal to the value of the key specific to <em>your</em> IBM account. Reference the <em>IBM Entitlement API Key</em> that was generated in the <a href="https://ibm.github.io/wca-l4/on-premises/1/#ii-infrastructure-and-resource-requirements" target="_blank"><strong>iii. Prerequisites checklist section of Module 1 (Objectives and Requirements)</strong></a>. Instructions for how to generate an <em>IBM Entitlement API Key</em> are provided in that section. For example:</p>
 <div class="admonition note">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-3-__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>verylongAPIkey1234
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-3-__codelineno-6-1"></a><span class="nb">export</span> <span class="nv">IBM_ENTITLEMENT_KEY</span><span class="o">=</span>verylongAPIkey1234
 </code></pre></div>
 </div>
 </li>
@@ -1216,7 +1223,7 @@
 <ol start="8">
 <li>
 <p>With your Terminal console, execute the following instruction to open the <strong>vi</strong> editor and create a shell script named <code>cpd_vars.sh</code> on the bastion host:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-3-__codelineno-6-1"></a>vi cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-3-__codelineno-7-1"></a>vi cpd_vars.sh
 </code></pre></div>
 <ul>
 <li>
@@ -1240,10 +1247,7 @@
 <hr />
 <ol start="9">
 <li>
-<p><strong>Execute</strong> the following command in the Terminal console so that subsequent actions taken are done with elevated permissions:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-3-__codelineno-7-1"></a>sudo bash
-</code></pre></div>
-<p>Then copy the following code block and execute it within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
+<p><strong>Copy</strong> the following code block and <strong>execute</strong> it within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-3-__codelineno-8-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-3-__codelineno-8-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-3-__codelineno-8-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
@@ -1252,16 +1256,15 @@
 </ol>
 <hr />
 <ol start="10">
-<li>Verify that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
+<li><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
 </ol>
 <hr />
 <ol start="11">
 <li>
-<p>Engage the command line interface and ensure that the Terminal console is executing all subsequent instructions with full (root) privileges:</p>
+<p><strong>Verify</strong> the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-3-__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#on-premises-3-__codelineno-9-2"></a>cpd-cli manage restart-container
 </code></pre></div>
-<p>This step will take a minute or two before completing. Once it has completed, you can verify the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</p>
 </li>
 </ol>
 <hr />
