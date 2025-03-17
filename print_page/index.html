@@ -1474,7 +1474,7 @@ From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; 
 <li><em>Update channel</em>: <code>stable-v1.13</code></li>
 <li><em>Version:</em> <code>1.13.0</code></li>
 <li><em>Installation mode:</em> <code>A specific namespace on the cluster</code></li>
-<li><em>Installed namespace:</em> <code>Operator recommended Namespace: (PR) cert-manager-operator</code></li>
+<li><em>Installed namespace:</em> <code>Operator recommended Namespace: cert-manager-operator</code></li>
 <li><em>Update approval:</em> <code>Manual</code></li>
 </ul>
 <p></br>
@@ -1871,7 +1871,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#on-premises-5-__codelineno-18-15"></a><span class="s">EOF</span>
 </code></pre></div>
 <div class="admonition warning">
-<p><strong>ATTENTION:</strong> It will take approximately 5 minutes for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the deployment.</p>
+<p><strong>ATTENTION:</strong> It will take approximately 1 minute for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the <code>Red Hat OpenShift AI</code> Operator deployment.</p>
 </div>
 </li>
 </ol>
@@ -1940,22 +1940,23 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-21-32" name="__codelineno-21-32" href="#on-premises-5-__codelineno-21-32"></a><span class="s">EOF</span>
 </code></pre></div>
 <p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
-<p><strong>Monitor</strong> the progress of the <em>DataScienceCluster</em> object by executing the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get default-dsc
-</code></pre></div>
-<p><strong>Wait</strong> for the <em>DataScienceCluster</em> object (<code>default-dsc</code>) to return a <code>Ready</code> status before continuing on to Step 28.</p>
 </li>
 </ol>
 <hr />
 <ol start="28">
 <li>
 <p><strong>Execute</strong> the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#on-premises-5-__codelineno-23-1"></a>oc get pods -n redhat-ods-applications
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get pods -n redhat-ods-applications
 </code></pre></div>
-<p>Confirm that the following pods are deployed and have a running (<code>Ready</code>) status:
-- <code>kserve-controller-manager-0123xyz...</code>
-- <code>kubeflow-training-operator-0123xyz...</code>
-- <code>odh-model-controller-0123xyz...</code></p>
+<p></br>
+Confirm that the following pods are deployed and have a running (<code>Ready</code>) status:</p>
+<ul>
+<li><code>kserve-controller-manager-0123xyz...</code></li>
+<li><code>kubeflow-training-operator-0123xyz...</code></li>
+<li><code>odh-model-controller-0123xyz-1...</code></li>
+<li><code>odh-model-controller-0123xyz-2...</code></li>
+<li><code>odh-model-controller-0123xyz-3...</code></li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -1963,31 +1964,31 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>
 <p>Now you must edit the <code>inferenceservice-config</code> configuration map within the <code>redhat-ods-applications</code> project. This is best achieved by using the OCP Dashboard web interface.</p>
 <ul>
-<li>From the OCP Dashboard, navigate into <strong>Workloads</strong> &gt; Configmaps**</li>
-<li>From the <em>Project</em> list, select <code>redhat-ods-applications</code></li>
+<li>From the OCP Dashboard, navigate into <strong>Workloads</strong> &gt; <strong>Configmaps</strong></li>
+<li>From the <em>Project</em> drop-down list, select <code>redhat-ods-applications</code></li>
 <li>Click the <code>inferenceservice-config</code> resource and open the <strong>YAML</strong> tab</li>
-<li>In the <code>metadata.annotations</code> section of the file, add a line which reads <code>opendatahub.io/managed: 'false'</code></li>
+<li>In the <code>metadata.annotations</code> section (Lines 4-5) of the file, add a new Line 8 which reads <code>opendatahub.io/managed: 'false'</code></li>
 <li>The resulting YAML file should resemble the following:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#on-premises-5-__codelineno-24-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#on-premises-5-__codelineno-24-2"></a><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#on-premises-5-__codelineno-24-3"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousKinds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#on-premises-5-__codelineno-24-4"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inferenceservice-config</span><span class="w"></span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#on-premises-5-__codelineno-24-5"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opendatahub</span><span class="w"></span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#on-premises-5-__codelineno-24-6"></a><span class="hll"><span class="w">    </span><span class="nt">opendatahub.io/managed</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#on-premises-5-__codelineno-23-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#on-premises-5-__codelineno-23-2"></a><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#on-premises-5-__codelineno-23-3"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousKinds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#on-premises-5-__codelineno-23-4"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inferenceservice-config</span><span class="w"></span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#on-premises-5-__codelineno-23-5"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opendatahub</span><span class="w"></span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#on-premises-5-__codelineno-23-6"></a><span class="hll"><span class="w">    </span><span class="nt">opendatahub.io/managed</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w"></span>
 </span></code></pre></div>
 </li>
 </ol>
 <hr />
 <ol start="30">
 <li>
-<p>Within the same YAML file, look for the following line (under the <em>ingress</em> section):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#on-premises-5-__codelineno-25-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
+<p>Within the same YAML file, look for Line 379 under the <em>ingress</em> section:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#on-premises-5-__codelineno-24-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
-<p><strong>Replace</strong> the line with the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
+<p><strong>Replace</strong> Line 379 with the following (be sure to include the last <code>,</code> character):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#on-premises-5-__codelineno-25-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
-<p>Click <strong>Save</strong> to finalize the changes to the YAML file.</p>
+<p>Click <strong>Save</strong> (bottom-left) to finalize the changes to the YAML file. If prompted with a <em>Managed resource</em> warning, click <strong>Save</strong> again to confirm.</p>
 </li>
 </ol>
 <hr />
@@ -1999,27 +2000,27 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#on-premises-5-__codelineno-29-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#on-premises-5-__codelineno-30-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#on-premises-5-__codelineno-29-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#on-premises-5-__codelineno-31-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#on-premises-5-__codelineno-30-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
