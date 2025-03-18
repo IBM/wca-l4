@@ -847,7 +847,10 @@
 </ol>
 <hr />
 <ol start="2">
-<li>From the <em>Single environment reservation options</em>, select <strong>Reserve now</strong><sup>[A]</sup>.</li>
+<li>
+<p>From the <em>Single environment reservation options</em>, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-2.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.2.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="3">
@@ -924,13 +927,19 @@
 <p class="admonition-title">PROVISIONING TIMES</p>
 <p>This operation will take approximately <strong>90 - 120 minutes</strong> to complete.</p>
 </div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-2.4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.4a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-2.4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.4b.png" width="400" /></a></p>
 </li>
 </ol>
 <h2 id="on-premises-2-ii-accessing-the-cluster"><strong>ii. Accessing the cluster</strong></h2>
 <p>Once the cluster has been successfully deployed, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. </p>
 <hr />
 <ol start="5">
-<li>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</li>
+<li>
+<p>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-2.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.5.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="6">
@@ -945,6 +954,9 @@
 <li><em>Bastion Password</em></li>
 <li><em>Bastion SSH Connection</em></li>
 </ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-2.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.6a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-2.6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.6b.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -957,9 +969,9 @@
 <li><em>Password:</em> <em>Cluster Admin Password</em> recorded in Step 6</li>
 </ul>
 <p>At this stage, you should have successfully logged in to the OCP Dashboard.</p>
+<h2 id="on-premises-2-_1"><a class="glightbox" href="../on-premises/_attachments/onprem-2.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-2.7.png" width="400" /></a></h2>
 </li>
 </ol>
-<hr />
 <h2 id="on-premises-2-iii-next-steps"><strong>iii. Next steps</strong></h2>
 <p>In the following module, you will access and configure the cluster's bastion node.</p></section><section class="print-page" id="on-premises-3"><h1 id="on-premises-3-bastion-host-setupon-premises-installation-and-deployment"><strong>Bastion Host Setup</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
@@ -990,6 +1002,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-3-__codelineno-0-1"></a>sudo bash
 </code></pre></div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.1.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1025,24 +1038,20 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#on-premises-3-__codelineno-1-5"></a>sudo mv oc /usr/local/bin/oc
 </code></pre></div></p>
 <ul>
-<li>
-<p>Copy the instructions above and paste into a notepad.</p>
-</li>
-<li>
-<p>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 2.</p>
-</li>
-<li>
-<p>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</p>
-</li>
-<li>
-<p>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute the instructions.</p>
-</li>
+<li>Copy the instructions above and paste into a notepad.</li>
+<li>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 2.</li>
+<li>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</li>
+<li>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute the instructions.</li>
 </ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.3.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
-<li>The setup should only take a moment to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
+<li>
+<p>The setup should only take a moment to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.4.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <h2 id="on-premises-3-iii-podman-install"><strong>iii. Podman install </strong></h2>
@@ -1056,6 +1065,7 @@
 <div class="admonition warning">
 <p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
 </div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.5.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1257,7 +1267,10 @@
 </ol>
 <hr />
 <ol start="10">
-<li><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
+<li>
+<p><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.10.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="11">
@@ -1266,6 +1279,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-3-__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#on-premises-3-__codelineno-9-2"></a>cpd-cli manage restart-container
 </code></pre></div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.11.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1283,6 +1297,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-3-__codelineno-11-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
 </code></pre></div>
 <p>The command line should return back with a prompt describing <code>You have access to ... projects</code> which indicates that <code>oc</code> and the environment variables have been correctly configured.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-3.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-3.13.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1350,6 +1365,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-4-__codelineno-1-1"></a>oc get kubeletconfig
 </code></pre></div>
 </div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-4.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-4.1.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1362,6 +1378,7 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-4-__codelineno-2-4"></a>--server<span class="o">=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span>
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the <code>login-to-ocp command ran successfully</code>.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-4.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-4.2.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1389,6 +1406,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-4-__codelineno-5-1"></a>cpd-cli manage oc get nodes
 </code></pre></div>
 <p>Wait until the <code>STATUS</code> returns for all nodes (3 master nodes, 3 storage nodes, and 3 worker nodes) all report as <code>Ready</code>.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-4.4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-4.4a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-4.4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-4.4b.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1439,6 +1459,7 @@
 <p>First create the prerequisite project namespace by executing the following instruction with a Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-5-__codelineno-0-1"></a>oc new-project cert-manager-operator
 </code></pre></div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.1.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1447,6 +1468,7 @@
 <p>Afterwards, return to your web browser and open the <strong>OCP Dashboard</strong> (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>).</p>
 <p></br>
 From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong>.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.2.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1465,6 +1487,7 @@ From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; 
 <li><em>Version:</em> <code>1.13.0</code></li>
 <li>When ready, click the blue <strong>Install</strong> button</li>
 </ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.4.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1479,9 +1502,16 @@ From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; 
 <li><em>Update approval:</em> <code>Manual</code></li>
 </ul>
 <p></br>
-When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.
-- When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong>
-- Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong> to view the finalized Operator</p>
+When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</p>
+<ul>
+<li>When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong></li>
+<li>Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong> to view the finalized Operator</li>
+</ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.5a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.5b.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.5c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.5c.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1494,12 +1524,15 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 </ol>
 <hr />
 <ol start="7">
-<li>On the OCP Dashboard, make sure you are under the <strong>Operators</strong> &gt; <strong>Installed Operators</strong> view.<ul>
+<li>
+<p>On the OCP Dashboard, make sure you are under the <strong>Operators</strong> &gt; <strong>Installed Operators</strong> view.</p>
+<ul>
 <li><strong>Click</strong> the title of the <code>cert-manager-Operator for Red Hat OpenShift</code> to open the details panel</li>
 <li>From the tabs along the top of the page, click <strong>Subscription</strong></li>
 <li>Under the <em>Subscription details</em> header, there are three panels: <em>Update channel</em>, <em>Update approval</em>, and <em>Update status</em>*</li>
 <li>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel</li>
 </ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.7.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1527,6 +1560,7 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-5-__codelineno-2-4"></a>cert-manager-webhook-d4f79d7f7-9dg9w       <span class="m">1</span>/1     Running   <span class="m">0</span>          4m9s
 </code></pre></div>
 <p>At this point, the OpenShift <code>cert-manager</code> has been successfully deployed on the cluster.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.10.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1623,6 +1657,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
 <li>Try executing the instruction from Step 14 a second time within the Terminal console and observe the updated pod status</li>
 </ul>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.14.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1716,6 +1751,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>As before, check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.16.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1789,6 +1825,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#on-premises-5-__codelineno-13-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
 </code></pre></div>
 <p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.20a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.20b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-5.20b.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />

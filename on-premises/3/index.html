@@ -548,6 +548,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo bash
 </code></pre></div>
+<p><a class="glightbox" href="../_attachments/onprem-3.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.1.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -583,24 +584,20 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo mv oc /usr/local/bin/oc
 </code></pre></div></p>
 <ul>
-<li>
-<p>Copy the instructions above and paste into a notepad.</p>
-</li>
-<li>
-<p>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 2.</p>
-</li>
-<li>
-<p>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</p>
-</li>
-<li>
-<p>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute the instructions.</p>
-</li>
+<li>Copy the instructions above and paste into a notepad.</li>
+<li>Replace the highlighted <code>&lt;CHANGE_ME&gt;</code> text with the <em>OpenShift base domain</em> value recorded in Step 2.</li>
+<li>Copy the modified notepad instructions to your clipboard and paste into your Terminal console.</li>
+<li>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute the instructions.</li>
 </ul>
+<p><a class="glightbox" href="../_attachments/onprem-3.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.3.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
-<li>The setup should only take a moment to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</li>
+<li>
+<p>The setup should only take a moment to complete. Once finished, try typing <code>oc</code> into the console window and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The console output should verify that <code>oc</code> (the OpenShift CLI) has been successfully installed on the bastion host.</p>
+<p><a class="glightbox" href="../_attachments/onprem-3.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.4.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <h2 id="iii-podman-install"><strong>iii. Podman install </strong></h2>
@@ -614,6 +611,7 @@
 <div class="admonition warning">
 <p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
 </div>
+<p><a class="glightbox" href="../_attachments/onprem-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.5.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -815,7 +813,10 @@
 </ol>
 <hr />
 <ol start="10">
-<li><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</li>
+<li>
+<p><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</p>
+<p><a class="glightbox" href="../_attachments/onprem-3.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.10.png" width="400" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="11">
@@ -824,6 +825,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cpd-cli manage restart-container
 </code></pre></div>
+<p><a class="glightbox" href="../_attachments/onprem-3.11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.11.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -841,6 +843,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
 </code></pre></div>
 <p>The command line should return back with a prompt describing <code>You have access to ... projects</code> which indicates that <code>oc</code> and the environment variables have been correctly configured.</p>
+<p><a class="glightbox" href="../_attachments/onprem-3.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-3.13.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />

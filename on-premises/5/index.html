@@ -534,6 +534,7 @@
 <p>First create the prerequisite project namespace by executing the following instruction with a Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>oc new-project cert-manager-operator
 </code></pre></div>
+<p><a class="glightbox" href="../_attachments/onprem-5.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.1.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -542,6 +543,7 @@
 <p>Afterwards, return to your web browser and open the <strong>OCP Dashboard</strong> (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>).</p>
 <p></br>
 From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong>.</p>
+<p><a class="glightbox" href="../_attachments/onprem-5.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.2.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -560,6 +562,7 @@ From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; 
 <li><em>Version:</em> <code>1.13.0</code></li>
 <li>When ready, click the blue <strong>Install</strong> button</li>
 </ul>
+<p><a class="glightbox" href="../_attachments/onprem-5.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.4.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -574,9 +577,16 @@ From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; 
 <li><em>Update approval:</em> <code>Manual</code></li>
 </ul>
 <p></br>
-When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.
-- When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong>
-- Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong> to view the finalized Operator</p>
+When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</p>
+<ul>
+<li>When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong></li>
+<li>Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong> to view the finalized Operator</li>
+</ul>
+<p><a class="glightbox" href="../_attachments/onprem-5.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.5a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../_attachments/onprem-5.5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.5b.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../_attachments/onprem-5.5c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.5c.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -589,12 +599,15 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 </ol>
 <hr />
 <ol start="7">
-<li>On the OCP Dashboard, make sure you are under the <strong>Operators</strong> &gt; <strong>Installed Operators</strong> view.<ul>
+<li>
+<p>On the OCP Dashboard, make sure you are under the <strong>Operators</strong> &gt; <strong>Installed Operators</strong> view.</p>
+<ul>
 <li><strong>Click</strong> the title of the <code>cert-manager-Operator for Red Hat OpenShift</code> to open the details panel</li>
 <li>From the tabs along the top of the page, click <strong>Subscription</strong></li>
 <li>Under the <em>Subscription details</em> header, there are three panels: <em>Update channel</em>, <em>Update approval</em>, and <em>Update status</em>*</li>
 <li>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel</li>
 </ul>
+<p><a class="glightbox" href="../_attachments/onprem-5.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.7.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -622,6 +635,7 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>cert-manager-webhook-d4f79d7f7-9dg9w       <span class="m">1</span>/1     Running   <span class="m">0</span>          4m9s
 </code></pre></div>
 <p>At this point, the OpenShift <code>cert-manager</code> has been successfully deployed on the cluster.</p>
+<p><a class="glightbox" href="../_attachments/onprem-5.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.10.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -718,6 +732,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
 <li>Try executing the instruction from Step 14 a second time within the Terminal console and observe the updated pod status</li>
 </ul>
+<p><a class="glightbox" href="../_attachments/onprem-5.14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.14.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -811,6 +826,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>As before, check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
+<p><a class="glightbox" href="../_attachments/onprem-5.16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.16.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -884,6 +900,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
 </code></pre></div>
 <p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+<p><a class="glightbox" href="../_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.20a.png" width="400" /></a>
+</br>
+<a class="glightbox" href="../_attachments/onprem-5.20b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-5.20b.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
