@@ -482,15 +482,15 @@
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=wca-installing" target="_blank"><strong>Installing watsonx Code Assistant v5.1.x</strong></a>.</p>
 </div>
 <h2 id="i-fetching-dependencies"><strong>i. Fetching dependencies</strong></h2>
-<p>In the following section, you will assume the role of an instance administrator and install IBM watsonx Code Assistant (WCA) using the IBM Software Hub components set up in the previous module. Following the release of Software Hub <code>v5.x</code>, administrators need to only specify the <code>wca</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
+<p>In the following section, you will assume the role of an instance administrator and install IBM watsonx Code Assistant (WCA) using the IBM Software Hub components set up in the previous module. Following the release of Software Hub <code>v5.x</code>, administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
 <hr />
 <ol>
 <li>
 <p>Apply the entitlement for WCA by <strong>executing</strong> the following code block:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cpd-cli manage apply-entitlement <span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--entitlement<span class="o">=</span>wca <span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--production<span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--entitlement<span class="o">=</span>watsonx-code-assistant <span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--production<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 </li>
 </ol>
