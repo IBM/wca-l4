@@ -521,7 +521,10 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--server<span class="o">=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span>
 </code></pre></div>
-<p>The console will return two <code>[SUCCESS]</code> statements indicating that the <code>login-to-ocp command ran successfully</code>.</p>
+<p>After a successful run, the console should return a pair of messages that resemble the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978349Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978412Z The login-to-ocp <span class="nb">command</span> ran successfully.
+</code></pre></div>
 <p></br>
 <a class="glightbox" href="../_attachments/onprem-4.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-4.2.png" /></a></p>
 </li>
@@ -533,20 +536,21 @@
 <ol start="3">
 <li>
 <p><strong>Execute</strong> the following command within the Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
+<p><a class="glightbox" href="../_attachments/onprem-4.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-4.3.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
 <li>
 <p>Now you must update all nodes across the cluster using OpenShift command line (<code>oc</code>). <strong>Execute</strong> the following instructions via the Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> --username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> --password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>oc get mcp
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> --username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> --password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>oc get mcp
 </code></pre></div>
 <p>Once completed, <strong>execute</strong> the following statement to check the status of the cluster nodes (this can be performed periodically to track the progress of the node updates):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cpd-cli manage oc get nodes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cpd-cli manage oc get nodes
 </code></pre></div>
 <p>Wait until the <code>STATUS</code> returns for all nodes (3 master nodes, 3 storage nodes, and 3 worker nodes) all report as <code>Ready</code>.</p>
 <p></br>
@@ -564,27 +568,27 @@
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>

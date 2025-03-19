@@ -1398,7 +1398,10 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-4-__codelineno-2-3"></a>--password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-4-__codelineno-2-4"></a>--server<span class="o">=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span>
 </code></pre></div>
-<p>The console will return two <code>[SUCCESS]</code> statements indicating that the <code>login-to-ocp command ran successfully</code>.</p>
+<p>After a successful run, the console should return a pair of messages that resemble the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978349Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-4-__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978412Z The login-to-ocp <span class="nb">command</span> ran successfully.
+</code></pre></div>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-4.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-4.2.png" /></a></p>
 </li>
@@ -1410,20 +1413,21 @@
 <ol start="3">
 <li>
 <p><strong>Execute</strong> the following command within the Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-4-__codelineno-4-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
 <p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-4.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-4.3.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
 <li>
 <p>Now you must update all nodes across the cluster using OpenShift command line (<code>oc</code>). <strong>Execute</strong> the following instructions via the Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-4-__codelineno-4-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> --username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> --password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-4-__codelineno-4-2"></a>oc get mcp
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-4-__codelineno-5-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> --username<span class="o">=</span><span class="si">${</span><span class="nv">OCP_USERNAME</span><span class="si">}</span> --password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#on-premises-4-__codelineno-5-2"></a>oc get mcp
 </code></pre></div>
 <p>Once completed, <strong>execute</strong> the following statement to check the status of the cluster nodes (this can be performed periodically to track the progress of the node updates):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-4-__codelineno-5-1"></a>cpd-cli manage oc get nodes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-4-__codelineno-6-1"></a>cpd-cli manage oc get nodes
 </code></pre></div>
 <p>Wait until the <code>STATUS</code> returns for all nodes (3 master nodes, 3 storage nodes, and 3 worker nodes) all report as <code>Ready</code>.</p>
 <p></br>
@@ -1441,27 +1445,27 @@
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-4-__codelineno-6-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-4-__codelineno-7-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-4-__codelineno-7-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-4-__codelineno-8-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-4-__codelineno-8-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-4-__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-4-__codelineno-9-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-4-__codelineno-10-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-4-__codelineno-10-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-4-__codelineno-11-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1477,7 +1481,7 @@
 <hr />
 <ol>
 <li>
-<p>First create the prerequisite project namespace by executing the following instruction with a Terminal console:</p>
+<p>First create the prerequisite project <em>namespace</em> by <strong>executing</strong> the following instruction:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-5-__codelineno-0-1"></a>oc new-project cert-manager-operator
 </code></pre></div>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-5.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.1.png" /></a></p>
@@ -1556,20 +1560,33 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <li>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel</li>
 </ul>
 <p></br>
-<a class="glightbox" href="../on-premises/_attachments/onprem-5.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.7.png" /></a></p>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.7.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.7b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.7b.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="8">
-<li>A new page, <em>InstallPlan details</em> for <code>install-n5l8v</code>, will load.<ul>
+<li>
+<p>A new page, <em>InstallPlan details</em> for <code>install-12xyz</code>, will load.</p>
+<ul>
 <li>Click the blue <strong>Preview InstallPlan</strong> button</li>
 <li>When the panel refreshes, click the blue <strong>Approve</strong> button to begin updating to <code>v1.13.1</code></li>
+<li>Wait for the status to the right of <code>install-12xyz</code> to read <code>Complete</code></li>
 </ul>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.8a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.8a.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.8b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.8b.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="9">
-<li>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code>.</li>
+<li>
+<p>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code>.</p>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.9.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="10">
@@ -1680,8 +1697,16 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>Within the table, look for a resource named <code>nfd</code></li>
 <li>If the code from Step 13 was only recently executed, the <em>Managed Namespaces</em> of this resource may be showing as <code>None</code> and the <em>Status</em> as <code>Unknown</code></li>
 <li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
-<li>Try executing the instruction from Step 14 a second time within the Terminal console and observe the updated pod status</li>
 </ul>
+<p></br>
+After a period of 2-3 minutes, <strong>execute</strong> the previous command from Step 14 a second time within the Terminal console and observe the updated pod status. The console should report back the following to indicate that the Operator was successfully deployed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-5-__codelineno-7-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#on-premises-5-__codelineno-7-2"></a>nfd-controller-manager-7f4c4cf577-wn96r   <span class="m">2</span>/2     Running   <span class="m">0</span>          3m10s
+</code></pre></div>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.14a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.14a.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.14b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.14b.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -1689,83 +1714,83 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <li>
 <p>Create a <strong>NodeFeatureDiscovery CR</strong> and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-5-__codelineno-7-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#on-premises-5-__codelineno-7-2"></a><span class="s">apiVersion: nfd.openshift.io/v1</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#on-premises-5-__codelineno-7-3"></a><span class="s">kind: NodeFeatureDiscovery</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#on-premises-5-__codelineno-7-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#on-premises-5-__codelineno-7-5"></a><span class="s">    name: nfd-instance</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#on-premises-5-__codelineno-7-6"></a><span class="s">    namespace: openshift-nfd</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#on-premises-5-__codelineno-7-7"></a><span class="s">spec:</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#on-premises-5-__codelineno-7-8"></a><span class="s">    instance: &quot;&quot; # instance is empty by default</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#on-premises-5-__codelineno-7-9"></a><span class="s">    operand:</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#on-premises-5-__codelineno-7-10"></a><span class="s">        image: registry.redhat.io/openshift4/ose-node-feature-discovery-rhel9:v4.16 </span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#on-premises-5-__codelineno-7-11"></a><span class="s">        imagePullPolicy: Always</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#on-premises-5-__codelineno-7-12"></a><span class="s">    workerConfig:</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#on-premises-5-__codelineno-7-13"></a><span class="s">        configData: |</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#on-premises-5-__codelineno-7-14"></a><span class="s">            core:</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#on-premises-5-__codelineno-7-15"></a><span class="s">            #  labelWhiteList:</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#on-premises-5-__codelineno-7-16"></a><span class="s">            #  noPublish: false</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#on-premises-5-__codelineno-7-17"></a><span class="s">                sleepInterval: 60s</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#on-premises-5-__codelineno-7-18"></a><span class="s">            #  sources: [all]</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#on-premises-5-__codelineno-7-19"></a><span class="s">            #  klog:</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#on-premises-5-__codelineno-7-20"></a><span class="s">            #    addDirHeader: false</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#on-premises-5-__codelineno-7-21"></a><span class="s">            #    alsologtostderr: false</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#on-premises-5-__codelineno-7-22"></a><span class="s">            #    logBacktraceAt:</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#on-premises-5-__codelineno-7-23"></a><span class="s">            #    logtostderr: true</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#on-premises-5-__codelineno-7-24"></a><span class="s">            #    skipHeaders: false</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#on-premises-5-__codelineno-7-25"></a><span class="s">            #    stderrthreshold: 2</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#on-premises-5-__codelineno-7-26"></a><span class="s">            #    v: 0</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#on-premises-5-__codelineno-7-27"></a><span class="s">            #    vmodule:</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#on-premises-5-__codelineno-7-28"></a><span class="s">            ##   NOTE: the following options are not dynamically run-time configurable</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#on-premises-5-__codelineno-7-29"></a><span class="s">            ##         and require a nfd-worker restart to take effect after being changed</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#on-premises-5-__codelineno-7-30"></a><span class="s">            #    logDir:</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#on-premises-5-__codelineno-7-31"></a><span class="s">            #    logFile:</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32" href="#on-premises-5-__codelineno-7-32"></a><span class="s">            #    logFileMaxSize: 1800</span>
-<a id="__codelineno-7-33" name="__codelineno-7-33" href="#on-premises-5-__codelineno-7-33"></a><span class="s">            #    skipLogHeaders: false</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34" href="#on-premises-5-__codelineno-7-34"></a><span class="s">            sources:</span>
-<a id="__codelineno-7-35" name="__codelineno-7-35" href="#on-premises-5-__codelineno-7-35"></a><span class="s">                cpu:</span>
-<a id="__codelineno-7-36" name="__codelineno-7-36" href="#on-premises-5-__codelineno-7-36"></a><span class="s">                    cpuid:</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37" href="#on-premises-5-__codelineno-7-37"></a><span class="s">                        # NOTE: whitelist has priority over blacklist</span>
-<a id="__codelineno-7-38" name="__codelineno-7-38" href="#on-premises-5-__codelineno-7-38"></a><span class="s">                        attributeBlacklist:</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39" href="#on-premises-5-__codelineno-7-39"></a><span class="s">                            - &quot;BMI1&quot;</span>
-<a id="__codelineno-7-40" name="__codelineno-7-40" href="#on-premises-5-__codelineno-7-40"></a><span class="s">                            - &quot;BMI2&quot;</span>
-<a id="__codelineno-7-41" name="__codelineno-7-41" href="#on-premises-5-__codelineno-7-41"></a><span class="s">                            - &quot;CLMUL&quot;</span>
-<a id="__codelineno-7-42" name="__codelineno-7-42" href="#on-premises-5-__codelineno-7-42"></a><span class="s">                            - &quot;CMOV&quot;</span>
-<a id="__codelineno-7-43" name="__codelineno-7-43" href="#on-premises-5-__codelineno-7-43"></a><span class="s">                            - &quot;CX16&quot;</span>
-<a id="__codelineno-7-44" name="__codelineno-7-44" href="#on-premises-5-__codelineno-7-44"></a><span class="s">                            - &quot;ERMS&quot;</span>
-<a id="__codelineno-7-45" name="__codelineno-7-45" href="#on-premises-5-__codelineno-7-45"></a><span class="s">                            - &quot;F16C&quot;</span>
-<a id="__codelineno-7-46" name="__codelineno-7-46" href="#on-premises-5-__codelineno-7-46"></a><span class="s">                            - &quot;HTT&quot;</span>
-<a id="__codelineno-7-47" name="__codelineno-7-47" href="#on-premises-5-__codelineno-7-47"></a><span class="s">                            - &quot;LZCNT&quot;</span>
-<a id="__codelineno-7-48" name="__codelineno-7-48" href="#on-premises-5-__codelineno-7-48"></a><span class="s">                            - &quot;MMX&quot;</span>
-<a id="__codelineno-7-49" name="__codelineno-7-49" href="#on-premises-5-__codelineno-7-49"></a><span class="s">                            - &quot;MMXEXT&quot;</span>
-<a id="__codelineno-7-50" name="__codelineno-7-50" href="#on-premises-5-__codelineno-7-50"></a><span class="s">                            - &quot;NX&quot;</span>
-<a id="__codelineno-7-51" name="__codelineno-7-51" href="#on-premises-5-__codelineno-7-51"></a><span class="s">                            - &quot;POPCNT&quot;</span>
-<a id="__codelineno-7-52" name="__codelineno-7-52" href="#on-premises-5-__codelineno-7-52"></a><span class="s">                            - &quot;RDRAND&quot;</span>
-<a id="__codelineno-7-53" name="__codelineno-7-53" href="#on-premises-5-__codelineno-7-53"></a><span class="s">                            - &quot;RDSEED&quot;</span>
-<a id="__codelineno-7-54" name="__codelineno-7-54" href="#on-premises-5-__codelineno-7-54"></a><span class="s">                            - &quot;RDTSCP&quot;</span>
-<a id="__codelineno-7-55" name="__codelineno-7-55" href="#on-premises-5-__codelineno-7-55"></a><span class="s">                            - &quot;SGX&quot;</span>
-<a id="__codelineno-7-56" name="__codelineno-7-56" href="#on-premises-5-__codelineno-7-56"></a><span class="s">                            - &quot;SSE&quot;</span>
-<a id="__codelineno-7-57" name="__codelineno-7-57" href="#on-premises-5-__codelineno-7-57"></a><span class="s">                            - &quot;SSE2&quot;</span>
-<a id="__codelineno-7-58" name="__codelineno-7-58" href="#on-premises-5-__codelineno-7-58"></a><span class="s">                            - &quot;SSE3&quot;</span>
-<a id="__codelineno-7-59" name="__codelineno-7-59" href="#on-premises-5-__codelineno-7-59"></a><span class="s">                            - &quot;SSE4.1&quot;</span>
-<a id="__codelineno-7-60" name="__codelineno-7-60" href="#on-premises-5-__codelineno-7-60"></a><span class="s">                            - &quot;SSE4.2&quot;</span>
-<a id="__codelineno-7-61" name="__codelineno-7-61" href="#on-premises-5-__codelineno-7-61"></a><span class="s">                            - &quot;SSSE3&quot;</span>
-<a id="__codelineno-7-62" name="__codelineno-7-62" href="#on-premises-5-__codelineno-7-62"></a><span class="s">                        attributeWhitelist:</span>
-<a id="__codelineno-7-63" name="__codelineno-7-63" href="#on-premises-5-__codelineno-7-63"></a><span class="s">                    kernel:</span>
-<a id="__codelineno-7-64" name="__codelineno-7-64" href="#on-premises-5-__codelineno-7-64"></a><span class="s">                        kconfigFile: &quot;/path/to/kconfig&quot;</span>
-<a id="__codelineno-7-65" name="__codelineno-7-65" href="#on-premises-5-__codelineno-7-65"></a><span class="s">                        configOpts:</span>
-<a id="__codelineno-7-66" name="__codelineno-7-66" href="#on-premises-5-__codelineno-7-66"></a><span class="s">                            - &quot;NO_HZ&quot;</span>
-<a id="__codelineno-7-67" name="__codelineno-7-67" href="#on-premises-5-__codelineno-7-67"></a><span class="s">                            - &quot;X86&quot;</span>
-<a id="__codelineno-7-68" name="__codelineno-7-68" href="#on-premises-5-__codelineno-7-68"></a><span class="s">                            - &quot;DMI&quot;</span>
-<a id="__codelineno-7-69" name="__codelineno-7-69" href="#on-premises-5-__codelineno-7-69"></a><span class="s">                    pci:</span>
-<a id="__codelineno-7-70" name="__codelineno-7-70" href="#on-premises-5-__codelineno-7-70"></a><span class="s">                        deviceClassWhitelist:</span>
-<a id="__codelineno-7-71" name="__codelineno-7-71" href="#on-premises-5-__codelineno-7-71"></a><span class="s">                            - &quot;0200&quot;</span>
-<a id="__codelineno-7-72" name="__codelineno-7-72" href="#on-premises-5-__codelineno-7-72"></a><span class="s">                            - &quot;03&quot;</span>
-<a id="__codelineno-7-73" name="__codelineno-7-73" href="#on-premises-5-__codelineno-7-73"></a><span class="s">                            - &quot;12&quot;</span>
-<a id="__codelineno-7-74" name="__codelineno-7-74" href="#on-premises-5-__codelineno-7-74"></a><span class="s">                        deviceLabelFields:           </span>
-<a id="__codelineno-7-75" name="__codelineno-7-75" href="#on-premises-5-__codelineno-7-75"></a><span class="s">                            - &quot;class&quot;</span>
-<a id="__codelineno-7-76" name="__codelineno-7-76" href="#on-premises-5-__codelineno-7-76"></a><span class="s">                            - &quot;vendor&quot;</span>
-<a id="__codelineno-7-77" name="__codelineno-7-77" href="#on-premises-5-__codelineno-7-77"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-5-__codelineno-8-2"></a><span class="s">apiVersion: nfd.openshift.io/v1</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-5-__codelineno-8-3"></a><span class="s">kind: NodeFeatureDiscovery</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#on-premises-5-__codelineno-8-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#on-premises-5-__codelineno-8-5"></a><span class="s">    name: nfd-instance</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#on-premises-5-__codelineno-8-6"></a><span class="s">    namespace: openshift-nfd</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#on-premises-5-__codelineno-8-7"></a><span class="s">spec:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#on-premises-5-__codelineno-8-8"></a><span class="s">    instance: &quot;&quot; # instance is empty by default</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#on-premises-5-__codelineno-8-9"></a><span class="s">    operand:</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#on-premises-5-__codelineno-8-10"></a><span class="s">        image: registry.redhat.io/openshift4/ose-node-feature-discovery-rhel9:v4.16 </span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#on-premises-5-__codelineno-8-11"></a><span class="s">        imagePullPolicy: Always</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#on-premises-5-__codelineno-8-12"></a><span class="s">    workerConfig:</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#on-premises-5-__codelineno-8-13"></a><span class="s">        configData: |</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#on-premises-5-__codelineno-8-14"></a><span class="s">            core:</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#on-premises-5-__codelineno-8-15"></a><span class="s">            #  labelWhiteList:</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#on-premises-5-__codelineno-8-16"></a><span class="s">            #  noPublish: false</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#on-premises-5-__codelineno-8-17"></a><span class="s">                sleepInterval: 60s</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#on-premises-5-__codelineno-8-18"></a><span class="s">            #  sources: [all]</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#on-premises-5-__codelineno-8-19"></a><span class="s">            #  klog:</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#on-premises-5-__codelineno-8-20"></a><span class="s">            #    addDirHeader: false</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#on-premises-5-__codelineno-8-21"></a><span class="s">            #    alsologtostderr: false</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#on-premises-5-__codelineno-8-22"></a><span class="s">            #    logBacktraceAt:</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#on-premises-5-__codelineno-8-23"></a><span class="s">            #    logtostderr: true</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#on-premises-5-__codelineno-8-24"></a><span class="s">            #    skipHeaders: false</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#on-premises-5-__codelineno-8-25"></a><span class="s">            #    stderrthreshold: 2</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#on-premises-5-__codelineno-8-26"></a><span class="s">            #    v: 0</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#on-premises-5-__codelineno-8-27"></a><span class="s">            #    vmodule:</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#on-premises-5-__codelineno-8-28"></a><span class="s">            ##   NOTE: the following options are not dynamically run-time configurable</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#on-premises-5-__codelineno-8-29"></a><span class="s">            ##         and require a nfd-worker restart to take effect after being changed</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#on-premises-5-__codelineno-8-30"></a><span class="s">            #    logDir:</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#on-premises-5-__codelineno-8-31"></a><span class="s">            #    logFile:</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#on-premises-5-__codelineno-8-32"></a><span class="s">            #    logFileMaxSize: 1800</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#on-premises-5-__codelineno-8-33"></a><span class="s">            #    skipLogHeaders: false</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#on-premises-5-__codelineno-8-34"></a><span class="s">            sources:</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#on-premises-5-__codelineno-8-35"></a><span class="s">                cpu:</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#on-premises-5-__codelineno-8-36"></a><span class="s">                    cpuid:</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#on-premises-5-__codelineno-8-37"></a><span class="s">                        # NOTE: whitelist has priority over blacklist</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#on-premises-5-__codelineno-8-38"></a><span class="s">                        attributeBlacklist:</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#on-premises-5-__codelineno-8-39"></a><span class="s">                            - &quot;BMI1&quot;</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#on-premises-5-__codelineno-8-40"></a><span class="s">                            - &quot;BMI2&quot;</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#on-premises-5-__codelineno-8-41"></a><span class="s">                            - &quot;CLMUL&quot;</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#on-premises-5-__codelineno-8-42"></a><span class="s">                            - &quot;CMOV&quot;</span>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#on-premises-5-__codelineno-8-43"></a><span class="s">                            - &quot;CX16&quot;</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#on-premises-5-__codelineno-8-44"></a><span class="s">                            - &quot;ERMS&quot;</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45" href="#on-premises-5-__codelineno-8-45"></a><span class="s">                            - &quot;F16C&quot;</span>
+<a id="__codelineno-8-46" name="__codelineno-8-46" href="#on-premises-5-__codelineno-8-46"></a><span class="s">                            - &quot;HTT&quot;</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47" href="#on-premises-5-__codelineno-8-47"></a><span class="s">                            - &quot;LZCNT&quot;</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#on-premises-5-__codelineno-8-48"></a><span class="s">                            - &quot;MMX&quot;</span>
+<a id="__codelineno-8-49" name="__codelineno-8-49" href="#on-premises-5-__codelineno-8-49"></a><span class="s">                            - &quot;MMXEXT&quot;</span>
+<a id="__codelineno-8-50" name="__codelineno-8-50" href="#on-premises-5-__codelineno-8-50"></a><span class="s">                            - &quot;NX&quot;</span>
+<a id="__codelineno-8-51" name="__codelineno-8-51" href="#on-premises-5-__codelineno-8-51"></a><span class="s">                            - &quot;POPCNT&quot;</span>
+<a id="__codelineno-8-52" name="__codelineno-8-52" href="#on-premises-5-__codelineno-8-52"></a><span class="s">                            - &quot;RDRAND&quot;</span>
+<a id="__codelineno-8-53" name="__codelineno-8-53" href="#on-premises-5-__codelineno-8-53"></a><span class="s">                            - &quot;RDSEED&quot;</span>
+<a id="__codelineno-8-54" name="__codelineno-8-54" href="#on-premises-5-__codelineno-8-54"></a><span class="s">                            - &quot;RDTSCP&quot;</span>
+<a id="__codelineno-8-55" name="__codelineno-8-55" href="#on-premises-5-__codelineno-8-55"></a><span class="s">                            - &quot;SGX&quot;</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56" href="#on-premises-5-__codelineno-8-56"></a><span class="s">                            - &quot;SSE&quot;</span>
+<a id="__codelineno-8-57" name="__codelineno-8-57" href="#on-premises-5-__codelineno-8-57"></a><span class="s">                            - &quot;SSE2&quot;</span>
+<a id="__codelineno-8-58" name="__codelineno-8-58" href="#on-premises-5-__codelineno-8-58"></a><span class="s">                            - &quot;SSE3&quot;</span>
+<a id="__codelineno-8-59" name="__codelineno-8-59" href="#on-premises-5-__codelineno-8-59"></a><span class="s">                            - &quot;SSE4.1&quot;</span>
+<a id="__codelineno-8-60" name="__codelineno-8-60" href="#on-premises-5-__codelineno-8-60"></a><span class="s">                            - &quot;SSE4.2&quot;</span>
+<a id="__codelineno-8-61" name="__codelineno-8-61" href="#on-premises-5-__codelineno-8-61"></a><span class="s">                            - &quot;SSSE3&quot;</span>
+<a id="__codelineno-8-62" name="__codelineno-8-62" href="#on-premises-5-__codelineno-8-62"></a><span class="s">                        attributeWhitelist:</span>
+<a id="__codelineno-8-63" name="__codelineno-8-63" href="#on-premises-5-__codelineno-8-63"></a><span class="s">                    kernel:</span>
+<a id="__codelineno-8-64" name="__codelineno-8-64" href="#on-premises-5-__codelineno-8-64"></a><span class="s">                        kconfigFile: &quot;/path/to/kconfig&quot;</span>
+<a id="__codelineno-8-65" name="__codelineno-8-65" href="#on-premises-5-__codelineno-8-65"></a><span class="s">                        configOpts:</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66" href="#on-premises-5-__codelineno-8-66"></a><span class="s">                            - &quot;NO_HZ&quot;</span>
+<a id="__codelineno-8-67" name="__codelineno-8-67" href="#on-premises-5-__codelineno-8-67"></a><span class="s">                            - &quot;X86&quot;</span>
+<a id="__codelineno-8-68" name="__codelineno-8-68" href="#on-premises-5-__codelineno-8-68"></a><span class="s">                            - &quot;DMI&quot;</span>
+<a id="__codelineno-8-69" name="__codelineno-8-69" href="#on-premises-5-__codelineno-8-69"></a><span class="s">                    pci:</span>
+<a id="__codelineno-8-70" name="__codelineno-8-70" href="#on-premises-5-__codelineno-8-70"></a><span class="s">                        deviceClassWhitelist:</span>
+<a id="__codelineno-8-71" name="__codelineno-8-71" href="#on-premises-5-__codelineno-8-71"></a><span class="s">                            - &quot;0200&quot;</span>
+<a id="__codelineno-8-72" name="__codelineno-8-72" href="#on-premises-5-__codelineno-8-72"></a><span class="s">                            - &quot;03&quot;</span>
+<a id="__codelineno-8-73" name="__codelineno-8-73" href="#on-premises-5-__codelineno-8-73"></a><span class="s">                            - &quot;12&quot;</span>
+<a id="__codelineno-8-74" name="__codelineno-8-74" href="#on-premises-5-__codelineno-8-74"></a><span class="s">                        deviceLabelFields:           </span>
+<a id="__codelineno-8-75" name="__codelineno-8-75" href="#on-premises-5-__codelineno-8-75"></a><span class="s">                            - &quot;class&quot;</span>
+<a id="__codelineno-8-76" name="__codelineno-8-76" href="#on-premises-5-__codelineno-8-76"></a><span class="s">                            - &quot;vendor&quot;</span>
+<a id="__codelineno-8-77" name="__codelineno-8-77" href="#on-premises-5-__codelineno-8-77"></a><span class="s">EOF</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1773,8 +1798,9 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="16">
 <li>
 <p>As before, check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc get pods -n openshift-nfd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-5-__codelineno-9-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
+<p>Wait for about 1 minute for all of the pods to return a status of <code>Running</code> before continuing.</p>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-5.16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.16.png" /></a></p>
 </li>
 </ol>
@@ -1787,12 +1813,12 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="17">
 <li>
 <p><strong>Create</strong> the <code>nvidia-gpu-operator</code> namespace by executing the following code block with a Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-5-__codelineno-9-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#on-premises-5-__codelineno-9-2"></a><span class="s">apiVersion: v1</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#on-premises-5-__codelineno-9-3"></a><span class="s">kind: Namespace</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#on-premises-5-__codelineno-9-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#on-premises-5-__codelineno-9-5"></a><span class="s">    name: nvidia-gpu-operator</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#on-premises-5-__codelineno-9-6"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-5-__codelineno-10-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#on-premises-5-__codelineno-10-2"></a><span class="s">apiVersion: v1</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#on-premises-5-__codelineno-10-3"></a><span class="s">kind: Namespace</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#on-premises-5-__codelineno-10-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#on-premises-5-__codelineno-10-5"></a><span class="s">    name: nvidia-gpu-operator</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#on-premises-5-__codelineno-10-6"></a><span class="s">EOF</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1800,16 +1826,16 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="18">
 <li>
 <p>Define the <strong>OperatorGroup</strong> within the same namespace:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-5-__codelineno-10-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#on-premises-5-__codelineno-10-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#on-premises-5-__codelineno-10-3"></a><span class="s">kind: OperatorGroup</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#on-premises-5-__codelineno-10-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#on-premises-5-__codelineno-10-5"></a><span class="s">    name: nvidia-gpu-operator-group</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#on-premises-5-__codelineno-10-6"></a><span class="s">    namespace: nvidia-gpu-operator</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#on-premises-5-__codelineno-10-7"></a><span class="s">spec:</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#on-premises-5-__codelineno-10-8"></a><span class="s">    targetNamespaces:</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#on-premises-5-__codelineno-10-9"></a><span class="s">    - nvidia-gpu-operator</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#on-premises-5-__codelineno-10-10"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-5-__codelineno-11-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#on-premises-5-__codelineno-11-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#on-premises-5-__codelineno-11-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#on-premises-5-__codelineno-11-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#on-premises-5-__codelineno-11-5"></a><span class="s">    name: nvidia-gpu-operator-group</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#on-premises-5-__codelineno-11-6"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#on-premises-5-__codelineno-11-7"></a><span class="s">spec:</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#on-premises-5-__codelineno-11-8"></a><span class="s">    targetNamespaces:</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#on-premises-5-__codelineno-11-9"></a><span class="s">    - nvidia-gpu-operator</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#on-premises-5-__codelineno-11-10"></a><span class="s">EOF</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1817,24 +1843,24 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="19">
 <li>
 <p><strong>Execute</strong> the following code block within a Terminal console to get the channel version (required for Step 20), as well as create the <code>gpu-operator-certified</code> Operator within the <code>nvidia-gpu-operator</code> namespace:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-5-__codelineno-11-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#on-premises-5-__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#on-premises-5-__codelineno-11-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#on-premises-5-__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#on-premises-5-__codelineno-11-5"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#on-premises-5-__codelineno-11-6"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#on-premises-5-__codelineno-11-7"></a><span class="s">kind: Subscription</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#on-premises-5-__codelineno-11-8"></a><span class="s">metadata:</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#on-premises-5-__codelineno-11-9"></a><span class="s">    name: gpu-operator-certified</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#on-premises-5-__codelineno-11-10"></a><span class="s">    namespace: nvidia-gpu-operator</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#on-premises-5-__codelineno-11-11"></a><span class="s">spec:</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#on-premises-5-__codelineno-11-12"></a><span class="s">    channel: &quot;${CHANNEL}&quot;</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#on-premises-5-__codelineno-11-13"></a><span class="s">    installPlanApproval: Manual</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#on-premises-5-__codelineno-11-14"></a><span class="s">    name: gpu-operator-certified</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#on-premises-5-__codelineno-11-15"></a><span class="s">    source: certified-operators</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#on-premises-5-__codelineno-11-16"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#on-premises-5-__codelineno-11-17"></a><span class="s">    startingCSV: &quot;${CURRENT_CSV}&quot;</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#on-premises-5-__codelineno-11-18"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#on-premises-5-__codelineno-12-1"></a><span class="nb">export</span> <span class="nv">CHANNEL</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifest gpu-operator-certified -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.defaultChannel}&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#on-premises-5-__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#on-premises-5-__codelineno-12-3"></a><span class="nb">export</span> <span class="nv">CURRENT_CSV</span><span class="o">=</span><span class="k">$(</span> oc get packagemanifests/gpu-operator-certified -n openshift-marketplace -ojson <span class="p">|</span> jq -r <span class="s1">&#39;.status.channels[] | select(.name == &quot;&#39;</span><span class="nv">$CHANNEL</span><span class="s1">&#39;&quot;) | .currentCSV&#39;</span> <span class="p">;</span> <span class="nb">echo</span><span class="k">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#on-premises-5-__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#on-premises-5-__codelineno-12-5"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#on-premises-5-__codelineno-12-6"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#on-premises-5-__codelineno-12-7"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#on-premises-5-__codelineno-12-8"></a><span class="s">metadata:</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#on-premises-5-__codelineno-12-9"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#on-premises-5-__codelineno-12-10"></a><span class="s">    namespace: nvidia-gpu-operator</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#on-premises-5-__codelineno-12-11"></a><span class="s">spec:</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#on-premises-5-__codelineno-12-12"></a><span class="s">    channel: &quot;${CHANNEL}&quot;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#on-premises-5-__codelineno-12-13"></a><span class="s">    installPlanApproval: Manual</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#on-premises-5-__codelineno-12-14"></a><span class="s">    name: gpu-operator-certified</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#on-premises-5-__codelineno-12-15"></a><span class="s">    source: certified-operators</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#on-premises-5-__codelineno-12-16"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#on-premises-5-__codelineno-12-17"></a><span class="s">    startingCSV: &quot;${CURRENT_CSV}&quot;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#on-premises-5-__codelineno-12-18"></a><span class="s">EOF</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1842,11 +1868,19 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="20">
 <li>
 <p><strong>Execute</strong> the following command to verify the status of the install plan:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#on-premises-5-__codelineno-12-1"></a>oc get installplan -n nvidia-gpu-operator
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-5-__codelineno-13-1"></a>oc get installplan -n nvidia-gpu-operator
 </code></pre></div>
-<p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>). Therefore, you will need to approve the install plan by executing the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-5-__codelineno-13-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#on-premises-5-__codelineno-13-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
+<div class="admonition warning">
+<p class="admonition-title">No resources found in nvidia-gpu-operator namespace.</p>
+<p><strong>Troubleshooting:</strong> The <code>nvidia-gpu-operator</code> namespace is still being deployed. Wait for 1 minute and then try executing Step 20 again.</p>
+</div>
+<p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-5-__codelineno-14-1"></a>NAME            CSV                              APPROVAL   APPROVED
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#on-premises-5-__codelineno-14-2"></a>install-4rq4j   gpu-operator-certified.v24.9.2   Manual     <span class="nb">false</span>
+</code></pre></div>
+<p>Therefore, you will need to approve the install plan by <strong>executing</strong> the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#on-premises-5-__codelineno-15-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#on-premises-5-__codelineno-15-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
 </code></pre></div>
 <p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
 <p></br>
@@ -1859,20 +1893,17 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="21">
 <li>
 <p>Create a <strong>ClusterPolicy</strong> by executing the following instructions:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-5-__codelineno-14-1"></a>oc get csv -n nvidia-gpu-operator <span class="si">${</span><span class="nv">CURRENT_CSV</span><span class="si">}</span> -ojsonpath<span class="o">={</span>.metadata.annotations.alm-examples<span class="o">}</span> <span class="p">|</span> jq .<span class="o">[</span><span class="m">0</span><span class="o">]</span> &gt; clusterpolicy.json
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#on-premises-5-__codelineno-14-2"></a>oc apply -f clusterpolicy.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#on-premises-5-__codelineno-16-1"></a>oc get csv -n nvidia-gpu-operator <span class="si">${</span><span class="nv">CURRENT_CSV</span><span class="si">}</span> -ojsonpath<span class="o">={</span>.metadata.annotations.alm-examples<span class="o">}</span> <span class="p">|</span> jq .<span class="o">[</span><span class="m">0</span><span class="o">]</span> &gt; clusterpolicy.json
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#on-premises-5-__codelineno-16-2"></a>oc apply -f clusterpolicy.json
 </code></pre></div>
-<div class="admonition warning">
-<p><strong>ATTENTION:</strong> It will take approximately 5 to 10 minutes for the ClusterPolicy effects to initialize. Take a 10 minute break and then return to carry out Step 22.</p>
-</div>
 </li>
 </ol>
 <hr />
 <ol start="22">
 <li>
-<p>After waiting, check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out.</p>
+<p>Check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out.</p>
 <p><strong>Execute</strong> the following command with the Terminal console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#on-premises-5-__codelineno-15-1"></a>oc get pods -n nvidia-gpu-operator
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#on-premises-5-__codelineno-17-1"></a>oc get pods -n nvidia-gpu-operator
 </code></pre></div>
 </li>
 </ol>
@@ -1897,7 +1928,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="23">
 <li>
 <p>Create the <code>redhat-ods-operator</code> <strong>Project</strong> on the OCP cluster with the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#on-premises-5-__codelineno-16-1"></a>oc new-project redhat-ods-operator
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#on-premises-5-__codelineno-18-1"></a>oc new-project redhat-ods-operator
 </code></pre></div>
 </li>
 </ol>
@@ -1905,13 +1936,13 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="24">
 <li>
 <p>Define the <code>rhods-operator</code> <strong>Operator Group</strong> within the project defined in Step 23:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#on-premises-5-__codelineno-17-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#on-premises-5-__codelineno-17-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#on-premises-5-__codelineno-17-3"></a><span class="s">kind: OperatorGroup</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#on-premises-5-__codelineno-17-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#on-premises-5-__codelineno-17-5"></a><span class="s">    name: rhods-operator</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#on-premises-5-__codelineno-17-6"></a><span class="s">    namespace: redhat-ods-operator</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#on-premises-5-__codelineno-17-7"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#on-premises-5-__codelineno-19-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#on-premises-5-__codelineno-19-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#on-premises-5-__codelineno-19-3"></a><span class="s">kind: OperatorGroup</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#on-premises-5-__codelineno-19-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#on-premises-5-__codelineno-19-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#on-premises-5-__codelineno-19-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#on-premises-5-__codelineno-19-7"></a><span class="s">EOF</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1919,50 +1950,52 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="25">
 <li>
 <p>Create the <strong>Operator Subscription</strong> for <code>rhods-operator</code> within the same project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#on-premises-5-__codelineno-18-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#on-premises-5-__codelineno-18-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#on-premises-5-__codelineno-18-3"></a><span class="s">kind: Subscription</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#on-premises-5-__codelineno-18-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#on-premises-5-__codelineno-18-5"></a><span class="s">    name: rhods-operator</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#on-premises-5-__codelineno-18-6"></a><span class="s">    namespace: redhat-ods-operator</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#on-premises-5-__codelineno-18-7"></a><span class="s">spec:</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#on-premises-5-__codelineno-18-8"></a><span class="s">    name: rhods-operator</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#on-premises-5-__codelineno-18-9"></a><span class="s">    channel: stable-2.13</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#on-premises-5-__codelineno-18-10"></a><span class="s">    source: redhat-operators</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#on-premises-5-__codelineno-18-11"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#on-premises-5-__codelineno-18-12"></a><span class="s">    config:</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#on-premises-5-__codelineno-18-13"></a><span class="s">        env:</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#on-premises-5-__codelineno-18-14"></a><span class="s">            - name: &quot;DISABLE_DSC_CONFIG&quot;</span>
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#on-premises-5-__codelineno-18-15"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#on-premises-5-__codelineno-20-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#on-premises-5-__codelineno-20-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#on-premises-5-__codelineno-20-3"></a><span class="s">kind: Subscription</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#on-premises-5-__codelineno-20-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#on-premises-5-__codelineno-20-5"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#on-premises-5-__codelineno-20-6"></a><span class="s">    namespace: redhat-ods-operator</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#on-premises-5-__codelineno-20-7"></a><span class="s">spec:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#on-premises-5-__codelineno-20-8"></a><span class="s">    name: rhods-operator</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#on-premises-5-__codelineno-20-9"></a><span class="s">    channel: stable-2.13</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#on-premises-5-__codelineno-20-10"></a><span class="s">    source: redhat-operators</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#on-premises-5-__codelineno-20-11"></a><span class="s">    sourceNamespace: openshift-marketplace</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#on-premises-5-__codelineno-20-12"></a><span class="s">    config:</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#on-premises-5-__codelineno-20-13"></a><span class="s">        env:</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#on-premises-5-__codelineno-20-14"></a><span class="s">            - name: &quot;DISABLE_DSC_CONFIG&quot;</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#on-premises-5-__codelineno-20-15"></a><span class="s">EOF</span>
 </code></pre></div>
 <div class="admonition warning">
-<p><strong>ATTENTION:</strong> It will take approximately 1 minute for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the <code>Red Hat OpenShift AI</code> Operator deployment.</p>
+<p><strong>ATTENTION:</strong> It will take approximately 5 minutes for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the <code>Red Hat OpenShift AI</code> Operator deployment.</p>
 </div>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.25.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="26">
 <li>
 <p>Create a <strong>DSCInitialization</strong> object <code>default-dsci</code> in <code>redhat-ods-monitoring</code> project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#on-premises-5-__codelineno-19-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#on-premises-5-__codelineno-19-2"></a><span class="s">apiVersion: dscinitialization.opendatahub.io/v1</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#on-premises-5-__codelineno-19-3"></a><span class="s">kind: DSCInitialization</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#on-premises-5-__codelineno-19-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#on-premises-5-__codelineno-19-5"></a><span class="s">    name: default-dsci</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#on-premises-5-__codelineno-19-6"></a><span class="s">spec:</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#on-premises-5-__codelineno-19-7"></a><span class="s">    applicationsNamespace: redhat-ods-applications</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#on-premises-5-__codelineno-19-8"></a><span class="s">    monitoring:</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#on-premises-5-__codelineno-19-9"></a><span class="s">        managementState: Managed</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#on-premises-5-__codelineno-19-10"></a><span class="s">        namespace: redhat-ods-monitoring</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#on-premises-5-__codelineno-19-11"></a><span class="s">    serviceMesh:</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#on-premises-5-__codelineno-19-12"></a><span class="s">        managementState: Removed</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13" href="#on-premises-5-__codelineno-19-13"></a><span class="s">    trustedCABundle:</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#on-premises-5-__codelineno-19-14"></a><span class="s">        managementState: Managed</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15" href="#on-premises-5-__codelineno-19-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
-<a id="__codelineno-19-16" name="__codelineno-19-16" href="#on-premises-5-__codelineno-19-16"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#on-premises-5-__codelineno-21-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#on-premises-5-__codelineno-21-2"></a><span class="s">apiVersion: dscinitialization.opendatahub.io/v1</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#on-premises-5-__codelineno-21-3"></a><span class="s">kind: DSCInitialization</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#on-premises-5-__codelineno-21-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#on-premises-5-__codelineno-21-5"></a><span class="s">    name: default-dsci</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#on-premises-5-__codelineno-21-6"></a><span class="s">spec:</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#on-premises-5-__codelineno-21-7"></a><span class="s">    applicationsNamespace: redhat-ods-applications</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#on-premises-5-__codelineno-21-8"></a><span class="s">    monitoring:</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#on-premises-5-__codelineno-21-9"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#on-premises-5-__codelineno-21-10"></a><span class="s">        namespace: redhat-ods-monitoring</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#on-premises-5-__codelineno-21-11"></a><span class="s">    serviceMesh:</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#on-premises-5-__codelineno-21-12"></a><span class="s">        managementState: Removed</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#on-premises-5-__codelineno-21-13"></a><span class="s">    trustedCABundle:</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#on-premises-5-__codelineno-21-14"></a><span class="s">        managementState: Managed</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#on-premises-5-__codelineno-21-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#on-premises-5-__codelineno-21-16"></a><span class="s">EOF</span>
 </code></pre></div>
 <p><strong>Monitor</strong> the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#on-premises-5-__codelineno-20-1"></a>oc get dscinitialization
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get dscinitialization
 </code></pre></div>
 <p><strong>Wait</strong> for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
 </li>
@@ -1971,57 +2004,60 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="27">
 <li>
 <p>Create a <strong>DataScienceCluster</strong> object named <code>default-dsc</code> within the same project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#on-premises-5-__codelineno-21-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#on-premises-5-__codelineno-21-2"></a><span class="s">apiVersion: datasciencecluster.opendatahub.io/v1</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#on-premises-5-__codelineno-21-3"></a><span class="s">kind: DataScienceCluster</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#on-premises-5-__codelineno-21-4"></a><span class="s">metadata:</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#on-premises-5-__codelineno-21-5"></a><span class="s">    name: default-dsc</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#on-premises-5-__codelineno-21-6"></a><span class="s">spec:</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#on-premises-5-__codelineno-21-7"></a><span class="s">    components:</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#on-premises-5-__codelineno-21-8"></a><span class="s">        codeflare:</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#on-premises-5-__codelineno-21-9"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#on-premises-5-__codelineno-21-10"></a><span class="s">        dashboard:</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#on-premises-5-__codelineno-21-11"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#on-premises-5-__codelineno-21-12"></a><span class="s">        datasciencepipelines:</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#on-premises-5-__codelineno-21-13"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#on-premises-5-__codelineno-21-14"></a><span class="s">        kserve:</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#on-premises-5-__codelineno-21-15"></a><span class="s">            managementState: Managed</span>
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#on-premises-5-__codelineno-21-16"></a><span class="s">            defaultDeploymentMode: RawDeployment</span>
-<a id="__codelineno-21-17" name="__codelineno-21-17" href="#on-premises-5-__codelineno-21-17"></a><span class="s">            serving:</span>
-<a id="__codelineno-21-18" name="__codelineno-21-18" href="#on-premises-5-__codelineno-21-18"></a><span class="s">                managementState: Removed</span>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#on-premises-5-__codelineno-21-19"></a><span class="s">                name: knative-serving</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20" href="#on-premises-5-__codelineno-21-20"></a><span class="s">        kueue:</span>
-<a id="__codelineno-21-21" name="__codelineno-21-21" href="#on-premises-5-__codelineno-21-21"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-22" name="__codelineno-21-22" href="#on-premises-5-__codelineno-21-22"></a><span class="s">        modelmeshserving:</span>
-<a id="__codelineno-21-23" name="__codelineno-21-23" href="#on-premises-5-__codelineno-21-23"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-24" name="__codelineno-21-24" href="#on-premises-5-__codelineno-21-24"></a><span class="s">        ray:</span>
-<a id="__codelineno-21-25" name="__codelineno-21-25" href="#on-premises-5-__codelineno-21-25"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-26" name="__codelineno-21-26" href="#on-premises-5-__codelineno-21-26"></a><span class="s">        trainingoperator:</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27" href="#on-premises-5-__codelineno-21-27"></a><span class="s">            managementState: Managed</span>
-<a id="__codelineno-21-28" name="__codelineno-21-28" href="#on-premises-5-__codelineno-21-28"></a><span class="s">        trustyai:</span>
-<a id="__codelineno-21-29" name="__codelineno-21-29" href="#on-premises-5-__codelineno-21-29"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-30" name="__codelineno-21-30" href="#on-premises-5-__codelineno-21-30"></a><span class="s">        workbenches:</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31" href="#on-premises-5-__codelineno-21-31"></a><span class="s">            managementState: Removed</span>
-<a id="__codelineno-21-32" name="__codelineno-21-32" href="#on-premises-5-__codelineno-21-32"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#on-premises-5-__codelineno-23-1"></a>cat <span class="s">&lt;&lt;EOF |oc apply -f -</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#on-premises-5-__codelineno-23-2"></a><span class="s">apiVersion: datasciencecluster.opendatahub.io/v1</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#on-premises-5-__codelineno-23-3"></a><span class="s">kind: DataScienceCluster</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#on-premises-5-__codelineno-23-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#on-premises-5-__codelineno-23-5"></a><span class="s">    name: default-dsc</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#on-premises-5-__codelineno-23-6"></a><span class="s">spec:</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#on-premises-5-__codelineno-23-7"></a><span class="s">    components:</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#on-premises-5-__codelineno-23-8"></a><span class="s">        codeflare:</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#on-premises-5-__codelineno-23-9"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#on-premises-5-__codelineno-23-10"></a><span class="s">        dashboard:</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#on-premises-5-__codelineno-23-11"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#on-premises-5-__codelineno-23-12"></a><span class="s">        datasciencepipelines:</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#on-premises-5-__codelineno-23-13"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#on-premises-5-__codelineno-23-14"></a><span class="s">        kserve:</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#on-premises-5-__codelineno-23-15"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#on-premises-5-__codelineno-23-16"></a><span class="s">            defaultDeploymentMode: RawDeployment</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#on-premises-5-__codelineno-23-17"></a><span class="s">            serving:</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#on-premises-5-__codelineno-23-18"></a><span class="s">                managementState: Removed</span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#on-premises-5-__codelineno-23-19"></a><span class="s">                name: knative-serving</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#on-premises-5-__codelineno-23-20"></a><span class="s">        kueue:</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#on-premises-5-__codelineno-23-21"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#on-premises-5-__codelineno-23-22"></a><span class="s">        modelmeshserving:</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#on-premises-5-__codelineno-23-23"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#on-premises-5-__codelineno-23-24"></a><span class="s">        ray:</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#on-premises-5-__codelineno-23-25"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#on-premises-5-__codelineno-23-26"></a><span class="s">        trainingoperator:</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#on-premises-5-__codelineno-23-27"></a><span class="s">            managementState: Managed</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#on-premises-5-__codelineno-23-28"></a><span class="s">        trustyai:</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#on-premises-5-__codelineno-23-29"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#on-premises-5-__codelineno-23-30"></a><span class="s">        workbenches:</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#on-premises-5-__codelineno-23-31"></a><span class="s">            managementState: Removed</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#on-premises-5-__codelineno-23-32"></a><span class="s">EOF</span>
 </code></pre></div>
 <p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>2-3 minutes</strong> to complete.</p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="28">
 <li>
 <p><strong>Execute</strong> the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get pods -n redhat-ods-applications
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#on-premises-5-__codelineno-24-1"></a>oc get pods -n redhat-ods-applications
 </code></pre></div>
 <p></br>
-Confirm that the following pods are deployed and have a running (<code>Ready</code>) status:</p>
-<ul>
-<li><code>kserve-controller-manager-0123xyz...</code></li>
-<li><code>kubeflow-training-operator-0123xyz...</code></li>
-<li><code>odh-model-controller-0123xyz-1...</code></li>
-<li><code>odh-model-controller-0123xyz-2...</code></li>
-<li><code>odh-model-controller-0123xyz-3...</code></li>
-</ul>
+If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>ALL FIVE</strong> of the following pods are deployed with a <code>Running</code> status before continuing to Step 29:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#on-premises-5-__codelineno-25-1"></a>NAME                                          READY   STATUS    RESTARTS   AGE
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#on-premises-5-__codelineno-25-2"></a>kserve-controller-manager-7b745757cb-wx7qc    <span class="m">1</span>/1     Running   <span class="m">0</span>          42s
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#on-premises-5-__codelineno-25-3"></a>kubeflow-training-operator-659b5dcb99-5t8vt   <span class="m">1</span>/1     Running   <span class="m">0</span>          56s
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#on-premises-5-__codelineno-25-4"></a>odh-model-controller-b774fb859-2b4b4          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#on-premises-5-__codelineno-25-5"></a>odh-model-controller-b774fb859-4gxhv          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#on-premises-5-__codelineno-25-6"></a>odh-model-controller-b774fb859-fpnrl          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
+</code></pre></div>
 </li>
 </ol>
 <hr />
@@ -2035,25 +2071,39 @@ Confirm that the following pods are deployed and have a running (<code>Ready</co
 <li>In the <code>metadata.annotations</code> section (Lines 4-5) of the file, add a new Line 8 which reads <code>opendatahub.io/managed: 'false'</code></li>
 <li>The resulting YAML file should resemble the following:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#on-premises-5-__codelineno-23-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#on-premises-5-__codelineno-23-2"></a><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#on-premises-5-__codelineno-23-3"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousKinds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#on-premises-5-__codelineno-23-4"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inferenceservice-config</span><span class="w"></span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#on-premises-5-__codelineno-23-5"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opendatahub</span><span class="w"></span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#on-premises-5-__codelineno-23-6"></a><span class="hll"><span class="w">    </span><span class="nt">opendatahub.io/managed</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#on-premises-5-__codelineno-26-2"></a><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#on-premises-5-__codelineno-26-3"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousKinds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#on-premises-5-__codelineno-26-4"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inferenceservice-config</span><span class="w"></span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#on-premises-5-__codelineno-26-5"></a><span class="w">    </span><span class="nt">internal.config.kubernetes.io/previousNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opendatahub</span><span class="w"></span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#on-premises-5-__codelineno-26-6"></a><span class="hll"><span class="w">    </span><span class="nt">opendatahub.io/managed</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w"></span>
 </span></code></pre></div>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.29a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.29a.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.29b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.29b.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.29c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.29c.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.29d.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.29d.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="30">
 <li>
 <p>Within the same YAML file, look for Line 379 under the <em>ingress</em> section:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#on-premises-5-__codelineno-24-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Replace</strong> Line 379 with the following (be sure to include the last <code>,</code> character):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#on-premises-5-__codelineno-25-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
 <p>Click <strong>Save</strong> (bottom-left) to finalize the changes to the YAML file. If prompted with a <em>Managed resource</em> warning, click <strong>Save</strong> again to confirm.</p>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.30a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.30a.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.30b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.30b.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.30c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.30c.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -2065,27 +2115,27 @@ Confirm that the following pods are deployed and have a running (<code>Ready</co
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#on-premises-5-__codelineno-29-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#on-premises-5-__codelineno-30-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#on-premises-5-__codelineno-31-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#on-premises-5-__codelineno-29-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#on-premises-5-__codelineno-32-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#on-premises-5-__codelineno-30-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#on-premises-5-__codelineno-33-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
