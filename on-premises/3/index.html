@@ -558,7 +558,7 @@
 <hr />
 <ol start="2">
 <li>
-<p>Retrieve the <em>OCP Dashboard URL</em> (recorded in Step 6 of the previous module). Obtain the <strong>OpenShift Base Domain</strong> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the portion between <code>.apps.</code> up to and including <code>.com</code> (exclude the <code>/dashboards</code> addendum). The characters in <em>your</em> OCP dashboard URL will differ.</p>
+<p>Retrieve the <em>OCP Dashboard URL</em> (recorded in Step 6 of the previous module). Obtain the <strong>OpenShift Base Domain</strong> by extracting the portion of the URL that matches the position highlighted in the sample URL below. Extract the characters following <code>.apps.</code> up to and including <code>.com</code>. Do not include the <code>/dashboards</code> addendum.</p>
 <div class="admonition note">
 <p>https://console-openshift-console.apps.<strong>678a250b79141644e78804e0.ocp.techzone.ibm.com</strong></p>
 </div>
@@ -611,8 +611,9 @@
 <p>Using the connected Terminal console, <strong>execute</strong> the following instruction to install Podman:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo yum install -y podman
 </code></pre></div>
+<p>After a successful operation, the console will return the message <code>Complete!</code> alongside a summary of the installed components. </p>
 <div class="admonition warning">
-<p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
+<p>The operation will take approximately <strong>2 minutes</strong> to complete.</p>
 </div>
 <p><a class="glightbox" href="../_attachments/onprem-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-3.5.png" /></a></p>
 </li>
@@ -756,7 +757,7 @@
 <p>You must make <strong>modifications</strong> to <strong>Line 19</strong>, <strong>Line 23</strong>, and <strong>Line 49</strong> of the <em>CP4D Environment Variables</em> to tailor the variables to <em>your</em> specific cluster.</p>
 <ul>
 <li>
-<p><strong>Line 19:</strong> substitute the <code>&lt;REPLACE THIS VALUE&gt;</code> placeholder for <code>export OCP_URL=</code> with to the value of <em>OpenShift Base Domain</em> that was recorded in Step 2. Do not replace the <code>.api.</code> or <code>:6443:</code> components, as these are required. Your modified Line 19 should resemble the following:</p>
+<p><strong>Line 19:</strong> substitute the <code>&lt;REPLACE THIS VALUE&gt;</code> placeholder for <code>export OCP_URL=</code> with to the value of <em>OpenShift Base Domain</em> that was recorded in Step 2. <strong>Do not replace the <code>.api.</code> or <code>:6443:</code> components</strong>, as these are required. Your modified Line 19 should resemble the following:</p>
 <div class="admonition note">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_URL</span><span class="o">=</span>api.678a250b79141644e78804e0.ocp.techzone.ibm.com:6443
 </code></pre></div>
@@ -807,17 +808,23 @@
 <hr />
 <ol start="9">
 <li>
-<p><strong>Copy</strong> the following code block and <strong>execute</strong> it within the console to install <code>cpd-cli</code>. Installation should only take a few moments to complete.</p>
+<p><strong>Copy</strong> the following code block and <strong>execute</strong> it within the console to install <code>cpd-cli</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>wget https://github.com/IBM/cpd-cli/releases/download/v14.1.0/cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>tar -xzf cpd-cli-linux-EE-14.1.0.tgz
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/cpd-cli-linux-EE-14.1.0-1189&quot;</span>:<span class="nv">$PATH</span>
 </code></pre></div>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="10">
 <li>
-<p><strong>Verify</strong> that the CLI has been successfully integrated by typing <code>cpd-cli</code> and then <span class="keys"><kbd class="key-enter">Enter</kbd></span> into the console.</p>
+<p><strong>Verify</strong> that the CLI has been successfully integrated with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cpd-cli
+</code></pre></div>
+<p>The output from the console should resemble the screenshot below.</p>
 <p><a class="glightbox" href="../_attachments/onprem-3.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-3.10.png" /></a></p>
 </li>
 </ol>
@@ -825,9 +832,16 @@
 <ol start="11">
 <li>
 <p><strong>Verify</strong> the status of the restarted container by typing <code>podman ps</code> and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, which should return the result of a single container running on the bastion host.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cpd-cli manage restart-container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>cpd-cli manage restart-container
 </code></pre></div>
+<p>After a successful operation, the console will return a pair of messages that resemble the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T17:51:35.317974Z Successfully started the container olm-utils-play-v3
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T17:51:35.318017Z Container olm-utils-play-v3 has been re-created
+</code></pre></div>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
+</div>
 <p><a class="glightbox" href="../_attachments/onprem-3.11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-3.11.png" /></a></p>
 </li>
 </ol>
@@ -835,7 +849,7 @@
 <ol start="12">
 <li>
 <p>Source the newly-configured environment variables with the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 </ol>
@@ -843,10 +857,11 @@
 <ol start="13">
 <li>
 <p>Test that the login for <code>oc</code> command line is now functioning properly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc login <span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span> <span class="si">${</span><span class="nv">LOGIN_ARGUMENTS</span><span class="si">}</span>
 </code></pre></div>
 <p>The command line should return back with a prompt describing <code>You have access to ... projects</code> which indicates that <code>oc</code> and the environment variables have been configured.</p>
-<p><a class="glightbox" href="../_attachments/onprem-3.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-3.13.png" /></a></p>
+<p></br>
+<a class="glightbox" href="../_attachments/onprem-3.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-3.13.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -858,27 +873,27 @@
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
