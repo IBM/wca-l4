@@ -2291,7 +2291,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <div class="admonition quote">
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=wca-installing" target="_blank"><strong>Installing watsonx Code Assistant v5.1.x</strong></a>.</p>
 </div>
-<h2 id="on-premises-7-i-responsibilities-and-requirements"><strong>i. Responsibilities and Requirements</strong></h2>
+<h2 id="on-premises-7-i-responsibilities"><strong>i. Responsibilities</strong></h2>
 <p>Following the release of Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
 <p>To install WCA, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:</p>
 <ul>
@@ -2493,7 +2493,10 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#on-premises-7-__codelineno-7-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#on-premises-7-__codelineno-7-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<p>The console will return multiple lines. Take note of the lines with headers <em>CPD Url</em>, <em>CPD Username</em>, and <em>CPD Password</em>. <strong>Copy</strong> the entirety of the following lines from <em>your</em> Terminal's output to a notepad for reference later.</p>
+<ul>
+<li>The console will return multiple lines. Take note of the lines with headers <em>CPD Url</em>, <em>CPD Username</em>, and <em>CPD Password</em>. These have been highlighted in the code sample below.</li>
+<li><strong>Copy</strong> the entirety of the following lines from <em>your</em> Terminal's output to a notepad for reference later.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-7-__codelineno-8-1"></a><span class="o">[</span>INFO<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:17.481851Z Run command: podman <span class="nb">exec</span> -it olm-utils-play-v3 get-cpd-instance-details --cpd_instance_ns<span class="o">=</span>cpd-watsonx --get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-7-__codelineno-8-2"></a><span class="hll">CPD Url: cpd-cpd-watsonx.apps.67da04cc1b2e441b1d48a668.ocp.techzone.ibm.com
 </span><a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-7-__codelineno-8-3"></a><span class="hll">CPD Username: cpadmin
