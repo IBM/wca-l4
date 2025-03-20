@@ -374,8 +374,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-checklist" class="md-nav__link">
-    ii. Checklist
+  <a href="#ii-deployment-checklist" class="md-nav__link">
+    ii. Deployment checklist
   </a>
   
 </li>
@@ -464,8 +464,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-checklist" class="md-nav__link">
-    ii. Checklist
+  <a href="#ii-deployment-checklist" class="md-nav__link">
+    ii. Deployment checklist
   </a>
   
 </li>
@@ -520,12 +520,12 @@
 <p><strong>The <em>operands project</em> for the instance:</strong> The custom resources for the control plane and WCA are installed in the operands project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERANDS}</code> environment variable refers to the operands project.</p>
 </li>
 </ul>
+<hr />
 <div class="admonition note">
 <p>Participants are encouraged to review the following requirements again before continuing with the install to verify that all the components are in place <em>and</em> to reinforce their understanding as to why such components are needed.</p>
 </div>
 <p><strong>Version Requirements</strong>
 All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code>.</p>
-<hr />
 <p><strong>Environment Variables</strong>
 The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.</p>
 <ul>
@@ -538,13 +538,10 @@ The commands in this task use environment variables so that you can run the comm
 </code></pre></div></p>
 </li>
 </ul>
-<hr />
 <p><strong>Security Context Constraint</strong>
 WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
-<hr />
 <p><strong>Common Core Services</strong>
 WCA requires the availability of IBM Software Hub common core services. If the common core services are not installed in the <em>operands</em> project for the instance, the common core services are automatically installed when you install WCA. The common core services installation increases the amount of time the installation takes to complete.</p>
-<hr />
 <p><strong>Storage Requirements</strong>
 Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future clusters you may deploy, ensure that you specify a storage class with an equivalent definition.</p>
 <table>
@@ -609,7 +606,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </tbody>
 </table>
 <hr />
-<h2 id="ii-checklist"><strong>ii. Checklist</strong></h2>
+<h2 id="ii-deployment-checklist"><strong>ii. Deployment checklist</strong></h2>
 <p>To review, the following tasks need to be completed before installing WCA on-premises. The various modules of this hands-on lab have already covered those applicable to the environment you are about to deploy. However, keep this checklist handy for future deployments you will be making with clients and in the field.</p>
 <p>| Prerequisite | Documentation |
 | The cluster meets the minimum requirements for installing WCA. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/sys-reqs/overview-sys-reqs.html" target="_blank"><strong>System requirements</strong></a> |
