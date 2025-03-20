@@ -2308,7 +2308,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <hr />
 <p><strong>IBM SOFTWARE HUB VERSIONING</strong>
 </br>
-All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code>.</p>
+All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code> as well.</p>
 <p></br>
 <strong>ENVIRONMENT VARIABLES</strong>
 </br>
@@ -2323,8 +2323,7 @@ The commands in this task use environment variables so that you can run the comm
 </code></pre></div></p>
 </li>
 </ul>
-<p></br>
-<strong>SECURITY CONTEXT CONSTRAINT</strong>
+<p><strong>SECURITY CONTEXT CONSTRAINT</strong>
 </br>
 WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
 <p></br>
@@ -2393,7 +2392,6 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </table>
 <h2 id="on-premises-7-iii-deployment-checklist"><strong>iii. Deployment checklist</strong></h2>
 <p>To review, the following tasks need to be completed before installing WCA on-premises. The various modules of this hands-on lab have already covered those applicable to the environment you are about to deploy. However, keep this checklist handy for future deployments you will be making with clients and in the field.</p>
-<hr />
 <table>
 <thead>
 <tr>
@@ -2484,7 +2482,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#on-premises-7-__codelineno-5-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="admonition warning">
-<p>Completion of this operation will take approximately <strong>1 hour</strong>, after which the console will return:
+<p>Completion of this operation may take up to <strong>2 hours</strong>, after which the console will return:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-7-__codelineno-6-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
 </code></pre></div></p>
 </div>
@@ -2500,7 +2498,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </code></pre></div>
 <ul>
 <li>The console will return multiple lines. Take note of the lines with headers <em>CPD Url</em>, <em>CPD Username</em>, and <em>CPD Password</em>. These have been highlighted in the code sample below.</li>
-<li><strong>Copy</strong> the entirety of the following lines from <em>your</em> Terminal's output to a notepad for reference later.</li>
+<li><strong>Copy</strong> the three variables from <em>your</em> Terminal's output to a notepad for reference later.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-7-__codelineno-8-1"></a><span class="o">[</span>INFO<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:17.481851Z Run command: podman <span class="nb">exec</span> -it olm-utils-play-v3 get-cpd-instance-details --cpd_instance_ns<span class="o">=</span>cpd-watsonx --get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-7-__codelineno-8-2"></a><span class="hll">CPD Url: cpd-cpd-watsonx.apps.67da04cc1b2e441b1d48a668.ocp.techzone.ibm.com
