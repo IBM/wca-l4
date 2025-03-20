@@ -525,7 +525,8 @@
 </div>
 <h2 id="i-user-responsibilities"><strong>i. User responsibilities</strong></h2>
 <p>Following the release of Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
-<p>To install WCA, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:</p>
+<hr />
+<p>To install WCA on-premises, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:</p>
 <ul>
 <li>
 <p><strong>The <em>operators project</em> for the instance:</strong> Operators for this instance of WCA are installed in the <code>operators</code> project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERATORS}</code> environment variable refers to the operators project.</p>
@@ -538,8 +539,8 @@
 <p>Participants are encouraged to review the following requirements again before continuing with the install to verify that all the components are in place <em>and</em> to reinforce their understanding as to why such components are needed.</p>
 <hr />
 <p><strong>IBM SOFTWARE HUB VERSIONING</strong>
+</br>
 All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code>.</p>
-<hr />
 <p><strong>ENVIRONMENT VARIABLES</strong>
 </br>
 The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.</p>
@@ -553,15 +554,12 @@ The commands in this task use environment variables so that you can run the comm
 </code></pre></div></p>
 </li>
 </ul>
-<hr />
 <p><strong>SECURITY CONTEXT CONSTRAINT</strong>
 </br>
 WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
-<hr />
 <p><strong>COMMON CORE SERVICES</strong>
 </br>
 WCA requires the availability of IBM Software Hub common core services. If the common core services are not installed in the <em>operands</em> project for the instance, the common core services are automatically installed when you install WCA. The common core services installation increases the amount of time the installation takes to complete.</p>
-<hr />
 <p><strong>STORAGE</strong>
 </br>
 Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future clusters you may deploy, ensure that you specify a storage class with an equivalent definition.</p>
@@ -626,9 +624,9 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="iii-deployment-checklist"><strong>iii. Deployment checklist</strong></h2>
 <p>To review, the following tasks need to be completed before installing WCA on-premises. The various modules of this hands-on lab have already covered those applicable to the environment you are about to deploy. However, keep this checklist handy for future deployments you will be making with clients and in the field.</p>
+<hr />
 <table>
 <thead>
 <tr>
