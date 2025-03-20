@@ -367,22 +367,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-fetching-dependencies" class="md-nav__link">
-    i. Fetching dependencies
+  <a href="#i-responsibilities-and-requirements" class="md-nav__link">
+    i. Responsibilities and Requirements
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-installing-software" class="md-nav__link">
-    ii. Installing software
+  <a href="#ii-checklist" class="md-nav__link">
+    ii. Checklist
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-next-steps" class="md-nav__link">
-    iii. Next steps
+  <a href="#iii-fetching-dependencies" class="md-nav__link">
+    iii. Fetching dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-installing-software" class="md-nav__link">
+    iv. Installing software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
   </a>
   
 </li>
@@ -443,22 +457,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-fetching-dependencies" class="md-nav__link">
-    i. Fetching dependencies
+  <a href="#i-responsibilities-and-requirements" class="md-nav__link">
+    i. Responsibilities and Requirements
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-installing-software" class="md-nav__link">
-    ii. Installing software
+  <a href="#ii-checklist" class="md-nav__link">
+    ii. Checklist
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-next-steps" class="md-nav__link">
-    iii. Next steps
+  <a href="#iii-fetching-dependencies" class="md-nav__link">
+    iii. Fetching dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-installing-software" class="md-nav__link">
+    iv. Installing software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
   </a>
   
 </li>
@@ -481,21 +509,115 @@
 <div class="admonition quote">
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=wca-installing" target="_blank"><strong>Installing watsonx Code Assistant v5.1.x</strong></a>.</p>
 </div>
-<h2 id="i-fetching-dependencies"><strong>i. Fetching dependencies</strong></h2>
-<p>In the following section, you will assume the role of an instance administrator and install IBM watsonx Code Assistant (WCA) using the IBM Software Hub components set up in the previous module. Following the release of Software Hub <code>v5.x</code>, administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
+<h2 id="i-responsibilities-and-requirements"><strong>i. Responsibilities and Requirements</strong></h2>
+<p>Following the release of Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
+<p>To install WCA, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:
+- <strong>The <em>operators project</em> for the instance:</strong> Operators for this instance of WCA are installed in the <code>operators</code> project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERATORS}</code> environment variable refers to the operators project.
+- <strong>The <em>operands project</em> for the instance:</strong> The custom resources for the control plane and WCA are installed in the operands project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERANDS}</code> environment variable refers to the operands project.</p>
+<hr />
+<p>Participants are encouraged to review the following requirements again before continuing with the install to verify that all the components are in place <em>and</em> to reinforce their understanding as to why such components are needed.</p>
+<hr />
+<p><strong>Version Requirements</strong>
+All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code> as well.</p>
+<p><strong>Environment Variables</strong>
+The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.
+- If you want to read more about how to structure scripts like <code>cpd_vars.sh</code>, which define environment variables within a single source of truth, <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/collect-info-install-variables.html" target="_blank"><strong>review the IBM Documentation</strong></a>.
+- To use the environment variables from the script, you must source the environment variables before you run the commands in this task. For example, run:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">source</span> ./cpd_vars.sh
+</code></pre></div></p>
+<p><strong>Security Context Constraint</strong>
+WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
+<p><strong>Common Core Services</strong>
+WCA requires the availability of IBM Software Hub common core services. If the common core services are not installed in the <em>operands</em> project for the instance, the common core services are automatically installed when you install WCA. The common core services installation increases the amount of time the installation takes to complete.</p>
+<p><strong>Storage Requirements</strong>
+Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future clusters you may deploy, ensure that you specify a storage class with an equivalent definition.</p>
+<table>
+<thead>
+<tr>
+<th>Storage</th>
+<th>Notes</th>
+<th>Storage Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenShift Data Foundation</strong></td>
+<td>When you install the service, specify file storage and block storage.</td>
+<td>File storage: <code>ocs-storagecluster-cephfs</code></br>Block storage: <code>ocs-storagecluster-ceph-rbd</code></td>
+</tr>
+<tr>
+<td><strong>IBM Fusion Data Foundation</strong></td>
+<td>When you install the service, specify file storage and block storage.</td>
+<td>File storage: <code>ocs-storagecluster-cephfs</code></br>Block storage: <code>ocs-storagecluster-ceph-rbd</code></td>
+</tr>
+<tr>
+<td><strong>IBM Fusion Global Data Platform</strong></td>
+<td>When you install the service, specify the same storage class for both file storage and block storage.</td>
+<td>File storage: <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></br>Block storage: <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></td>
+</tr>
+<tr>
+<td><strong>IBM Storage Scale Container Native</strong></td>
+<td>When you install the service, specify the same storage class for both file storage and block storage.</td>
+<td>File storage: <code>ibm-spectrum-scale-sc</code></br>Block storage: <code>ibm-spectrum-scale-sc</code></td>
+</tr>
+<tr>
+<td><strong>Portworx</strong></td>
+<td>When you install the service, the <code>--storage_vendor=portworx</code> option ensures that the service uses the correct storage classes.</td>
+<td>File storage: <code>portworx-shared-gp3</code></br>Block storage: <code>portworx-elastic-sc</code></td>
+</tr>
+<tr>
+<td><strong>NFS</strong></td>
+<td>When you install the service, specify the same storage class for both file storage and block storage.</td>
+<td>File storage: <code>managed-nfs-storage</code></br>Block storage: <code>managed-nfs-storage</code></td>
+</tr>
+<tr>
+<td><strong>Amazon Elastic storage</strong></td>
+<td>When you install the service, specify file storage and block storage.</td>
+<td></td>
+</tr>
+<tr>
+<td>File storage is provided by Amazon Elastic File System. Block storage is provided by Amazon Elastic Block Store.</td>
+<td>File storage: <code>efs-nfs-client</code></br>Block storage: <code>gp2-csi</code> or <code>gp3-csi</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NetApp Trident</strong></td>
+<td>When you install the service, specify the same storage class for both file storage and block storage.</td>
+<td>File storage: <code>ontap-nas</code></br>Block storage: <code>ontap-nas</code></td>
+</tr>
+<tr>
+<td><strong>Nutanix</strong></td>
+<td>Not supported.</td>
+<td>Not applicable.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ii-checklist"><strong>ii. Checklist</strong></h2>
+<p>To review, the following tasks need to be completed before installing WCA on-premises. The various modules of this hands-on lab have already covered those applicable to the environment you are about to deploy. However, keep this checklist handy for future deployments you will be making with clients and in the field.</p>
+<p>| Prerequisite | Documentation |
+| The cluster meets the minimum requirements for installing WCA. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/sys-reqs/overview-sys-reqs.html" target="_blank"><strong>System requirements</strong></a> |
+| The workstation from which you will run the installation is set up as a client workstation and includes the following command-line interfaces: IBM Software Hub CLI (<code>cpd-cli</code>) and OpenShift CLI (<code>oc</code>) | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/setup-client.html" target="_blank"><strong>Setting up a client workstation</strong></a> |
+| The IBM Software Hub control plane is installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/install-platform.html" target="_blank"><strong>Installing an instance of IBM Software Hub</strong></a> |
+| For environments that use a private container registry, such as air-gapped environments, the WCA software images are mirrored to the private container registry. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-mirror.html" target="_blank"><strong>Mirroring images to a private container registry</strong></a> |
+| For environments that use a private container registry, such as air-gapped environments, the <code>cpd-cli</code> is configured to pull the <code>olm-utils-v3</code> image from the private container registry. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-move-cli-get-image.html" target="_blank"><strong>Pulling the olm-utils-v3 image from the private container registry</strong></a> |
+| The operators that are required to use GPUs are installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-node-gpu.html" target="_blank"><strong>Installing operators for services that require GPUs</strong></a> |
+| Red Hat OpenShift AI is installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-openshift-ai.html" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a> |</p>
+<h2 id="iii-fetching-dependencies"><strong>iii. Fetching dependencies</strong></h2>
+<p>In the following section, participants will assume the role of an instance administrator and install WCA using the IBM Software Hub components set up in the previous module.</p>
 <hr />
 <ol>
 <li>
 <p>Apply the entitlement for WCA by <strong>executing</strong> the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cpd-cli manage apply-entitlement <span class="se">\</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--entitlement<span class="o">=</span>watsonx-code-assistant <span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--production<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cpd-cli manage apply-entitlement <span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--entitlement<span class="o">=</span>watsonx-code-assistant <span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>--production<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>1 minute</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847741Z The apply-entitlement <span class="nb">command</span> ran successfully.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847741Z The apply-entitlement <span class="nb">command</span> ran successfully.
 </code></pre></div></p>
 </div>
 </li>
@@ -504,37 +626,37 @@
 <ol start="2">
 <li>
 <p>Now that the components have been defined, install the services Operators by <strong>executing</strong> the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>15 minutes</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690774Z The apply-olm <span class="nb">command</span> ran successfully.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690774Z The apply-olm <span class="nb">command</span> ran successfully.
 </code></pre></div></p>
 </div>
 </li>
 </ol>
 <hr />
-<h2 id="ii-installing-software"><strong>ii. Installing software</strong></h2>
+<h2 id="iv-installing-software"><strong>iv. Installing software</strong></h2>
 <p>Creating the custom resources for watsonx Code Assistant and kicking off the installation process is achieved with relatively few inputs from the administrator.</p>
 <hr />
 <ol start="3">
 <li>
 <p>Start the installation process for WCA by executing the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>1 hour</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
 </code></pre></div></p>
 </div>
 </li>
@@ -543,17 +665,17 @@
 <ol start="4">
 <li>
 <p>Once the installation procedure of Step 3 has wrapped up, retrieve the details about the WCA instance by <strong>executing</strong> the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <p>The console will return multiple lines. Take note of the lines with headers <em>CPD Url</em>, <em>CPD Username</em>, and <em>CPD Password</em>. <strong>Copy</strong> the entirety of the following lines from <em>your</em> Terminal's output to a notepad for reference later.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">[</span>INFO<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:17.481851Z Run command: podman <span class="nb">exec</span> -it olm-utils-play-v3 get-cpd-instance-details --cpd_instance_ns<span class="o">=</span>cpd-watsonx --get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="hll">CPD Url: cpd-cpd-watsonx.apps.67da04cc1b2e441b1d48a668.ocp.techzone.ibm.com
-</span><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="hll">CPD Username: cpadmin
-</span><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="hll">CPD Password: xEhwFROJ5rAL4DZ3ggTNKzlREXDYDYHU
-</span><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949702Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949759Z The get-cpd-instance-details <span class="nb">command</span> ran successfully.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">[</span>INFO<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:17.481851Z Run command: podman <span class="nb">exec</span> -it olm-utils-play-v3 get-cpd-instance-details --cpd_instance_ns<span class="o">=</span>cpd-watsonx --get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="hll">CPD Url: cpd-cpd-watsonx.apps.67da04cc1b2e441b1d48a668.ocp.techzone.ibm.com
+</span><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="hll">CPD Username: cpadmin
+</span><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="hll">CPD Password: xEhwFROJ5rAL4DZ3ggTNKzlREXDYDYHU
+</span><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949702Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949759Z The get-cpd-instance-details <span class="nb">command</span> ran successfully.
 </code></pre></div>
 </li>
 </ol>
@@ -562,7 +684,7 @@
 <li>Log in</li>
 </ol>
 <hr />
-<h2 id="iii-next-steps"><strong>iii. Next steps</strong></h2>
+<h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
 <p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment! The final module of the <em>On-Premises Installation and Deployment</em> chapter will debrief you on the lessons learned and provide context for the remaining sections of the Level 4 curriculum.</p>
 <details class="note">
 <summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
@@ -570,27 +692,27 @@
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
