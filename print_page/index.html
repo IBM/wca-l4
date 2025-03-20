@@ -2309,7 +2309,8 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <p><strong>IBM SOFTWARE HUB VERSIONING</strong>
 </br>
 All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code>.</p>
-<p><strong>ENVIRONMENT VARIABLES</strong>
+<p></br>
+<strong>ENVIRONMENT VARIABLES</strong>
 </br>
 The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.</p>
 <ul>
@@ -2322,13 +2323,16 @@ The commands in this task use environment variables so that you can run the comm
 </code></pre></div></p>
 </li>
 </ul>
-<p><strong>SECURITY CONTEXT CONSTRAINT</strong>
+<p></br>
+<strong>SECURITY CONTEXT CONSTRAINT</strong>
 </br>
 WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
-<p><strong>COMMON CORE SERVICES</strong>
+<p></br>
+<strong>COMMON CORE SERVICES</strong>
 </br>
 WCA requires the availability of IBM Software Hub common core services. If the common core services are not installed in the <em>operands</em> project for the instance, the common core services are automatically installed when you install WCA. The common core services installation increases the amount of time the installation takes to complete.</p>
-<p><strong>STORAGE</strong>
+<p></br>
+<strong>STORAGE</strong>
 </br>
 Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future clusters you may deploy, ensure that you specify a storage class with an equivalent definition.</p>
 <table>
@@ -2343,42 +2347,42 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <tr>
 <td><strong>OpenShift Data Foundation</strong></td>
 <td>When you install the service, specify file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
+<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
 </tr>
 <tr>
 <td><strong>IBM Fusion Data Foundation</strong></td>
 <td>When you install the service, specify file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
+<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
 </tr>
 <tr>
 <td><strong>IBM Fusion Global Data Platform</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></br></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></td>
+<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></td>
 </tr>
 <tr>
 <td><strong>IBM Storage Scale Container Native</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code></br></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code></td>
+<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code></td>
 </tr>
 <tr>
 <td><strong>Portworx</strong></td>
 <td>When you install the service, the <code>--storage_vendor=portworx</code> option ensures that the service uses the correct storage classes.</td>
-<td><strong>File storage:</strong> <code>portworx-shared-gp3</code></br></br><strong>Block storage:</strong> <code>portworx-elastic-sc</code></td>
+<td><strong>File storage:</strong> <code>portworx-shared-gp3</code></br><strong>Block storage:</strong> <code>portworx-elastic-sc</code></td>
 </tr>
 <tr>
 <td><strong>NFS</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>managed-nfs-storage</code></br></br><strong>Block storage:</strong> <code>managed-nfs-storage</code></td>
+<td><strong>File storage:</strong> <code>managed-nfs-storage</code></br><strong>Block storage:</strong> <code>managed-nfs-storage</code></td>
 </tr>
 <tr>
 <td><strong>Amazon Elastic storage</strong></td>
 <td>When you install the service, specify file storage and block storage. File storage is provided by Amazon Elastic File System. Block storage is provided by Amazon Elastic Block Store.</td>
-<td><strong>File storage:</strong> <code>efs-nfs-client</code></br></br><strong>Block storage:</strong> <code>gp2-csi</code> or <code>gp3-csi</code></td>
+<td><strong>File storage:</strong> <code>efs-nfs-client</code></br><strong>Block storage:</strong> <code>gp2-csi</code> or <code>gp3-csi</code></td>
 </tr>
 <tr>
 <td><strong>NetApp Trident</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td><strong>File storage:</strong> <code>ontap-nas</code></br></br><strong>Block storage:</strong> <code>ontap-nas</code></td>
+<td><strong>File storage:</strong> <code>ontap-nas</code></br><strong>Block storage:</strong> <code>ontap-nas</code></td>
 </tr>
 <tr>
 <td><strong>Nutanix</strong></td>
