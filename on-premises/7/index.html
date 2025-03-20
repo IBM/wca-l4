@@ -774,12 +774,12 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment!</p>
 <hr />
 <p>Explore and inspect various aspects of the on-premises environment as you wish, but keep in mind that without GPUs attached to the environment you will be significantly restricted in terms of usability. Some features may be unavailable or broken without such hardware. That is why for the <em>Application Modernization</em> hands-on modules, you will have full GPU access via the provided IBM Cloud environments. Those modules will delve deeply into the administrative and developer-oriented tasks that are limited for the on-premises environment.</p>
-<div class="admonition warning">
-<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<details class="warning">
+<summary>GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</summary>
 <p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
 <p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
 <p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
-</div>
+</details>
 <details class="note">
 <summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
 <p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;BASTION_PWD&gt;</code> placeholder with the password specific to <em>your</em> environment.</p>
