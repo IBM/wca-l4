@@ -492,19 +492,28 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--entitlement<span class="o">=</span>watsonx-code-assistant <span class="se">\</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--production<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
+<div class="admonition warning">
+<p>Completion of this operation will take approximately <strong>1 minute</strong>, after which the console will return:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847741Z The apply-entitlement <span class="nb">command</span> ran successfully.
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="2">
 <li>
 <p>Now that the components have been defined, install the services Operators by <strong>executing</strong> the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
 </code></pre></div>
 <div class="admonition warning">
-<p>Completion of this operation will take approximately <strong>10 minutes</strong>.</p>
+<p>Completion of this operation will take approximately <strong>15 minutes</strong>, after which the console will return:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690774Z The apply-olm <span class="nb">command</span> ran successfully.
+</code></pre></div></p>
 </div>
 </li>
 </ol>
@@ -515,17 +524,17 @@
 <ol start="3">
 <li>
 <p>Start the installation process for WCA by executing the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>1 hour</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
 </code></pre></div></p>
 </div>
 </li>
@@ -534,9 +543,9 @@
 <ol start="4">
 <li>
 <p>Once the installation procedure of Step 3 has wrapped up, retrieve the details about the WCA instance by <strong>executing</strong> the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 </li>
 </ol>
@@ -553,27 +562,27 @@
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>

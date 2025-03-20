@@ -807,13 +807,13 @@
 <p>Use your <em>IBMid</em> and <em>password</em> to <strong>log in</strong> to the <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank"><strong>Container Software Library</strong></a>.</p>
 </li>
 <li>
-<p>Click the <strong>Entitlement keys</strong> tab from the navigation menu.</p>
+<p>Click the <strong>Entitlement keys</strong><sup>[A]</sup> tab from the navigation menu.</p>
 </li>
 <li>
-<p>Click <strong>Add new key</strong> to generate a new entitlement key.</p>
+<p>Click <strong>Add new key</strong><sup>[B]</sup> to generate a new entitlement key.</p>
 </li>
 <li>
-<p>Select <strong>Copy</strong> to capture the entitlement key to the clipboard.</p>
+<p>Select <strong>Copy</strong><sup>[C]</sup> to capture the entitlement key to the clipboard.</p>
 </li>
 <li>
 <p>Paste and <strong>save</strong> the entitlement key to a text file on your local machine.</p>
@@ -923,7 +923,7 @@
 </li>
 <li>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
-<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation. Wait for the ITZ reservation to be marked as <em>"Ready"</em> before continuing.</p>
+<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress of your reservation. While <em>"Provisioning"</em><sup>[A]</sup>, the reservation will be marked with a yellow tile. <strong>Wait</strong> for the ITZ reservation to be marked as <em>"Ready"</em><sup>[B]</sup>before continuing.</p>
 <div class="admonition warning">
 <p class="admonition-title">PROVISIONING TIMES</p>
 <p>This operation will take approximately <strong>90 - 120 minutes</strong> to complete.</p>
@@ -948,13 +948,13 @@
 <li>
 <p>Scroll down the page until you reach the <strong>Reservation Details</strong> section. Record the following connection details for the OpenShift Container Platform (OCP) cluster to a notepad:</p>
 <ul>
-<li><em>Desktop URL</em> (interchangeable with <strong>OCP Dashboard URL</strong>)</li>
-<li><em>Cluster Admin Username</em></li>
-<li><em>Cluster Admin Password</em></li>
-<li><em>API URL</em></li>
-<li><em>Bastion Username</em></li>
-<li><em>Bastion Password</em></li>
-<li><em>Bastion SSH Connection</em></li>
+<li><em>Desktop URL</em> (interchangeable with <strong>OCP Dashboard URL</strong>)<sup>[A]</sup></li>
+<li><em>Cluster Admin Username</em><sup>[B]</sup></li>
+<li><em>Cluster Admin Password</em><sup>[C]</sup></li>
+<li><em>API URL</em><sup>[D]</sup></li>
+<li><em>Bastion Username</em><sup>[E]</sup></li>
+<li><em>Bastion Password</em><sup>[F]</sup></li>
+<li><em>Bastion SSH Connection</em><sup>[G]</sup></li>
 </ul>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-2.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-2.6a.png" /></a>
@@ -1292,12 +1292,11 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-3-__codelineno-10-1"></a><span class="nb">echo</span> <span class="nv">$PATH</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#on-premises-3-__codelineno-10-2"></a>cpd-cli manage restart-container
 </code></pre></div>
-<p>After a successful operation, the console will return a pair of messages that resemble the following:</p>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete. After a successful operation, the console will return a pair of messages that resemble the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-3-__codelineno-11-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T17:51:35.317974Z Successfully started the container olm-utils-play-v3
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#on-premises-3-__codelineno-11-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T17:51:35.318017Z Container olm-utils-play-v3 has been re-created
 </code></pre></div>
-<div class="admonition warning">
-<p>The operation will take approximately <strong>1 minute</strong> to complete.</p>
 </div>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-3.11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-3.11.png" /></a></p>
 </li>
@@ -1398,10 +1397,12 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-4-__codelineno-2-3"></a>--password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-4-__codelineno-2-4"></a>--server<span class="o">=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span>
 </code></pre></div>
-<p>After a successful run, the console should return a pair of messages that resemble the following:</p>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete. After a successful run, the console should return a pair of messages that resemble the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-4-__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978349Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-4-__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978412Z The login-to-ocp <span class="nb">command</span> ran successfully.
 </code></pre></div>
+</div>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-4.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-4.2.png" /></a></p>
 </li>
@@ -1415,7 +1416,7 @@
 <p><strong>Execute</strong> the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-4-__codelineno-4-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
-<p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
+<p>The console will return two <code>[SUCCESS]</code> statements indicating a successful run.</p>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-4.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-4.3.png" /></a></p>
 </li>
 </ol>
@@ -1491,7 +1492,7 @@
 <ol start="2">
 <li>
 <p>Afterwards, return to your web browser and open the <strong>OCP Dashboard</strong> (<a href="https://ibm.github.io/wca-l4/on-premises/2/#ii-accessing-the-cluster" target="_blank"><strong>Step 8 of Module 2</strong></a>).</p>
-<p>From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong>.</p>
+<p>From the left-hand navigation menu, navigate to <strong>Operators</strong> &gt; <strong>OperatorHub</strong><sup>[A]</sup>.</p>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.2.png" /></a></p>
 </li>
@@ -1499,8 +1500,8 @@
 <hr />
 <ol start="3">
 <li>
-<p>Into the filter box, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
-<p><strong>Click</strong> the filtered result with the same name.</p>
+<p>Into the filter box<sup>[B]</sup>, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p><strong>Click</strong><sup>[C]</sup> the filtered result with the same name.</p>
 </li>
 </ol>
 <hr />
@@ -1508,9 +1509,9 @@
 <li>
 <p>From the configuration screen, select the following options:</p>
 <ul>
-<li><em>Channel:</em> <code>stable-v1.13</code></li>
-<li><em>Version:</em> <code>1.13.0</code></li>
-<li>When ready, click the blue <strong>Install</strong> button</li>
+<li><em>Channel</em><sup>[A]</sup>: <code>stable-v1.13</code></li>
+<li><em>Version</em><sup>[B]</sup>: <code>1.13.0</code></li>
+<li>When ready, click the blue <strong>Install</strong><sup>[C]</sup> button</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.4.png" /></a></p>
@@ -1521,17 +1522,17 @@
 <li>
 <p>A new page will load, summarizing the settings of the proposed Operator. Verify that the details are correct:</p>
 <ul>
-<li><em>Update channel</em>: <code>stable-v1.13</code></li>
-<li><em>Version:</em> <code>1.13.0</code></li>
-<li><em>Installation mode:</em> <code>A specific namespace on the cluster</code></li>
-<li><em>Installed namespace:</em> <code>Operator recommended Namespace: cert-manager-operator</code></li>
-<li><em>Update approval:</em> <code>Manual</code></li>
+<li><em>Update channel</em><sup>[A]</sup>: <code>stable-v1.13</code></li>
+<li><em>Version</em><sup>[B]</sup>: <code>1.13.0</code></li>
+<li><em>Installation mode</em><sup>[C]</sup>: <code>A specific namespace on the cluster</code></li>
+<li><em>Installed namespace</em><sup>[D]</sup>: <code>Operator recommended Namespace: cert-manager-operator</code></li>
+<li><em>Update approval</em><sup>[E]</sup>: <code>Manual</code></li>
 </ul>
 <p></br>
-When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</p>
+When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong><sup>[F]</sup> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</p>
 <ul>
-<li>When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong></li>
-<li>Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong> to view the finalized Operator</li>
+<li>When prompted with a <em>Manual approval required</em> splashscreen, click <strong>Approve</strong><sup>[G]</sup></li>
+<li>Wait until the page refreshes with the message <em>Installed operator: ready for use</em> and then click <strong>View Operator</strong><sup>[H]</sup> to view the finalized Operator</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.5a.png" /></a>
@@ -1555,9 +1556,9 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <p>On the OCP Dashboard, make sure you are under the <strong>Operators</strong> &gt; <strong>Installed Operators</strong> view.</p>
 <ul>
 <li><strong>Click</strong> the title of the <code>cert-manager-Operator for Red Hat OpenShift</code> to open the details panel</li>
-<li>From the tabs along the top of the page, click <strong>Subscription</strong></li>
+<li>From the tabs along the top of the page, click <strong>Subscription</strong><sup>[A]</sup></li>
 <li>Under the <em>Subscription details</em> header, there are three panels: <em>Update channel</em>, <em>Update approval</em>, and <em>Update status</em>*</li>
-<li>Click the hyperlinked <strong>1 requires approval</strong> text next to the <em>Update Status</em> panel</li>
+<li>Click the hyperlinked <strong>1 requires approval</strong><sup>[B]</sup> text next to the <em>Update Status</em> panel</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.7.png" /></a>
@@ -1570,9 +1571,9 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <li>
 <p>A new page, <em>InstallPlan details</em> for <code>install-12xyz</code>, will load.</p>
 <ul>
-<li>Click the blue <strong>Preview InstallPlan</strong> button</li>
+<li>Click the blue <strong>Preview InstallPlan</strong><sup>[A]</sup> button</li>
 <li>When the panel refreshes, click the blue <strong>Approve</strong> button to begin updating to <code>v1.13.1</code></li>
-<li>Wait for the status to the right of <code>install-12xyz</code> to read <code>Complete</code></li>
+<li>Wait for the status to the right of <code>install-12xyz</code> to read <code>Complete</code><sup>[B]</sup></li>
 </ul>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.8a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.8a.png" /></a>
@@ -1583,7 +1584,7 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <hr />
 <ol start="9">
 <li>
-<p>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code>.</p>
+<p>From the left-hand navigation bar of the OCP Dashboard, once again navigate into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to watch the progress of the update. The <code>cert-manager Operator for Red Hat OpenShift</code> will show a <em>Status</em> of <code>Installing</code> while the update is underway. Wait until the status changes to <code>Succeeded</code><sup>[A]</sup>.</p>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.9.png" /></a></p>
 </li>
@@ -1631,7 +1632,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="11">
 <li>
 <p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-5-__codelineno-3-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF </span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-5-__codelineno-3-2"></a><span class="s">apiVersion: v1</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#on-premises-5-__codelineno-3-3"></a><span class="s">kind: Namespace</span>
@@ -1649,7 +1650,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="12">
 <li>
 <p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-5-__codelineno-4-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-5-__codelineno-4-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#on-premises-5-__codelineno-4-3"></a><span class="s">kind: OperatorGroup</span>
@@ -1668,7 +1669,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="13">
 <li>
 <p>Create a <strong>Subscription CR</strong> and save the YAML file to <code>nfd-sub.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-5-__codelineno-5-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#on-premises-5-__codelineno-5-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#on-premises-5-__codelineno-5-3"></a><span class="s">kind: Subscription</span>
@@ -1691,18 +1692,20 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>Check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-5-__codelineno-6-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
-<p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
-<ul>
-<li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong></li>
-<li>Within the table, look for a resource named <code>nfd</code></li>
-<li>If the code from Step 13 was only recently executed, the <em>Managed Namespaces</em> of this resource may be showing as <code>None</code> and the <em>Status</em> as <code>Unknown</code></li>
-<li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em></li>
-</ul>
 <p></br>
-After a period of 2-3 minutes, <strong>execute</strong> the previous command from Step 14 a second time within the Terminal console and observe the updated pod status. The console should report back the following to indicate that the Operator was successfully deployed:</p>
+Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
+<ul>
+<li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong><sup>[A]</sup></li>
+<li>Within the table, look for a resource named <code>nfd</code><sup>[B]</sup></li>
+<li>If the code from Step 13 was only recently executed, the <em>Managed Namespaces</em> of this resource may be showing as <code>None</code> and the <em>Status</em> as <code>Unknown</code><sup>[C]</sup></li>
+<li>Wait a few moments (and refresh the page if you wish) until the <code>nfd</code> resource is replaced by <code>Node Feature Discovery Operator</code><sup>[D]</sup>, which should then belong to the <code>openshift-nfd</code> <em>Managed Namespace</em> and have a <code>Succeeded</code> <em>Status</em><sup>[E]</sup></li>
+</ul>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>2 minutes</strong> to complete. Wait and then <strong>execute</strong> the previous command from Step 14 a second time within the Terminal console. Observe the updated pod status. The console should report back the following to indicate that the Operator was successfully deployed:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-5-__codelineno-7-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#on-premises-5-__codelineno-7-2"></a>nfd-controller-manager-7f4c4cf577-wn96r   <span class="m">2</span>/2     Running   <span class="m">0</span>          3m10s
-</code></pre></div>
+</code></pre></div></p>
+</div>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.14a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.14a.png" /></a>
 </br>
@@ -1713,7 +1716,7 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <ol start="15">
 <li>
 <p>Create a <strong>NodeFeatureDiscovery CR</strong> and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-5-__codelineno-8-2"></a><span class="s">apiVersion: nfd.openshift.io/v1</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-5-__codelineno-8-3"></a><span class="s">kind: NodeFeatureDiscovery</span>
@@ -1800,7 +1803,9 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <p>As before, check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-5-__codelineno-9-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
-<p>Wait for about 1 minute for all of the pods to return a status of <code>Running</code> before continuing.</p>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>1 minutes</strong> to complete. Wait until all pods return a status of <code>Running</code> before continuing to Step 17.</p>
+</div>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-5.16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.16.png" /></a></p>
 </li>
 </ol>
@@ -1882,10 +1887,10 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#on-premises-5-__codelineno-15-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#on-premises-5-__codelineno-15-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
 </code></pre></div>
-<p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
 <p></br>
-<a class="glightbox" href="../on-premises/_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20a.png" /></a>
-</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20a.png" /></a></p>
+<p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code><sup>[A]</sup> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+<p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.20b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20b.png" /></a></p>
 </li>
 </ol>
@@ -1901,7 +1906,7 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <hr />
 <ol start="22">
 <li>
-<p>Check the status of the pods. If GPUs are detected within the cluster (they won't be in this demonstration environment), they will be included in the read-out.</p>
+<p>Check the status of the pods. If GPUs are detected within the cluster, they will be included in the read-out. As the Level 4 demonstration environment is not equipped with GPU hardware, no GPU resources will be discovered by the <code>oc get</code> command.</p>
 <p><strong>Execute</strong> the following command with the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#on-premises-5-__codelineno-17-1"></a>oc get pods -n nvidia-gpu-operator
 </code></pre></div>
@@ -1967,7 +1972,7 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <a id="__codelineno-20-15" name="__codelineno-20-15" href="#on-premises-5-__codelineno-20-15"></a><span class="s">EOF</span>
 </code></pre></div>
 <div class="admonition warning">
-<p><strong>ATTENTION:</strong> It will take approximately 5 minutes for the Operator installation to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the <code>Red Hat OpenShift AI</code> Operator deployment.</p>
+<p>This operation will take approximately <strong>5 minutes</strong> to complete. Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the <em>Red Hat OpenShift AI</em><sup>[A]</sup> Operator deployment.</p>
 </div>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.25.png" /></a></p>
@@ -1997,7 +2002,9 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <p><strong>Monitor</strong> the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get dscinitialization
 </code></pre></div>
-<p><strong>Wait</strong> for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
+<div class="admonition warning">
+<p>This operation will take approximately <strong>2 minutes</strong> to complete. <strong>Wait</strong> for the <em>DSCInitialization</em> object (<code>dscinitialization</code>) to return a <code>Ready</code> status before continuing on to Step 27.</p>
+</div>
 </li>
 </ol>
 <hr />
@@ -2049,26 +2056,27 @@ After a period of 2-3 minutes, <strong>execute</strong> the previous command fro
 <p><strong>Execute</strong> the following instruction to check the status of pods within the <code>redhat-ods-applications</code> project:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#on-premises-5-__codelineno-24-1"></a>oc get pods -n redhat-ods-applications
 </code></pre></div>
-<p></br>
-If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>ALL FIVE</strong> of the following pods are deployed with a <code>Running</code> status before continuing to Step 29:</p>
+<div class="admonition warning">
+<p>If no pods are detected, wait an additional <strong>3 minutes</strong> and try again. Confirm that <strong>ALL FIVE</strong> of the following pods are deployed with a <code>Running</code> status before continuing to Step 29.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#on-premises-5-__codelineno-25-1"></a>NAME                                          READY   STATUS    RESTARTS   AGE
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#on-premises-5-__codelineno-25-2"></a>kserve-controller-manager-7b745757cb-wx7qc    <span class="m">1</span>/1     Running   <span class="m">0</span>          42s
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#on-premises-5-__codelineno-25-3"></a>kubeflow-training-operator-659b5dcb99-5t8vt   <span class="m">1</span>/1     Running   <span class="m">0</span>          56s
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#on-premises-5-__codelineno-25-4"></a>odh-model-controller-b774fb859-2b4b4          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#on-premises-5-__codelineno-25-5"></a>odh-model-controller-b774fb859-4gxhv          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#on-premises-5-__codelineno-25-6"></a>odh-model-controller-b774fb859-fpnrl          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
-</code></pre></div>
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="29">
 <li>
-<p>Now you must edit the <code>inferenceservice-config</code> configuration map within the <code>redhat-ods-applications</code> project. This is best achieved by using the OCP Dashboard web interface.</p>
+<p>Edit the <code>inferenceservice-config</code> configuration map within the <code>redhat-ods-applications</code> project. This is best achieved by using the OCP Dashboard via a web browser.</p>
 <ul>
-<li>From the OCP Dashboard, navigate into <strong>Workloads</strong> &gt; <strong>Configmaps</strong></li>
-<li>From the <em>Project</em> drop-down list, select <code>redhat-ods-applications</code></li>
-<li>Click the <code>inferenceservice-config</code> resource and open the <strong>YAML</strong> tab</li>
-<li>In the <code>metadata.annotations</code> section (Lines 4-5) of the file, add a new Line 8 which reads <code>opendatahub.io/managed: 'false'</code></li>
+<li>From the OCP Dashboard, navigate into <strong>Workloads</strong> &gt; <strong>Configmaps</strong><sup>[A]</sup></li>
+<li>From the <em>Project</em><sup>[B]</sup> drop-down list, select <code>redhat-ods-applications</code><sup>[C]</sup></li>
+<li>Click the <code>inferenceservice-config</code> resource<sup>[D]</sup> and open the <strong>YAML</strong> tab<sup>[E]</sup></li>
+<li>In the <code>metadata.annotations</code> section<sup>[F]</sup> (Lines 4-5) of the file, add a new Line 8<sup>[G]</sup> which reads <code>opendatahub.io/managed: 'false'</code> </li>
 <li>The resulting YAML file should resemble the following:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#on-premises-5-__codelineno-26-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
@@ -2091,13 +2099,13 @@ If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>AL
 <hr />
 <ol start="30">
 <li>
-<p>Within the same YAML file, look for Line 379 under the <em>ingress</em> section:</p>
+<p>Within the same YAML file, look for Line 379<sup>[A]</sup> under the <em>ingress</em> section:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
-<p><strong>Replace</strong> Line 379 with the following (be sure to include the last <code>,</code> character):</p>
+<p><strong>Replace</strong> Line 379 with the following (be sure to include the last <code>,</code> character)<sup>[B]</sup>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#on-premises-5-__codelineno-28-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
-<p>Click <strong>Save</strong> (bottom-left) to finalize the changes to the YAML file. If prompted with a <em>Managed resource</em> warning, click <strong>Save</strong> again to confirm.</p>
+<p>Click <strong>Save</strong><sup>[C]</sup> (bottom-left) to finalize the changes to the YAML file. If prompted with a <em>Managed resource</em> warning, click <strong>Save</strong><sup>[D]</sup> again to confirm.</p>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.30a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.30a.png" /></a>
 </br>
@@ -2294,19 +2302,28 @@ If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>AL
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#on-premises-7-__codelineno-0-3"></a>--entitlement<span class="o">=</span>watsonx-code-assistant <span class="se">\</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#on-premises-7-__codelineno-0-4"></a>--production<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
+<div class="admonition warning">
+<p>Completion of this operation will take approximately <strong>1 minute</strong>, after which the console will return:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-7-__codelineno-1-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-7-__codelineno-1-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847741Z The apply-entitlement <span class="nb">command</span> ran successfully.
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="2">
 <li>
 <p>Now that the components have been defined, install the services Operators by <strong>executing</strong> the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-7-__codelineno-1-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#on-premises-7-__codelineno-1-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#on-premises-7-__codelineno-1-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#on-premises-7-__codelineno-1-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-7-__codelineno-2-1"></a>cpd-cli manage apply-olm <span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#on-premises-7-__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-7-__codelineno-2-3"></a>--cpd_operator_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-7-__codelineno-2-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> 
 </code></pre></div>
 <div class="admonition warning">
-<p>Completion of this operation will take approximately <strong>10 minutes</strong>.</p>
+<p>Completion of this operation will take approximately <strong>15 minutes</strong>, after which the console will return:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-7-__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-7-__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690774Z The apply-olm <span class="nb">command</span> ran successfully.
+</code></pre></div></p>
 </div>
 </li>
 </ol>
@@ -2317,17 +2334,17 @@ If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>AL
 <ol start="3">
 <li>
 <p>Start the installation process for WCA by executing the following code block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-7-__codelineno-2-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#on-premises-7-__codelineno-2-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#on-premises-7-__codelineno-2-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#on-premises-7-__codelineno-2-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#on-premises-7-__codelineno-2-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#on-premises-7-__codelineno-2-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#on-premises-7-__codelineno-2-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-7-__codelineno-4-1"></a>cpd-cli manage apply-cr <span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-7-__codelineno-4-2"></a>--release<span class="o">=</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#on-premises-7-__codelineno-4-3"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#on-premises-7-__codelineno-4-4"></a>--components<span class="o">=</span><span class="si">${</span><span class="nv">COMPONENTS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#on-premises-7-__codelineno-4-5"></a>--block_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_BLOCK</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#on-premises-7-__codelineno-4-6"></a>--file_storage_class<span class="o">=</span><span class="si">${</span><span class="nv">STG_CLASS_FILE</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#on-premises-7-__codelineno-4-7"></a>--license_acceptance<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>1 hour</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-7-__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-7-__codelineno-5-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
 </code></pre></div></p>
 </div>
 </li>
@@ -2336,9 +2353,9 @@ If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>AL
 <ol start="4">
 <li>
 <p>Once the installation procedure of Step 3 has wrapped up, retrieve the details about the WCA instance by <strong>executing</strong> the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-7-__codelineno-4-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-7-__codelineno-4-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#on-premises-7-__codelineno-4-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-7-__codelineno-6-1"></a>cpd-cli manage get-cpd-instance-details <span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#on-premises-7-__codelineno-6-2"></a>--cpd_instance_ns<span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="si">}</span> <span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#on-premises-7-__codelineno-6-3"></a>--get_admin_initial_credentials<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 </li>
 </ol>
@@ -2355,27 +2372,27 @@ If no pods are detected, wait 2-3 minutes and try again. Confirm that <strong>AL
 <ol>
 <li>
 <p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-7-__codelineno-5-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-7-__codelineno-7-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#on-premises-7-__codelineno-6-1"></a>sudo bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-7-__codelineno-8-1"></a>sudo bash
 </code></pre></div>
 </li>
 <li>
 <p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-7-__codelineno-7-1"></a><span class="nb">source</span> cpd_vars.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-7-__codelineno-9-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div>
 </li>
 <li>
 <p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-7-__codelineno-8-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#on-premises-7-__codelineno-10-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#on-premises-7-__codelineno-9-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#on-premises-7-__codelineno-11-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>

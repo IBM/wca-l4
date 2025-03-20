@@ -521,10 +521,12 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--password<span class="o">=</span><span class="si">${</span><span class="nv">OCP_PASSWORD</span><span class="si">}</span> <span class="se">\</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--server<span class="o">=</span><span class="si">${</span><span class="nv">OCP_URL</span><span class="si">}</span>
 </code></pre></div>
-<p>After a successful run, the console should return a pair of messages that resemble the following:</p>
+<div class="admonition warning">
+<p>The operation will take approximately <strong>1 minute</strong> to complete. After a successful run, the console should return a pair of messages that resemble the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978349Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T18:04:23.978412Z The login-to-ocp <span class="nb">command</span> ran successfully.
 </code></pre></div>
+</div>
 <p></br>
 <a class="glightbox" href="../_attachments/onprem-4.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-4.2.png" /></a></p>
 </li>
@@ -538,7 +540,7 @@
 <p><strong>Execute</strong> the following command within the Terminal console:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cpd-cli manage add-icr-cred-to-global-pull-secret --entitled_registry_key<span class="o">=</span><span class="si">${</span><span class="nv">IBM_ENTITLEMENT_KEY</span><span class="si">}</span> 
 </code></pre></div>
-<p>The console will return two <code>[SUCCESS]</code> statements indicating that the command ran successfully.</p>
+<p>The console will return two <code>[SUCCESS]</code> statements indicating a successful run.</p>
 <p><a class="glightbox" href="../_attachments/onprem-4.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-4.3.png" /></a></p>
 </li>
 </ol>
