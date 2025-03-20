@@ -2293,20 +2293,34 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 </div>
 <h2 id="on-premises-7-i-responsibilities-and-requirements"><strong>i. Responsibilities and Requirements</strong></h2>
 <p>Following the release of Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
-<p>To install WCA, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:
-- <strong>The <em>operators project</em> for the instance:</strong> Operators for this instance of WCA are installed in the <code>operators</code> project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERATORS}</code> environment variable refers to the operators project.
-- <strong>The <em>operands project</em> for the instance:</strong> The custom resources for the control plane and WCA are installed in the operands project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERANDS}</code> environment variable refers to the operands project.</p>
-<hr />
+<p>To install WCA, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:</p>
+<ul>
+<li>
+<p><strong>The <em>operators project</em> for the instance:</strong> Operators for this instance of WCA are installed in the <code>operators</code> project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERATORS}</code> environment variable refers to the operators project.</p>
+</li>
+<li>
+<p><strong>The <em>operands project</em> for the instance:</strong> The custom resources for the control plane and WCA are installed in the operands project. In the installation commands, the <code>${PROJECT_CPD_INST_OPERANDS}</code> environment variable refers to the operands project.</p>
+</li>
+</ul>
+<p></br></p>
+<div class="admonition note">
 <p>Participants are encouraged to review the following requirements again before continuing with the install to verify that all the components are in place <em>and</em> to reinforce their understanding as to why such components are needed.</p>
-<hr />
+</div>
+<p></br></p>
 <p><strong>Version Requirements</strong>
 All of the components that are associated with an instance of IBM Software Hub must be installed at the same release version. For example, if the IBM Software Hub control plane is installed at <code>Version 5.1.0</code>, you must install WCA at <code>Version 5.1.0</code> as well.</p>
 <p><strong>Environment Variables</strong>
-The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.
-- If you want to read more about how to structure scripts like <code>cpd_vars.sh</code>, which define environment variables within a single source of truth, <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/collect-info-install-variables.html" target="_blank"><strong>review the IBM Documentation</strong></a>.
-- To use the environment variables from the script, you must source the environment variables before you run the commands in this task. For example, run:
+The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.</p>
+<ul>
+<li>
+<p>If you want to read more about how to structure scripts like <code>cpd_vars.sh</code>, which define environment variables within a single source of truth, <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/collect-info-install-variables.html" target="_blank"><strong>review the IBM Documentation</strong></a>.</p>
+</li>
+<li>
+<p>To use the environment variables from the script, you must source the environment variables before you run the commands in this task. For example, run:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-7-__codelineno-0-1"></a><span class="nb">source</span> ./cpd_vars.sh
 </code></pre></div></p>
+</li>
+</ul>
 <p><strong>Security Context Constraint</strong>
 WCA works with the default Red Hat OpenShift® Container Platform security context constraint, <code>restricted-v2</code>.</p>
 <p><strong>Common Core Services</strong>
