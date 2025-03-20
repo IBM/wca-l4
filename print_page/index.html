@@ -2338,32 +2338,32 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <tr>
 <td><strong>OpenShift Data Foundation</strong></td>
 <td>When you install the service, specify file storage and block storage.</td>
-<td>File storage: <code>ocs-storagecluster-cephfs</code></br>Block storage: <code>ocs-storagecluster-ceph-rbd</code></td>
+<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
 </tr>
 <tr>
 <td><strong>IBM Fusion Data Foundation</strong></td>
 <td>When you install the service, specify file storage and block storage.</td>
-<td>File storage: <code>ocs-storagecluster-cephfs</code></br>Block storage: <code>ocs-storagecluster-ceph-rbd</code></td>
+<td><strong>File storage:</strong> <code>ocs-storagecluster-cephfs</code></br><strong>Block storage:</strong> <code>ocs-storagecluster-ceph-rbd</code></td>
 </tr>
 <tr>
 <td><strong>IBM Fusion Global Data Platform</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td>File storage: <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></br>Block storage: <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></td>
+<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code> or <code>ibm-storage-fusion-cp-sc</code></td>
 </tr>
 <tr>
 <td><strong>IBM Storage Scale Container Native</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td>File storage: <code>ibm-spectrum-scale-sc</code></br>Block storage: <code>ibm-spectrum-scale-sc</code></td>
+<td><strong>File storage:</strong> <code>ibm-spectrum-scale-sc</code></br><strong>Block storage:</strong> <code>ibm-spectrum-scale-sc</code></td>
 </tr>
 <tr>
 <td><strong>Portworx</strong></td>
 <td>When you install the service, the <code>--storage_vendor=portworx</code> option ensures that the service uses the correct storage classes.</td>
-<td>File storage: <code>portworx-shared-gp3</code></br>Block storage: <code>portworx-elastic-sc</code></td>
+<td><strong>File storage:</strong> <code>portworx-shared-gp3</code></br><strong>Block storage:</strong> <code>portworx-elastic-sc</code></td>
 </tr>
 <tr>
 <td><strong>NFS</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td>File storage: <code>managed-nfs-storage</code></br>Block storage: <code>managed-nfs-storage</code></td>
+<td><strong>File storage:</strong> <code>managed-nfs-storage</code></br><strong>Block storage:</strong> <code>managed-nfs-storage</code></td>
 </tr>
 <tr>
 <td><strong>Amazon Elastic storage</strong></td>
@@ -2372,13 +2372,13 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </tr>
 <tr>
 <td>File storage is provided by Amazon Elastic File System. Block storage is provided by Amazon Elastic Block Store.</td>
-<td>File storage: <code>efs-nfs-client</code></br>Block storage: <code>gp2-csi</code> or <code>gp3-csi</code></td>
+<td><strong>File storage:</strong> <code>efs-nfs-client</code></br><strong>Block storage:</strong> <code>gp2-csi</code> or <code>gp3-csi</code></td>
 <td></td>
 </tr>
 <tr>
 <td><strong>NetApp Trident</strong></td>
 <td>When you install the service, specify the same storage class for both file storage and block storage.</td>
-<td>File storage: <code>ontap-nas</code></br>Block storage: <code>ontap-nas</code></td>
+<td><strong>File storage:</strong> <code>ontap-nas</code></br><strong>Block storage:</strong> <code>ontap-nas</code></td>
 </tr>
 <tr>
 <td><strong>Nutanix</strong></td>
@@ -2390,14 +2390,44 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <h2 id="on-premises-7-ii-deployment-checklist"><strong>ii. Deployment checklist</strong></h2>
 <p>To review, the following tasks need to be completed before installing WCA on-premises. The various modules of this hands-on lab have already covered those applicable to the environment you are about to deploy. However, keep this checklist handy for future deployments you will be making with clients and in the field.</p>
-<p>| Prerequisite | Documentation |
-| The cluster meets the minimum requirements for installing WCA. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/sys-reqs/overview-sys-reqs.html" target="_blank"><strong>System requirements</strong></a> |
-| The workstation from which you will run the installation is set up as a client workstation and includes the following command-line interfaces: IBM Software Hub CLI (<code>cpd-cli</code>) and OpenShift CLI (<code>oc</code>) | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/setup-client.html" target="_blank"><strong>Setting up a client workstation</strong></a> |
-| The IBM Software Hub control plane is installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/install-platform.html" target="_blank"><strong>Installing an instance of IBM Software Hub</strong></a> |
-| For environments that use a private container registry, such as air-gapped environments, the WCA software images are mirrored to the private container registry. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-mirror.html" target="_blank"><strong>Mirroring images to a private container registry</strong></a> |
-| For environments that use a private container registry, such as air-gapped environments, the <code>cpd-cli</code> is configured to pull the <code>olm-utils-v3</code> image from the private container registry. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-move-cli-get-image.html" target="_blank"><strong>Pulling the olm-utils-v3 image from the private container registry</strong></a> |
-| The operators that are required to use GPUs are installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-node-gpu.html" target="_blank"><strong>Installing operators for services that require GPUs</strong></a> |
-| Red Hat OpenShift AI is installed. | <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-openshift-ai.html" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a> |</p>
+<table>
+<thead>
+<tr>
+<th>Prerequisite</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The cluster meets the minimum requirements for installing WCA.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/sys-reqs/overview-sys-reqs.html" target="_blank"><strong>System requirements</strong></a></td>
+</tr>
+<tr>
+<td>The workstation from which you will run the installation is set up as a client workstation and includes the following command-line interfaces: IBM Software Hub CLI (<code>cpd-cli</code>) and OpenShift CLI (<code>oc</code>)</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/setup-client.html" target="_blank"><strong>Setting up a client workstation</strong></a></td>
+</tr>
+<tr>
+<td>The IBM Software Hub control plane is installed.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/install-platform.html" target="_blank"><strong>Installing an instance of IBM Software Hub</strong></a></td>
+</tr>
+<tr>
+<td>For environments that use a private container registry, such as air-gapped environments, the WCA software images are mirrored to the private container registry.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-mirror.html" target="_blank"><strong>Mirroring images to a private container registry</strong></a></td>
+</tr>
+<tr>
+<td>For environments that use a private container registry, such as air-gapped environments, the <code>cpd-cli</code> is configured to pull the <code>olm-utils-v3</code> image from the private container registry.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-move-cli-get-image.html" target="_blank"><strong>Pulling the olm-utils-v3 image from the private container registry</strong></a></td>
+</tr>
+<tr>
+<td>The operators that are required to use GPUs are installed.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-node-gpu.html" target="_blank"><strong>Installing operators for services that require GPUs</strong></a></td>
+</tr>
+<tr>
+<td>Red Hat OpenShift AI is installed.</td>
+<td><a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/prep-cluster-openshift-ai.html" target="_blank"><strong>Installing Red Hat OpenShift AI</strong></a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="on-premises-7-iii-fetching-dependencies"><strong>iii. Fetching dependencies</strong></h2>
 <p>In the following section, participants will assume the role of an instance administrator and install WCA using the IBM Software Hub components set up in the previous module.</p>
 <hr />
