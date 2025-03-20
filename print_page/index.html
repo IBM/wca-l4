@@ -1068,9 +1068,8 @@
 <p>Using the connected Terminal console, <strong>execute</strong> the following instruction to install Podman:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-3-__codelineno-2-1"></a>sudo yum install -y podman
 </code></pre></div>
-<p>After a successful operation, the console will return the message <code>Complete!</code> alongside a summary of the installed components. </p>
 <div class="admonition warning">
-<p>The operation will take approximately <strong>2 minutes</strong> to complete.</p>
+<p>The operation will take approximately <strong>2 minutes</strong> to complete. After a successful operation, the console will return the message <code>Complete!</code> alongside a summary of the installed components.</p>
 </div>
 <p><a class="glightbox" href="../on-premises/_attachments/onprem-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-3.5.png" /></a></p>
 </li>
@@ -1499,18 +1498,15 @@
 </ol>
 <hr />
 <ol start="3">
-<li>
-<p>Into the filter box<sup>[B]</sup>, type <code>cert-manager Operator for Red Hat OpenShift</code> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
-<p><strong>Click</strong><sup>[C]</sup> the filtered result with the same name.</p>
-</li>
+<li>Into the filter box<sup>[B]</sup>, type <code>cert-manager Operator for Red Hat OpenShift</code> and <strong>click</strong><sup>[C]</sup> the filtered result with the same name.</li>
 </ol>
 <hr />
 <ol start="4">
 <li>
 <p>From the configuration screen, select the following options:</p>
 <ul>
-<li><em>Channel</em><sup>[A]</sup>: <code>stable-v1.13</code></li>
-<li><em>Version</em><sup>[B]</sup>: <code>1.13.0</code></li>
+<li><em>Channel</em><sup>[A]</sup> : <code>stable-v1.13</code></li>
+<li><em>Version</em><sup>[B]</sup> : <code>1.13.0</code></li>
 <li>When ready, click the blue <strong>Install</strong><sup>[C]</sup> button</li>
 </ul>
 <p></br>
@@ -1522,11 +1518,11 @@
 <li>
 <p>A new page will load, summarizing the settings of the proposed Operator. Verify that the details are correct:</p>
 <ul>
-<li><em>Update channel</em><sup>[A]</sup>: <code>stable-v1.13</code></li>
-<li><em>Version</em><sup>[B]</sup>: <code>1.13.0</code></li>
-<li><em>Installation mode</em><sup>[C]</sup>: <code>A specific namespace on the cluster</code></li>
-<li><em>Installed namespace</em><sup>[D]</sup>: <code>Operator recommended Namespace: cert-manager-operator</code></li>
-<li><em>Update approval</em><sup>[E]</sup>: <code>Manual</code></li>
+<li><em>Update channel</em><sup>[A]</sup> : <code>stable-v1.13</code></li>
+<li><em>Version</em><sup>[B]</sup> : <code>1.13.0</code></li>
+<li><em>Installation mode</em><sup>[C]</sup> : <code>A specific namespace on the cluster</code></li>
+<li><em>Installed namespace</em><sup>[D]</sup> : <code>Operator recommended Namespace: cert-manager-operator</code></li>
+<li><em>Update approval</em><sup>[E]</sup> : <code>Manual</code></li>
 </ul>
 <p></br>
 When ready, scroll down to the bottom of the page and click the blue <strong>Install</strong><sup>[F]</sup> button. The page will refresh periodically as the Operator is installed on the cluster. This may take several minutes to complete.</p>
@@ -1632,7 +1628,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="11">
 <li>
 <p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-5-__codelineno-3-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF </span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-5-__codelineno-3-2"></a><span class="s">apiVersion: v1</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#on-premises-5-__codelineno-3-3"></a><span class="s">kind: Namespace</span>
@@ -1650,7 +1646,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="12">
 <li>
 <p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-5-__codelineno-4-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-5-__codelineno-4-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#on-premises-5-__codelineno-4-3"></a><span class="s">kind: OperatorGroup</span>
@@ -1669,7 +1665,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <ol start="13">
 <li>
 <p>Create a <strong>Subscription CR</strong> and save the YAML file to <code>nfd-sub.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#on-premises-5-__codelineno-5-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#on-premises-5-__codelineno-5-2"></a><span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#on-premises-5-__codelineno-5-3"></a><span class="s">kind: Subscription</span>
@@ -1716,7 +1712,7 @@ Initially, the console may return a response such as <code>No resources found in
 <ol start="15">
 <li>
 <p>Create a <strong>NodeFeatureDiscovery CR</strong> and save the YAML file to <code>NodeFeatureDiscovery.yaml</code>.</p>
-<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span>:</p>
+<p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#on-premises-5-__codelineno-8-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#on-premises-5-__codelineno-8-2"></a><span class="s">apiVersion: nfd.openshift.io/v1</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#on-premises-5-__codelineno-8-3"></a><span class="s">kind: NodeFeatureDiscovery</span>
@@ -1879,17 +1875,19 @@ Initially, the console may return a response such as <code>No resources found in
 <p class="admonition-title">No resources found in nvidia-gpu-operator namespace.</p>
 <p><strong>Troubleshooting:</strong> The <code>nvidia-gpu-operator</code> namespace is still being deployed. Wait for 1 minute and then try executing Step 20 again.</p>
 </div>
-<p>The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>).</p>
+<p></br>
+The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#on-premises-5-__codelineno-14-1"></a>NAME            CSV                              APPROVAL   APPROVED
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#on-premises-5-__codelineno-14-2"></a>install-4rq4j   gpu-operator-certified.v24.9.2   Manual     <span class="nb">false</span>
 </code></pre></div>
-<p>Therefore, you will need to approve the install plan by <strong>executing</strong> the following command:</p>
+<p></br>
+Therefore, you will need to approve the install plan by <strong>executing</strong> the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#on-premises-5-__codelineno-15-1"></a><span class="nb">export</span> <span class="nv">INSTALL_PLAN</span><span class="o">=</span><span class="k">$(</span>oc get installplan -n nvidia-gpu-operator -oname<span class="k">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#on-premises-5-__codelineno-15-2"></a>oc patch <span class="nv">$INSTALL_PLAN</span> -n nvidia-gpu-operator --type merge --patch <span class="s1">&#39;{&quot;spec&quot;:{&quot;approved&quot;:true }}&#39;</span>
 </code></pre></div>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20a.png" /></a></p>
 <p></br>
-<a class="glightbox" href="../on-premises/_attachments/onprem-5.20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20a.png" /></a></p>
-<p>Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code><sup>[A]</sup> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
+Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> to monitor the progress of the update. Wait until the <code>NVIDIA GPU Operator</code><sup>[A]</sup> appears in the table with <em>Status</em> set to <code>Succeeded</code> before continuing.</p>
 <p></br>
 <a class="glightbox" href="../on-premises/_attachments/onprem-5.20b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-5.20b.png" /></a></p>
 </li>
@@ -1999,7 +1997,8 @@ Initially, the console may return a response such as <code>No resources found in
 <a id="__codelineno-21-15" name="__codelineno-21-15" href="#on-premises-5-__codelineno-21-15"></a><span class="s">        customCABundle: &quot;&quot;</span>
 <a id="__codelineno-21-16" name="__codelineno-21-16" href="#on-premises-5-__codelineno-21-16"></a><span class="s">EOF</span>
 </code></pre></div>
-<p><strong>Monitor</strong> the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
+<p></br>
+<strong>Monitor</strong> the progress of the <em>DSCInitialization</em> object by executing the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#on-premises-5-__codelineno-22-1"></a>oc get dscinitialization
 </code></pre></div>
 <div class="admonition warning">
@@ -2044,7 +2043,8 @@ Initially, the console may return a response such as <code>No resources found in
 <a id="__codelineno-23-31" name="__codelineno-23-31" href="#on-premises-5-__codelineno-23-31"></a><span class="s">            managementState: Removed</span>
 <a id="__codelineno-23-32" name="__codelineno-23-32" href="#on-premises-5-__codelineno-23-32"></a><span class="s">EOF</span>
 </code></pre></div>
-<p>The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
+<p></br>
+The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages services that are listed as <code>Managed</code>. Services with a status of <code>Removed</code> are ignored and will not be installed.</p>
 <div class="admonition warning">
 <p>This operation will take approximately <strong>2-3 minutes</strong> to complete.</p>
 </div>
@@ -2099,7 +2099,7 @@ Initially, the console may return a response such as <code>No resources found in
 <hr />
 <ol start="30">
 <li>
-<p>Within the same YAML file, look for Line 379<sup>[A]</sup> under the <em>ingress</em> section:</p>
+<p>Within the same YAML file, look for Line 379 under the <em>ingress</em> section<sup>[A]</sup>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#on-premises-5-__codelineno-27-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="nv"> </span><span class="s">.Name</span><span class="nv"> </span><span class="s">}-{</span><span class="nv"> </span><span class="s">.Namespace</span><span class="nv"> </span><span class="s">}.{</span><span class="nv"> </span><span class="s">.IngressDomain</span><span class="nv"> </span><span class="s">}&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Replace</strong> Line 379 with the following (be sure to include the last <code>,</code> character)<sup>[B]</sup>:</p>
