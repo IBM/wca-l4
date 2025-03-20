@@ -417,20 +417,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../8/" class="md-nav__link">
-        8. Conclusion
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -743,11 +729,58 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <ol start="5">
-<li>Log in</li>
+<li>
+<p>Using a web browser, navigate to the address specified by <em>CPU Url</em>. A page will load for the Administration Console which allows administrators to manage both their IBM Software Hub (CP4D) and IBM watsonx Code Assistant environments.</p>
+<ul>
+<li>Supply the <em>CPD Username</em> and <em>CPD Password</em> values recorded in Step 4</li>
+<li>Click <strong>Login in</strong> to proceed</li>
+<li>The web browser will load the IBM Software Hub dashboard, from which a number of administrative and monitoring options are available for you to inspect</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../_attachments/onprem-7.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-7.5a.png" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Verify that the IBM watsonx Code Assistant service was successfully installed:</p>
+<ul>
+<li>From the dashboard's navigation menu, drill down into <strong>Services</strong> &gt; <strong>Services catalog</strong></li>
+<li>Search for <em>IBM watsonx Code Assistant</em> and confirm it is marked with a status of <code>Enabled</code></li>
+<li><strong>Click</strong> on the tile to preview the service</li>
+<li>The web browser will load what essentially resembles the "catalog" view you might encounter on a online store portal such as IBM Cloud — this is <em>not</em> the administrative portal used for managing the WCA service</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../_attachments/onprem-7.5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-7.5b.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/onprem-7.6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-7.6.png" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>To access the WCA management console, look to the top-right corner of the IBM Software Hub dashboard and <strong>click</strong> the rectangular-dot icon. This will allow you to toggle between the Software Hub and WCA administrative portals.</p>
+<ul>
+<li><strong>Click</strong> the <em>IBM watsonx Code Assistant</em> button to switch portals</li>
+<li>The administrative portal for WCA will load within the web browser</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../_attachments/onprem-7.7a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-7.7a.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/onprem-7.7b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-7.7b.png" /></a></p>
+</li>
 </ol>
 <hr />
 <h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
-<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment! The final module of the <em>On-Premises Installation and Deployment</em> chapter will debrief you on the lessons learned and provide context for the remaining sections of the Level 4 curriculum.</p>
+<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment!
+</br>
+Peruse and inspect various aspects of the on-premises environment as you wish, but keep in mind that without GPUs attached to the environment you will be significantly restricted in terms of usability. Some features may be unavailable or broken without such hardware. That is why for the <em>Application Modernization</em> hands-on modules, you will have full GPU access via the provided IBM Cloud environments. Those modules will delve deeply into the administrative and developer-oriented tasks that are limited for the on-premises environment.</p>
+<div class="admonition warning">
+<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
+</div>
 <details class="note">
 <summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
 <p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;BASTION_PWD&gt;</code> placeholder with the password specific to <em>your</em> environment.</p>
@@ -811,21 +844,6 @@ Storage classes must be specified ahead of time when installing WCA. The followi
           </div>
         </a>
       
-      
-        
-        <a href="../8/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Conclusion" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              8. Conclusion
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

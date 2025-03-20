@@ -336,20 +336,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../on-premises/8/" class="md-nav__link">
-        8. Conclusion
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -440,13 +426,6 @@
           <li class="md-nav__item">
   <a href="#on-premises-7" class="md-nav__link">
     7. Install watsonx Code Assistant
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#on-premises-8" class="md-nav__link">
-    8. Conclusion
   </a>
   
 </li>
@@ -2511,11 +2490,58 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <ol start="5">
-<li>Log in</li>
+<li>
+<p>Using a web browser, navigate to the address specified by <em>CPU Url</em>. A page will load for the Administration Console which allows administrators to manage both their IBM Software Hub (CP4D) and IBM watsonx Code Assistant environments.</p>
+<ul>
+<li>Supply the <em>CPD Username</em> and <em>CPD Password</em> values recorded in Step 4</li>
+<li>Click <strong>Login in</strong> to proceed</li>
+<li>The web browser will load the IBM Software Hub dashboard, from which a number of administrative and monitoring options are available for you to inspect</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-7.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-7.5a.png" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Verify that the IBM watsonx Code Assistant service was successfully installed:</p>
+<ul>
+<li>From the dashboard's navigation menu, drill down into <strong>Services</strong> &gt; <strong>Services catalog</strong></li>
+<li>Search for <em>IBM watsonx Code Assistant</em> and confirm it is marked with a status of <code>Enabled</code></li>
+<li><strong>Click</strong> on the tile to preview the service</li>
+<li>The web browser will load what essentially resembles the "catalog" view you might encounter on a online store portal such as IBM Cloud — this is <em>not</em> the administrative portal used for managing the WCA service</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-7.5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-7.5b.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-7.6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-7.6.png" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>To access the WCA management console, look to the top-right corner of the IBM Software Hub dashboard and <strong>click</strong> the rectangular-dot icon. This will allow you to toggle between the Software Hub and WCA administrative portals.</p>
+<ul>
+<li><strong>Click</strong> the <em>IBM watsonx Code Assistant</em> button to switch portals</li>
+<li>The administrative portal for WCA will load within the web browser</li>
+</ul>
+<p></br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-7.7a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-7.7a.png" /></a>
+</br>
+<a class="glightbox" href="../on-premises/_attachments/onprem-7.7b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../on-premises/_attachments/onprem-7.7b.png" /></a></p>
+</li>
 </ol>
 <hr />
 <h2 id="on-premises-7-vi-next-steps"><strong>vi. Next steps</strong></h2>
-<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment! The final module of the <em>On-Premises Installation and Deployment</em> chapter will debrief you on the lessons learned and provide context for the remaining sections of the Level 4 curriculum.</p>
+<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment!
+</br>
+Peruse and inspect various aspects of the on-premises environment as you wish, but keep in mind that without GPUs attached to the environment you will be significantly restricted in terms of usability. Some features may be unavailable or broken without such hardware. That is why for the <em>Application Modernization</em> hands-on modules, you will have full GPU access via the provided IBM Cloud environments. Those modules will delve deeply into the administrative and developer-oriented tasks that are limited for the on-premises environment.</p>
+<div class="admonition warning">
+<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
+</div>
 <details class="note">
 <summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
 <p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;BASTION_PWD&gt;</code> placeholder with the password specific to <em>your</em> environment.</p>
@@ -2543,45 +2569,6 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>
 <p>Log back into <code>cpd-cli</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-7-__codelineno-13-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
-</code></pre></div>
-</li>
-</ol>
-</details></section><section class="print-page" id="on-premises-8"><h1 id="on-premises-8-conclusionon-premises-installation-and-deployment"><strong>Conclusion</strong></br><em>On-Premises Installation and Deployment</em></h1>
-<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="./_videos/generating.mp4" type="video/mp4" /></video></div></p>
-<div class="admonition quote">
-<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> demonstrates key elements and hands-on components of the <code>Generating Code</code> module. <em><a href="https://ibm.seismic.com/Link/Content/DCD9HcG7pfXd9GhBDWQJVgM47J4V" target="_blank">[10 min]</a></em></p>
-</div>
-<h2 id="on-premises-8-i-part-1"><strong>i. Part 1</strong></h2>
-<p>And </p>
-<h2 id="on-premises-8-ii-part-2"><strong>ii. Part 2</strong></h2>
-<p>test</p>
-<details class="note">
-<summary>TROUBLESHOOTING: LOGGING IN AND SESSION TIMEOUTS</summary>
-<p>Be aware that SSH connections made over Terminal will time out after a long period of inactivity or due to a connection error. If you need to log back into the bastion terminal, follow the procedure below. Replace the <code>&lt;BASTION_PWD&gt;</code> placeholder with the password specific to <em>your</em> environment.</p>
-<ol>
-<li>
-<p>Log back into the bastion node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#on-premises-8-__codelineno-0-1"></a>ssh itzuser@api.67828ca5e432cac47ccc4230.ocp.techzone.ibm.com -p <span class="m">40222</span> &lt;BASTION_PWD&gt;
-</code></pre></div>
-</li>
-<li>
-<p>Engage the <code>sudo</code> (privileged access) session:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#on-premises-8-__codelineno-1-1"></a>sudo bash
-</code></pre></div>
-</li>
-<li>
-<p>Source the environment variables stored in <code>cpd_vars.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#on-premises-8-__codelineno-2-1"></a><span class="nb">source</span> cpd_vars.sh
-</code></pre></div>
-</li>
-<li>
-<p>Log back into OpenShift:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-8-__codelineno-3-1"></a><span class="si">${</span><span class="nv">OC_LOGIN</span><span class="si">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>Log back into <code>cpd-cli</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-8-__codelineno-4-1"></a><span class="si">${</span><span class="nv">CPDM_OC_LOGIN</span><span class="si">}</span>
 </code></pre></div>
 </li>
 </ol>
