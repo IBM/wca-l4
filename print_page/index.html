@@ -3203,7 +3203,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ul>
 </li>
 </ol>
-<h2 id="saas-3-ii-install-the-extension"><strong>ii. Install the extension</strong></h2>
+<h2 id="saas-3-iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
 <p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
 <hr />
 <ol start="6">
@@ -3216,7 +3216,152 @@ includes enterprise Java modernization capabilities, which will be of particular
 </div>
 </li>
 </ol>
-<hr /></section><h1 class='nav-section-title-end'>Ended: IBM Cloud (SaaS) Configuration</h1>
+<hr />
+<ol start="7">
+<li>
+<p>To open WCA within VS Code, first make sure that the <strong>Extensions</strong> panel is selected from the VS Code sidebar.</p>
+<ul>
+<li>Click on the <strong>watsonx Code Assistant</strong> icon</li>
+<li>Click <strong>Log in</strong> and supply the <em>API Key</em> recorded in Step 3</li>
+</ul>
+</li>
+</ol>
+<h2 id="saas-3-iv-set-up-enterprise-java-environment"><strong>iv. Set up enterprise Java environment</strong></h2>
+<p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans). Locally you must have installed <em>either</em> Java or Apache Maven distributions. Details and downloads are summarized in the table below.</p>
+<p><strong>Java Requirements</strong>
+| Distribution | Details |
+| - | - |
+| <strong>Java</strong> | Java SE 11 with Java Developer Kit 11, or a later version.</br><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">&gt;Download for supported OS</a></strong> |
+| <strong>Maven</strong> | Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</br><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download for supported OS&lt;</a>&gt;</strong> |</p>
+<p>With your preferred Java distribution installed locally, you now need to set the appropriate environment variables.</p>
+<hr />
+<ol start="8">
+<li>
+<p>Find the Java installation path on your local machine.</p>
+<ul>
+<li><strong>macOS:</strong> Open a Terminal and execute: <code>/usr/libexec/java_home</code><ul>
+<li>The output should resemble something like: <code>/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home</code></li>
+</ul>
+</li>
+<li><strong>Windows:</strong> Open a Command Prompt and execute: <code>echo %JAVA_HOME%</code><ul>
+<li>If the <code>JAVA_HOME</code> variable has not yet been set, the Java installations are typically located in the <code>C:\Program Files\Java\jdk-XX.X.X</code> directory</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Set the <code>JAVA_HOME</code> environment variable.</p>
+<ul>
+<li><strong>macOS:</strong> Edit the shell configuration file<ul>
+<li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
+<li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
+<li><strong>Add</strong> the following line to the file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#saas-3-__codelineno-0-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
+</code></pre></div></li>
+<li><strong>Save</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>) and <strong>exit</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>) the editor</li>
+</ul>
+</li>
+<li><strong>Windows:</strong><ul>
+<li>Open the <strong>Start</strong> menu and search for <code>Environment Variables</code></li>
+<li>Select <em>Edit the system environment variables</em> option</li>
+<li>Click the <strong>Environment Variables</strong> button</li>
+<li>Under <em>System Variables</em>, click <strong>New</strong></li>
+<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 8</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
+<li>Click <strong>OK</strong> to finalize</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>Apply the changes immediately.<ul>
+<li><strong>macOS</strong>: Run <em>either</em> of these commands with Terminal<ul>
+<li>For <code>zsh</code> shell: <code>source ~/.zshrc</code></li>
+<li>For <code>bash</code> shell: <code>source ~/.bash_profile</code></li>
+</ul>
+</li>
+<li><strong>Windows:</strong><ul>
+<li>Close all open command prompts or terminals</li>
+<li>Open a <em>new</em> Command Prompt to pick up the changes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>Verify the <code>JAVA_HOME</code> environment variable<ul>
+<li><strong>macOS:</strong><ul>
+<li>With Terminal, execute: <code>bash&lt;br&gt;echo $JAVA_HOME&lt;br&gt;</code></li>
+<li>The console will return the Java installation path</li>
+</ul>
+</li>
+<li><strong>Windows:</strong><ul>
+<li>With Command Prompt, execute: <code>cmd&lt;br&gt;echo %JAVA_HOME%&lt;br&gt;</code></li>
+<li>The console will return the Java installation path</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. Close and re-launch the application.</p>
+<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (Section <strong>v</strong> and <strong>vi</strong>) for those curious to learn more. Otherwise, continue on to Section <strong>vii</strong> to conclude this module.</p>
+</li>
+</ol>
+<hr />
+<h2 id="saas-3-v-determining-the-java-developer-kit"><strong>v. Determining the Java developer kit</strong></h2>
+<p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit to use in the following order of precedence:</p>
+<table>
+<thead>
+<tr>
+<th>Order of precedence</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Globally-configured Java developer kit for automatic building in the Red Hat extension, which is <code>java.configuration.runtimes</code> in the IDE <code>settings.json</code> file</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>java.jdt.ls.java.home</code> or <code>java.home</code> IDE settings if they are present</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><code>JAVA_HOME</code> system environment variable, or else <code>JDK_HOME</code></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>The Java developer kit in the system <code>PATH</code></td>
+</tr>
+</tbody>
+</table>
+<p>When WCA Standard Plan features are used, such as Java modernization or upgrade, you can verify which Java developer kit is being used:</p>
+<ul>
+<li>Within the VS Code IDE, click <strong>View</strong> and then <strong>Output</strong></li>
+<li>In the <em>Output</em> view, use the dropdown menu to select <strong>WCA</strong></li>
+<li>Look for a message such as <code>Using the Java developer kit that is defined in &lt;location&gt; to run watsonx Code Assistant components. The path is: &lt;path&gt;</code> to determine the feature currently in use</li>
+</ul>
+<hr />
+<h2 id="saas-3-vi-set-the-logging-level"><strong>vi. Set the logging level</strong></h2>
+<p>To adjust logging for the VS Code extension for WCA:</p>
+<ul>
+<li>From the <strong>Extensions</strong> panel of VS Code, locate the WCA extension and right-click to pull down a list of available options</li>
+<li>Select the <strong>Extension Settings</strong> option</li>
+<li>Scroll down (or search) for <strong>WCA: Log level</strong></li>
+<li>You may adjust this field from the default <code>INFO</code> setting to alternative options (like <code>WARN</code>) to cycle between various logging levels</li>
+</ul>
+<hr />
+<h2 id="saas-3-vi-next-steps"><strong>vi. Next steps</strong></h2>
+<p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p></section><h1 class='nav-section-title-end'>Ended: IBM Cloud (SaaS) Configuration</h1>
                         <h1 class='nav-section-title' id='section-application-modernization-websphere-to-liberty'>
                             Application Modernization - WebSphere to Liberty <a class='headerlink' href='#section-application-modernization-websphere-to-liberty' title='Permanent link'>↵</a>
                         </h1>
