@@ -3188,6 +3188,9 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>Follow along with the installer wizard steps and continue with the hands-on lab instructions once VS Code is running on your local machine.</p>
 </div>
 </li>
+</ol>
+<hr />
+<ol start="5">
 <li>
 <p>Launch the VS Code application and take note of the sidebar along the left-side.</p>
 <ul>
@@ -3200,7 +3203,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ul>
 </li>
 </ol>
-<h2 id="saas-3-iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
+<h2 id="saas-3-iv-install-the-extension"><strong>iv. Install the extension</strong></h2>
 <p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
 <hr />
 <ol start="6">
@@ -3212,6 +3215,9 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA in particular, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
 </div>
 </li>
+</ol>
+<hr />
+<ol start="7">
 <li>
 <p>To open WCA within VS Code, first make sure that the <strong>Extensions</strong> panel is selected from the VS Code sidebar.</p>
 <ul>
@@ -3220,8 +3226,9 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ul>
 </li>
 </ol>
-<h2 id="saas-3-iv-set-up-the-enterprise-java-application-environment"><strong>iv. Set up the enterprise Java application environment</strong></h2>
+<h2 id="saas-3-v-set-up-the-enterprise-java-application-environment"><strong>v. Set up the enterprise Java application environment</strong></h2>
 <p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans). Locally you must have installed <em>either</em> Java or Apache Maven distributions. Details and downloads are summarized in the table below.</p>
+<hr />
 <p><strong>Java Requirements</strong></p>
 <table>
 <thead>
@@ -3320,10 +3327,10 @@ includes enterprise Java modernization capabilities, which will be of particular
 <ol start="12">
 <li>
 <p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. Close and re-launch the application.</p>
-<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (Section <a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>v</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vi</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>vii</strong></a> to conclude the module.</p>
+<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (<a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>vi. Determine the JDK</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vii. Set the logging level</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>viii. Next steps</strong></a> to conclude the module.</p>
 </li>
 </ol>
-<h2 id="saas-3-v-determine-the-jdk"><strong>v. Determine the JDK</strong></h2>
+<h2 id="saas-3-vi-determine-the-jdk"><strong>vi. Determine the JDK</strong></h2>
 <p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
 <table>
 <thead>
@@ -3358,7 +3365,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <li>Look for a message such as <code>Using the Java developer kit that is defined in &lt;location&gt; to run watsonx Code Assistant components. The path is: &lt;path&gt;</code> to determine the feature currently in use</li>
 </ul>
 <hr />
-<h2 id="saas-3-vi-set-the-logging-level"><strong>vi. Set the logging level</strong></h2>
+<h2 id="saas-3-vii-set-the-logging-level"><strong>vii. Set the logging level</strong></h2>
 <p>To adjust logging for the VS Code extension for WCA:</p>
 <ul>
 <li>From the <strong>Extensions</strong> panel of VS Code, locate the WCA extension and right-click to pull down a list of available options</li>
@@ -3367,7 +3374,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <li>You may adjust this field from the default <code>INFO</code> setting to alternative options (like <code>WARN</code>) to cycle between various logging levels</li>
 </ul>
 <hr />
-<h2 id="saas-3-vi-next-steps"><strong>vi. Next steps</strong></h2>
+<h2 id="saas-3-viii-next-steps"><strong>viii. Next steps</strong></h2>
 <p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p></section><h1 class='nav-section-title-end'>Ended: IBM Cloud (SaaS) Configuration</h1>
                         <h1 class='nav-section-title' id='section-application-modernization-websphere-to-liberty'>
                             Application Modernization - WebSphere to Liberty <a class='headerlink' href='#section-application-modernization-websphere-to-liberty' title='Permanent link'>↵</a>
