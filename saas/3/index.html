@@ -471,15 +471,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-set-up-enterprise-java-environment" class="md-nav__link">
-    iv. Set up enterprise Java environment
+  <a href="#iv-set-up-the-enterprise-java-application-environment" class="md-nav__link">
+    iv. Set up the enterprise Java application environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#v-determining-the-java-developer-kit" class="md-nav__link">
-    v. Determining the Java developer kit
+  <a href="#v-determine-the-jdk" class="md-nav__link">
+    v. Determine the JDK
   </a>
   
 </li>
@@ -782,15 +782,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-set-up-enterprise-java-environment" class="md-nav__link">
-    iv. Set up enterprise Java environment
+  <a href="#iv-set-up-the-enterprise-java-application-environment" class="md-nav__link">
+    iv. Set up the enterprise Java application environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#v-determining-the-java-developer-kit" class="md-nav__link">
-    v. Determining the Java developer kit
+  <a href="#v-determine-the-jdk" class="md-nav__link">
+    v. Determine the JDK
   </a>
   
 </li>
@@ -838,7 +838,7 @@
 <hr />
 <ol>
 <li>
-<p>Log in to the IBM Cloud API Keys web portal using an <em>IBMid</em>.</p>
+<p>Log in to the <strong>IBM Cloud API Keys</strong> web portal using an <em>IBMid</em>.</p>
 <div class="admonition warning">
 <p><strong>URL: <a href="https://cloud.ibm.com/iam/apikeys" target="_blank">https://cloud.ibm.com/iam/apikeys</a></strong></p>
 </div>
@@ -870,9 +870,6 @@
 <p>Follow along with the installer wizard steps and continue with the hands-on lab instructions once VS Code is running on your local machine.</p>
 </div>
 </li>
-</ol>
-<hr />
-<ol start="5">
 <li>
 <p>Launch the VS Code application and take note of the sidebar along the left-side.</p>
 <ul>
@@ -897,9 +894,6 @@
 <p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA in particular, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
 </div>
 </li>
-</ol>
-<hr />
-<ol start="7">
 <li>
 <p>To open WCA within VS Code, first make sure that the <strong>Extensions</strong> panel is selected from the VS Code sidebar.</p>
 <ul>
@@ -908,13 +902,27 @@
 </ul>
 </li>
 </ol>
-<h2 id="iv-set-up-enterprise-java-environment"><strong>iv. Set up enterprise Java environment</strong></h2>
+<h2 id="iv-set-up-the-enterprise-java-application-environment"><strong>iv. Set up the enterprise Java application environment</strong></h2>
 <p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans). Locally you must have installed <em>either</em> Java or Apache Maven distributions. Details and downloads are summarized in the table below.</p>
-<p><strong>Java Requirements</strong>
-| Distribution | Details |
-| - | - |
-| <strong>Java</strong> | Java SE 11 with Java Developer Kit 11, or a later version.</br><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">&gt;Download for supported OS</a></strong> |
-| <strong>Maven</strong> | Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</br><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download for supported OS&lt;</a>&gt;</strong> |</p>
+<p><strong>Java Requirements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Java</strong></td>
+<td>Java SE 11 with Java Developer Kit 11, or a later version.</br><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">&gt;Download for supported OS</a></strong></td>
+</tr>
+<tr>
+<td><strong>Maven</strong></td>
+<td>Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</br><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download for supported OS&lt;</a>&gt;</strong></td>
+</tr>
+</tbody>
+</table>
 <p>With your preferred Java distribution installed locally, you now need to set the appropriate environment variables.</p>
 <hr />
 <ol start="8">
@@ -994,12 +1002,11 @@
 <ol start="12">
 <li>
 <p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. Close and re-launch the application.</p>
-<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (Section <strong>v</strong> and <strong>vi</strong>) for those curious to learn more. Otherwise, continue on to Section <strong>vii</strong> to conclude this module.</p>
+<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (Section <a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>v</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vi</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>vii</strong></a> to conclude the module.</p>
 </li>
 </ol>
-<hr />
-<h2 id="v-determining-the-java-developer-kit"><strong>v. Determining the Java developer kit</strong></h2>
-<p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit to use in the following order of precedence:</p>
+<h2 id="v-determine-the-jdk"><strong>v. Determine the JDK</strong></h2>
+<p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
 <table>
 <thead>
 <tr>
