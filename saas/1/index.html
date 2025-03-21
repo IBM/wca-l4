@@ -745,27 +745,28 @@
 <p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively cover the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ teams means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
 <p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum— such as <em>Application Modernization - WebSphere to Liberty</em>, <em>Application Modernization - Upgrading Java</em>, and <em>Tuning &amp; Customization</em> —will each leverage the SaaS environment you've configured in the following steps.</p>
 <p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning <strong>WCA Standard Plan</strong> for the SaaS environment.</p>
-<div class="highlight"><pre><span></span><code>!!! note &quot;WCA SOFTWARE-AS-A-SERVICE (SaaS) PLANS&quot;
-    There are two tiers of plans (editions) available for SaaS deployments of WCA:
-
-    **ESSENTIALS PLAN**
-    &lt;/br&gt;
-    Accelerates software development, allowing developers to use WCA with integrated generative AI (gen AI) for coding tasks, including:
-
-    - Generating code
-    - Explaining code
-    - Documenting code
-    - Creating unit tests
-
-    **STANDARD PLAN**
-    &lt;/br&gt;
-    In addition to all the capabilities found in the *Essentials* plan, the *Standard* plan also
-    includes enterprise Java modernization capabilities, which will be of particular advantage for the *Application Modernization* modules of the Level 4 curriculum:
-
-    - Java upgrades, regardless of runtime
-    - WebSphere to Liberty transformation
-    - Enhanced test generation and code explanation
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">WCA SOFTWARE-AS-A-SERVICE (SaaS) PLANS</p>
+<p>There are two tiers of plans (editions) available for SaaS deployments of WCA:</p>
+<p><strong>ESSENTIALS PLAN</strong>
+</br>
+Accelerates software development, allowing developers to use WCA with integrated generative AI (gen AI) for coding tasks, including:</p>
+<ul>
+<li>Generating code</li>
+<li>Explaining code</li>
+<li>Documenting code</li>
+<li>Creating unit tests</li>
+</ul>
+<p><strong>STANDARD PLAN</strong>
+</br>
+In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan also
+includes enterprise Java modernization capabilities, which will be of particular advantage for the <em>Application Modernization</em> modules of the Level 4 curriculum:</p>
+<ul>
+<li>Java upgrades, regardless of runtime</li>
+<li>WebSphere to Liberty transformation</li>
+<li>Enhanced test generation and code explanation</li>
+</ul>
+</div>
 <h2 id="ii-prerequisites"><strong>ii. Prerequisites</strong></h2>
 <p>There are two high-level architectural components to WCA:</p>
 <ol>
