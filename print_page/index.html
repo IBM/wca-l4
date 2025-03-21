@@ -2989,7 +2989,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <h2 id="saas-1-i-about-this-lab"><strong>i. About this lab</strong></h2>
 <p>For the purposes of the Level 4 training curriculum, the hands-on components have been split across both on-premises and Software-as-a-Service (SaaS) environments on IBM Cloud. Both are supported by IBM Technology Zone (ITZ) infrastructure.</p>
 <p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively cover the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ teams means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
-<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum— such as <em>Application Modernization - WebSphere to Liberty</em>, <em>Application Modernization - Upgrading Java</em>, and <em>Tuning &amp; Customization</em> —will each leverage the SaaS environment you've configured in the following steps.</p>
+<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum  (<em>Application Modernization</em> and <em>Tuning &amp; Configuration</em>) will each leverage the SaaS environment you've configured in the following steps.</p>
 <p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning <strong>WCA Standard Plan</strong> for the SaaS environment.</p>
 <div class="admonition note">
 <p class="admonition-title">SOFTWARE-AS-A-SERVICE (SaaS) PLANS</p>
@@ -3314,7 +3314,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ol>
 <hr />
 <ol start="12">
-<li>Verify the <code>JAVA_HOME</code> environment variable<ul>
+<li>Verify the <code>JAVA_HOME</code> environment variable has been correctly set.<ul>
 <li><strong>macOS:</strong><ul>
 <li>With Terminal, execute: <code>bash&lt;br&gt;echo $JAVA_HOME&lt;br&gt;</code></li>
 <li>The console will return the Java installation path</li>
@@ -3331,8 +3331,9 @@ includes enterprise Java modernization capabilities, which will be of particular
 <hr />
 <ol start="13">
 <li>
-<p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. Close and re-launch the application.</p>
-<p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (<a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>vi. Determine the JDK</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vii. Set the logging level</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>viii. Next steps</strong></a> to conclude the module.</p>
+<p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. <strong>Close and re-launch the application.</strong></p>
+<p></br>
+At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (<a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>vi. Determine the JDK</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vii. Set the logging level</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>viii. Next steps</strong></a> to conclude the module.</p>
 </li>
 </ol>
 <h2 id="saas-3-vi-determine-the-jdk"><strong>vi. Determine the JDK</strong></h2>
