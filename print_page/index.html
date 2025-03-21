@@ -3143,7 +3143,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <li>Scroll down the page until you reach the <strong>Reservation Details</strong> section.</li>
 </ol></section><section class="print-page" id="saas-3"><h1 id="saas-3-install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration"><strong>Install WCA extension for Visual Studio Code</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-3-i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
-<p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and the <em>Eclipse IDE</em>.</p>
+<p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
 <p>This module guides participants through the process of install VS Code on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
 <div class="admonition note">
 <p class="admonition-title">WHY INSTALL LOCALLY?</p>
@@ -3151,7 +3151,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
 <p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE — in fact, it's the defacto way to interact with the service and provides the best experience for users (more responsive, easier to copy &amp; paste lab guide instructions), by far.</p>
 </div>
-<h2 id="saas-3-ii-create-an-api-key-on-ibm-cloud"><strong>ii. Create an API key on IBM Cloud</strong></h2>
+<h2 id="saas-3-ii-create-an-api-key"><strong>ii. Create an API key</strong></h2>
 <p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) extension to the VS Code IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
 <hr />
 <ol>
@@ -3177,7 +3177,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ul>
 </li>
 </ol>
-<h2 id="saas-3-iii-locally-install-visual-studio-code"><strong>iii. Locally install Visual Studio Code</strong></h2>
+<h2 id="saas-3-iii-locally-install-vs-code"><strong>iii. Locally install VS Code</strong></h2>
 <p>To install from the Visual Studio Marketplace:</p>
 <hr />
 <ol start="4">
@@ -3227,8 +3227,11 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <h2 id="saas-3-v-set-up-the-enterprise-java-application-environment"><strong>v. Set up the enterprise Java application environment</strong></h2>
-<p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans). Locally you must have installed <em>either</em> Java or Apache Maven distributions. Details and downloads are summarized in the table below.</p>
+<p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans).</p>
 <hr />
+<ol start="8">
+<li>
+<p>Locally you must <strong>install</strong> <em>either</em> Java or Apache Maven distributions. Details and downloads are summarized in the table below.</p>
 <p><strong>Java Requirements</strong></p>
 <table>
 <thead>
@@ -3240,19 +3243,21 @@ includes enterprise Java modernization capabilities, which will be of particular
 <tbody>
 <tr>
 <td><strong>Java</strong></td>
-<td>Java SE 11 with Java Developer Kit 11, or a later version.</br><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">&gt;Download for supported OS</a></strong></td>
+<td>Java SE 11 with Java Developer Kit 11, or a later version.</br><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download</a></strong></td>
 </tr>
 <tr>
 <td><strong>Maven</strong></td>
-<td>Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</br><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download for supported OS&lt;</a>&gt;</strong></td>
+<td>Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</br><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download</a></strong></td>
 </tr>
 </tbody>
 </table>
-<p>With your preferred Java distribution installed locally, you now need to set the appropriate environment variables.</p>
+</li>
+</ol>
 <hr />
-<ol start="8">
+<ol start="9">
 <li>
-<p>Find the Java installation path on your local machine.</p>
+<p>With your preferred Java distribution installed locally, you now need to set the appropriate environment variables.</p>
+<p>Find the Java installation path on your local machine using the instruction set that corresponds to your local operating system.</p>
 <ul>
 <li><strong>macOS:</strong> Open a Terminal and execute: <code>/usr/libexec/java_home</code><ul>
 <li>The output should resemble something like: <code>/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home</code></li>
@@ -3266,7 +3271,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<ol start="9">
+<ol start="10">
 <li>
 <p>Set the <code>JAVA_HOME</code> environment variable.</p>
 <ul>
@@ -3284,7 +3289,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <li>Select <em>Edit the system environment variables</em> option</li>
 <li>Click the <strong>Environment Variables</strong> button</li>
 <li>Under <em>System Variables</em>, click <strong>New</strong></li>
-<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 8</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
+<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 9</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
 <li>Click <strong>OK</strong> to finalize</li>
 </ul>
 </li>
@@ -3292,7 +3297,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<ol start="10">
+<ol start="11">
 <li>Apply the changes immediately.<ul>
 <li><strong>macOS</strong>: Run <em>either</em> of these commands with Terminal<ul>
 <li>For <code>zsh</code> shell: <code>source ~/.zshrc</code></li>
@@ -3308,7 +3313,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<ol start="11">
+<ol start="12">
 <li>Verify the <code>JAVA_HOME</code> environment variable<ul>
 <li><strong>macOS:</strong><ul>
 <li>With Terminal, execute: <code>bash&lt;br&gt;echo $JAVA_HOME&lt;br&gt;</code></li>
@@ -3324,7 +3329,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<ol start="12">
+<ol start="13">
 <li>
 <p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. Close and re-launch the application.</p>
 <p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (<a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>vi. Determine the JDK</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vii. Set the logging level</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>viii. Next steps</strong></a> to conclude the module.</p>
