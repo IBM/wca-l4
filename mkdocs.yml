@@ -20,7 +20,21 @@ nav:
     - 5. Install prerequisite software: 'on-premises/5.md'
     - 6. Install IBM Software Hub: 'on-premises/6.md'
     - 7. Install watsonx Code Assistant: 'on-premises/7.md'
-    - 8. Conclusion: 'on-premises/8.md'
+  - IBM Cloud (SaaS) Configuration:
+    - 1. Objectives and requirements: 'saas/1.md'
+    - 2. Reserving the environment: 'saas/2.md'
+    - 3. Install WCA extension for Visual Studio Code: 'saas/3.md'
+    - 4. Install WCA extension for Eclipse IDE: 'saas/4.md'
+  - Application Modernization - WebSphere to Liberty:
+    - 1. Objectives and requirements: 'appmod1/1.md'
+  - Application Modernization - Upgrading Java:
+    - 1. Objectives and requirements: 'appmod2/1.md'
+  - Tuning and Customization:
+    - 1. Getting code suggestions: 'tuning/1.md'
+    - 2. Explaining code: 'tuning/2.md'
+    - 3. Documenting code: 'tuning/3.md'
+    - 4. Unit test generation: 'tuning/4.md'
+    - 5. Upgrading Java versions: 'tuning/5.md'
 
 theme:
   name: material
