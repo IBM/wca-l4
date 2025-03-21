@@ -2955,12 +2955,11 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>For the purposes of the Level 4 training curriculum, the hands-on components have been split across both on-premises and Software-as-a-Service (SaaS) environments on IBM Cloud. Both are supported by IBM Technology Zone (ITZ) infrastructure.</p>
 <p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively cover the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ teams means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
 <p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum— such as <em>Application Modernization - WebSphere to Liberty</em>, <em>Application Modernization - Upgrading Java</em>, and <em>Tuning &amp; Customization</em> —will each leverage the SaaS environment you've configured in the following steps.</p>
-<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning WCA's <em>Standard Plan</em> for the SaaS environment.</p>
+<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning <strong>WCA Standard Plan</strong> for the SaaS environment.</p>
 <div class="admonition note">
 <p class="admonition-title">WCA SOFTWARE-AS-A-SERVICE PLANS ON IBM CLOUD</p>
 <p>There are two tiers of plans (editions) available for SaaS deployments of WCA:</p>
-<p></br>
-<strong>ESSENTIALS PLAN</strong>
+<p><strong>ESSENTIALS PLAN</strong>
 Accelerates software development, allowing developers to use WCA with integrated generative AI (gen AI) for coding tasks, including:</p>
 <ul>
 <li>Generating code</li>
@@ -2968,8 +2967,7 @@ Accelerates software development, allowing developers to use WCA with integrated
 <li>Documenting code</li>
 <li>Creating unit tests</li>
 </ul>
-<p></br>
-<strong>STANDARD PLAN</strong>
+<p><strong>STANDARD PLAN</strong>
 In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan also
 includes enterprise Java modernization capabilities, which will be of particular advantage for the <em>Application Modernization</em> modules of the Level 4 curriculum:</p>
 <ul>
@@ -2991,7 +2989,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>Participants require access to ITZ in order to reserve an environment and complete the hands-on work. If you do not yet have an account with the ITZ, you will need to <a href="https://techzone.ibm.com/" target="_blank"><strong>register for one</strong></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">ITZ RESERVATION CAPACITY</p>
-<p>This module requires the reservation of <strong>two</strong> separate environments from ITZ. Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</br></br>As a result, the on-premises environment provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules will <strong>need to be retired and deprovisioned</strong> before you can reserve the necessary SaaS environments. Therefore, ensure you are completely finished with those modules before proceeding — including with the evaluation quiz for that section.</p>
+<p>This module requires the reservation of <strong>two</strong> separate environments from ITZ. Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</br></br>As a result, the on-premises environment provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules will <strong>need to be retired and deprovisioned</strong> before you can reserve the necessary SaaS environments. Therefore, ensure you are completely finished with those modules before proceeding — including the evaluation quiz for that section.</p>
 </div>
 <h2 id="saas-1-iii-troubleshooting-and-support"><strong>iii. Troubleshooting and support</strong></h2>
 <p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
