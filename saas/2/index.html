@@ -442,6 +442,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iii-configuring-the-wca-environment" class="md-nav__link">
+    iii. Configuring the WCA environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -725,6 +739,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iii-configuring-the-wca-environment" class="md-nav__link">
+    iii. Configuring the WCA environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -740,6 +768,9 @@
 
 
 <h1 id="reserving-the-environmentibm-cloud-saas-configuration"><strong>Reserving the Environment</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
+<div class="admonition quote">
+<p>The following section is partially based on IBM Cloud Documentation for <a href="https://cloud.ibm.com/docs/watsonx-code-assistant?topic=watsonx-code-assistant-cloud-setup-wca" target="_blank"><strong>Setting up your watsonx Code Assistant service in IBM Cloud</strong></a>. Some of the configuration steps— such as creation of an access group and adding an access group to the deployment space -are automatically handled by IBM Technology Zone provisioning tasks. As such, if you are repeating this deployment for a client production environment, you may wish to reference the complete documentation set.</p>
+</div>
 <h2 id="i-ibm-technology-zone"><strong>i. IBM Technology Zone</strong></h2>
 <p>The following steps will guide participants through the process for requesting access to an IBM watsonx Code Assistant (WCA) Standard Plan environment from IBM Technology Zone (ITZ).</p>
 <hr />
@@ -810,6 +841,9 @@
 <p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress</p>
 </li>
 <li>
+<p>You will receive an email with the header <em>Request Approved</em> once the request has been adjudicated by the approvals team</p>
+</li>
+<li>
 <p><strong>Wait</strong> for the ITZ reservation to be marked as <em>Ready</em> before continuing to Step 5</p>
 </li>
 </ul>
@@ -828,19 +862,121 @@
 </li>
 </ol>
 <h2 id="ii-accessing-the-service-details"><strong>ii. Accessing the service details</strong></h2>
-<p>Once the WCA service has been approved and provisioned, you will receive an email with the header: <code>Reservation Ready on IBM Technology Zone</code>. </p>
+<p>Once the WCA service has been approved and provisioned, you will receive <strong>two</strong> emails with the headers:</p>
+<ul>
+<li><em>Reservation Ready on IBM Technology Zone:</em> indicates that the ITZ cluster has been successfully provisioned</li>
+<li><em>Account: Action required: You are invited to join an account in IBM Cloud:</em> additional steps required by the administrator (you) in order to link the WCA service to your IBM Cloud account</li>
+</ul>
+<p>Steps must be taken to link the WCA service and IBM Cloud accounts at this time.</p>
 <hr />
 <ol start="5">
-<li>
-<p>Confirm that the ITZ email states that <strong>Status Update: Ready</strong><sup>[A]</sup>. Follow the link provided in the email, or access the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab on ITZ to access your reservation.</p>
-<p></br>
-<a class="glightbox" href="_attachments/onprem-2.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="_attachments/onprem-2.5.png" /></a></p>
-</li>
+<li>Click the <strong>Join Now</strong> button within the body of the <em>Account: Action required: You are invited to join an account in IBM Cloud</em> email to launch a web browser redirect to IBM Cloud.</li>
 </ol>
 <hr />
 <ol start="6">
-<li>Scroll down the page until you reach the <strong>Reservation Details</strong> section.</li>
+<li>Select (tick) the <strong>I accept the product Terms and Conditions of this registration form.</strong> button under the <em>Account Notice</em> header, then click <strong>Join account</strong> to continue.</li>
 </ol>
+<hr />
+<ol start="7">
+<li>
+<p>You will be presented with a prompt asking for your permission to switch your personal IBM Cloud account's view into the WCA service (ITZ-provisioned) IBM Cloud account — which will resemble something like <code>itz-watsonx-24</code>. Click <strong>Proceed</strong> to confirm.</p>
+<div class="admonition note">
+<p class="admonition-title">SWITCHING BETWEEN IBM CLOUD ACCOUNTS</p>
+<p>You can toggle between various IBM Cloud accounts at-will. However, for the purposes of this lab it's best that you remain under the WCA service account.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>The IBM Cloud dashboard will now load within your web browser. At this time, confirm you are logged in under the WCA service account by inspecting the drop-down menu as shown in the screenshot below.</li>
+</ol>
+<hr />
+<ol start="9">
+<li>Open a new web browser tab and navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> ITZ page to inspect the details of your newly-provisioned service (or follow the link provided in the <em>Reservation Ready on IBM Technology Zone</em>) email. Click on the newly-provisioned service's tile to inspect the details.</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Scroll down the page to the <em>Reservations Details</em> section and locate the following values. You will need to record these to a notepad for future reference.</p>
+<ul>
+<li><em>IBM Cloud Service ID</em></li>
+<li><em>IBM Cloud API key</em></li>
+<li><em>WCA URL</em></li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Open a new browser tab and navigate to the <em>WCA URL</em> recorded in Step 10. A <em>Resource list</em> view on IBM Cloud will load.</p>
+<p>Click the <strong>Launch watsonx Code Assistant</strong> button to continue.</p>
+</li>
+</ol>
+<hr />
+<h2 id="iii-configuring-the-wca-environment"><strong>iii. Configuring the WCA environment</strong></h2>
+<p>A new tab will load to present the <em>WCA Dashboard</em>, which on a first-time login will automatically prompt you to configure the environment.</p>
+<hr />
+<ol start="12">
+<li>When presented with the <em>Set up watsonx Code Assistant for Standard plan</em> panel, click <strong>Set up</strong> to continue.</li>
+</ol>
+<hr />
+<ol start="13">
+<li><em>Type of installation</em> configuration options must be configured next. Select the <strong>Single user</strong> option.</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>Having specified the installation type, more options will unlock further down the page under the <em>Steps to complete</em> header.</p>
+<p>Click the blue arrow icon to the right of the <em>Create a deployment space</em> option.</p>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Configure the <em>Create a deployment space</em> page as follows:</p>
+<ul>
+<li><em>Name:</em> Assign a name of your choosing to the deployment space (e.g. <code>wca-l4</code>)</li>
+<li><em>Description:</em> Optional</li>
+<li><em>Select storage service:</em> Do not change. IBM Technology Zone has automatically assigned Cloud Object Storage space for this reservation.</li>
+<li><em>Code assistant service</em>: Click the drop-down menu and select the WCA service belonging to your account.</li>
+</ul>
+<p>All other fields can remain as their default values. When ready, click <strong>Create</strong> and remain on the page for the deployment to finish.</p>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>Once the deployment space has been prepared, a pop-up alert will display <em>The space is ready</em>. Click the <strong>X</strong> icon in the top-right corner to dismiss the message and continue with the configuration steps.</li>
+</ol>
+<hr />
+<ol start="17">
+<li>
+<p>The web browser will return to the set up wizard, which now displays additional options under the <em>Steps to complete</em> section. Notice that the <em>Create a deployment space</em> step has been marked as complete.</p>
+<p>Click the blue icon to the right of the <em>Select your license preference for response generations</em> option.</p>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>The <em>Display of Code Suggestions</em> page permits users to configure how to display code suggestions.</p>
+<ul>
+<li><strong>Do not change</strong> any of the settings, but you are welcome to review them if you wish</li>
+<li><strong>Close</strong> the page and return to the set up wizard</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p><strong>Check</strong> (tick) the box to the left of the <em>Select your license preference for response generations</em> option to mark the task as complete.</p>
+<ul>
+<li>A prompt will appear at the bottom of the set up wizard to indicate all tasks are now complete</li>
+<li>Click the <strong>Go to home page</strong> button to conclude the setup</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="next-steps"><strong>Next steps</strong></h2>
+<p>The deployment and initial configurations of the watsonx Code Assistant (SaaS) Standard Plan service on IBM Cloud is now complete. In the following two modules, you will prepare the WCA extensions and plug-ins for Visual Studio Code and Eclipse IDE, respectively.</p>
 
 
 
