@@ -17,7 +17,7 @@
     
     
       
-        <title>4. Install WCA extension for Eclipse IDE - IBM watsonx Code Assistant for Practitioners Level 4</title>
+        <title>4. Install WCA plug-in for Eclipse IDE - IBM watsonx Code Assistant for Practitioners Level 4</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-wca-extension-for-eclipse-ideibm-cloud-saas-configuration" class="md-skip">
+        <a href="#install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Install WCA extension for Eclipse IDE
+              4. Install WCA plug-in for Eclipse IDE
             
           </span>
         </div>
@@ -433,12 +433,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          4. Install WCA extension for Eclipse IDE
+          4. Install WCA plug-in for Eclipse IDE
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        4. Install WCA extension for Eclipse IDE
+        4. Install WCA plug-in for Eclipse IDE
       </a>
       
         
@@ -473,6 +473,20 @@
         <li class="md-nav__item">
   <a href="#iii-locally-install-eclipse-ide" class="md-nav__link">
     iii. Locally install Eclipse IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-install-the-plug-in" class="md-nav__link">
+    iv. Install the plug-in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-validate-the-plug-in" class="md-nav__link">
+    v. Validate the plug-in
   </a>
   
 </li>
@@ -739,6 +753,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iv-install-the-plug-in" class="md-nav__link">
+    iv. Install the plug-in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-validate-the-plug-in" class="md-nav__link">
+    v. Validate the plug-in
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -753,7 +781,7 @@
                 
 
 
-<h1 id="install-wca-extension-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA extension for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
+<h1 id="install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA plug-in for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
 <p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
 <p>This module guides participants through the process of installing Eclipse IDE on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
@@ -768,7 +796,7 @@
 <p class="admonition-title">AVOID RE-USING KEYS</p>
 <p>Even if you've already generated an API key for the Visual Studio Code extension, it is recommended that you still create a different API key for Elcipse IDE.</p>
 </div>
-<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) extension to the Eclipse IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
+<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) plug-in to the Eclipse IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
 <hr />
 <ol>
 <li>
@@ -794,7 +822,120 @@
 </li>
 </ol>
 <h2 id="iii-locally-install-eclipse-ide"><strong>iii. Locally install Eclipse IDE</strong></h2>
-<p>To install</p>
+<p>With the IBM Cloud credentials set up, the next step will be to install the Eclipse IDE locally and then integrate it with the WCA service via the IDE plug-in.</p>
+<hr />
+<ol start="4">
+<li>
+<p><strong>Download</strong> the <em>Eclipse IDE</em> from the Eclipse Foundation.</p>
+<ul>
+<li>Use the <em>Eclipse Installer</em>, recommended at the top of the download page.</li>
+<li>Select the version appropriate to your local machine's operating system.</li>
+</ul>
+<div class="admonition warning">
+<p><strong>URL:</strong> <a href="https://www.eclipse.org/downloads/packages/" target="_blank">https://www.eclipse.org/downloads/packages/</a></p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Run the installer on your local machine.</p>
+<ul>
+<li>Select the <strong>Eclipse IDE for Java Developers</strong> option</li>
+<li>Follow along with the remaining prompts until the Eclipse IDE has been installed</li>
+<li>Once the install process has concluded, click <strong>Launch</strong> from the installer or manually launch the Eclipse IDE application yourself</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>Upon launching the Eclipse IDE for the first time, users will be prompted to <em>Select a directory as workspace</em>. Choose a directory on your local machine you feel appropriate (or select the one selected by default for you) and then click <strong>Launch</strong>.</li>
+</ol>
+<h2 id="iv-install-the-plug-in"><strong>iv. Install the plug-in</strong></h2>
+<p>Open the <a href="https://marketplace.eclipse.org/content/ibm®-watsonx™-code-assistant-enterprise-java-applications" target="_blank"><strong>Eclipse Marketplace</strong></a> listing for <em>IBM watsonx Code Assistant for Enterprise Java Applications</em> plug-in, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
+<hr />
+<ol start="7">
+<li>
+<p>Locate the <strong>Install</strong> button on the Eclipse Marketplace page. The easiest method for installing this plug-in is to <strong>click and hold</strong> the mouse button down on this Install button, then <strong>drag and release</strong> on top of the open Eclipse IDE application.</p>
+<ul>
+<li>An install wizard will open within the Eclipse IDE automatically</li>
+<li><em>Confirm Selected Features</em>: verify that the two WCA options are selected and click <strong>Confirm</strong></li>
+<li>Installation should take about 1 minute to conclude</li>
+<li>Wait for the <em>Review Licenses</em> panel to load</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Within the <em>Review Licenses</em> panel, read through all three license agreements and click <strong>I accept the terms of the license agreements</strong> option.</p>
+<ul>
+<li>To progress the installation, click <strong>Finish</strong></li>
+<li>Wait a few moments for the <em>Trust Authorities</em> panel to load</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Within the <em>Trust Authorities</em>, examine the <strong>Authority / Update Site</strong> table at the top to load.</p>
+<ul>
+<li><strong>Select</strong> (tick the box) left of the <code>https://public.dhe.ibm.com</code> option field</li>
+<li>All other fields can remain as their default settings</li>
+<li>Click the <strong>Trust Selected</strong> button to continue</li>
+<li>Wait 1 to 2 minutes for the software to continue installing</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>After a few moments, a <em>Software Updates</em> window will prompt you to restart the Eclipse IDE.</p>
+<ul>
+<li>Click the <strong>Restart Now</strong> option to re-launch the application</li>
+<li>Installation of the WCA plug-in software and dependencies will continue after launching</li>
+<li>Wait a moment for the installation to conclude</li>
+</ul>
+</li>
+</ol>
+<h2 id="v-validate-the-plug-in"><strong>v. Validate the plug-in</strong></h2>
+<p>At this stage, the WCA plug-in for Eclipse IDE has been successfully installed on your local machine. Now you must authorize the plug-in for use with the WCA service on IBM Cloud.</p>
+<hr />
+<ol start="11">
+<li>From the Eclipse application, select <strong>Window</strong>, then <strong>Show View</strong>, and finally <strong>Other</strong>.</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>From the table of option, scroll down and locate <em>watsonx Code Assistant</em>.</p>
+<ul>
+<li>Double-click on the folder (or click the arrow to the left of it) to expose the WCA components</li>
+<li>Select the <strong>Chat</strong> option and then click <strong>Open</strong></li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>A new dialogue window (among several open tabs) will open at the bottom of the Eclipse IDE.</p>
+<ul>
+<li>Scroll down within the window to the bottom of the page</li>
+<li>Click the <strong>Log in with your API key</strong> button</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>A new <em>Preferences</em> window will open.</p>
+<ul>
+<li>Within the <em>API Key</em> field, supply the key generated in Step 3</li>
+<li>The remaining settings can remain at their default values</li>
+<li>Click the <strong>Apply and Close</strong> button</li>
+<li>Click <strong>No</strong> when prompted to create a <em>Secure Storage - Password Hint Needed</em></li>
+</ul>
+</li>
+</ol>
 
 
 
