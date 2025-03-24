@@ -22,9 +22,9 @@ nav:
     - 7. Install watsonx Code Assistant: 'on-premises/7.md'
   - IBM Cloud (SaaS) Configuration:
     - 1. Objectives and requirements: 'saas/1.md'
-    - 2. Reserving the environment: 'saas/2.md'
+    - 2. Reserve an environment: 'saas/2.md'
     - 3. Install WCA extension for Visual Studio Code: 'saas/3.md'
-    - 4. Install WCA extension for Eclipse IDE: 'saas/4.md'
+    - 4. Install WCA plug-in for Eclipse IDE: 'saas/4.md'
   - Application Modernization - WebSphere to Liberty:
     - 1. Objectives and requirements: 'appmod1/1.md'
   - Application Modernization - Upgrading Java:
