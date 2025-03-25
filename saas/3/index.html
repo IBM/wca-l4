@@ -491,13 +491,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#ii-create-an-api-key" class="md-nav__link">
-    ii. Create an API key
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -802,13 +795,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#ii-create-an-api-key" class="md-nav__link">
-    ii. Create an API key
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -859,6 +845,7 @@
 </ul>
 </li>
 </ol>
+<hr />
 <h2 id="iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
 <p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
 <hr />
@@ -880,11 +867,28 @@
 </ol>
 <hr />
 <ol start="4">
-<li>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong> icon that has appeared along the left-hand side of the VS Code IDE. A <code>Welcome, let's get started!</code> prompt will open within the IDE.</li>
+<li>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</li>
 </ol>
 <hr />
-<div class="highlight"><pre><span></span><code>- Click **Log in** and supply the *API Key* recorded in Step 3
-</code></pre></div>
+<ol start="5">
+<li>Now let's authorize the extension for use with the WCA service provisioned on IBM Cloud. From the WCA panel, click <strong>Log in with your API key</strong> to continue.</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>A drop-down menu will open at the top of the VS Code interface. <strong>Copy and paste</strong> the <em>WCA API Key</em> that was recorded in <a href="https://ibm.github.io/wca-l4/saas/2/#iv-create-a-service-id-and-api-key" target="_blank"><strong>Step 24 of Module 2</strong></a> into the prompt.</p>
+<ul>
+<li>The interface should display a line of text indicating a <em>Valid API Key</em> has been detected</li>
+<li>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the input</li>
+<li>When prompted with <em>The extension 'watsonx Code Assistant' wants to sign in using WCA API Key</em>, click <strong>Allow</strong></li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>Confirm that the extension successfully authenticated with the WCA service by looking for an open <em>Chat session 1</em> with <code>watsonx</code> along the left side of the WCA extension page. If this Chat interface is available and operational, that confirms that VS Code extension has been successfully integrated with the WCA service.</li>
+</ol>
+<hr />
 <h2 id="iv-set-up-the-enterprise-java-application-environment"><strong>iv. Set up the enterprise Java application environment</strong></h2>
 <p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans).</p>
 <hr />
@@ -1044,32 +1048,6 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <hr />
 <h2 id="vii-next-steps"><strong>vii. Next steps</strong></h2>
 <p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p>
-<h2 id="ii-create-an-api-key"><strong>ii. Create an API key</strong></h2>
-<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) extension to the VS Code IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
-<hr />
-<ol>
-<li>
-<p>Log in to the <strong>IBM Cloud API Keys</strong> web portal using an <em>IBMid</em>.</p>
-<div class="admonition warning">
-<p><strong>URL: <a href="https://cloud.ibm.com/iam/apikeys" target="_blank">https://cloud.ibm.com/iam/apikeys</a></strong></p>
-</div>
-</li>
-</ol>
-<hr />
-<ol start="2">
-<li>Click the <strong>Create</strong> button.</li>
-</ol>
-<hr />
-<ol start="3">
-<li>
-<p>Enter <code>IBM watsonx Code Assistant API Key</code> as the name of the API key. Optionally, provide a description for the key.</p>
-<ul>
-<li>When ready, click <strong>Create</strong></li>
-<li><strong>Download</strong> a copy of the API key and <strong>copy</strong> the key to your clipboard</li>
-<li>Save these records for reference later</li>
-</ul>
-</li>
-</ol>
 
 
 
