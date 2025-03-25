@@ -3454,10 +3454,9 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
 </div>
 </li>
-</ol>
-<hr />
-<ol start="4">
-<li>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</li>
+<li>
+<p>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</p>
+</li>
 </ol>
 <hr />
 <ol start="5">
@@ -3647,40 +3646,10 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
 <p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users by far — with a less cumbersome experience with the lab guide instructions and much more responsive IDE interactions.</p>
 </div>
-<h2 id="saas-4-ii-create-an-api-key"><strong>ii. Create an API key</strong></h2>
-<div class="admonition warning">
-<p class="admonition-title">AVOID RE-USING KEYS</p>
-<p>Even if you've already generated an API key for the Visual Studio Code extension, it is recommended that you still create a different API key for Elcipse IDE.</p>
-</div>
-<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) plug-in to the Eclipse IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
-<hr />
-<ol>
-<li>
-<p>Log in to the <strong>IBM Cloud API Keys</strong> web portal using an <em>IBMid</em>.</p>
-<div class="admonition warning">
-<p><strong>URL: <a href="https://cloud.ibm.com/iam/apikeys" target="_blank">https://cloud.ibm.com/iam/apikeys</a></strong></p>
-</div>
-</li>
-</ol>
-<hr />
-<ol start="2">
-<li>Click the <strong>Create</strong> button.</li>
-</ol>
-<hr />
-<ol start="3">
-<li>
-<p>Enter <code>IBM watsonx Code Assistant API Key (Eclipse IDE)</code> as the name of the API key. Optionally, provide a description for the key.</p>
-<ul>
-<li>When ready, click <strong>Create</strong></li>
-<li><strong>Download</strong> a copy of the API key and <strong>copy</strong> the key to your clipboard</li>
-<li>Save these records for reference later</li>
-</ul>
-</li>
-</ol>
-<h2 id="saas-4-iii-locally-install-eclipse-ide"><strong>iii. Locally install Eclipse IDE</strong></h2>
+<h2 id="saas-4-ii-locally-install-eclipse-ide"><strong>ii. Locally install Eclipse IDE</strong></h2>
 <p>With the IBM Cloud credentials set up, the next step will be to install the Eclipse IDE locally and then integrate it with the WCA service via the IDE plug-in.</p>
 <hr />
-<ol start="4">
+<ol>
 <li>
 <p><strong>Download</strong> the <em>Eclipse IDE</em> from the Eclipse Foundation.</p>
 <ul>
@@ -3695,7 +3664,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="5">
+<ol start="2">
 <li>
 <p>Run the installer on your local machine.</p>
 <ul>
@@ -3710,7 +3679,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="6">
+<ol start="3">
 <li>
 <p>Upon launching the Eclipse IDE for the first time, users will be prompted to <em>Select a directory as workspace</em>. Choose a directory on your local machine<sup>[A]</sup> you feel appropriate (or select the one selected by default for you) and then click <strong>Launch</strong><sup>[B]</sup> to continue.</p>
 <p></br>
@@ -3718,10 +3687,10 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<h2 id="saas-4-iv-install-the-plug-in"><strong>iv. Install the plug-in</strong></h2>
+<h2 id="saas-4-iii-install-the-plug-in"><strong>iii. Install the plug-in</strong></h2>
 <p>Open the <a href="https://marketplace.eclipse.org/content/ibm®-watsonx™-code-assistant-enterprise-java-applications" target="_blank"><strong>Eclipse Marketplace</strong></a> listing for <em>IBM watsonx Code Assistant for Enterprise Java Applications</em> plug-in, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum.</p>
 <hr />
-<ol start="7">
+<ol start="4">
 <li>
 <p>Locate the <strong>Install</strong> button on the Eclipse Marketplace page. The easiest method for installing this plug-in is to <strong>click and hold</strong><sup>[A]</sup> the mouse button down on this Install button, then <strong>drag and release</strong><sup>[B]</sup> on top of the open Eclipse IDE application.</p>
 <ul>
@@ -3739,7 +3708,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="8">
+<ol start="5">
 <li>
 <p>Within the <em>Review Licenses</em> panel, read through all three license agreements<sup>[A]</sup> and click the <strong>I accept the terms of the license agreements</strong><sup>[B]</sup> option.</p>
 <ul>
@@ -3751,7 +3720,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="9">
+<ol start="6">
 <li>
 <p>Within the <em>Trust Authorities</em>, examine the <strong>Authority / Update Site</strong> table at the top to load.</p>
 <ul>
@@ -3765,7 +3734,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="10">
+<ol start="7">
 <li>
 <p>After a few moments, a <em>Software Updates</em> window will prompt you to restart the Eclipse IDE.</p>
 <ul>
@@ -3777,10 +3746,10 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <a class="glightbox" href="../saas/_attachments/saas-4.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-4.10.png" /></a></p>
 </li>
 </ol>
-<h2 id="saas-4-v-validate-the-plug-in"><strong>v. Validate the plug-in</strong></h2>
+<h2 id="saas-4-iv-validate-the-plug-in"><strong>iv. Validate the plug-in</strong></h2>
 <p>At this stage, the WCA plug-in for Eclipse IDE has been successfully installed on your local machine. Now you must authorize the plug-in for use with the WCA service on IBM Cloud.</p>
 <hr />
-<ol start="11">
+<ol start="8">
 <li>
 <p>From the Eclipse application, select <strong>Window</strong>, then <strong>Show View</strong>, and finally <strong>Other</strong><sup>[A]</sup> to open the plug-ins browser.</p>
 <p></br>
@@ -3788,7 +3757,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="12">
+<ol start="9">
 <li>
 <p>From the table of option, scroll down and locate <em>watsonx Code Assistant</em>.</p>
 <ul>
@@ -3800,7 +3769,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="13">
+<ol start="10">
 <li>
 <p>A new window (among several open tabs) will open at the bottom of the Eclipse IDE<sup>[A]</sup>.</p>
 <ul>
@@ -3812,11 +3781,11 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<ol start="14">
+<ol start="11">
 <li>
 <p>A new <em>Preferences</em> window will open.</p>
 <ul>
-<li>Within the <em>API Key</em> field<sup>[A]</sup>, supply the key generated in Step 3</li>
+<li>Within the <em>API Key</em> field<sup>[A]</sup>, <strong>paste</strong> the <em>WCA API Key</em> that was recorded in <a href="https://ibm.github.io/wca-l4/saas/2/#iv-create-a-service-id-and-api-key" target="_blank"><strong>Step 24 of Module 2</strong></a> into the prompt</li>
 <li>The remaining settings can remain at the default values</li>
 <li>Click the <strong>Apply and Close</strong><sup>[B]</sup> button</li>
 <li>Click <strong>No</strong><sup>[C]</sup> when prompted to create a <em>Secure Storage - Password Hint Needed</em></li>
@@ -3826,7 +3795,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<h2 id="saas-4-vi-next-steps"><strong>vi. Next steps</strong></h2>
+<h2 id="saas-4-v-next-steps"><strong>v. Next steps</strong></h2>
 <p>The Eclipse IDE plug-in for IBM watsonx Code Assistant has been successfully installed and authorized for use with the WCA Standard (SaaS) plan deployed on IBM Cloud. The environment is now ready for use with the <em>Application Modernization</em> modules of the Level 4 curriculum.</p></section><h1 class='nav-section-title-end'>Ended: IBM Cloud (SaaS) Configuration</h1>
                         <h1 class='nav-section-title' id='section-application-modernization-websphere-to-liberty'>
                             Application Modernization - WebSphere to Liberty <a class='headerlink' href='#section-application-modernization-websphere-to-liberty' title='Permanent link'>↵</a>
