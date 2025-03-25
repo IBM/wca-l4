@@ -3315,7 +3315,90 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<h2 id="saas-2-iv-next-steps"><strong>iv. Next steps</strong></h2>
+<h2 id="saas-2-iv-create-a-service-id-and-api-key"><strong>iv. Create a service ID and API key</strong></h2>
+<p>Participants will use this API key later to enable Visual Studio Code extensions or Eclipse IDE plug-ins to communicate with the WCA service.</p>
+<hr />
+<ol start="20">
+<li>
+<p>Open a new web browser tab and navigate to the <a href="https://cloud.ibm.com/iam/serviceids" target="_blank"><strong>IBM Cloud Service IDs</strong></a> administration page.</p>
+<ul>
+<li>Verify that the <strong>Service IDs</strong> tab is open and that the <strong>Resource Group</strong> is set to the ITZ-provisioned WCA account (Steps 7-8)</li>
+<li>Click <strong>Create service ID</strong> to continue</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>Set the <strong>Name</strong> field equal to <code>IBM watsonx Code Assistant user</code> or another name of your choosing. Click the <strong>Create</strong> button to continue.</li>
+</ol>
+<hr />
+<ol start="22">
+<li>From the tabs along the left side of the page, click <strong>API Keys</strong>. Once it loads, click <strong>Create</strong> to continue.</li>
+</ol>
+<hr />
+<ol start="23">
+<li>
+<p>Create a new <strong>IBM Cloud API Key</strong> with the following parameters:</p>
+<ul>
+<li><em>Name:</em> <code>IBM watsonx Code Assistant API key</code></li>
+<li><em>Leaked action:</em> <code>Disable the leaked key</code></li>
+<li><em>Session creation:</em> <code>No</code></li>
+</ul>
+<p>When ready, click <strong>Create</strong> to finalize the key.</p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>A prompt will appear reporting that <em>API key successfully created</em>.</p>
+<ul>
+<li>Click the <strong>Copy</strong> button and record the <em>WCA API Key</em> to your notebook for reference later</li>
+<li>It's recommended that you also <strong>Download</strong> the key as a redundancy</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="saas-2-v-add-the-service-id-to-the-wca-deployment-space"><strong>v. Add the service ID to the WCA deployment space</strong></h2>
+<p>With the <em>Service ID</em> and <em>WCA API Key</em> now generated, they need to be associated with your WCA instance — specifically, the WCA <em>Deployment Space</em>. This will be the way in which the WCA extension (VS Code or Eclipse IDE) communicates with the WCA service.</p>
+<hr />
+<ol start="25">
+<li>
+<p>Return to the <strong>WCA Dashboard</strong> web browser tab (where you left off in Step 19).</p>
+<ul>
+<li>Click the <strong>stacked tiles</strong> in the top-left corner of the dashboard to expand the menu items along the left-hand side</li>
+<li>Click on the <strong>Deployments</strong> tab</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>Within the table of existing deployments, click the <strong>wca-l4</strong> deployment (or whatever name you chose to assign the deployment created in Step 15).</li>
+</ol>
+<hr />
+<ol start="27">
+<li>From the tabs along the top, click the <strong>Manage</strong> tab. Then, from the left-hand side options, click the <strong>Access control</strong> tab.</li>
+</ol>
+<hr />
+<ol start="28">
+<li>Click the <strong>Add collaborators</strong> button to expand a list of options, then click <strong>Add service IDs</strong> to continue.</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Within the table of <em>Service IDs</em>, you should see 1 entry for the <code>IBM watsonx Code Assistant user</code> that was created in Step 21.</p>
+<ul>
+<li><strong>Click</strong> the box to the left of the ID</li>
+<li><strong>Click</strong> the <em>Role</em> box to the right of the ID and select <strong>Editor</strong> from the drop-down menu</li>
+<li>Click <strong>Add</strong> to finalize the operation</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="30">
+<li>Confirm that the <code>IBM watsonx Code Assistant user</code> <em>Service ID</em> now appears within the list of approved <em>Collaborators</em> under the <strong>Access Control</strong> tab.</li>
+</ol>
+<hr />
+<h2 id="saas-2-vi-next-steps"><strong>vi. Next steps</strong></h2>
 <p>The deployment and initial configurations of the watsonx Code Assistant (SaaS) Standard Plan service on IBM Cloud is now complete. In the following two modules, you will prepare the WCA extensions and plug-ins for Visual Studio Code and Eclipse IDE, respectively.</p></section><section class="print-page" id="saas-3"><h1 id="saas-3-install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration"><strong>Install WCA extension for Visual Studio Code</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-3-i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
 <p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
@@ -3326,36 +3409,10 @@ includes enterprise Java modernization capabilities, which will be of particular
 <p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
 <p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users by far — with a less cumbersome experience with the lab guide instructions and much more responsive IDE interactions.</p>
 </div>
-<h2 id="saas-3-ii-create-an-api-key"><strong>ii. Create an API key</strong></h2>
-<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) extension to the VS Code IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
+<h2 id="saas-3-ii-locally-install-vs-code"><strong>ii. Locally install VS Code</strong></h2>
+<p>Before you configure the extension for VS Code, you must first install the IDE on your machine.</p>
 <hr />
 <ol>
-<li>
-<p>Log in to the <strong>IBM Cloud API Keys</strong> web portal using an <em>IBMid</em>.</p>
-<div class="admonition warning">
-<p><strong>URL: <a href="https://cloud.ibm.com/iam/apikeys" target="_blank">https://cloud.ibm.com/iam/apikeys</a></strong></p>
-</div>
-</li>
-</ol>
-<hr />
-<ol start="2">
-<li>Click the <strong>Create</strong> button.</li>
-</ol>
-<hr />
-<ol start="3">
-<li>
-<p>Enter <code>IBM watsonx Code Assistant API Key</code> as the name of the API key. Optionally, provide a description for the key.</p>
-<ul>
-<li>When ready, click <strong>Create</strong></li>
-<li><strong>Download</strong> a copy of the API key and <strong>copy</strong> the key to your clipboard</li>
-<li>Save these records for reference later</li>
-</ul>
-</li>
-</ol>
-<h2 id="saas-3-iii-locally-install-vs-code"><strong>iii. Locally install VS Code</strong></h2>
-<p>To install from the Visual Studio Marketplace:</p>
-<hr />
-<ol start="4">
 <li>
 <p>Download the latest <strong>Stable Build</strong> release of VS Code available for your machine's operating system using the link below.</p>
 <div class="admonition warning">
@@ -3365,7 +3422,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 </li>
 </ol>
 <hr />
-<ol start="5">
+<ol start="2">
 <li>
 <p>Launch the VS Code application and take note of the sidebar along the left-side.</p>
 <ul>
@@ -3378,30 +3435,33 @@ includes enterprise Java modernization capabilities, which will be of particular
 </ul>
 </li>
 </ol>
-<h2 id="saas-3-iv-install-the-extension"><strong>iv. Install the extension</strong></h2>
+<h2 id="saas-3-iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
 <p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
 <hr />
-<ol start="6">
+<ol start="3">
 <li>
-<p>After searching, click the <strong>Install</strong> button and follow any prompts presented to you.</p>
-<p>Note that Standard plan installation creates <strong>two</strong> entries in your Visual Studio Code Extensions panel: one for <em>watsonx Code Assistant</em> and one for <em>watsonx Code Assistant for Enterprise Java Applications</em>. The two extensions are dependencies for this installation.</p>
+<p>In the search bar under the <em>Extensions</em> tab, search for the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#saas-3-__codelineno-0-1"></a>watsonx Code Assistant <span class="k">for</span> Enterprise Java Applications
+</code></pre></div>
+<ul>
+<li>After locating the extension, click the <strong>Install</strong> button</li>
+<li>When prompted, select <strong>Trust Publisher &amp; Install</strong> to confirm the procedure</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">OTHER EXTENSIONS ARE AVAILABLE</p>
+<p>Note that Standard plan installation creates <strong>two</strong> entries in your Visual Studio Code Extensions panel: one for <em>watsonx Code Assistant</em> and one for <em>watsonx Code Assistant for Enterprise Java Applications</em>. The two extensions are dependencies for this installation.</p>
 <p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
 </div>
 </li>
 </ol>
 <hr />
-<ol start="7">
-<li>
-<p>To open WCA within VS Code, first make sure that the <strong>Extensions</strong> panel is selected from the VS Code sidebar.</p>
-<ul>
-<li>Click on the <strong>watsonx Code Assistant</strong> icon</li>
-<li>Click <strong>Log in</strong> and supply the <em>API Key</em> recorded in Step 3</li>
-</ul>
-</li>
+<ol start="4">
+<li>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong> icon that has appeared along the left-hand side of the VS Code IDE. A <code>Welcome, let's get started!</code> prompt will open within the IDE.</li>
 </ol>
-<h2 id="saas-3-v-set-up-the-enterprise-java-application-environment"><strong>v. Set up the enterprise Java application environment</strong></h2>
+<hr />
+<div class="highlight"><pre><span></span><code>- Click **Log in** and supply the *API Key* recorded in Step 3
+</code></pre></div>
+<h2 id="saas-3-iv-set-up-the-enterprise-java-application-environment"><strong>iv. Set up the enterprise Java application environment</strong></h2>
 <p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans).</p>
 <hr />
 <ol start="8">
@@ -3457,7 +3517,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 <li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
 <li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
 <li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#saas-3-__codelineno-0-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#saas-3-__codelineno-1-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
 </code></pre></div></li>
 <li><strong>Save</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>) and <strong>exit</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>) the editor</li>
 </ul>
@@ -3514,7 +3574,7 @@ includes enterprise Java modernization capabilities, which will be of particular
 At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured! Additional context and information is presented below (<a href="https://ibm.github.io/wca-l4/saas/3/#iv-set-up-enterprise-java-environment" target="_blank"><strong>vi. Determine the JDK</strong></a> and <a href="https://ibm.github.io/wca-l4/saas/3/#vi-set-the-logging-level" target="_blank"><strong>vii. Set the logging level</strong></a>) for those curious to learn more. Otherwise, continue on to Section <a href="https://ibm.github.io/wca-l4/saas/3/#vi-next-steps" target="_blank"><strong>viii. Next steps</strong></a> to conclude the module.</p>
 </li>
 </ol>
-<h2 id="saas-3-vi-determine-the-jdk"><strong>vi. Determine the JDK</strong></h2>
+<h2 id="saas-3-v-determine-the-jdk"><strong>v. Determine the JDK</strong></h2>
 <p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
 <table>
 <thead>
@@ -3549,7 +3609,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <li>Look for a message such as <code>Using the Java developer kit that is defined in &lt;location&gt; to run watsonx Code Assistant components. The path is: &lt;path&gt;</code> to determine the feature currently in use</li>
 </ul>
 <hr />
-<h2 id="saas-3-vii-set-the-logging-level"><strong>vii. Set the logging level</strong></h2>
+<h2 id="saas-3-vi-set-the-logging-level"><strong>vi. Set the logging level</strong></h2>
 <p>To adjust logging for the VS Code extension for WCA:</p>
 <ul>
 <li>From the <strong>Extensions</strong> panel of VS Code, locate the WCA extension and right-click to pull down a list of available options</li>
@@ -3558,8 +3618,34 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <li>You may adjust this field from the default <code>INFO</code> setting to alternative options (like <code>WARN</code>) to cycle between various logging levels</li>
 </ul>
 <hr />
-<h2 id="saas-3-viii-next-steps"><strong>viii. Next steps</strong></h2>
-<p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p></section><section class="print-page" id="saas-4"><h1 id="saas-4-install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA plug-in for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
+<h2 id="saas-3-vii-next-steps"><strong>vii. Next steps</strong></h2>
+<p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p>
+<h2 id="saas-3-ii-create-an-api-key"><strong>ii. Create an API key</strong></h2>
+<p>Participants will need to create an API key and add the watsonx Code Assistant (WCA) extension to the VS Code IDE once installed. Instead of a username and password, each developer uses a personal API key to log in.</p>
+<hr />
+<ol>
+<li>
+<p>Log in to the <strong>IBM Cloud API Keys</strong> web portal using an <em>IBMid</em>.</p>
+<div class="admonition warning">
+<p><strong>URL: <a href="https://cloud.ibm.com/iam/apikeys" target="_blank">https://cloud.ibm.com/iam/apikeys</a></strong></p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>Click the <strong>Create</strong> button.</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Enter <code>IBM watsonx Code Assistant API Key</code> as the name of the API key. Optionally, provide a description for the key.</p>
+<ul>
+<li>When ready, click <strong>Create</strong></li>
+<li><strong>Download</strong> a copy of the API key and <strong>copy</strong> the key to your clipboard</li>
+<li>Save these records for reference later</li>
+</ul>
+</li>
+</ol></section><section class="print-page" id="saas-4"><h1 id="saas-4-install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA plug-in for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-4-i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
 <p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
 <p>This module guides participants through the process of installing Eclipse IDE on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
