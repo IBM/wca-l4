@@ -325,15 +325,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-change-the-process-ids-limit" class="md-nav__link">
-    i. Change the process IDs limit
+  <a href="#i-change-process-ids-limit" class="md-nav__link">
+    i. Change process IDs limit
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-update-cluster-global-pull-secret" class="md-nav__link">
-    ii. Update cluster global pull secret
+  <a href="#ii-update-the-clusters-global-pull-secret" class="md-nav__link">
+    ii. Update the cluster's global pull secret
   </a>
   
 </li>
@@ -719,15 +719,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-change-the-process-ids-limit" class="md-nav__link">
-    i. Change the process IDs limit
+  <a href="#i-change-process-ids-limit" class="md-nav__link">
+    i. Change process IDs limit
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-update-cluster-global-pull-secret" class="md-nav__link">
-    ii. Update cluster global pull secret
+  <a href="#ii-update-the-clusters-global-pull-secret" class="md-nav__link">
+    ii. Update the cluster's global pull secret
   </a>
   
 </li>
@@ -757,7 +757,7 @@
 <div class="admonition quote">
 <p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
-<h2 id="i-change-the-process-ids-limit"><strong>i. Change the process IDs limit</strong></h2>
+<h2 id="i-change-process-ids-limit"><strong>i. Change process IDs limit</strong></h2>
 <p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
 <hr />
 <ol>
@@ -808,7 +808,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="ii-update-cluster-global-pull-secret"><strong>ii. Update cluster global pull secret</strong></h2>
+<h2 id="ii-update-the-clusters-global-pull-secret"><strong>ii. Update the cluster's global pull secret</strong></h2>
 <p>Use <code>cpd-cli</code> to manage the creation or updating of the global image pull <em>secret</em> via the <code>add-icr-cred-to-global-pull-secret</code> command.</p>
 <hr />
 <ol start="3">
