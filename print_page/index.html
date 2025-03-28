@@ -4086,8 +4086,8 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <span class="normal"><a href="#appmod1-2-__codelineno-1-19">19</a></span>
 <span class="normal"><a href="#appmod1-2-__codelineno-1-20">20</a></span>
 <span class="normal"><a href="#appmod1-2-__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#appmod1-2-__codelineno-1-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
+<span class="normal"><a href="#appmod1-2-__codelineno-1-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll"><span class="cm">&lt;!-- server.xml --&gt;</span>
+</span><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a>        <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
@@ -4131,8 +4131,8 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <span class="normal"><a href="#appmod1-2-__codelineno-2-18">18</a></span>
 <span class="normal"><a href="#appmod1-2-__codelineno-2-19">19</a></span>
 <span class="normal"><a href="#appmod1-2-__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#appmod1-2-__codelineno-2-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;application&gt;</span>
+<span class="normal"><a href="#appmod1-2-__codelineno-2-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="hll"><span class="cm">&lt;!-- application.xml --&gt;</span>
+</span><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;application&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;module&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;web&gt;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
@@ -4147,8 +4147,8 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nt">&lt;/application&gt;</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;web-bnd&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="hll"><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
+</span><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;web-bnd&gt;</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
