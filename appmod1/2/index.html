@@ -966,7 +966,8 @@
 <p>In general, the team supporting the modernization anticipate that Liberty will enable greatly simplified, more modular deployment structures — which in turn will reduce the overhead, complexity, and maintenance burden of these applications.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">IBM WEBSPHERE APPLICATION SERVER</label></div>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger WebSphere EAR application. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
@@ -1014,13 +1015,12 @@
 </div>
 </div>
 </div>
+<p>The application defines two modules— <code>legacyapp.war</code> and <code>legacyEJB.jar</code> —which denote the web and EJB components of the application, respectively (lines 5 and 10). The code sets a specific context root to access the <code>legacyapp.war</code> web module. It also introduces WebSphere-specific bindings such as <code>ibm-web-bnd.xml</code> (beginning on line 17), which are employed for virtual hosting and resource references. Security roles and resource bindings are managed externally through the use of XML.</p>
+<p>The legacy code showcased here has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (line 1) and <code>ibm-web-bnd.xml</code> (line 17) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified. The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<hr />
-<h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
-<hr />
-<h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE</label><label for="__tabbed_2_2">LIBERTY</label></div>
+<p>Consider below the modernized (but functionally equivalent) application code with Liberty:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -1043,27 +1043,29 @@
 <span class="normal"><a href="#__codelineno-1-18">18</a></span>
 <span class="normal"><a href="#__codelineno-1-19">19</a></span>
 <span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;application&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;web&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>        <span class="nt">&lt;/web&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="nt">&lt;web-bnd&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>        <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="nt">&lt;/featureManager&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="nt">&lt;httpEndpoint</span> <span class="na">host=</span><span class="s">&quot;*&quot;</span> <span class="na">httpPort=</span><span class="s">&quot;9080&quot;</span> <span class="na">httpsPort=</span><span class="s">&quot;9443&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>        <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="nt">&lt;dataSource</span> <span class="na">id=</span><span class="s">&quot;jdbc/ModernDS&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/ModernDS&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>        <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;jdbcLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>        <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="nt">&lt;/dataSource&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    <span class="nt">&lt;library</span> <span class="na">id=</span><span class="s">&quot;jdbcLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>        <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${server.config.dir}/jdbc&quot;</span> <span class="na">includes=</span><span class="s">&quot;*.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="nt">&lt;/server&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -1087,29 +1089,125 @@
 <span class="normal"><a href="#__codelineno-2-18">18</a></span>
 <span class="normal"><a href="#__codelineno-2-19">19</a></span>
 <span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;server&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nt">&lt;/featureManager&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;httpEndpoint</span> <span class="na">host=</span><span class="s">&quot;*&quot;</span> <span class="na">httpPort=</span><span class="s">&quot;9080&quot;</span> <span class="na">httpsPort=</span><span class="s">&quot;9443&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>        <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nt">&lt;dataSource</span> <span class="na">id=</span><span class="s">&quot;jdbc/ModernDS&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/ModernDS&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>        <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;jdbcLib&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="nt">&lt;/dataSource&gt;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="nt">&lt;library</span> <span class="na">id=</span><span class="s">&quot;jdbcLib&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>        <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${server.config.dir}/jdbc&quot;</span> <span class="na">includes=</span><span class="s">&quot;*.jar&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="nt">&lt;/library&gt;</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="nt">&lt;/server&gt;</span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;application&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;web&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="nt">&lt;/web&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;web-bnd&gt;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<hr />
+<h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">WEBSPHERE</label><label for="__tabbed_3_2">LIBERTY</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nt">&lt;application&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="nt">&lt;web&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="nt">&lt;/web&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>    <span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="nt">&lt;web-bnd&gt;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nt">&lt;server&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>        <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="nt">&lt;/featureManager&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="nt">&lt;httpEndpoint</span> <span class="na">host=</span><span class="s">&quot;*&quot;</span> <span class="na">httpPort=</span><span class="s">&quot;9080&quot;</span> <span class="na">httpsPort=</span><span class="s">&quot;9443&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>        <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nt">&lt;dataSource</span> <span class="na">id=</span><span class="s">&quot;jdbc/ModernDS&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/ModernDS&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>        <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;jdbcLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>        <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="nt">&lt;/dataSource&gt;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="nt">&lt;library</span> <span class="na">id=</span><span class="s">&quot;jdbcLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${server.config.dir}/jdbc&quot;</span> <span class="na">includes=</span><span class="s">&quot;*.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="nt">&lt;/server&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
