@@ -894,7 +894,7 @@
 </div>
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p>WebSphere <strong>Enterprise JavaBeans</strong> (<strong>EJB</strong>) represent server-side components used by Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) to encapsulate repeatable business logic. In turn, EJB can be used to provide scalable and highly performant handling for requests made by Lariat Corporation's web application estate. EJBs provide the resource access management for the databases, messaging services, and external APIs these such application require to power their business functions. WebSphere's EJBs make extensive use of <em>XML</em> deployment descriptors to configure their behavior.</p>
-<p><strong>Liberty</strong> EJBs use Java <em>annotations</em> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
+<p><strong>Liberty EJBs</strong> use Java <strong>annotations</strong> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
 <p></br></p>
 <table>
 <thead>
@@ -963,6 +963,7 @@
 </div>
 </div>
 </div>
+<p></br></p>
 <p>The legacy EJB implementation uses XML (<code>ejb-jar.xml</code> beginning on <strong>line 1</strong>) to explicitly define the contents of the <em>stateful</em> session bean. This requires that the <code>&lt;home&gt;</code> and <code>&lt;remote&gt;</code> interfaces be explicitly defined, along with the bean class. Transaction types and security are also configured <em>externally</em> via descriptors within the XML.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -1059,6 +1060,7 @@
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p></br> </p>
 <p>This approach also eliminates the need for explicit home interfaces, instead allowing Lariat's developers to directly specify remote interfaces within the bean definition. There are also positive side effects to the "readability" of the code — since transaction management and security settings are managed via annotations, the amount of XML overhead is reduced and thus the code can be more easily parsed (and maintained) by humans.</p>
 <p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable to developers, and easier to extend with capabilities over time.</p>
 <hr />
