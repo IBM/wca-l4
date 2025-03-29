@@ -1088,14 +1088,14 @@ The modernized Liberty application code streamlines the original WebSphere confi
 </ol>
 </li>
 <li>
+<p>WebSphere-specific APIs and deprecated components, like <em>AdminClient APIs</em> or <em>Java Naming and Directory Interface (JDNI)</em> look-ups, have been replaced.</p>
+</li>
+<li>
 <p>Liberty WAR configuration file uses <code>parentLast</code> (line 11) class loading to ensure that the application's resources take precedence.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">&lt;/application&gt;</span>
 </code></pre></div>
-</li>
-<li>
-<p>WebSphere-specific APIs and deprecated components, like <em>AdminClient APIs</em> or <em>Java Naming and Directory Interface (JDNI)</em> look-ups, have been replaced.</p>
 </li>
 </ul>
 <p></br>
