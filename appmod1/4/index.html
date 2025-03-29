@@ -908,8 +908,8 @@
 </div>
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p>Lariat Corporation's application stack utilizes a myriad of WebSphere Application Server APIs— Work Manager API, Async Beans, Scheduler API, and so on —which will likely be impacted and require remediation as part of the company's overall modernization towards WebSphere Liberty. WAS APIs may not be immediately portable in their current form, they are potentially more costly to maintain than their Liberty counterparts, and may have less functionality given their outdated implementations.</p>
-<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (Java EE or Jakarta EE) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" those applications dependent on such APIs.</p>
-<p>Currently, Lariat's <strong>WAS-based APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty-based APIs</strong>.</p>
+<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" those applications dependent on such APIs.</p>
+<p>Currently, Lariat's <strong>WAS-based APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty-based APIs</strong>. The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) improves application portability and aligns with best practices.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy Java code (below), which as mentioned previously is a snapshot of a larger WebSphere Scheduler API.</p>
@@ -961,59 +961,16 @@
 </div>
 </div>
 </div>
+<p>The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on lines 1 and 2), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>Utilizing WAS-specific API calls requires explicit JDNI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of their application estate.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) Java code in support of Liberty-based APIs:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#__codelineno-1-18">18</a></span>
-<span class="normal"><a href="#__codelineno-1-19">19</a></span>
-<span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#__codelineno-1-22">22</a></span>
-<span class="normal"><a href="#__codelineno-1-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.Resource</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.context.ApplicationScoped</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.concurrent.ManagedScheduledExecutorService</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="nd">@ApplicationScoped</span><span class="w"></span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ModernSchedulerTask</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nd">@Resource</span><span class="w"></span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">scheduleTask</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">scheduleAtFixedRate</span><span class="p">(</span><span class="w"></span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">            </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">                </span><span class="c1">// Modern task logic here</span><span class="w"></span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Executing scheduled task.&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="p">},</span><span class="w"></span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">            </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">            </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="w"></span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-</div>
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
@@ -1035,31 +992,85 @@
 <span class="normal"><a href="#__codelineno-2-18">18</a></span>
 <span class="normal"><a href="#__codelineno-2-19">19</a></span>
 <span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.naming.InitialContext</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LegacySchedulerTask</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">scheduleTask</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="n">InitialContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InitialContext</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="n">Scheduler</span><span class="w"> </span><span class="n">scheduler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">lookup</span><span class="p">(</span><span class="s">&quot;scheduler/legacyScheduler&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="n">TaskHandler</span><span class="w"> </span><span class="n">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scheduler</span><span class="p">.</span><span class="na">createTaskHandler</span><span class="p">(</span><span class="w"></span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">            </span><span class="s">&quot;TaskName&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">LegacyTask</span><span class="p">(),</span><span class="w"></span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">            </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">            </span><span class="s">&quot;0 0/5 * * * ?&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">            </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">            </span><span class="kc">null</span><span class="w"></span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="n">handler</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.Resource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.context.ApplicationScoped</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.concurrent.ManagedScheduledExecutorService</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="nd">@ApplicationScoped</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ModernSchedulerTask</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nd">@Resource</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">scheduleTask</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">scheduleAtFixedRate</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">            </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">                </span><span class="c1">// Modern task logic here</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Executing scheduled task.&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">            </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">            </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">            </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.naming.InitialContext</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LegacySchedulerTask</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">scheduleTask</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="n">InitialContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InitialContext</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="n">Scheduler</span><span class="w"> </span><span class="n">scheduler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">lookup</span><span class="p">(</span><span class="s">&quot;scheduler/legacyScheduler&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="n">TaskHandler</span><span class="w"> </span><span class="n">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scheduler</span><span class="p">.</span><span class="na">createTaskHandler</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">            </span><span class="s">&quot;TaskName&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">LegacyTask</span><span class="p">(),</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">            </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">            </span><span class="s">&quot;0 0/5 * * * ?&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">            </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">            </span><span class="kc">null</span><span class="w"></span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">        </span><span class="n">handler</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
+<p>In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on line 9.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="nd">@Resource</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>The previous (legacy) requirement of forcing JDNI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
+<p>Ultimately, the modernization efforts have significantly increased the portability and extensibility of Lariat's API-driven application estate. The structure of the API code has been simplified and made much more portable by breaking away from propriety API standards.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
