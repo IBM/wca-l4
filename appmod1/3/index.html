@@ -907,10 +907,143 @@
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
+<p>In order to perform configuration and dependency management, WAS employs various WebSphere <strong>class loader configurations</strong> to exert control over how Java classes and libraries are accessed by applications. In essence, these class loaders help define the scope and visibility of Java classes, resources, and libraries that are available for use by those applications. Legacy applications built for WAS can use class loader configurations in a variety of ways, including:</p>
+<ul>
+<li><strong>Isolation of application dependencies:</strong> provide assurances that applications avoid conflicts or unintended interactions that might arise from using shared libraries</li>
+<li><strong>Application module management:</strong> for WebSphere Enterprise Archive (EAR) applications, like those covered in the previous section, class loader configurations can manage the visibility of classes across different modules of the same EAR file</li>
+</ul>
+<p>In addition, the ability to selectively control class loading can reduce the overall memory footprint and resource overhead of an application. The result is that class loader configurations play an important part for managing dependency conflicts and application stability across Lariat's WAS environments.</p>
+<p>However, Lariat's <strong>legacy WAS</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design. Through modernization of the code to <strong>Liberty</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger WebSphere class loader configuration.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- deployment.xml --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;deployment&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;classloader</span> <span class="na">mode=</span><span class="s">&quot;PARENT_LAST&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>            <span class="nt">&lt;file</span> <span class="na">path=</span><span class="s">&quot;/shared/libs/customlib.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="nt">&lt;shared-library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nt">&lt;/classloader&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nt">&lt;/deployment&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="cm">&lt;!-- shared-libraries.xml --&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nt">&lt;shared-libraries&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="nt">&lt;library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>        <span class="nt">&lt;files&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>            <span class="nt">&lt;file&gt;</span>/opt/was/shared/lib/shared-legacy.jar<span class="nt">&lt;/file&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>        <span class="nt">&lt;/files&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="nt">&lt;/shared-libraries&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines ) and <code>shared-libraries.xml</code> (lines ) to handle complex dependency and class-loading configurations. As a result, Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+<p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<p>Consider below the modernized (but functionally equivalent) application code with Liberty:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="nt">&lt;/featureManager&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="nt">&lt;library</span> <span class="na">id=</span><span class="s">&quot;customLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>        <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${server.config.dir}/shared/libs&quot;</span> <span class="na">includes=</span><span class="s">&quot;*.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="nt">&lt;application</span> <span class="na">location=</span><span class="s">&quot;modernized.war&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>        <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>            <span class="nt">&lt;commonLibrary&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>                <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>            <span class="nt">&lt;/commonLibrary&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>        <span class="nt">&lt;/classloader&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="nt">&lt;/server&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- deployment.xml --&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;deployment&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;classloader</span> <span class="na">mode=</span><span class="s">&quot;PARENT_LAST&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>            <span class="nt">&lt;file</span> <span class="na">path=</span><span class="s">&quot;/shared/libs/customlib.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="nt">&lt;shared-library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;/classloader&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nt">&lt;/deployment&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="cm">&lt;!-- shared-libraries.xml --&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;shared-libraries&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nt">&lt;library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>        <span class="nt">&lt;files&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>            <span class="nt">&lt;file&gt;</span>/opt/was/shared/lib/shared-legacy.jar<span class="nt">&lt;/file&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="nt">&lt;/files&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;/shared-libraries&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
