@@ -38,7 +38,6 @@ nav:
     - 10. State handling: 'appmod1/10.md'
     - 11. Load balancing: 'appmod1/11.md'
     - 12. Performance optimization: 'appmod1/12.md'
-    - 13. Logging and monitoring: 'appmod1/13.md'
   - Tuning and Customization:
     - 1. Getting code suggestions: 'tuning/1.md'
     - 2. Explaining code: 'tuning/2.md'
