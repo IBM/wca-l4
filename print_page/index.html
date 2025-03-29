@@ -4658,6 +4658,8 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </tr>
 </tbody>
 </table>
+<p></br> </p>
+<p>Modernizing <strong>WebSphere JSP</strong> into <strong>Liberty JSTL + EL</strong> should provide Lariat with a clearer delineation of tasks and responsibilities for their developers. Application code will be easier to maintain owing to the reduced complexity; furthermore, the troubleshooting and debugging for dynamic web content back-ends should be made simpler as a consequence of such changes.</p>
 <hr />
 <h2 id="appmod1-6-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's JSP with extensive scriptlets</strong>: </p>
@@ -4691,6 +4693,8 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </div>
 </div>
 </div>
+<p></br></p>
+<p>The legacy application code contains Java code that is directly embedded within the resulting JSP pages ("scriptlets"), creating a confusing mixture of logic and presentation. In turn, it produces output that is more complicated for Lariat's developers to maintain — and dynamic web content that steadily deteriotes in quality (and readability) over it. Manual imports and detailed formatting logic need to be defined within the JSP to make this possible. The process of untangling code structures between the mix of Java and XML+HTML code adds to the maintenance burden of those teams.</p>
 <hr />
 <h2 id="appmod1-6-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JSP with JSTL and EL</strong>:</p>
@@ -4740,6 +4744,8 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </div>
 </div>
 </div>
+<p>The modernized Liberty JSP code combines both JSTL and EL in order to clearly delineate between the application's business logic and presentation logic. This eliminates the previous need (with the legacy application code) of embedding Java code into XML+HTML, thereby resulting in more easily maintained and human-readable pages.</p>
+<p>Added clarity in <em>what</em> it is the Liberty code is performing is also beneficial to Lariat's developers: formatting and logic are expressly handled with reusable tags and EL expressions.</p>
 <hr />
 <h2 id="appmod1-6-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
