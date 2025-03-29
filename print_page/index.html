@@ -4252,7 +4252,8 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 </div>
 </div>
 </div>
-<p>The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths. Other benefits from the modernization work also include:</p>
+<p></br>
+The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths. Other benefits from the modernization work also include:</p>
 <ul>
 <li>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</li>
 <li>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</li>
