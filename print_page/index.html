@@ -4345,7 +4345,8 @@ The modernized Liberty code implementation simplifies the management of dependen
 </div>
 </div>
 </div>
-<p>The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on lines 1 and 2), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+<p></br>
+The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on lines 1 and 2), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod1-4-__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#appmod1-4-__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -4449,9 +4450,10 @@ The modernized Liberty code implementation simplifies the management of dependen
 </div>
 </div>
 </div>
-<p>In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on line 9.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod1-4-__codelineno-4-1"></a><span class="w">    </span><span class="nd">@Resource</span><span class="w"></span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod1-4-__codelineno-4-2"></a><span class="w">    </span><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
+<p></br>
+In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on line 9.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod1-4-__codelineno-4-1"></a><span class="nd">@Resource</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod1-4-__codelineno-4-2"></a><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>The previous (legacy) requirement of forcing JDNI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
 <p>Ultimately, the modernization efforts have significantly increased the portability and extensibility of Lariat's API-driven application estate. The structure of the API code has been simplified and made much more portable by breaking away from propriety API standards.</p>
