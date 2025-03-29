@@ -947,7 +947,7 @@
 </div>
 </div>
 <p></br>
-The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines 1-9) and <code>shared-libraries.xml</code> (lines 11-18) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
 <p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -1037,7 +1037,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <p>Other benefits from the modernization work also include:</p>
 <ul>
 <li>
-<p>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
+<p>Class loading policies (such as 'parentLast' on <strong>line 12</strong>) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nt">&lt;commonLibrary&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>

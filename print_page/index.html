@@ -3963,13 +3963,13 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </div>
 </div>
 <p></br>
-The application defines two modules— <code>legacyapp.war</code> and <code>legacyEJB.jar</code> —which denote the web and EJB components of the application, respectively (lines 5 and 10).</p>
+The application defines two modules— <code>legacyapp.war</code> and <code>legacyEJB.jar</code> —which denote the web and EJB components of the application, respectively (<strong>lines 5 and 10</strong>).</p>
 <ul>
 <li>The code sets a specific context root to access the <code>legacyapp.war</code> web module.</li>
-<li>It also introduces WebSphere-specific bindings such as <code>ibm-web-bnd.xml</code> (beginning on line 17), which are employed for virtual hosting and resource references.</li>
+<li>It also introduces WebSphere-specific bindings such as <code>ibm-web-bnd.xml</code> (beginning on <strong>line 17</strong>), which are employed for virtual hosting and resource references.</li>
 <li>Security roles and resource bindings are managed externally through the use of XML.</li>
 </ul>
-<p>The legacy code showcased here has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (line 1) and <code>ibm-web-bnd.xml</code> (line 17) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified. The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
+<p>The legacy code showcased here has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (<strong>line 1</strong>) and <code>ibm-web-bnd.xml</code> (<strong>line 17</strong>) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified. The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
 <hr />
 <h2 id="appmod1-2-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code with Liberty:</p>
@@ -4086,7 +4086,7 @@ The modernized Liberty application code streamlines the original WebSphere confi
 <p>WebSphere-specific APIs and deprecated components, like <em>AdminClient APIs</em> or <em>Java Naming and Directory Interface (JDNI)</em> look-ups, have been replaced.</p>
 </li>
 <li>
-<p>Liberty WAR configuration file uses <code>parentLast</code> (line 11) class loading to ensure that the application's resources take precedence.</p>
+<p>Liberty WAR configuration file uses <code>parentLast</code> (<strong>line 11</strong>) class loading to ensure that the application's resources take precedence.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod1-2-__codelineno-3-1"></a><span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod1-2-__codelineno-3-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod1-2-__codelineno-3-3"></a><span class="nt">&lt;/application&gt;</span>
@@ -4158,7 +4158,7 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </div>
 </div>
 <p></br>
-The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines 1-9) and <code>shared-libraries.xml</code> (lines 11-18) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
 <p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="appmod1-3-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -4248,7 +4248,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <p>Other benefits from the modernization work also include:</p>
 <ul>
 <li>
-<p>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
+<p>Class loading policies (such as 'parentLast' on <strong>line 12</strong>) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod1-3-__codelineno-3-1"></a><span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod1-3-__codelineno-3-2"></a>    <span class="nt">&lt;commonLibrary&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod1-3-__codelineno-3-3"></a>        <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>
@@ -4325,7 +4325,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 </div>
 </div>
 <p></br>
-The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on lines 1 and 2), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod1-4-__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#appmod1-4-__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -4430,7 +4430,7 @@ The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (ide
 </div>
 </div>
 <p></br>
-In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on line 9.</p>
+In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on <strong>line 9</strong>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod1-4-__codelineno-4-1"></a><span class="nd">@Resource</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod1-4-__codelineno-4-2"></a><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>

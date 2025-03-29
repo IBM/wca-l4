@@ -948,7 +948,7 @@
 </div>
 </div>
 <p></br>
-The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on lines 1 and 2), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -1053,7 +1053,7 @@ The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (ide
 </div>
 </div>
 <p></br>
-In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on line 9.</p>
+In contrast to the legacy WAS-based Java API, the modernized Liberty approach (templated using Jakarta EE's API conventions) significantly simplifies the scheduling logic. The standardized <code>ManagedScheduledExecutorService</code> API for concurrency simplifies the scheduling of tasks using direct resource injection, as indicated by <code>@Resource</code> beginning on <strong>line 9</strong>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Resource</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
