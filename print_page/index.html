@@ -4119,7 +4119,7 @@ The modernized Liberty application code streamlines the original WebSphere confi
 <li><strong>Isolation of application dependencies:</strong> provide assurances that applications avoid conflicts or unintended interactions that might arise from using shared libraries</li>
 <li><strong>Application module management:</strong> for WebSphere Enterprise Archive (EAR) applications, like those covered in the previous section, class loader configurations can manage the visibility of classes across different modules of the same EAR file</li>
 </ul>
-<p>In addition, the ability to selectively control class loading can reduce the overall memory footprint and resource overhead of an application. The result is that class loader configurations play an important part for managing dependency conflicts and application stability across Lariat's WAS environments.</p>
+<p>In addition, the ability to selectively control class loading can reduce the overall memory footprint and resource overhead of an application. The result is that class loader configurations play an important part for managing dependency conflicts and application stability across Lariat's WAS services and environments.</p>
 <p>However, Lariat's <strong>legacy WAS</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design. Through modernization of the code to <strong>Liberty</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="appmod1-3-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
@@ -4166,7 +4166,8 @@ The modernized Liberty application code streamlines the original WebSphere confi
 </div>
 </div>
 </div>
-<p>The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines ) and <code>shared-libraries.xml</code> (lines ) to handle complex dependency and class-loading configurations. As a result, Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+<p></br>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines ) and <code>shared-libraries.xml</code> (lines ) to handle complex dependency and class-loading configurations. As a result, Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
 <p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="appmod1-3-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -4191,8 +4192,8 @@ The modernized Liberty application code streamlines the original WebSphere confi
 <span class="normal"><a href="#appmod1-3-__codelineno-1-15">15</a></span>
 <span class="normal"><a href="#appmod1-3-__codelineno-1-16">16</a></span>
 <span class="normal"><a href="#appmod1-3-__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#appmod1-3-__codelineno-1-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
+<span class="normal"><a href="#appmod1-3-__codelineno-1-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll"><span class="cm">&lt;!-- server.xml --&gt;</span>
+</span><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="nt">&lt;/featureManager&gt;</span>
@@ -4229,8 +4230,8 @@ The modernized Liberty application code streamlines the original WebSphere confi
 <span class="normal"><a href="#appmod1-3-__codelineno-2-15">15</a></span>
 <span class="normal"><a href="#appmod1-3-__codelineno-2-16">16</a></span>
 <span class="normal"><a href="#appmod1-3-__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#appmod1-3-__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- deployment.xml --&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;deployment&gt;</span>
+<span class="normal"><a href="#appmod1-3-__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="hll"><span class="cm">&lt;!-- deployment.xml --&gt;</span>
+</span><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;deployment&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;classloader</span> <span class="na">mode=</span><span class="s">&quot;PARENT_LAST&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;library&gt;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a>            <span class="nt">&lt;file</span> <span class="na">path=</span><span class="s">&quot;/shared/libs/customlib.jar&quot;</span> <span class="nt">/&gt;</span>
@@ -4239,8 +4240,8 @@ The modernized Liberty application code streamlines the original WebSphere confi
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;/classloader&gt;</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nt">&lt;/deployment&gt;</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="cm">&lt;!-- shared-libraries.xml --&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;shared-libraries&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="hll"><span class="cm">&lt;!-- shared-libraries.xml --&gt;</span>
+</span><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;shared-libraries&gt;</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nt">&lt;library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a>        <span class="nt">&lt;files&gt;</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a>            <span class="nt">&lt;file&gt;</span>/opt/was/shared/lib/shared-legacy.jar<span class="nt">&lt;/file&gt;</span>
