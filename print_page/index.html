@@ -4167,7 +4167,7 @@ The modernized Liberty application code streamlines the original WebSphere confi
 </div>
 </div>
 <p></br>
-The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines ) and <code>shared-libraries.xml</code> (lines ) to handle complex dependency and class-loading configurations. As a result, Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (lines 1-9) and <code>shared-libraries.xml</code> (lines 11-18) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
 <p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="appmod1-3-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -4252,6 +4252,12 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 </div>
 </div>
 </div>
+<p>The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths. Other benefits from the modernization work also include:</p>
+<ul>
+<li>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</li>
+<li>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</li>
+</ul>
+<p>Ultimately, the modernization process into Liberty has resulted in configuration and dependency management that reduces dependency conflicts, simplifies resource management, and improves the overall clarity and maintainability of these assets going forward.</p>
 <hr />
 <h2 id="appmod1-3-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
