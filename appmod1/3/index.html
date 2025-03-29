@@ -1048,8 +1048,18 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 <p></br>
 The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths. Other benefits from the modernization work also include:</p>
 <ul>
-<li>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</li>
-<li>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</li>
+<li>
+<p>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nt">&lt;commonLibrary&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nt">&lt;/commonLibrary&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">&lt;/classloader&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</p>
+</li>
 </ul>
 <p>Ultimately, the modernization process into Liberty has resulted in configuration and dependency management that reduces dependency conflicts, simplifies resource management, and improves the overall clarity and maintainability of these assets going forward.</p>
 <hr />

@@ -4096,15 +4096,26 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <p></br>
 The modernized Liberty application code streamlines the original WebSphere configuration details into a <em>single</em> WAR file (<code>server.xml</code>) with clear, unified definitions.</p>
 <ul>
-<li>JDBC configurations are directly defined alongside the application deployment, removing the need for external bindings.<ol>
+<li>
+<p>JDBC configurations are directly defined alongside the application deployment, removing the need for external bindings.</p>
+<ol>
 <li>Legacy EAR files have been consolidated into lightweight Web Archive (WAR) structures.</li>
-<li>WebSphere-specific descriptors like <code>ibm-web-bnd.xml</code> have been converted into modern Liberty features (<code>webProfile-8.0</code>, <code>jdbc-4.2</code>).</li>
+<li>WebSphere-specific descriptors like <code>ibm-web-bnd.xml</code> have been converted into modern Liberty features (<code>webProfile-8.0</code>, <code>jdbc-4.2</code>).</br></li>
 </ol>
 </li>
-<li>WebSphere-specific APIs and deprecated components, like <em>AdminClient APIs</em> or <em>Java Naming and Directory Interface (JDNI)</em> look-ups, have been replaced.</li>
-<li>Liberty WAR configuration file uses <code>parentLast</code> (line 11) class loading to ensure that the application's resources take precedence.</li>
+<li>
+<p>Liberty WAR configuration file uses <code>parentLast</code> (line 11) class loading to ensure that the application's resources take precedence.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod1-2-__codelineno-3-1"></a><span class="nt">&lt;application</span> <span class="na">id=</span><span class="s">&quot;modernapp&quot;</span> <span class="na">location=</span><span class="s">&quot;modernapp.war&quot;</span> <span class="na">context-root=</span><span class="s">&quot;/modernapp&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod1-2-__codelineno-3-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod1-2-__codelineno-3-3"></a><span class="nt">&lt;/application&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>WebSphere-specific APIs and deprecated components, like <em>AdminClient APIs</em> or <em>Java Naming and Directory Interface (JDNI)</em> look-ups, have been replaced.</p>
+</li>
 </ul>
-<p>Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
+<p></br>
+Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
 <hr />
 <h2 id="appmod1-2-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
@@ -4255,8 +4266,18 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 <p></br>
 The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths. Other benefits from the modernization work also include:</p>
 <ul>
-<li>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</li>
-<li>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</li>
+<li>
+<p>Class loading policies (such as 'parentLast' on line 12) are now explicitly stated, helping to simplify the process of resource management for developers drawing from these resources.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod1-3-__codelineno-3-1"></a><span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod1-3-__codelineno-3-2"></a>    <span class="nt">&lt;commonLibrary&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod1-3-__codelineno-3-3"></a>        <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#appmod1-3-__codelineno-3-4"></a>    <span class="nt">&lt;/commonLibrary&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#appmod1-3-__codelineno-3-5"></a><span class="nt">&lt;/classloader&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Dependencies are now directly tied and associated to applications, creating relationships between the two that are more transparent and easier to maintain.</p>
+</li>
 </ul>
 <p>Ultimately, the modernization process into Liberty has resulted in configuration and dependency management that reduces dependency conflicts, simplifies resource management, and improves the overall clarity and maintainability of these assets going forward.</p>
 <hr />
