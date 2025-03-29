@@ -903,7 +903,7 @@
 <p>However, Lariat's <strong>legacy WAS</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design. Through modernization of the code to <strong>Liberty</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
-<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger WebSphere class loader configuration.</p>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere class loader configuration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -951,7 +951,7 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 <p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<p>Consider below the modernized (but functionally equivalent) application code with Liberty:</p>
+<p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty server configuration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
