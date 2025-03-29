@@ -702,20 +702,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13/" class="md-nav__link">
-        13. Logging and monitoring
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -909,8 +895,146 @@
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger WebSphere application using XML-based security:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;security-constraint&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="nt">&lt;url-pattern&gt;</span>/secured/*<span class="nt">&lt;/url-pattern&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="nt">&lt;auth-constraint&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nt">&lt;/auth-constraint&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nt">&lt;/security-constraint&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nt">&lt;login-config&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nt">&lt;form-login-config&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>        <span class="nt">&lt;form-login-page&gt;</span>/login.jsp<span class="nt">&lt;/form-login-page&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>        <span class="nt">&lt;form-error-page&gt;</span>/error.jsp<span class="nt">&lt;/form-error-page&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="nt">&lt;/form-login-config&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="nt">&lt;/login-config&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="nt">&lt;/security-role&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<p>Consider below the modernized (but functionally equivalent) application code using Liberty annotation-based security with Java:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.DeclareRoles</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.RolesAllowed</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.GET</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.Path</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.core.Response</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;security-constraint&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="nt">&lt;url-pattern&gt;</span>/secured/*<span class="nt">&lt;/url-pattern&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="nt">&lt;auth-constraint&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>        <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="nt">&lt;/auth-constraint&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="nt">&lt;/security-constraint&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;login-config&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nt">&lt;form-login-config&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>        <span class="nt">&lt;form-login-page&gt;</span>/login.jsp<span class="nt">&lt;/form-login-page&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="nt">&lt;form-error-page&gt;</span>/error.jsp<span class="nt">&lt;/form-error-page&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="nt">&lt;/form-login-config&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;/login-config&gt;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="nt">&lt;/security-role&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />

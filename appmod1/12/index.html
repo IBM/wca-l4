@@ -702,20 +702,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13/" class="md-nav__link">
-        13. Logging and monitoring
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -909,8 +895,122 @@
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger  application using WebSphere thread pools and AsyncBeans: </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- thread-pools.xml --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;threadPools&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;threadPool</span> <span class="na">id=</span><span class="s">&quot;LegacyThreadPool&quot;</span> <span class="na">maxThreads=</span><span class="s">&quot;50&quot;</span> <span class="na">minThreads=</span><span class="s">&quot;5&quot;</span> <span class="na">inactivityTimeout=</span><span class="s">&quot;60000&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nt">&lt;/threadPools&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="cm">&lt;!-- AsyncBeans configuration --&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nt">&lt;asyncbeans&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nt">&lt;workManager</span> <span class="na">jndiName=</span><span class="s">&quot;wm/LegacyWorkManager&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="nt">&lt;minThreads&gt;</span>5<span class="nt">&lt;/minThreads&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>        <span class="nt">&lt;maxThreads&gt;</span>50<span class="nt">&lt;/maxThreads&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>        <span class="nt">&lt;threadPriority&gt;</span>5<span class="nt">&lt;/threadPriority&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="nt">&lt;/workManager&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="nt">&lt;/asyncbeans&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<p>Consider below the modernized (but functionally equivalent) application code using Liberty (Jakarta EE patterned) concurrency APIs:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.Resource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.context.ApplicationScoped</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.enterprise.concurrent.ManagedExecutorService</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nd">@ApplicationScoped</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ModernExecutorService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="nd">@Resource</span><span class="p">(</span><span class="n">lookup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;concurrent/ModernExecutor&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ManagedExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">executeTask</span><span class="p">(</span><span class="n">Runnable</span><span class="w"> </span><span class="n">task</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">task</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="o">&lt;!--</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="na">xml</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"></span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="o">&lt;</span><span class="n">server</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">featureManager</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">feature</span><span class="o">&gt;</span><span class="n">concurrent</span><span class="o">-</span><span class="mf">1.0</span><span class="o">&lt;/</span><span class="n">feature</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="o">&lt;/</span><span class="n">featureManager</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">managedExecutorService</span><span class="w"> </span><span class="n">jndiName</span><span class="o">=</span><span class="s">&quot;concurrent/ModernExecutor&quot;</span><span class="w"> </span><span class="n">maxThreads</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="n">minThreads</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="w"> </span><span class="n">hungTaskThreshold</span><span class="o">=</span><span class="s">&quot;5m&quot;</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"></span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="o">&lt;/</span><span class="n">server</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- thread-pools.xml --&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;threadPools&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;threadPool</span> <span class="na">id=</span><span class="s">&quot;LegacyThreadPool&quot;</span> <span class="na">maxThreads=</span><span class="s">&quot;50&quot;</span> <span class="na">minThreads=</span><span class="s">&quot;5&quot;</span> <span class="na">inactivityTimeout=</span><span class="s">&quot;60000&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nt">&lt;/threadPools&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="cm">&lt;!-- AsyncBeans configuration --&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="nt">&lt;asyncbeans&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;workManager</span> <span class="na">jndiName=</span><span class="s">&quot;wm/LegacyWorkManager&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>        <span class="nt">&lt;minThreads&gt;</span>5<span class="nt">&lt;/minThreads&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>        <span class="nt">&lt;maxThreads&gt;</span>50<span class="nt">&lt;/maxThreads&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>        <span class="nt">&lt;threadPriority&gt;</span>5<span class="nt">&lt;/threadPriority&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="nt">&lt;/workManager&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="nt">&lt;/asyncbeans&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
@@ -949,13 +1049,13 @@
       
       
         
-        <a href="../13/" class="md-footer__link md-footer__link--next" aria-label="Next: 13. Logging and monitoring" rel="next">
+        <a href="../../tuning/1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Getting code suggestions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              13. Logging and monitoring
+              1. Getting code suggestions
             </div>
           </div>
           <div class="md-footer__button md-icon">
