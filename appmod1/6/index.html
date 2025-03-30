@@ -921,7 +921,7 @@
 <td>Improved developer productivity owing to clearer syntax.</td>
 </tr>
 <tr>
-<td><strong>Standards</strong></td>
+<td><strong>Standardization</strong></td>
 <td>Considered a legacy practice.</td>
 <td>Aligns with modern Java Enterprise Edition (Java EE or Jakarta EE) standards.</td>
 </tr>
@@ -962,7 +962,8 @@
 </div>
 </div>
 <p></br></p>
-<p>The legacy application code contains Java code that is directly embedded within the resulting JSP pages ("scriptlets"), creating a confusing mixture of logic and presentation. In turn, it produces output that is more complicated for Lariat's developers to maintain — and dynamic web content that steadily deteriotes in quality (and readability) over it. Manual imports and detailed formatting logic need to be defined within the JSP to make this possible. The process of untangling code structures between the mix of Java and XML/HTML code adds to the maintenance burden of those teams.</p>
+<p>The legacy application code contains Java code that is directly embedded within the resulting JSP pages ("scriptlets"), creating a confusing mixture of logic and presentation. In turn, it produces output that is more complicated for Lariat's developers to maintain — and dynamic web content that steadily deteriotes in quality (and readability) over it.</p>
+<p>Manual imports and detailed formatting logic need to be defined within the JSP to make this possible. The process of untangling code structures between the mix of Java and XML/HTML code adds to the maintenance burden of those teams.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JSP with JSTL + EL</strong>:</p>
@@ -1012,6 +1013,7 @@
 </div>
 </div>
 </div>
+<p></br> </p>
 <p>The modernized Liberty JSP code combines both JSTL + EL in order to clearly delineate between the application's business logic and presentation logic. This eliminates the previous need (with the legacy application code) of embedding Java code into XML/HTML, thereby resulting in more easily maintained and human-readable pages.</p>
 <p>Added clarity in <em>what</em> it is the Liberty code is performing is also beneficial to Lariat's developers: formatting and logic are expressly handled with reusable tags and EL expressions.</p>
 <hr />
