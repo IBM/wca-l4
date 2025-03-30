@@ -893,7 +893,7 @@
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
-<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> traditional approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
+<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
 <p><strong>Liberty</strong> applications, by contrast, utilize <strong>Java annotations</strong> to embed security rules directly in-line within Java classes or methods. This helps to eliminate (or at least reduce) dependencies on external XML descriptors, creating a more robust security implementation and permitting simple to maintain configurations. Java annotations are patterned using Java Enterprise Edition (Java EE or Jakarta EE) standards which align directly with the best-practices of cloud-native design.</p>
 <p></br></p>
 <table>
@@ -981,6 +981,9 @@
 </div>
 </div>
 </div>
+<p></br></p>
+<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be defined owing to this architectural choice.</p>
+<p>In order to modernize this code, Lariat will need to convert the role-based authorization mechanisms and deployment descriptors into Java annotations.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's annotation-based security</strong>:</p>
@@ -1070,6 +1073,21 @@
 </div>
 </div>
 </div>
+<p></br></p>
+<p>The modernized, Java annotations-driven security of Liberty defines <code>@DeclareRoles</code> (<strong>line 8</strong>) and <code>@RolesAllowed</code> (<strong>line 13</strong>) to clearly create security constraints at the method and class level.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="hll"><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
+</span><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="hll"><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p></br> </p>
+<p>This approach simplifies the URL and method-level security mechanisms that were present within the legacy WebSphere code, replacing it via annotations within RESTful (REST API-addressable) endpoints.</p>
+<p>Ultimately, this reduces the need for external configuration and instead centralizes security declarations closer to the actual code implementation. Lariat, in turn, gains the benefits of improved clarity in how their security constraints are structured. This will enable more straightforward audits in the future and simplify the ongoing maintenance of security policies across their organization.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
