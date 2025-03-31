@@ -17,7 +17,7 @@
     
     
       
-        <title>7. Security modernization - IBM watsonx Code Assistant for Practitioners Level 4</title>
+        <title>7. JMS integration - IBM watsonx Code Assistant for Practitioners Level 4</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#security-modernizationapplication-modernization-websphere-to-liberty" class="md-skip">
+        <a href="#jms-messaging-integrationapplication-modernization-websphere-to-liberty" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Security modernization
+              7. JMS integration
             
           </span>
         </div>
@@ -565,12 +565,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          7. Security modernization
+          7. JMS integration
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        7. Security modernization
+        7. JMS integration
       </a>
       
         
@@ -639,49 +639,7 @@
   
     <li class="md-nav__item">
       <a href="../8/" class="md-nav__link">
-        8. JMS messaging integration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10/" class="md-nav__link">
-        10. State handling
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11/" class="md-nav__link">
-        11. Load balancing
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12/" class="md-nav__link">
-        12. Performance optimization
+        8. Security modernization
       </a>
     </li>
   
@@ -873,50 +831,50 @@
                 
 
 
-<h1 id="security-modernizationapplication-modernization-websphere-to-liberty"><strong>Security modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<h1 id="jms-messaging-integrationapplication-modernization-websphere-to-liberty"><strong>JMS messaging integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <h2 id="i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
-<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
-<p><strong>Liberty</strong> applications, by contrast, utilize <strong>Java annotations</strong> to embed security rules directly in-line within Java classes or methods. This helps to eliminate (or at least reduce) dependencies on external XML descriptors, creating a more robust security implementation and permitting simple to maintain configurations. Java annotations are patterned using Java Enterprise Edition (Java EE or Jakarta EE) standards which align directly with the best-practices of cloud-native design.</p>
+<p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging is delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
+<p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of the messaging integrations.</p>
 <p></br></p>
 <table>
 <thead>
 <tr>
 <th>Feature</th>
-<th>WebSphere XML-based security</th>
-<th>Liberty annotations-based security</th>
+<th>WebSphere MQ JMS Integration</th>
+<th>Liberty JMS Configuration</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Maintainability</strong></td>
-<td>Complex owing to dispersed configuration.</td>
-<td>Simplified owing to centralized and self-contained design.</td>
+<td><strong>Complexity</strong></td>
+<td>High complexity owing to verbose XML or admin console requirements.</td>
+<td>Significantly simplified and concise.</td>
 </tr>
 <tr>
-<td><strong>Readability</strong></td>
-<td>Challenging due to XML files separated from Java code.</td>
-<td>Easier due to in-line annotations that provide clarity.</td>
+<td><strong>Maintainability</strong></td>
+<td>Difficult, configuration is dispersed and complex.</td>
+<td>Easy to maintain, with all resources clearly defined in one place.</td>
 </tr>
 <tr>
 <td><strong>Productivity</strong></td>
-<td>Lower developer productivity due to frequent context-switching.</td>
-<td>Improved developer productivity due to direct configurations via code annotations.</td>
+<td>Lower developer productivity due to manual configuration and overhead.</td>
+<td>Improved developer productivity due to straightforward and rapid setup.</td>
 </tr>
 <tr>
-<td><strong>Standardization</strong></td>
-<td>Considered a legacy practice, less aligned with modern industry standards.</td>
-<td>Modern standard (Jakarta EE) that aligns with cloud-native practices.</td>
+<td><strong>Integrations</strong></td>
+<td>Cloud and microservices are harder to scale or adapt.</td>
+<td>Cloud and microservices are easily adapted due to cloud-native design.</td>
 </tr>
 </tbody>
 </table>
-<p>Ultimately, Lariat anticipates that modernization of their WebSphere application's security from XML-based descriptors to Java annotation will reduce the complexity of their security configuration management as they move steadily towards cloud-native application design.</p>
+<p>By modernizing Lariat's WebSphere-based approach of MQ JMS integration to Liberty's declarative JMS-based configuration, the expectation is that the company's management of asynchronous message delivery between applications can be more easily maintained and better aligned to cloud-native best practices.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
-<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's XML-based security</strong>:</p>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's MQ JMS integration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -938,41 +896,34 @@
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
 <span class="normal"><a href="#__codelineno-0-17">17</a></span>
 <span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;security-constraint&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="nt">&lt;url-pattern&gt;</span>/secured/*<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="nt">&lt;auth-constraint&gt;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nt">&lt;/auth-constraint&gt;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nt">&lt;/security-constraint&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nt">&lt;login-config&gt;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nt">&lt;form-login-config&gt;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>        <span class="nt">&lt;form-login-page&gt;</span>/login.jsp<span class="nt">&lt;/form-login-page&gt;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>        <span class="nt">&lt;form-error-page&gt;</span>/error.jsp<span class="nt">&lt;/form-error-page&gt;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="nt">&lt;/form-login-config&gt;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="nt">&lt;/login-config&gt;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="nt">&lt;/security-role&gt;</span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;message-driven&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="nt">&lt;message-driven-destination&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="nt">&lt;destination-type&gt;</span>javax.jms.Queue<span class="nt">&lt;/destination-type&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nt">&lt;/message-driven-destination&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nt">&lt;/message-driven&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="cm">&lt;!-- ibm-ejb-jar-bnd.xml --&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nt">&lt;message-driven</span> <span class="na">name=</span><span class="s">&quot;LegacyMDB&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="nt">&lt;activation-config&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>        <span class="nt">&lt;activation-config-property&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>            <span class="nt">&lt;activation-config-property-name&gt;</span>destination<span class="nt">&lt;/activation-config-property-name&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>            <span class="nt">&lt;activation-config-property-value&gt;</span>jms/legacyQueue<span class="nt">&lt;/activation-config-property-value&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>        <span class="nt">&lt;/activation-config-property&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="nt">&lt;/activation-config&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="nt">&lt;/message-driven&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
-<p></br></p>
-<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be defined owing to this architectural choice.</p>
-<p>In order to modernize this code, Lariat will need to convert the role-based authorization mechanisms and deployment descriptors into Java annotations.</p>
+<p>Lariat's particular implementation of WebSphere MQ JMS utilizes XML descriptors (<code>ejb-jar.xml</code>, <code>ibm-ejb-jar-bnd.xml</code> on <strong>lines 1 and 11</strong>, respectively) to define message-driven beans (MDB) and their JMS destinations.</p>
+<p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — a sharp contrast to the declarative approach we will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes setup of new configurations potentially more complex and prone to human-induced errors in the code.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's annotation-based security</strong>:</p>
+<p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JMS configuration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -991,24 +942,22 @@
 <span class="normal"><a href="#__codelineno-1-13">13</a></span>
 <span class="normal"><a href="#__codelineno-1-14">14</a></span>
 <span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.DeclareRoles</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.RolesAllowed</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.GET</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.Path</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.core.Response</span><span class="p">;</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>jms-2.0<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="nt">&lt;/featureManager&gt;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="nt">&lt;jmsQueue</span> <span class="na">id=</span><span class="s">&quot;modernQueue&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jms/modernQueue&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="nt">&lt;messageDrivenBean</span> <span class="na">id=</span><span class="s">&quot;ModernMDB&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>        <span class="nt">&lt;activationSpec&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>            <span class="nt">&lt;activationSpecClass&gt;</span>javax.jms.Queue<span class="nt">&lt;/activationSpecClass&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>            <span class="nt">&lt;activationSpecProperty</span> <span class="na">name=</span><span class="s">&quot;destination&quot;</span><span class="nt">&gt;</span>jms/modernQueue<span class="nt">&lt;/activationSpecProperty&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>        <span class="nt">&lt;/activationSpec&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="nt">&lt;className&gt;</span>com.lariat.messaging.ModernMDB<span class="nt">&lt;/className&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="nt">&lt;/messageDrivenBean&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="nt">&lt;/server&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -1030,50 +979,32 @@
 <span class="normal"><a href="#__codelineno-2-16">16</a></span>
 <span class="normal"><a href="#__codelineno-2-17">17</a></span>
 <span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;security-constraint&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="nt">&lt;url-pattern&gt;</span>/secured/*<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="nt">&lt;auth-constraint&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>        <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="nt">&lt;/auth-constraint&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="nt">&lt;/security-constraint&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;login-config&gt;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nt">&lt;form-login-config&gt;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>        <span class="nt">&lt;form-login-page&gt;</span>/login.jsp<span class="nt">&lt;/form-login-page&gt;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="nt">&lt;form-error-page&gt;</span>/error.jsp<span class="nt">&lt;/form-error-page&gt;</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="nt">&lt;/form-login-config&gt;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nt">&lt;/login-config&gt;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="nt">&lt;/security-role&gt;</span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;message-driven&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nt">&lt;message-driven-destination&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="nt">&lt;destination-type&gt;</span>javax.jms.Queue<span class="nt">&lt;/destination-type&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="nt">&lt;/message-driven-destination&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nt">&lt;/message-driven&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="cm">&lt;!-- ibm-ejb-jar-bnd.xml --&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;message-driven</span> <span class="na">name=</span><span class="s">&quot;LegacyMDB&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nt">&lt;activation-config&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>        <span class="nt">&lt;activation-config-property&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>            <span class="nt">&lt;activation-config-property-name&gt;</span>destination<span class="nt">&lt;/activation-config-property-name&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>            <span class="nt">&lt;activation-config-property-value&gt;</span>jms/legacyQueue<span class="nt">&lt;/activation-config-property-value&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>        <span class="nt">&lt;/activation-config-property&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="nt">&lt;/activation-config&gt;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="nt">&lt;/message-driven&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
-<p></br></p>
-<p>The modernized, Java annotations-driven security of Liberty defines <code>@DeclareRoles</code> (<strong>line 8</strong>) and <code>@RolesAllowed</code> (<strong>line 13</strong>) to clearly create security constraints at the method and class level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="hll"><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
-</span><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="hll"><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
-</span><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p></br> </p>
-<p>This approach simplifies the URL and method-level security mechanisms that were present within the legacy WebSphere code, replacing it via annotations within RESTful (REST API-addressable) endpoints.</p>
-<p>Ultimately, this reduces the need for external configuration and instead centralizes security declarations closer to the actual code implementation. Lariat, in turn, gains the benefits of improved clarity in how their security constraints are structured. This will enable more straightforward audits in the future and simplify the ongoing maintenance of security policies across their organization.</p>
+<p>Through the process of modernizing the code, Lariat switched to Liberty's messaging providers using standardized JMS APIs in a single, unified <code>server.xml</code> configuration. All JMS resources, such as queues and MDBs, are defined directly within the <code>server.xml</code> configuration file.</p>
+<p>The net result is that configurations are simplified compared to the traditional WebSphere approach of separate descriptor files. Clearly named and easily identifiable JMS queues (<strong>line 1</strong>), as well as activation specifications (beginning on <strong>line 3</strong>), are consolidated within the streamlined <code>server.xml</code> configuration.</p>
+<p>In summary, consolidation of Lariat's messaging configurations into a simplified and centralized pattern has streamlined future maintenance of these configuration files and simplified the process of troubleshooting messaging integrations for their developers.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
@@ -1112,13 +1043,13 @@
       
       
         
-        <a href="../8/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. JMS messaging integration" rel="next">
+        <a href="../8/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Security modernization" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              8. JMS messaging integration
+              8. Security modernization
             </div>
           </div>
           <div class="md-footer__button md-icon">
