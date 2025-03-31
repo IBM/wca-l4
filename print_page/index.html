@@ -4253,7 +4253,35 @@ The modernized Liberty code implementation simplifies the management of dependen
 <h2 id="appmod1-4-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p>Lariat Corporation's application stack utilizes a myriad of <strong>WebSphere Application Server APIs</strong>— Work Manager API, Async Beans, Scheduler API, and so on —which will likely be impacted and require remediation as part of the company's overall modernization towards WebSphere Liberty. WAS APIs may not be immediately portable in their current form, they are potentially more costly to maintain than their Liberty counterparts, and may have less functionality given their outdated implementations.</p>
 <p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" those applications dependent on such APIs.</p>
-<p>Currently, Lariat's <strong>WAS-based APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty-based APIs</strong>. The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) improves application portability and aligns with best practices.</p>
+<p></br></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WebSphere Scheduler API</th>
+<th>Liberty's Jakarta EE-templated APIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standardization</strong></td>
+<td>Built on proprietary WebSphere-only APIs.</td>
+<td>Built on industry-standardized Jakarta EE APIs. More transferable across vendors and platforms.</td>
+</tr>
+<tr>
+<td><strong>Cloud-Readiness</strong></td>
+<td>Tied to traditional WebSphere Application Server only.</td>
+<td>Cloud-native architecture by design and portable to containers.</td>
+</tr>
+<tr>
+<td><strong>Developer Productivity</strong></td>
+<td>Complex setup requiring use of admin console and external XML definitions.</td>
+<td>Declarative and code-driven with Java annotations.</td>
+</tr>
+</tbody>
+</table>
+<p>Currently, Lariat's <strong>WebSphere Scheduler APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty's Jakarta EE-templated APIs</strong>.</p>
+<p>The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) should improve application portability and align with best practices.</p>
 <hr />
 <h2 id="appmod1-4-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy Java code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere Scheduler API</strong>:</p>
@@ -4313,7 +4341,7 @@ The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (ide
 <p>Utilizing WAS-specific API calls requires explicit JDNI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of applications.</p>
 <hr />
 <h2 id="appmod1-4-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<p>Consider below the modernized (but functionally equivalent) Java code in support of <strong>Jakarta EE-templated Liberty APIs</strong>:</p>
+<p>Consider below the modernized (but functionally equivalent) Java code in support of <strong>Liberty's Jakarta EE-templated APIs</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod1-4-__tabbed_2_1" name="appmod1-4-__tabbed_2" type="radio" /><input id="appmod1-4-__tabbed_2_2" name="appmod1-4-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod1-4-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod1-4-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
