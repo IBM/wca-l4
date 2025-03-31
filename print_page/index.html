@@ -564,22 +564,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../appmod1/8.md" class="md-nav__link">
-        8. Data source pooling
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appmod1/9/" class="md-nav__link">
-        9. JMS messaging integration
+      <a href="../appmod1/8/" class="md-nav__link">
+        8. JMS messaging integration
       </a>
     </li>
   
@@ -930,8 +916,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#appmod1-9" class="md-nav__link">
-    9. JMS messaging integration
+  <a href="#appmod1-8" class="md-nav__link">
+    8. JMS messaging integration
   </a>
   
 </li>
@@ -4947,12 +4933,12 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <hr />
 <h2 id="appmod1-7-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
-<h2 id="appmod1-7-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod1-9"><h1 id="appmod1-9-jms-messaging-integrationapplication-modernization-websphere-to-liberty"><strong>JMS messaging integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<h2 id="appmod1-7-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod1-8"><h1 id="appmod1-8-jms-messaging-integrationapplication-modernization-websphere-to-liberty"><strong>JMS messaging integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<h2 id="appmod1-9-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
+<h2 id="appmod1-8-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging is delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
 <p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of the messaging integrations.</p>
 <p></br></p>
@@ -4989,30 +4975,30 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </table>
 <p>By modernizing Lariat's WebSphere-based approach of MQ JMS integration to Liberty's declarative JMS-based configuration, the expectation is that the company's management of asynchronous message delivery between applications can be more easily maintained and better aligned to cloud-native best practices.</p>
 <hr />
-<h2 id="appmod1-9-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<h2 id="appmod1-8-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's MQ JMS integration</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod1-9-__tabbed_1_1" name="appmod1-9-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod1-9-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod1-8-__tabbed_1_1" name="appmod1-8-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod1-8-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-9-__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-8-__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;message-driven&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
@@ -5038,27 +5024,27 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>Lariat's particular implementation of WebSphere MQ JMS utilizes XML descriptors (<code>ejb-jar.xml</code>, <code>ibm-ejb-jar-bnd.xml</code> on <strong>lines 1 and 11</strong>, respectively) to define message-driven beans (MDB) and their JMS destinations.</p>
 <p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — a sharp contrast to the declarative approach we will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes setup of new configurations potentially more complex and prone to human-induced errors in the code.</p>
 <hr />
-<h2 id="appmod1-9-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<h2 id="appmod1-8-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JMS configuration</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod1-9-__tabbed_2_1" name="appmod1-9-__tabbed_2" type="radio" /><input id="appmod1-9-__tabbed_2_2" name="appmod1-9-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod1-9-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod1-9-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod1-8-__tabbed_2_1" name="appmod1-8-__tabbed_2" type="radio" /><input id="appmod1-8-__tabbed_2_2" name="appmod1-8-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod1-8-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod1-8-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-9-__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-8-__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>jms-2.0<span class="nt">&lt;/feature&gt;</span>
@@ -5077,25 +5063,25 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-9-__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#appmod1-9-__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod1-8-__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#appmod1-8-__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;message-driven&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
@@ -5122,9 +5108,9 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>The net result is that configurations are simplified compared to the traditional WebSphere approach of separate descriptor files. Clearly named and easily identifiable JMS queues (<strong>line 1</strong>), as well as activation specifications (beginning on <strong>line 3</strong>), are consolidated within the streamlined <code>server.xml</code> configuration.</p>
 <p>In summary, consolidation of Lariat's messaging configurations into a simplified and centralized pattern has streamlined future maintenance of these configuration files and simplified the process of troubleshooting messaging integrations for their developers.</p>
 <hr />
-<h2 id="appmod1-9-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<h2 id="appmod1-8-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
-<h2 id="appmod1-9-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod1-10"><h1 id="appmod1-10-session-management-and-state-handlingapplication-modernization-websphere-to-liberty"><strong>Session management and state handling</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<h2 id="appmod1-8-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod1-10"><h1 id="appmod1-10-session-management-and-state-handlingapplication-modernization-websphere-to-liberty"><strong>Session management and state handling</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
