@@ -1070,30 +1070,24 @@ The modernized Liberty code implementation simplifies the management of dependen
 <span class="normal"><a href="#__codelineno-5-15">15</a></span>
 <span class="normal"><a href="#__codelineno-5-16">16</a></span>
 <span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span>
-<span class="normal"><a href="#__codelineno-5-20">20</a></span>
-<span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nt">&lt;application&gt;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>        <span class="nt">&lt;web&gt;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>        <span class="nt">&lt;/web&gt;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nt">&lt;web-bnd&gt;</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cm">&lt;!-- deployment.xml --&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nt">&lt;deployment&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="nt">&lt;classloader</span> <span class="na">mode=</span><span class="s">&quot;PARENT_LAST&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>        <span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>            <span class="nt">&lt;file</span> <span class="na">path=</span><span class="s">&quot;/shared/libs/customlib.jar&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>        <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>        <span class="nt">&lt;shared-library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nt">&lt;/classloader&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="nt">&lt;/deployment&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="cm">&lt;!-- shared-libraries.xml --&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="nt">&lt;shared-libraries&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="nt">&lt;library</span> <span class="na">name=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>        <span class="nt">&lt;files&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>            <span class="nt">&lt;file&gt;</span>/opt/was/shared/lib/shared-legacy.jar<span class="nt">&lt;/file&gt;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>        <span class="nt">&lt;/files&gt;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="nt">&lt;/library&gt;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nt">&lt;/shared-libraries&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>

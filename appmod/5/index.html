@@ -1045,35 +1045,19 @@
 <span class="normal"><a href="#__codelineno-5-10">10</a></span>
 <span class="normal"><a href="#__codelineno-5-11">11</a></span>
 <span class="normal"><a href="#__codelineno-5-12">12</a></span>
-<span class="normal"><a href="#__codelineno-5-13">13</a></span>
-<span class="normal"><a href="#__codelineno-5-14">14</a></span>
-<span class="normal"><a href="#__codelineno-5-15">15</a></span>
-<span class="normal"><a href="#__codelineno-5-16">16</a></span>
-<span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span>
-<span class="normal"><a href="#__codelineno-5-20">20</a></span>
-<span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nt">&lt;application&gt;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>        <span class="nt">&lt;web&gt;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>        <span class="nt">&lt;/web&gt;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nt">&lt;web-bnd&gt;</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nt">&lt;ejb-jar&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="nt">&lt;enterprise-beans&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>        <span class="nt">&lt;session&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>            <span class="nt">&lt;ejb-name&gt;</span>LegacySessionBean<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>            <span class="nt">&lt;home&gt;</span>com.lariat.ejb.LegacyHome<span class="nt">&lt;/home&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>            <span class="nt">&lt;remote&gt;</span>com.lariat.ejb.LegacyRemote<span class="nt">&lt;/remote&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>            <span class="nt">&lt;ejb-class&gt;</span>com.lariat.ejb.LegacySessionBean<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>            <span class="nt">&lt;session-type&gt;</span>Stateless<span class="nt">&lt;/session-type&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>            <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>        <span class="nt">&lt;/session&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="nt">&lt;/enterprise-beans&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nt">&lt;/ejb-jar&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
