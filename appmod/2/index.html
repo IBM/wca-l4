@@ -1050,6 +1050,156 @@ The modernized Liberty application code streamlines the original WebSphere confi
 Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">WEBSPHERE APPLICATION SERVER</label><label for="__tabbed_3_2">LIBERTY <code>server.xml</code></label><label for="__tabbed_3_3">LIBERTY <code>web.xml</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nt">&lt;application&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>        <span class="nt">&lt;web&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>        <span class="nt">&lt;/web&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="nt">&lt;module&gt;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="nt">&lt;/module&gt;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="nt">&lt;web-bnd&gt;</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>// Assisted by watsonx Code Assistant 
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>// watsonx Code Assistant did not check whether this code suggestion might be similar to third party code.
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nt">&lt;server</span> <span class="na">description=</span><span class="s">&quot;new server&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="nt">&lt;feature&gt;</span>ejbLite-3.2<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nt">&lt;/featureManager&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="nt">&lt;httpEndpoint</span> <span class="na">id=</span><span class="s">&quot;defaultHttpEndpoint&quot;</span> <span class="na">host=</span><span class="s">&quot;*&quot;</span> <span class="na">httpPort=</span><span class="s">&quot;9080&quot;</span> <span class="na">httpsPort=</span><span class="s">&quot;9443&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="nt">&lt;webApplication</span> <span class="na">location=</span><span class="s">&quot;path/to/legacyapp.war&quot;</span> <span class="na">name=</span><span class="s">&quot;legacyapp&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="nt">&lt;classLoader</span> <span class="na">commonLibraryRef=</span><span class="s">&quot;LibertyBasicCL&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nt">&lt;/webApplication&gt;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="nt">&lt;basicRegistry</span> <span class="na">id=</span><span class="s">&quot;LibertyBasicCL&quot;</span> <span class="na">realm=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">&quot;admin&quot;</span> <span class="na">password=</span><span class="s">&quot;adminPassword&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="nt">&lt;/basicRegistry&gt;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nt">&lt;login-config&gt;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span class="nt">&lt;auth-method&gt;</span>BASIC<span class="nt">&lt;/auth-method&gt;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="nt">&lt;/login-config&gt;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nt">&lt;realm</span> <span class="na">name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span> <span class="na">realm-name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="nt">&lt;users</span> <span class="na">file=</span><span class="s">&quot;path/to/users.properties&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="nt">&lt;groups</span> <span class="na">file=</span><span class="s">&quot;path/to/groups.properties&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="nt">&lt;/realm&gt;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="nt">&lt;dataSource</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">id=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;XADatabase&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a>    <span class="nt">&lt;properties.db2.jcc</span> <span class="na">databaseName=</span><span class="s">&quot;yourDatabaseName&quot;</span> <span class="na">serverName=</span><span class="s">&quot;yourServerName&quot;</span> <span class="na">portNumber=</span><span class="s">&quot;yourPortNumber&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="nt">&lt;/dataSource&gt;</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="nt">&lt;/server&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>// Assisted by watsonx Code Assistant 
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>// watsonx Code Assistant did not check whether this code suggestion might be similar to third party code.
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nt">&lt;resource-ref&gt;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>    <span class="nt">&lt;description&gt;</span>Legacy Data Source<span class="nt">&lt;/description&gt;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="nt">&lt;res-ref-name&gt;</span>jdbc/LegacyDS<span class="nt">&lt;/res-ref-name&gt;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>    <span class="nt">&lt;res-type&gt;</span>javax.sql.DataSource<span class="nt">&lt;/res-type&gt;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>    <span class="nt">&lt;res-auth&gt;</span>Container<span class="nt">&lt;/res-auth&gt;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nt">&lt;/resource-ref&gt;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="nt">&lt;security-role&gt;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>    <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="nt">&lt;/security-role&gt;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
 
