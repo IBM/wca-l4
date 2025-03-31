@@ -3819,8 +3819,40 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </div>
 <h2 id="appmod1-2-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p>Lariat Corporation has a large collection of <strong>WebSphere Enterprise Archive</strong> (EAR) applications designed specifically for deployments using <strong>WAS</strong>. These are packaged archive files that bundle together multiple Java Enterprise Edition (Java EE shorthand, or more recently referred to by Jakarta EE) components: web modules, Enterprise JavaBeans (EJB) files, resource adapters, libraries, and so on. Collectively, all of these components allow for Lariat's engineers and developers to manage complex enterprise applications "efficiently" (as the theory goes) by encapsulating all of the necessary components into a single, structured archive. </p>
-<p><strong>Liberty</strong>, however, supports comparatively simple and standardized configurations that greatly reduce the complexities found with WAS applications. Chiefly, by removing the need for multiple external descriptors and consolidating settings into one unified file (<code>server.xml</code>). Overally, this approach improves the maintainability of the code base in the long term and improves the deployment speed for new instances (or versions) of the Liberty-based application.</p>
-<p>As part of the modernization efforts, the new Liberty application will need to support the functionality of the legacy WAS application, such as:</p>
+<p><strong>Liberty</strong>, however, supports comparatively simple and standardized configurations that greatly reduce the complexities found with WebSphere applications. <strong>Liberty Web Archive</strong> (<strong>WAR</strong>) conigurations remove the need for multiple external descriptors and consolidating settings into one unified file (<code>server.xml</code>). Overally, this approach improves the maintainability of the code base in the long term and improves the deployment speed for new instances (or versions) of the Liberty-based application.</p>
+<p></br></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WebSphere EAR configuration</th>
+<th>Liberty WAR configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deployment Complexity</strong></td>
+<td>High: multiple modules and files to manage.</td>
+<td>Low: single deployable artifact.</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Slow deployments due to heightened complexity.</td>
+<td>Faster deployments owing to simplicity and lightweight design.</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td>Challenging.</td>
+<td>Streamlined, less complex.</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Difficult to scale due to potential for complex sets of dependencies.</td>
+<td>Rapidly scaled due to cloud-native design.</td>
+</tr>
+</tbody>
+</table>
+<p>As part of the modernization efforts, the new Liberty application will need to support the functionality of the legacy WebSphere application, such as:</p>
 <ul>
 <li>Deployment of complex, modular Java EE applications onto WebSphere servers</li>
 <li>Encapsulation of web applications, EJB modules, and dependencies in a structured format</li>
@@ -3829,7 +3861,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <p>In general, the team supporting the modernization anticipate that Liberty will enable greatly simplified, more modular deployment structures — which in turn will reduce the overhead, complexity, and maintenance burden of these applications.</p>
 <hr />
 <h2 id="appmod1-2-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
-<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere EAR</strong>:</p>
+<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere EAR configuration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod1-2-__tabbed_1_1" name="appmod1-2-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod1-2-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4027,7 +4059,40 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <li><strong>Application module management:</strong> for WebSphere Enterprise Archive (EAR) applications, like those covered in the previous section, class loader configurations can manage the visibility of classes across different modules of the same EAR file</li>
 </ul>
 <p>In addition, the ability to selectively control class loading can reduce the overall memory footprint and resource overhead of an application. The result is that class loader configurations play an important part for managing dependency conflicts and application stability across Lariat's WAS services and environments.</p>
-<p>However, Lariat's <strong>legacy WAS</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design. Through modernization of the code to <strong>Liberty</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
+<p></br></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WebSphere class loader configuration</th>
+<th>Liberty server configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Configuration Complexity</strong></td>
+<td>High: hierarchical and administration-intensive.</td>
+<td>Low: conise and self-contained.</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td>Configuration tends to be dispersed, raising difficulties with maintenance.</td>
+<td>Clear and concise, only need to maintain a single configuration file.</td>
+</tr>
+<tr>
+<td><strong>Developer Productivity</strong></td>
+<td>Lowered due to administrative overhead, high probability of class-loading conflicts.</td>
+<td>Raised due to minimal overhead and reduced likelihood of human-introduced errors from single source of truth.</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Difficult to scale due to potential for complex sets of dependencies.</td>
+<td>Rapidly scaled due to cloud-native design.</td>
+</tr>
+</tbody>
+</table>
+<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
+<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="appmod1-3-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere class loader configuration</strong>:</p>

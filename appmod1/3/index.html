@@ -844,7 +844,40 @@
 <li><strong>Application module management:</strong> for WebSphere Enterprise Archive (EAR) applications, like those covered in the previous section, class loader configurations can manage the visibility of classes across different modules of the same EAR file</li>
 </ul>
 <p>In addition, the ability to selectively control class loading can reduce the overall memory footprint and resource overhead of an application. The result is that class loader configurations play an important part for managing dependency conflicts and application stability across Lariat's WAS services and environments.</p>
-<p>However, Lariat's <strong>legacy WAS</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design. Through modernization of the code to <strong>Liberty</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
+<p></br></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WebSphere class loader configuration</th>
+<th>Liberty server configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Configuration Complexity</strong></td>
+<td>High: hierarchical and administration-intensive.</td>
+<td>Low: conise and self-contained.</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td>Configuration tends to be dispersed, raising difficulties with maintenance.</td>
+<td>Clear and concise, only need to maintain a single configuration file.</td>
+</tr>
+<tr>
+<td><strong>Developer Productivity</strong></td>
+<td>Lowered due to administrative overhead, high probability of class-loading conflicts.</td>
+<td>Raised due to minimal overhead and reduced likelihood of human-introduced errors from single source of truth.</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Difficult to scale due to potential for complex sets of dependencies.</td>
+<td>Rapidly scaled due to cloud-native design.</td>
+</tr>
+</tbody>
+</table>
+<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
+<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere class loader configuration</strong>:</p>
