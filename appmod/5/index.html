@@ -1068,7 +1068,7 @@
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>server.xml</code></label><label for="__tabbed_4_2">LIBERTY <code>web.xml</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="__tabbed_4_2">LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
@@ -1097,33 +1097,47 @@
 <span class="normal"><a href="#__codelineno-6-24">24</a></span>
 <span class="normal"><a href="#__codelineno-6-25">25</a></span>
 <span class="normal"><a href="#__codelineno-6-26">26</a></span>
-<span class="normal"><a href="#__codelineno-6-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nt">&lt;server</span> <span class="na">description=</span><span class="s">&quot;new server&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nt">&lt;featureManager&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="nt">&lt;feature&gt;</span>ejbLite-3.2<span class="nt">&lt;/feature&gt;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="nt">&lt;/featureManager&gt;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="nt">&lt;httpEndpoint</span> <span class="na">id=</span><span class="s">&quot;defaultHttpEndpoint&quot;</span> <span class="na">host=</span><span class="s">&quot;*&quot;</span> <span class="na">httpPort=</span><span class="s">&quot;9080&quot;</span> <span class="na">httpsPort=</span><span class="s">&quot;9443&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nt">&lt;webApplication</span> <span class="na">location=</span><span class="s">&quot;path/to/legacyapp.war&quot;</span> <span class="na">name=</span><span class="s">&quot;legacyapp&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a>    <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a>    <span class="nt">&lt;classLoader</span> <span class="na">commonLibraryRef=</span><span class="s">&quot;LibertyBasicCL&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="nt">&lt;/webApplication&gt;</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nt">&lt;basicRegistry</span> <span class="na">id=</span><span class="s">&quot;LibertyBasicCL&quot;</span> <span class="na">realm=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a>    <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">&quot;admin&quot;</span> <span class="na">password=</span><span class="s">&quot;adminPassword&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nt">&lt;/basicRegistry&gt;</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="nt">&lt;login-config&gt;</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16"></a>    <span class="nt">&lt;auth-method&gt;</span>BASIC<span class="nt">&lt;/auth-method&gt;</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="nt">&lt;/login-config&gt;</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="nt">&lt;realm</span> <span class="na">name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span> <span class="na">realm-name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19"></a>    <span class="nt">&lt;users</span> <span class="na">file=</span><span class="s">&quot;path/to/users.properties&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20"></a>    <span class="nt">&lt;groups</span> <span class="na">file=</span><span class="s">&quot;path/to/groups.properties&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="nt">&lt;/realm&gt;</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="nt">&lt;dataSource</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">id=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;XADatabase&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25"></a>    <span class="nt">&lt;properties.db2.jcc</span> <span class="na">databaseName=</span><span class="s">&quot;yourDatabaseName&quot;</span> <span class="na">serverName=</span><span class="s">&quot;yourServerName&quot;</span> <span class="na">portNumber=</span><span class="s">&quot;yourPortNumber&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="nt">&lt;/dataSource&gt;</span>
-<a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="nt">&lt;/server&gt;</span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span>
+<span class="normal"><a href="#__codelineno-6-30">30</a></span>
+<span class="normal"><a href="#__codelineno-6-31">31</a></span>
+<span class="normal"><a href="#__codelineno-6-32">32</a></span>
+<span class="normal"><a href="#__codelineno-6-33">33</a></span>
+<span class="normal"><a href="#__codelineno-6-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>    <span class="nt">&lt;enterprise-beans&gt;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>        <span class="nt">&lt;session&gt;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>            <span class="nt">&lt;ejb-name&gt;</span>LegacySessionBean<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>            <span class="nt">&lt;ejb-class&gt;</span>com.lariat.ejb.LegacySessionBean<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>            <span class="nt">&lt;session-type&gt;</span>Stateless<span class="nt">&lt;/session-type&gt;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>            <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>            <span class="nt">&lt;concurrency-strategy&gt;</span>OnePerRequest<span class="nt">&lt;/concurrency-strategy&gt;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>            <span class="nt">&lt;resource-ref&gt;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>                <span class="nt">&lt;res-ref-name&gt;</span>jdbc/LegacyDS<span class="nt">&lt;/res-ref-name&gt;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a>                <span class="nt">&lt;res-type&gt;</span>javax.sql.DataSource<span class="nt">&lt;/res-type&gt;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>                <span class="nt">&lt;res-auth&gt;</span>Container<span class="nt">&lt;/res-auth&gt;</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a>        <span class="nt">&lt;/resource-ref&gt;</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a>        <span class="nt">&lt;/session&gt;</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a>    <span class="nt">&lt;/enterprise-beans&gt;</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="nt">&lt;/ejb-jar&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -1137,31 +1151,17 @@
 <span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span>
-<span class="normal"><a href="#__codelineno-7-17">17</a></span>
-<span class="normal"><a href="#__codelineno-7-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nt">&lt;resource-ref&gt;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a>    <span class="nt">&lt;description&gt;</span>Legacy Data Source<span class="nt">&lt;/description&gt;</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a>    <span class="nt">&lt;res-ref-name&gt;</span>jdbc/LegacyDS<span class="nt">&lt;/res-ref-name&gt;</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a>    <span class="nt">&lt;res-type&gt;</span>javax.sql.DataSource<span class="nt">&lt;/res-type&gt;</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a>    <span class="nt">&lt;res-auth&gt;</span>Container<span class="nt">&lt;/res-auth&gt;</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="nt">&lt;/resource-ref&gt;</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="nt">&lt;/security-role&gt;</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a>
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="nt">&lt;/web-app&gt;</span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.Resource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ejb.Stateless</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.sql.DataSource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="nd">@Stateless</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LegacySessionBean</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc/LegacyDS&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="c1">// Your EJB methods here</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
