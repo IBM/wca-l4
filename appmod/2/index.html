@@ -1050,52 +1050,34 @@ The modernized Liberty application code streamlines the original WebSphere confi
 Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">WEBSPHERE APPLICATION SERVER</label><label for="__tabbed_3_2">LIBERTY <code>server.xml</code></label><label for="__tabbed_3_3">LIBERTY <code>web.xml</code></label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span>
-<span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">&lt;!-- application.xml --&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nt">&lt;application&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>        <span class="nt">&lt;web&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>            <span class="nt">&lt;web-uri&gt;</span>legacyapp.war<span class="nt">&lt;/web-uri&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>            <span class="nt">&lt;context-root&gt;</span>/legacyapp<span class="nt">&lt;/context-root&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>        <span class="nt">&lt;/web&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="nt">&lt;module&gt;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>        <span class="nt">&lt;ejb&gt;</span>legacyEJB.jar<span class="nt">&lt;/ejb&gt;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="nt">&lt;/module&gt;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="nt">&lt;security-role&gt;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>        <span class="nt">&lt;role-name&gt;</span>user<span class="nt">&lt;/role-name&gt;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nt">&lt;/security-role&gt;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="cm">&lt;!-- ibm-web-bnd.xml --&gt;</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="nt">&lt;web-bnd&gt;</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="nt">&lt;virtual-host</span> <span class="na">name=</span><span class="s">&quot;default_host&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a>    <span class="nt">&lt;resource-ref</span> <span class="na">name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">binding-name=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="nt">/&gt;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nt">&lt;/web-bnd&gt;</span>
-</code></pre></div></td></tr></table></div>
+<p>In the following section, participants will have the opportunity to experiment with the IBM watsonx Code Assistant (WCA) service that was set up in <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
+<ul>
+<li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code) or the WCA plug-in for Eclipse IDE, you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
+<li>The lab guide documentation will then walk you through an analysis of the WCA-generated Liberty code and compare that to the best-practice Liberty code discussed previously in section <em>iii. Liberty modernized code</em>.</li>
+<li>After comparing the two approaches to Liberty modernization, you will have the opportunity to continue tinkering with the WCA Chat service. This is an opportunity for experimentation and free-form questions. Try influencing WCA's generative AI recommendations by making further prompts or inquiries into the code responses it generates.</li>
+<li>When satisfied, you may proceed onwards to the next module.</li>
+</ul>
+<hr />
+<ol>
+<li><strong>Log in</strong> to the <a href="https://ibm.github.io/wca-l4/saas/3/#iii-install-the-extension" target="_blank"><strong>WCA extension with VS Code</strong></a>. Once authenticated, proceed to Step 2.</li>
+</ol>
+<hr />
+<ol start="2">
+<li>From the taskbar along the left side of VS Code, click to make sure you are viewing the <strong>WCA</strong> extension.</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Within the <strong>Chat Session 1</strong> window, enter a prompt requesting that the service be ready to modernize application code that you will provide into WebSphere Liberty. As a suggestion, try the following prompt (paste into the chat window and then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to submit):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>I need to modernize code written for WebSphere Application Server into WebSphere Liberty. Can you help?
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>TIP:</strong> You can increase the width of the Chat Session window by clicking and dragging the right-side of the window frame and pulling it towards the right of the screen.</p>
 </div>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">LIBERTY <code>server.xml</code></label><label for="__tabbed_3_2">LIBERTY <code>web.xml</code></label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
