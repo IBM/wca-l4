@@ -537,7 +537,7 @@
   
     <li class="md-nav__item">
       <a href="../appmod/6/" class="md-nav__link">
-        6. JSP modernization
+        6. JMS integration
       </a>
     </li>
   
@@ -551,21 +551,7 @@
   
     <li class="md-nav__item">
       <a href="../appmod/7/" class="md-nav__link">
-        7. JMS integration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appmod/8/" class="md-nav__link">
-        8. Security modernization
+        7. Security modernization
       </a>
     </li>
   
@@ -861,21 +847,14 @@
         
           <li class="md-nav__item">
   <a href="#appmod-6" class="md-nav__link">
-    6. JSP modernization
+    6. JMS integration
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#appmod-7" class="md-nav__link">
-    7. JMS integration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appmod-8" class="md-nav__link">
-    8. Security modernization
+    7. Security modernization
   </a>
   
 </li>
@@ -4627,144 +4606,12 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <hr />
 <h2 id="appmod-5-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
-<h2 id="appmod-5-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod-6"><h1 id="appmod-6-javaserver-pages-jsp-modernizationapplication-modernization-websphere-to-liberty"><strong>JavaServer Pages (JSP) modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<h2 id="appmod-5-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod-6"><h1 id="appmod-6-jms-messaging-integrationapplication-modernization-websphere-to-liberty"><strong>JMS messaging integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <h2 id="appmod-6-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
-<p><strong>WebSphere JavaServer Pages</strong> (<strong>JSP</strong>) is traditionally used for embedding Java code into HTML pages, which in turn allow Lariat Corporation's developers to generate dynamic web content. Those fragments of Java code, known as "scriptlets", are inserted directly into JSP pages — the result of which are HTML pages mixed with Java code, producing web content that becomes increasingly challenging for developers to maintain and read.</p>
-<p><strong>Liberty</strong> makes use of <strong>JavaServer Pages Standard Tag Library</strong> (<strong>JSTL</strong>) and <strong>Expression Language</strong> (<strong>EL</strong>) to significantly improve the clarity and maintainability of dynamically generated web content. Without going into unnecessary detail, suffice it to say that these two approaches when used together reduce the amount of scriptlets (Java code) inserted alongside HTML for the dynamically generated web content, creating fewer artifacts and resulting in content that Lariat's developers will ultimately have an easier time maintaining.</p>
-<p></br></p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>WebSphere JSP</th>
-<th>Liberty JSP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Maintainability</strong></td>
-<td>Harder due to intertwined HTML and Java logic.</td>
-<td>Easier due to separation of logic from views.</td>
-</tr>
-<tr>
-<td><strong>Readability</strong></td>
-<td>Challenging readability due to cluttered Java logic.</td>
-<td>Simplified readability and more declarative style.</td>
-</tr>
-<tr>
-<td><strong>Productivity</strong></td>
-<td>Lower developer productivity due to complexity.</td>
-<td>Improved developer productivity owing to clearer syntax.</td>
-</tr>
-<tr>
-<td><strong>Standardization</strong></td>
-<td>Considered a legacy practice.</td>
-<td>Aligns with modern Java Enterprise Edition (Java EE or Jakarta EE) standards.</td>
-</tr>
-</tbody>
-</table>
-<p>Modernizing <strong>WebSphere JSP</strong> into <strong>Liberty JSTL + EL</strong> should provide Lariat with a clearer delineation of tasks and responsibilities for their developers. Application code will be easier to maintain owing to the reduced complexity; furthermore, the troubleshooting and debugging for dynamic web content back-ends should be made simpler as a consequence of such changes.</p>
-<hr />
-<h2 id="appmod-6-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
-<p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's JSP with extensive scriptlets</strong>: </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod-6-__tabbed_1_1" name="appmod-6-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.util.Date,java.text.SimpleDateFormat&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;html&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nt">&lt;body&gt;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="k">&lt;%</span><span class="w"> </span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="n">SimpleDateFormat</span><span class="w"> </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;dd-MM-yyyy HH:mm:ss&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dateString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">now</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">%&gt;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nt">&lt;h2&gt;</span>Current Time:<span class="nt">&lt;/h2&gt;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="nt">&lt;p&gt;</span><span class="k">&lt;%=</span><span class="w"> </span><span class="n">dateString</span><span class="w"> </span><span class="k">%&gt;</span><span class="nt">&lt;/p&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="nt">&lt;/body&gt;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nt">&lt;/html&gt;</span>
-</code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<p></br></p>
-<p>The legacy application code contains Java code that is directly embedded within the resulting JSP pages ("scriptlets"), creating a confusing mixture of logic and presentation. In turn, it produces output that is more complicated for Lariat's developers to maintain — and dynamic web content that steadily deteriotes in quality (and readability) over it.</p>
-<p>Manual imports and detailed formatting logic need to be defined within the JSP to make this possible. The process of untangling code structures between the mix of Java and XML/HTML code adds to the maintenance burden of those teams.</p>
-<hr />
-<h2 id="appmod-6-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JSP with JSTL + EL</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-6-__tabbed_2_1" name="appmod-6-__tabbed_2" type="radio" /><input id="appmod-6-__tabbed_2_2" name="appmod-6-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-6-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">&lt;%@</span><span class="w"> </span><span class="n">taglib</span><span class="w"> </span><span class="n">uri</span><span class="o">=</span><span class="s">&quot;http://java.sun.com/jsp/jstl/fmt&quot;</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s">&quot;fmt&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;html&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">&lt;body&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="nt">&lt;h2&gt;</span>Current Time:<span class="nt">&lt;/h2&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="nt">&lt;p&gt;&lt;fmt:formatDate</span> <span class="na">value=</span><span class="s">&quot;${pageContext.request.time}&quot;</span> <span class="na">pattern=</span><span class="s">&quot;dd-MM-yyyy HH:mm:ss&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="nt">&lt;/body&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nt">&lt;/html&gt;</span>
-</code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#appmod-6-__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.util.Date,java.text.SimpleDateFormat&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;html&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nt">&lt;body&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="k">&lt;%</span><span class="w"> </span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="n">SimpleDateFormat</span><span class="w"> </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;dd-MM-yyyy HH:mm:ss&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dateString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">now</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">%&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="nt">&lt;h2&gt;</span>Current Time:<span class="nt">&lt;/h2&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="nt">&lt;p&gt;</span><span class="k">&lt;%=</span><span class="w"> </span><span class="n">dateString</span><span class="w"> </span><span class="k">%&gt;</span><span class="nt">&lt;/p&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="nt">&lt;/body&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nt">&lt;/html&gt;</span>
-</code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<p></br> </p>
-<p>The modernized Liberty JSP code combines both JSTL + EL in order to clearly delineate between the application's business logic and presentation logic. This eliminates the previous need (with the legacy application code) of embedding Java code into XML/HTML, thereby resulting in more easily maintained and human-readable pages.</p>
-<p>Added clarity in <em>what</em> it is the Liberty code is performing is also beneficial to Lariat's developers: formatting and logic are expressly handled with reusable tags and EL expressions.</p>
-<hr />
-<h2 id="appmod-6-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
-<hr />
-<h2 id="appmod-6-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod-7"><h1 id="appmod-7-jms-messaging-integrationapplication-modernization-websphere-to-liberty"><strong>JMS messaging integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
-<div class="admonition quote">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
-</div>
-<h2 id="appmod-7-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging is delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
 <p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of the messaging integrations.</p>
 <p></br></p>
@@ -4801,30 +4648,30 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </table>
 <p>By modernizing Lariat's WebSphere-based approach of MQ JMS integration to Liberty's declarative JMS-based configuration, the expectation is that the company's management of asynchronous message delivery between applications can be more easily maintained and better aligned to cloud-native best practices.</p>
 <hr />
-<h2 id="appmod-7-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<h2 id="appmod-6-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's MQ JMS integration</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod-7-__tabbed_1_1" name="appmod-7-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod-6-__tabbed_1_1" name="appmod-6-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;message-driven&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
@@ -4850,27 +4697,27 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>Lariat's particular implementation of WebSphere MQ JMS utilizes XML descriptors (<code>ejb-jar.xml</code>, <code>ibm-ejb-jar-bnd.xml</code> on <strong>lines 1 and 11</strong>, respectively) to define message-driven beans (MDB) and their JMS destinations.</p>
 <p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — a sharp contrast to the declarative approach we will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes setup of new configurations potentially more complex and prone to human-induced errors in the code.</p>
 <hr />
-<h2 id="appmod-7-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<h2 id="appmod-6-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JMS configuration</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-7-__tabbed_2_1" name="appmod-7-__tabbed_2" type="radio" /><input id="appmod-7-__tabbed_2_2" name="appmod-7-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-7-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-6-__tabbed_2_1" name="appmod-6-__tabbed_2" type="radio" /><input id="appmod-6-__tabbed_2_2" name="appmod-6-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-6-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!-- server.xml --&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">&lt;server&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>        <span class="nt">&lt;feature&gt;</span>jms-2.0<span class="nt">&lt;/feature&gt;</span>
@@ -4889,25 +4736,25 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#appmod-7-__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#appmod-6-__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- ejb-jar.xml --&gt;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;message-driven&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
@@ -4934,14 +4781,14 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>The net result is that configurations are simplified compared to the traditional WebSphere approach of separate descriptor files. Clearly named and easily identifiable JMS queues (<strong>line 1</strong>), as well as activation specifications (beginning on <strong>line 3</strong>), are consolidated within the streamlined <code>server.xml</code> configuration.</p>
 <p>In summary, consolidation of Lariat's messaging configurations into a simplified and centralized pattern has streamlined future maintenance of these configuration files and simplified the process of troubleshooting messaging integrations for their developers.</p>
 <hr />
-<h2 id="appmod-7-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<h2 id="appmod-6-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
-<h2 id="appmod-7-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod-8"><h1 id="appmod-8-security-modernizationapplication-modernization-websphere-to-liberty"><strong>Security modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<h2 id="appmod-6-v-next-steps"><strong>v. Next steps</strong></h2></section><section class="print-page" id="appmod-7"><h1 id="appmod-7-security-modernizationapplication-modernization-websphere-to-liberty"><strong>Security modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<h2 id="appmod-8-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
+<h2 id="appmod-7-i-incentives-to-modernize"><strong>i. Incentives to modernize</strong></h2>
 <p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
 <p><strong>Liberty</strong> applications, by contrast, utilize <strong>Java annotations</strong> to embed security rules directly in-line within Java classes or methods. This helps to eliminate (or at least reduce) dependencies on external XML descriptors, creating a more robust security implementation and permitting simple to maintain configurations. Java annotations are patterned using Java Enterprise Edition (Java EE or Jakarta EE) standards which align directly with the best-practices of cloud-native design.</p>
 <p></br></p>
@@ -4978,33 +4825,33 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </table>
 <p>Ultimately, Lariat anticipates that modernization of their WebSphere application's security from XML-based descriptors to Java annotation will reduce the complexity of their security configuration management as they move steadily towards cloud-native application design.</p>
 <hr />
-<h2 id="appmod-8-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
+<h2 id="appmod-7-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's XML-based security</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod-8-__tabbed_1_1" name="appmod-8-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod-8-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="appmod-7-__tabbed_1_1" name="appmod-7-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_1_1">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-8-__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;security-constraint&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
@@ -5034,28 +4881,28 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be defined owing to this architectural choice.</p>
 <p>In order to modernize this code, Lariat will need to convert the role-based authorization mechanisms and deployment descriptors into Java annotations.</p>
 <hr />
-<h2 id="appmod-8-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
+<h2 id="appmod-7-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's annotation-based security</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-8-__tabbed_2_1" name="appmod-8-__tabbed_2" type="radio" /><input id="appmod-8-__tabbed_2_2" name="appmod-8-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-8-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-8-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-7-__tabbed_2_1" name="appmod-7-__tabbed_2" type="radio" /><input id="appmod-7-__tabbed_2_2" name="appmod-7-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-7-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-8-__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.DeclareRoles</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.DeclareRoles</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.security.RolesAllowed</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.GET</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.ws.rs.Path</span><span class="p">;</span><span class="w"></span>
@@ -5075,28 +4922,28 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-8-__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#appmod-8-__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#appmod-7-__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">&lt;!-- web.xml --&gt;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">&lt;security-constraint&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="nt">&lt;web-resource-name&gt;</span>SecureArea<span class="nt">&lt;/web-resource-name&gt;</span>
@@ -5124,23 +4971,23 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </div>
 <p></br></p>
 <p>The modernized, Java annotations-driven security of Liberty defines <code>@DeclareRoles</code> (<strong>line 8</strong>) and <code>@RolesAllowed</code> (<strong>line 13</strong>) to clearly create security constraints at the method and class level.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a><span class="hll"><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
-</span><a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod-8-__codelineno-3-2"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod-8-__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#appmod-8-__codelineno-3-4"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#appmod-8-__codelineno-3-5"></a><span class="hll"><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
-</span><a id="__codelineno-3-6" name="__codelineno-3-6" href="#appmod-8-__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#appmod-8-__codelineno-3-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#appmod-8-__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#appmod-8-__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-7-__codelineno-3-1"></a><span class="hll"><span class="nd">@DeclareRoles</span><span class="p">({</span><span class="s">&quot;admin&quot;</span><span class="p">})</span><span class="w"></span>
+</span><a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod-7-__codelineno-3-2"></a><span class="nd">@Path</span><span class="p">(</span><span class="s">&quot;/secured&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#appmod-7-__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecuredEndpoint</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#appmod-7-__codelineno-3-4"></a><span class="w">    </span><span class="nd">@GET</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#appmod-7-__codelineno-3-5"></a><span class="hll"><span class="w">    </span><span class="nd">@RolesAllowed</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-3-6" name="__codelineno-3-6" href="#appmod-7-__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="nf">getSecuredData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#appmod-7-__codelineno-3-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Response</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;Sensitive data available only to admins.&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#appmod-7-__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#appmod-7-__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p></br> </p>
 <p>This approach simplifies the URL and method-level security mechanisms that were present within the legacy WebSphere code, replacing it via annotations within RESTful (REST API-addressable) endpoints.</p>
 <p>Ultimately, this reduces the need for external configuration and instead centralizes security declarations closer to the actual code implementation. Lariat, in turn, gains the benefits of improved clarity in how their security constraints are structured. This will enable more straightforward audits in the future and simplify the ongoing maintenance of security policies across their organization.</p>
 <hr />
-<h2 id="appmod-8-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<h2 id="appmod-7-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <hr />
-<h2 id="appmod-8-v-next-steps"><strong>v. Next steps</strong></h2></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1>
+<h2 id="appmod-7-v-next-steps"><strong>v. Next steps</strong></h2></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1>
                         <h1 class='nav-section-title' id='section-tuning-and-customization'>
                             Tuning and Customization <a class='headerlink' href='#section-tuning-and-customization' title='Permanent link'>↵</a>
                         </h1>
