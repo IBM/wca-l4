@@ -1184,7 +1184,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <ol start="8">
 <li>
 <p>Lastly, on the topic of <strong>application deployments</strong>, Lariat's code base has explicit WAR deployment instructions built into the <code>server.xml</code> configuration file:</p>
-<p></br></p>
+<p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;application</span> <span class="na">location=</span><span class="s">&quot;modernized.war&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="nt">&lt;commonLibrary&gt;</span>
@@ -1192,7 +1192,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="nt">&lt;/commonLibrary&gt;</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="nt">&lt;/classloader&gt;</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
-</code></pre></div>
+</code></pre></div></p>
 <p></br></p>
 <p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
 </li>
