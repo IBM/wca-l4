@@ -4284,7 +4284,7 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <hr />
 <div class="admonition note">
 <p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
 </div>
 <ol start="6">
 <li>
@@ -4666,6 +4666,10 @@ The modernized Liberty code implementation simplifies the management of dependen
 </li>
 </ol>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <ol start="6">
 <li>At a glance, the newly-generated WCA code appears to be significantly more complex: splitting <strong>configuration access</strong> across <code>server.xml</code> and <code>shared-library.xml</code>, rather than Lariat's consolidated <code>server.xml</code> approach. Not an encouraging start, but let's drill down into specific elements before making a final critique.</li>
 </ol>
@@ -4673,10 +4677,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <ol start="7">
 <li>
 <p>In terms of <strong>encapsulation</strong> of necessary classes and libraries, Lariat's best-practices Liberty code outshines WCA's Liberty recommendations. Consider the following slice of Lariat's modernized code:</p>
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
+<p></br></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#appmod-3-__codelineno-8-1"></a><span class="nt">&lt;library</span> <span class="na">id=</span><span class="s">&quot;customLib&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#appmod-3-__codelineno-8-2"></a>    <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${server.config.dir}/shared/libs&quot;</span> <span class="na">includes=</span><span class="s">&quot;*.jar&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#appmod-3-__codelineno-8-3"></a><span class="nt">&lt;/library&gt;</span>
