@@ -4689,6 +4689,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 </code></pre></div>
 <p></br>
 The code's <em>Classloader</em> has been limited in scope only to the deployed WAR: <code>parentLast</code> ensures that the application's classes override any shared ones, which is generally the "safer" approach to take for modernization of legacy applications. Contrast that to WCA's approach:</p>
+<p></br></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#appmod-3-__codelineno-9-1"></a><span class="hll"><span class="nt">&lt;sharedLibrary</span> <span class="na">id=</span><span class="s">&quot;LegacySharedLib&quot;</span> <span class="na">location=</span><span class="s">&quot;path/to/shared-legacy.jar&quot;</span><span class="nt">/&gt;</span>
 </span><a id="__codelineno-9-2" name="__codelineno-9-2" href="#appmod-3-__codelineno-9-2"></a><span class="nt">&lt;classLoader</span> <span class="na">commonLibraryRef=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">/&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#appmod-3-__codelineno-9-3"></a>...
@@ -4708,6 +4709,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <ol start="8">
 <li>
 <p>Lastly, on the topic of <strong>application deployments</strong>, Lariat's code base has explicit WAR deployment instructions built into the <code>server.xml</code> configuration file:</p>
+<p></br></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#appmod-3-__codelineno-10-1"></a><span class="nt">&lt;application</span> <span class="na">location=</span><span class="s">&quot;modernized.war&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#appmod-3-__codelineno-10-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#appmod-3-__codelineno-10-3"></a>        <span class="nt">&lt;commonLibrary&gt;</span>
