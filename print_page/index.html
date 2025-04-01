@@ -3967,7 +3967,7 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <p>The legacy code showcased here has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (<strong>line 1</strong>) and <code>ibm-web-bnd.xml</code> (<strong>line 17</strong>) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified. The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
 <hr />
 <h2 id="appmod-2-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
-<p>Consider below the modernized (but functionally equivalent) code using <strong>Liberty WAR configuration</strong>:</p>
+<p>Consider the modernized (functionally equivalent) code using <strong>Liberty WAR configuration</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="appmod-2-__tabbed_2_1" name="appmod-2-__tabbed_2" type="radio" /><input id="appmod-2-__tabbed_2_2" name="appmod-2-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="appmod-2-__tabbed_2_1">WEBSPHERE LIBERTY</label><label for="appmod-2-__tabbed_2_2">WEBSPHERE APPLICATION SERVER</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
