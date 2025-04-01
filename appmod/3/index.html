@@ -1146,7 +1146,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
 </div>
 <ol start="6">
-<li>At a glance, the newly-generated WCA code appears to be significantly more complex: splitting <strong>configuration access</strong> across <code>server.xml</code> and <code>shared-library.xml</code>, rather than Lariat's consolidated <code>server.xml</code> approach. Not an encouraging start, but let's drill down into specific elements before making a final critique.</li>
+<li>At a glance, the newly-generated WCA code appears to be significantly more complex: splitting <strong>configuration organization</strong> across <code>server.xml</code> and <code>shared-library.xml</code>, rather than Lariat's consolidated <code>server.xml</code> approach. Not an encouraging start, but let's drill down into specific elements before making a final critique.</li>
 </ol>
 <hr />
 <ol start="7">
@@ -1181,7 +1181,19 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 </ol>
 <hr />
 <ol start="8">
-<li></li>
+<li>
+<p>Lastly, on the topic of <strong>application deployments</strong>, Lariat's code base has explicit WAR deployment instructions built into the <code>server.xml</code> configuration file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;application</span> <span class="na">location=</span><span class="s">&quot;modernized.war&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nt">&lt;classloader</span> <span class="na">delegation=</span><span class="s">&quot;parentLast&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="nt">&lt;commonLibrary&gt;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>            <span class="nt">&lt;library</span> <span class="na">ref=</span><span class="s">&quot;customLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="nt">&lt;/commonLibrary&gt;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="nt">&lt;/classloader&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
+</code></pre></div>
+<p></br></p>
+<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
+</li>
 </ol>
 <hr />
 <h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
