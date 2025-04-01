@@ -4321,8 +4321,22 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </ol>
 <hr />
 <ol start="8">
-<li>DataSource configuration is arguably a toss-up between either version, depending on an organization's goals. Lariat's code base </li>
+<li>
+<p>DataSource configuration is arguably a toss-up between either version, depending on an organization's goals. Lariat's code has been structured for portability and is decoupled from any specific database:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#appmod-2-__codelineno-11-1"></a><span class="nt">&lt;dataSource</span> <span class="na">id=</span><span class="s">&quot;jdbc/ModernDS&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/ModernDS&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#appmod-2-__codelineno-11-2"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;jdbcLib&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#appmod-2-__codelineno-11-3"></a>    <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#appmod-2-__codelineno-11-4"></a><span class="nt">&lt;/dataSource&gt;</span>
+</code></pre></div>
+<p>WCA's recommendation utilizes a Db2-specific set of JDBC drivers. For clients with a highly-regulated, Db2-heavy enterprise environment, this code recommendation has much more utility to their requirements of their business:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#appmod-2-__codelineno-12-1"></a><span class="nt">&lt;dataSource</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">id=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#appmod-2-__codelineno-12-2"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;XADatabase&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#appmod-2-__codelineno-12-3"></a>    <span class="nt">&lt;properties.db2.jcc</span> <span class="err">...</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#appmod-2-__codelineno-12-4"></a><span class="nt">&lt;/dataSource&gt;</span>
+</code></pre></div>
+</li>
 </ol>
+<hr />
 <h2 id="appmod-2-v-next-steps"><strong>v. Next steps</strong></h2>
 <p>In the following module, participants will examine how to modernize legacy WebSphere Application Server code for configuration and dependency management.</p></section><section class="print-page" id="appmod-3"><h1 id="appmod-3-configuration-and-dependency-managementapplication-modernization-websphere-to-liberty"><strong>Configuration and dependency management</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
