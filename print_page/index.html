@@ -5533,6 +5533,42 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 </li>
 </ol>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
+<ol start="6">
+<li>
+<p>In terms of <strong>EJB declarations</strong>, there is a divergence between the approaches taken by Lariat and favored by WCA.</p>
+<p></br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#appmod-5-__codelineno-8-1"></a><span class="nd">@Stateless</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#appmod-5-__codelineno-8-2"></a><span class="nd">@Remote</span><span class="p">(</span><span class="n">ModernRemote</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#appmod-5-__codelineno-8-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ModernSessionBean</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ModernRemote</span><span class="w"></span>
+</code></pre></div></p>
+<p>In the case of the Lariat code (above), the declaration is fully annotation-based — as discussed earlier in this section. This provides a clear contract between the interface and applications, and is a relatively simple pattern for Lariat's developers to build against. </p>
+<p></br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#appmod-5-__codelineno-9-1"></a><span class="nt">&lt;session&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#appmod-5-__codelineno-9-2"></a>    <span class="nt">&lt;ejb-name&gt;</span>LegacySessionBean<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#appmod-5-__codelineno-9-3"></a>    <span class="nt">&lt;ejb-class&gt;</span>com.lariat.ejb.LegacySessionBean<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#appmod-5-__codelineno-9-4"></a>    <span class="nt">&lt;session-type&gt;</span>Stateless<span class="nt">&lt;/session-type&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#appmod-5-__codelineno-9-5"></a>...
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#appmod-5-__codelineno-9-6"></a><span class="nt">&lt;/session&gt;</span>
+</code></pre></div></p>
+<p></br>
+WCA recommends that the EJB metadata remain in XML format, without the use of <code>@Remote</code> or <code>@Local</code> interfaces that were present within the Lariat code. Instead, WCA relies on container parsing of the <code>ejb-jar.xml</code> definition and generating it based on that discovered class.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>With respect to <strong>resource injections</strong>, this pattern is absent from the Lariat codebase, but the company's benefit was automatically suggested by WCA's modernized code. WCA has configured the injection of a <code>DataSource</code> via <code>@Resource</code> in both Java and <code>ejb-jar.xml</code>. For example:</p>
+<p></br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#appmod-5-__codelineno-10-1"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc/LegacyDS&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#appmod-5-__codelineno-10-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+</ol>
+<hr />
 <h2 id="appmod-5-v-next-steps"><strong>v. Next steps</strong></h2>
 <p>In the following module, participants will examine how to modernize legacy WebSphere Application Server code for Java Message Service.</p></section><section class="print-page" id="appmod-6"><h1 id="appmod-6-java-message-service-integrationapplication-modernization-websphere-to-liberty"><strong>Java Message Service integration</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <div class="admonition quote">
