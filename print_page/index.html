@@ -4293,7 +4293,8 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#appmod-2-__codelineno-8-3"></a>    <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#appmod-2-__codelineno-8-4"></a><span class="nt">&lt;/featureManager&gt;</span>
 </code></pre></div>
-<p>By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3</code>, <code>servlet-3.1</code>, and <code>ejbLite-3.2</code> which provides finer control over imports - avoiding unnecessary bloat.</p>
+<p></br>
+By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3</code>, <code>servlet-3.1</code>, and <code>ejbLite-3.2</code> which provides finer control over imports - avoiding unnecessary bloat.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#appmod-2-__codelineno-9-1"></a><span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#appmod-2-__codelineno-9-2"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#appmod-2-__codelineno-9-3"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
@@ -4328,7 +4329,8 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#appmod-2-__codelineno-11-3"></a>    <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#appmod-2-__codelineno-11-4"></a><span class="nt">&lt;/dataSource&gt;</span>
 </code></pre></div>
-<p>WCA's recommendation utilizes a Db2-specific set of JDBC drivers. For clients with a highly-regulated, Db2-heavy enterprise environment, this code recommendation has much more utility to their requirements of their business:</p>
+<p></br>
+WCA's recommendation utilizes a Db2-specific set of JDBC drivers. For clients with a highly-regulated, Db2-heavy enterprise environment, this code recommendation has much more utility to their requirements of their business:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#appmod-2-__codelineno-12-1"></a><span class="nt">&lt;dataSource</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">id=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#appmod-2-__codelineno-12-2"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;XADatabase&quot;</span><span class="nt">/&gt;</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#appmod-2-__codelineno-12-3"></a>    <span class="nt">&lt;properties.db2.jcc</span> <span class="err">...</span> <span class="nt">/&gt;</span>
