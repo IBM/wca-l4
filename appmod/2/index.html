@@ -1242,7 +1242,7 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <hr />
 <ol start="6">
 <li>
-<p>Let's first examine the use of WebSphere and Liberty-specific features. The Lariat code base makes use of the <code>webProfile-8.0</code> bundle set for servlets and Enterprise JavaBeans:</p>
+<p>Let's first examine the use of <strong>WebSphere and Liberty-specific features</strong>. Lariat makes use of the <code>webProfile-8.0</code> bundle set for servlets and Enterprise JavaBeans:</p>
 <div class="admonition note">
 <p class="admonition-title">TERMINOLOGY</p>
 <p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to as simply "<strong>WCA</strong>" and the Lariat Corporation best-practices code will be referred to as simply "<strong>Lariat</strong>".</p>
@@ -1265,7 +1265,7 @@ By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3
 <hr />
 <ol start="7">
 <li>
-<p>Security configuration is another area in which WCA has outperformed Lariat's modernization efforts. For Lariat, no authentication or user realm is configured. By contrast, WCA implements BASIC authentication, user and group registries, login, and custom realm with external property files. Security best-practices have been tuned and baked directly into the AI-generated code recommendations produced by WCA.</p>
+<p><strong>Security configuration</strong> is another area in which WCA has outperformed Lariat's modernization efforts. For Lariat, no authentication or user realm is configured. By contrast, WCA implements BASIC authentication, user and group registries, login, and custom realm with external property files. Security best-practices have been tuned and baked directly into the AI-generated code recommendations produced by WCA.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;basicRegistry</span> <span class="na">id=</span><span class="s">&quot;LibertyBasicCL&quot;</span> <span class="na">realm=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">&quot;admin&quot;</span> <span class="na">password=</span><span class="s">&quot;adminPassword&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">&lt;/basicRegistry&gt;</span>
@@ -1282,7 +1282,7 @@ By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3
 <hr />
 <ol start="8">
 <li>
-<p>DataSource configuration is arguably a toss-up between either version, depending on an organization's goals. Lariat's code has been structured for portability and is decoupled from any specific database:</p>
+<p><strong>DataSource configuration</strong> is arguably a toss-up between either version, depending on an organization's goals. Lariat's code has been structured for portability and is decoupled from any specific database:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&lt;dataSource</span> <span class="na">id=</span><span class="s">&quot;jdbc/ModernDS&quot;</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/ModernDS&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;jdbcLib&quot;</span> <span class="nt">/&gt;</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nt">&lt;connectionManager</span> <span class="na">maxPoolSize=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
