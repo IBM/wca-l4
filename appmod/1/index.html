@@ -763,6 +763,47 @@
 
 <h1 id="objectives-and-requirementsapplication-modernization-websphere-to-liberty"><strong>Objectives and requirements</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <h2 id="i-section-1"><strong>i. Section 1</strong></h2>
+<table>
+<thead>
+<tr>
+<th>MODERNIZATION TASK</th>
+<th>WEBSPHERE APPLICATION</th>
+<th>LIBERTY APPLICATION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/2/" target="_blank"><strong>Basic migration capabilities</strong></a></td>
+<td><strong>WebSphere Enterprise Archive (EAR)</strong> configuration, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified.</td>
+<td><strong>Liberty Web Archive (WAR)</strong> configurations remove the need for multiple external descriptors and consolidate settings into one unified file.</td>
+</tr>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/3/" target="_blank"><strong>Configuration and dependency management</strong></a></td>
+<td><strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations.</td>
+<td><strong>Liberty server configuration</strong> is expected to manage dependencies and simplify the process of application configuration.</td>
+</tr>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/4/" target="_blank"><strong>APIs and libraries</strong></a></td>
+<td><strong>WebSphere Scheduler APIs</strong> may not be immediately portable in their current form, they are potentially more costly to maintain than their Liberty counterparts, and may have less functionality given their outdated implementations.</td>
+<td><strong>Liberty's Jakarta EE-templated APIs</strong> are more transferable across vendors and platforms, cloud-native architecture by design, and portable to containers.</td>
+</tr>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/5/" target="_blank"><strong>Enterprise JavaBeans (EJB) modernization</strong></a></td>
+<td><strong>WebSphere EJB with XML</strong> represent server-side components used by Java Enterprise Edition (Java EE or Jakarta EE) to encapsulate repeatable business logic. They are more challenging to maintain and prone to human-induced errors.</td>
+<td><strong>Liberty EJBs with annotations</strong> use Java instead of XML, applying them directly within Java classes for configuration. In many cases, this reduces the need for external XML files and eases maintainability.</td>
+</tr>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/6/" target="_blank"><strong>Java Message Service integration</strong></a></td>
+<td><strong>WebSphere's MQ JMS integration</strong> uses complex configurations made up of verbose XML or admin console requirements and can be difficult to maintain due to their dispersed nature.</td>
+<td><strong>Liberty's MQ JMS integration</strong> provides a more centralized pattern to simplify the process of troubleshooting messaging integrations and maintaining existing policies.</td>
+</tr>
+<tr>
+<td><a href="https://ibm.github.io/wca-l4/appmod/7/" target="_blank"><strong>Security modernization</strong></a></td>
+<td><strong>WebSphere's XML-based security</strong> is challenging to understand and maintain due to XML file separation from the supporting Java code, which tends to lower developer productivity due to frequent context-switching.</td>
+<td><strong>Liberty's annotation-based security</strong> reduces the need for external configuration and instead centralizes security declarations closer to the actual code implementation.</td>
+</tr>
+</tbody>
+</table>
 
 
 
