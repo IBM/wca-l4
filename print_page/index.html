@@ -4672,7 +4672,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <hr />
 <ol start="7">
 <li>
-<p>In terms of <strong>encapsulation</strong> of necessary classes and libraries, Lariat's best-practices Liberty code outshines WCA's Liberty recommendations. Consider the following slice of Lariat's code:</p>
+<p>In terms of <strong>encapsulation</strong> of necessary classes and libraries, Lariat's best-practices Liberty code outshines WCA's Liberty recommendations. Consider the following slice of Lariat's modernized code:</p>
 <p></br></p>
 <div class="admonition warning">
 <p class="admonition-title">TERMINOLOGY</p>
@@ -4687,7 +4687,8 @@ The modernized Liberty code implementation simplifies the management of dependen
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#appmod-3-__codelineno-8-7"></a>    <span class="nt">&lt;/commonLibrary&gt;</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#appmod-3-__codelineno-8-8"></a><span class="nt">&lt;/classloader&gt;</span>
 </code></pre></div>
-<p>The code's <em>Classloader</em> has been limited in scope only to the deployed WAR: <code>parentLast</code> ensures that the application's classes override any shared ones, which is generally the "safer" approach to take for modernization of legacy applications. Contrast that to WCA's approach:</p>
+<p></br>
+The code's <em>Classloader</em> has been limited in scope only to the deployed WAR: <code>parentLast</code> ensures that the application's classes override any shared ones, which is generally the "safer" approach to take for modernization of legacy applications. Contrast that to WCA's approach:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#appmod-3-__codelineno-9-1"></a><span class="hll"><span class="nt">&lt;sharedLibrary</span> <span class="na">id=</span><span class="s">&quot;LegacySharedLib&quot;</span> <span class="na">location=</span><span class="s">&quot;path/to/shared-legacy.jar&quot;</span><span class="nt">/&gt;</span>
 </span><a id="__codelineno-9-2" name="__codelineno-9-2" href="#appmod-3-__codelineno-9-2"></a><span class="hll"><span class="nt">&lt;classLoader</span> <span class="na">commonLibraryRef=</span><span class="s">&quot;LegacySharedLib&quot;</span><span class="nt">/&gt;</span>
 </span><a id="__codelineno-9-3" name="__codelineno-9-3" href="#appmod-3-__codelineno-9-3"></a>...
@@ -4699,7 +4700,8 @@ The modernized Liberty code implementation simplifies the management of dependen
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#appmod-3-__codelineno-9-9"></a>    <span class="nt">&lt;/library&gt;</span>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#appmod-3-__codelineno-9-10"></a><span class="nt">&lt;/sharedLibraries&gt;</span>
 </code></pre></div>
-<p>WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact all applications in the environment PATH. The implementation is also slightly confusing to look at and redundant in design — <code>LegacySharedLib</code> has been declared twice in the highlighted code.</p>
+<p></br>
+WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact all applications in the environment PATH. The implementation is also slightly confusing to look at and redundant in design — <code>LegacySharedLib</code> has been declared twice in the highlighted code.</p>
 </li>
 </ol>
 <hr />
