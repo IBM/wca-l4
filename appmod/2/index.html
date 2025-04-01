@@ -1240,6 +1240,47 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </li>
 </ol>
 <hr />
+<div class="admonition warning">
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to as simply "<strong>WCA</strong>" and the Lariat Corporation best-practices code will be referred to as simply "<strong>Lariat</strong>".</p>
+</div>
+<ol start="6">
+<li>
+<p>Let's first examine the use of WebSphere and Liberty-specific features. The Lariat code base makes use of the <code>webProfile-8.0</code> bundle set for servlets and Enterprise JavaBeans:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nt">&lt;feature&gt;</span>webProfile-8.0<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nt">&lt;feature&gt;</span>jdbc-4.2<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">&lt;/featureManager&gt;</span>
+</code></pre></div>
+<p>By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3</code>, <code>servlet-3.1</code>, and <code>ejbLite-3.2</code> which provides finer control over imports - avoiding unnecessary bloat.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&lt;featureManager&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="nt">&lt;feature&gt;</span>ejbLite-3.2<span class="nt">&lt;/feature&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">&lt;/featureManager&gt;</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Security configuration is another area in which WCA has outperformed Lariat's modernization efforts. For Lariat, no authentication or user realm is configured. By contrast, WCA implements BASIC authentication, user and group registries, login, and custom realm with external property files. Security best-practices have been tuned and baked directly into the AI-generated code recommendations produced by WCA.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;basicRegistry</span> <span class="na">id=</span><span class="s">&quot;LibertyBasicCL&quot;</span> <span class="na">realm=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">&quot;admin&quot;</span> <span class="na">password=</span><span class="s">&quot;adminPassword&quot;</span> <span class="nt">/&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">&lt;/basicRegistry&gt;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nt">&lt;login-config&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nt">&lt;auth-method&gt;</span>BASIC<span class="nt">&lt;/auth-method&gt;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nt">&lt;/login-config&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">&lt;realm</span> <span class="na">name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span> <span class="na">realm-name=</span><span class="s">&quot;LibertyBasicRealm&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="nt">&lt;users</span> <span class="na">file=</span><span class="s">&quot;path/to/users.properties&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="nt">&lt;groups</span> <span class="na">file=</span><span class="s">&quot;path/to/groups.properties&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nt">&lt;/realm&gt;</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>DataSource configuration is arguably a toss-up between either version, depending on an organization's goals. Lariat's code base </li>
+</ol>
 <h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
 <p>In the following module, participants will examine how to modernize legacy WebSphere Application Server code for configuration and dependency management.</p>
 
