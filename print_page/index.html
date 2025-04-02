@@ -4092,6 +4092,10 @@ The modernized Liberty application code streamlines the original WebSphere confi
 Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
 <hr />
 <h2 id="appmod-2-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -4282,10 +4286,6 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>
 <p>Let's first examine the use of <strong>WebSphere and Liberty-specific features</strong>. Lariat makes use of the <code>webProfile-8.0</code> bundle set for servlets and Enterprise JavaBeans:</p>
@@ -4297,12 +4297,13 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </code></pre></div>
 <p></br>
 By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3</code>, <code>servlet-3.1</code>, and <code>ejbLite-3.2</code> which provides finer control over imports - avoiding unnecessary bloat.</p>
+<p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#appmod-2-__codelineno-9-1"></a><span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#appmod-2-__codelineno-9-2"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#appmod-2-__codelineno-9-3"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#appmod-2-__codelineno-9-4"></a>    <span class="nt">&lt;feature&gt;</span>ejbLite-3.2<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#appmod-2-__codelineno-9-5"></a><span class="nt">&lt;/featureManager&gt;</span>
-</code></pre></div>
+</code></pre></div></p>
 </li>
 </ol>
 <hr />
@@ -4540,6 +4541,10 @@ The modernized Liberty code implementation simplifies the management of dependen
 <p>Ultimately, the modernization process into Liberty has resulted in configuration and dependency management that reduces dependency conflicts, simplifies resource management, and improves the overall clarity and maintainability of these assets going forward.</p>
 <hr />
 <h2 id="appmod-3-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -4666,10 +4671,6 @@ The modernized Liberty code implementation simplifies the management of dependen
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>At a glance, the newly-generated WCA code appears to be significantly more complex: splitting <strong>configuration organization</strong> across <code>server.xml</code> and <code>shared-library.xml</code>, rather than Lariat's consolidated <code>server.xml</code> approach. Not an encouraging start, but let's drill down into specific elements before making a final critique.</li>
 </ol>
@@ -4926,6 +4927,10 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <p>Ultimately, the modernization efforts have significantly increased the portability and extensibility of Lariat's API-driven application estate. The structure of the API code has been simplified and made much more portable by breaking away from propriety API standards.</p>
 <hr />
 <h2 id="appmod-4-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -5146,10 +5151,6 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>
 <p>The first thing to note is that Lariat and WCA have taken two fundamentally different <strong>scheduling approaches</strong> on their respective WebSphere Liberty codebases.</p>
@@ -5359,6 +5360,10 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 <p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable to developers, and easier to extend with capabilities over time.</p>
 <hr />
 <h2 id="appmod-5-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -5533,10 +5538,6 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>
 <p>In terms of <strong>EJB declarations</strong>, there is a divergence between the approaches taken by Lariat and favored by WCA.</p>
@@ -5748,6 +5749,10 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 <p>In summary, consolidation of Lariat's messaging configurations into a simplified and centralized pattern has streamlined future maintenance of these configuration files and simplified the process of troubleshooting messaging integrations for their developers.</p>
 <hr />
 <h2 id="appmod-6-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -5948,10 +5953,6 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>
 <p><strong>Explicit transaction control</strong> is vital for systems that rely heavily on transactional integrity (such as banking, healthcare, order processing, and so on), so let's compare how Lariat and WCA's modernization efforts performed in this regard.</p>
@@ -6185,6 +6186,10 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 <p>Ultimately, this reduces the need for external configuration and instead centralizes security declarations closer to the actual code implementation. Lariat, in turn, gains the benefits of improved clarity in how their security constraints are structured. This will enable more straightforward audits in the future and simplify the ongoing maintenance of security policies across their organization.</p>
 <hr />
 <h2 id="appmod-7-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -6359,8 +6364,14 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 </li>
 </ol>
 <hr />
+<ol start="6">
+<li>In terms of <strong>EJB declarations</strong>, there is a divergence between the approaches taken by Lariat and favored by WCA.</li>
+</ol>
 <h2 id="appmod-7-v-next-steps"><strong>v. Next steps</strong></h2>
-<p>Having concluded the <strong>Application Modernization - WebSphere to Liberty</strong> hands-on modules, participants should now complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1>
+<p>Having concluded the <strong>Application Modernization - WebSphere to Liberty</strong> hands-on modules, participants should now complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p>
+<p>The approach taken with this module, and engaging with WCA Chat in the ways that you did, is to emulate the experience of collaborating with a trusted colleague on how to best take on the modernization of WCA code: segmented by specific use cases, tackling particular business functions that need to be revitalized for cloud-native, and exploring precise pain points within a client's code base. The WCA Chat experience reflects how you and that trusted colleague might, together, approach a scenario like modernizing usage of Enterprise JavaBeans with WebSphere, as an example.</p>
+<p>Thinking about modernization in discrete scenarios such as these, where the aperture is narrowly focused on a specific piece of functionality or use case— rather than trying to modernize an entire, complex application stack altogether —has immense value. It is far more akin and practical to the real-world scenarios that <em>you</em> will encounter during engagements with clients: as a seller; a business partner; a trusted advisor. Entrusted with bestowing best practices for how that client can modernize specific pain points in their application code; <em>not</em> taking on the task of modernizing the <em>entirety</em> of their application stack "in one go."</p>
+<p>Crafting complex modernization plans for enterprise-scale applications cannot be approached as explicit "A, then B, followed by C" rulebooks or rigid decision trees. It is essential that you understand how to approach modernization as a collaborative, problem-solving oriented, question-and-answer refinement exercise. WCA Chat, which you will use to these ends in the following chapters, is an ideal mechanism for refining the correct modernization approach.</p></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1>
                         <h1 class='nav-section-title' id='section-tuning-and-customization'>
                             Tuning and Customization <a class='headerlink' href='#section-tuning-and-customization' title='Permanent link'>↵</a>
                         </h1>

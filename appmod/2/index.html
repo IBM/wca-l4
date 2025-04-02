@@ -1050,6 +1050,10 @@ The modernized Liberty application code streamlines the original WebSphere confi
 Ultimately, the modernized Liberty application code supports Lariat's objectives of simplified, modular deployment structures that reduce the overhead and technical burdens placed on developers maintaining the legacy WebSphere code base.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
+<div class="admonition warning">
+<p class="admonition-title">SECTION IV. TERMINOLOGY</p>
+<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
+</div>
 <p>In the following section, participants will have the opportunity to experiment with the <strong>watsonx Code Assistant</strong> (<strong>WCA</strong>) service set up in the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration module</strong></a>.</p>
 <ul>
 <li>Using the <strong>Chat</strong> feature, which can be accessed via the WCA extension for Visual Studio Code (VS Code), you will first ask WCA convert the original <em>WebSphere Application Service (WCA)</em> code into a modernized equivalent for <em>WebSphere Liberty</em>.</li>
@@ -1240,10 +1244,6 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">TERMINOLOGY</p>
-<p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
-</div>
 <ol start="6">
 <li>
 <p>Let's first examine the use of <strong>WebSphere and Liberty-specific features</strong>. Lariat makes use of the <code>webProfile-8.0</code> bundle set for servlets and Enterprise JavaBeans:</p>
@@ -1255,12 +1255,13 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 </code></pre></div>
 <p></br>
 By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3</code>, <code>servlet-3.1</code>, and <code>ejbLite-3.2</code> which provides finer control over imports - avoiding unnecessary bloat.</p>
+<p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&lt;featureManager&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nt">&lt;feature&gt;</span>jsp-2.3<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nt">&lt;feature&gt;</span>servlet-3.1<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="nt">&lt;feature&gt;</span>ejbLite-3.2<span class="nt">&lt;/feature&gt;</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">&lt;/featureManager&gt;</span>
-</code></pre></div>
+</code></pre></div></p>
 </li>
 </ol>
 <hr />
