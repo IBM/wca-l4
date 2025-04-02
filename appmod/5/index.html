@@ -1202,6 +1202,8 @@ WCA recommends that the EJB metadata remain in XML format, without the use of <c
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc/LegacyDS&quot;</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></p>
+<p></br>
+One consideration to keep in mind with this case is that WCA's approach is tailored specifically for dealing with older enterprise systems or in cases where applications need to override behaviors per environment (resource injection).</p>
 </li>
 </ol>
 <hr />
