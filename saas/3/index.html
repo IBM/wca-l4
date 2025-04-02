@@ -17,7 +17,7 @@
     
     
       
-        <title>3. Install WCA extension for Visual Studio Code - IBM watsonx Code Assistant for Practitioners Level 4</title>
+        <title>3. Configure for enterprise Java - IBM watsonx Code Assistant for Practitioners Level 4</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration" class="md-skip">
+        <a href="#configure-the-enterprise-java-environmentibm-cloud-saas-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. Install WCA extension for Visual Studio Code
+              3. Configure for enterprise Java
             
           </span>
         </div>
@@ -419,12 +419,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          3. Install WCA extension for Visual Studio Code
+          3. Configure for enterprise Java
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        3. Install WCA extension for Visual Studio Code
+        3. Configure for enterprise Java
       </a>
       
         
@@ -450,43 +450,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-locally-install-vs-code" class="md-nav__link">
-    ii. Locally install VS Code
+  <a href="#ii-java-installation" class="md-nav__link">
+    ii. Java installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-install-the-extension" class="md-nav__link">
-    iii. Install the extension
+  <a href="#iii-maven-installation" class="md-nav__link">
+    iii. Maven installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-set-up-the-enterprise-java-application-environment" class="md-nav__link">
-    iv. Set up the enterprise Java application environment
+  <a href="#iv-determine-the-jdk" class="md-nav__link">
+    iv. Determine the JDK
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#v-determine-the-jdk" class="md-nav__link">
-    v. Determine the JDK
+  <a href="#v-set-the-logging-level" class="md-nav__link">
+    v. Set the logging level
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-set-the-logging-level" class="md-nav__link">
-    vi. Set the logging level
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vii-next-steps" class="md-nav__link">
-    vii. Next steps
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
   </a>
   
 </li>
@@ -507,6 +500,20 @@
   
     <li class="md-nav__item">
       <a href="../4/" class="md-nav__link">
+        3. Install WCA extension for Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
         4. Install WCA plug-in for Eclipse IDE
       </a>
     </li>
@@ -790,43 +797,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-locally-install-vs-code" class="md-nav__link">
-    ii. Locally install VS Code
+  <a href="#ii-java-installation" class="md-nav__link">
+    ii. Java installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-install-the-extension" class="md-nav__link">
-    iii. Install the extension
+  <a href="#iii-maven-installation" class="md-nav__link">
+    iii. Maven installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-set-up-the-enterprise-java-application-environment" class="md-nav__link">
-    iv. Set up the enterprise Java application environment
+  <a href="#iv-determine-the-jdk" class="md-nav__link">
+    iv. Determine the JDK
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#v-determine-the-jdk" class="md-nav__link">
-    v. Determine the JDK
+  <a href="#v-set-the-logging-level" class="md-nav__link">
+    v. Set the logging level
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-set-the-logging-level" class="md-nav__link">
-    vi. Set the logging level
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vii-next-steps" class="md-nav__link">
-    vii. Next steps
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
   </a>
   
 </li>
@@ -845,135 +845,30 @@
                 
 
 
-<h1 id="install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration"><strong>Install WCA extension for Visual Studio Code</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
+<h1 id="configure-the-enterprise-java-environmentibm-cloud-saas-configuration"><strong>Configure the enterprise Java environment</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
-<p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
-<p>This module guides participants through the process of installing VS Code on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
-<div class="admonition note">
-<p class="admonition-title">WHY INSTALL LOCALLY?</p>
-<p>Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</p>
-<p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
-<p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users by far — with a less cumbersome experience with the lab guide instructions and much more responsive IDE interactions.</p>
-</div>
-<h2 id="ii-locally-install-vs-code"><strong>ii. Locally install VS Code</strong></h2>
-<p>Before you configure the extension for VS Code, you must first install the IDE on your machine.</p>
+<p>As participants will be working with the IBM watsonx Code Assistant (WCA) Standard Plan and interacting with enterprise Java applications, they will need to perform some additional configuration of their Windows or MacOS machines before setting up the extensions (or plug-ins) to the WCA service.</p>
+<p>Locally you must <strong>install</strong> <em>both</em> Java and Apache Maven. Details and download links for the two are summarized in the table below.</p>
+<div class="highlight"><pre><span></span><code>**Java Requirements**
+
+| Distribution | Details | Resources |
+| - | - | - |
+| **Java** | Java SE 11 with Java Developer Kit 11, or a later version. | **&lt;a href=&quot;https://www.java.com/en/download/manual.jsp&quot; target=&quot;_blank&quot;&gt;Download&lt;/a&gt;** |
+| **Maven** | Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6. | **&lt;a href=&quot;https://maven.apache.org/download.cgi&quot; target=&quot;_blank&quot;&gt;Download&lt;/a&gt;** |
+</code></pre></div>
 <hr />
+<h2 id="ii-java-installation"><strong>ii. Java installation</strong></h2>
 <ol>
 <li>
-<p>Download the latest <strong>Stable Build</strong><sup>[A]</sup> release of VS Code available for your machine's operating system using the link below.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.1.png" /></a></p>
+<p><strong>Download</strong> and <strong>*install</strong> the latest Java SDKs using the vendor link below. It is recommended that you install Java SE 11 with Java Developer Kit 11, or a later version.</p>
 <div class="admonition warning">
-<p><strong>Download</strong>: <a href="https://code.visualstudio.com" target="_blank">https://code.visualstudio.com</a></p>
-<p>Follow along with the installer wizard steps and continue with the hands-on lab instructions once VS Code is running on your local machine.</p>
+<p><strong>URL:</strong> <strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">https://www.java.com/en/download/manual.jsp</a></strong></p>
 </div>
+<p>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2.</p>
 </li>
 </ol>
 <hr />
 <ol start="2">
-<li>
-<p>Launch the VS Code application and take note of the sidebar along the left-side.</p>
-<p>Click the <strong>Extensions</strong><sup>[A]</sup> icon to open the marketplace of services and open source technologies that can be integrated with VS Code.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.2.png" /></a></p>
-</li>
-</ol>
-<hr />
-<h2 id="iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
-<p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
-<hr />
-<ol start="3">
-<li>
-<p>Into the <strong>search bar</strong><sup>[A]</sup> under the <em>Extensions</em> tab, enter the following text:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>watsonx Code Assistant <span class="k">for</span> Enterprise Java Applications
-</code></pre></div>
-<ul>
-<li>After locating the extension, click the <strong>Install</strong><sup>[B]</sup> button</li>
-<li>When prompted, select <strong>Trust Publisher &amp; Install</strong><sup>[C]</sup> to confirm the procedure</li>
-</ul>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.3a.png" /></a>
-</br>
-<a class="glightbox" href="../_attachments/saas-3.3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.3b.png" /></a></p>
-<div class="admonition note">
-<p class="admonition-title">OTHER EXTENSIONS ARE AVAILABLE</p>
-<p>Note that Standard plan installation creates <strong>two</strong> entries in your Visual Studio Code Extensions panel: one for <em>watsonx Code Assistant</em> and one for <em>watsonx Code Assistant for Enterprise Java Applications</em>. The two extensions are dependencies for this installation.</p>
-<p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
-</div>
-</li>
-</ol>
-<hr />
-<ol start="4">
-<li>
-<p>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong><sup>[A]</sup> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.4.png" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="5">
-<li>
-<p>Now let's authorize the extension for use with the WCA service provisioned on IBM Cloud. From the WCA panel, click <strong>Log in with your API key</strong><sup>[A]</sup> to continue.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.5.png" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="6">
-<li>
-<p>A drop-down menu will open at the top of the VS Code interface. <strong>Copy and paste</strong><sup>[A]</sup> the <em>WCA API Key</em> that was recorded in <a href="https://ibm.github.io/wca-l4/saas/2/#iv-create-a-service-id-and-api-key" target="_blank"><strong>Step 24 of Module 2</strong></a> into the prompt.</p>
-<ul>
-<li>The interface should display a line of text indicating a <em>Valid API Key</em> has been detected</li>
-<li>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the input</li>
-<li>When prompted with <em>The extension 'watsonx Code Assistant' wants to sign in using WCA API Key</em>, click <strong>Allow</strong><sup>[B]</sup></li>
-</ul>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.6a.png" /></a>
-</br>
-<a class="glightbox" href="../_attachments/saas-3.6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.6b.png" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="7">
-<li>
-<p>Confirm that the extension successfully authenticated with the WCA service by looking for an open <em>Chat session 1</em> with <code>watsonx</code> along the left side of the WCA extension page<sup>[A]</sup>. If this Chat interface is available and operational, that confirms that VS Code extension has been successfully integrated with the WCA service.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-3.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.7.png" /></a></p>
-</li>
-</ol>
-<hr />
-<h2 id="iv-set-up-the-enterprise-java-application-environment"><strong>iv. Set up the enterprise Java application environment</strong></h2>
-<p>As you will be working with the WCA Standard Plan and interacting with enterprise Java applications, you will need to perform some additional configuration (beyond what would be needed for the Trial or Essentials plans).</p>
-<hr />
-<ol start="8">
-<li>
-<p>Locally you must <strong>install</strong> <em>either</em> Java or Apache Maven distributions. Details and download links for the two are summarized in the table below.</p>
-<p><strong>Java Requirements</strong></p>
-<table>
-<thead>
-<tr>
-<th>Distribution</th>
-<th>Details</th>
-<th>Resources</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Java</strong></td>
-<td>Java SE 11 with Java Developer Kit 11, or a later version.</td>
-<td><strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download</a></strong></td>
-</tr>
-<tr>
-<td><strong>Maven</strong></td>
-<td>Use Maven to build your application. If you are using Liberty Tools and the Liberty Maven plug-in to build your app or project, use at least Maven 3.8.6.</td>
-<td><strong><a href="https://maven.apache.org/download.cgi" target="_blank">Download</a></strong></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<hr />
-<ol start="9">
 <li>
 <p>With your preferred Java distribution installed locally, you now need to set the appropriate environment variables.</p>
 <p>Find the Java installation path on your local machine using the instruction set that corresponds to your local operating system.</p>
@@ -990,7 +885,7 @@
 </li>
 </ol>
 <hr />
-<ol start="10">
+<ol start="3">
 <li>
 <p>Set the <code>JAVA_HOME</code> environment variable.</p>
 <ul>
@@ -998,7 +893,7 @@
 <li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
 <li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
 <li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
 </code></pre></div></li>
 <li><strong>Save</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>) and <strong>exit</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>) the editor</li>
 </ul>
@@ -1016,7 +911,7 @@
 </li>
 </ol>
 <hr />
-<ol start="11">
+<ol start="4">
 <li>Apply the changes immediately.<ul>
 <li><strong>macOS</strong>: Run <em>either</em> of these commands with Terminal<ul>
 <li>For <code>zsh</code> shell: <code>source ~/.zshrc</code></li>
@@ -1032,7 +927,7 @@
 </li>
 </ol>
 <hr />
-<ol start="12">
+<ol start="5">
 <li>Verify the <code>JAVA_HOME</code> environment variable has been correctly set.<ul>
 <li><strong>macOS:</strong><ul>
 <li>With Terminal, execute: <code>bash&lt;br&gt;echo $JAVA_HOME&lt;br&gt;</code></li>
@@ -1048,7 +943,7 @@
 </li>
 </ol>
 <hr />
-<ol start="13">
+<ol start="6">
 <li>
 <p>For both <strong>macOS</strong> and <strong>Windows</strong> users, you must <strong>restart</strong> the Visual Studio Code application for the changes to take effect within the IDE. <strong>Close and re-launch the application.</strong></p>
 <p></br>
@@ -1056,8 +951,31 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 </li>
 </ol>
 <hr />
-<h2 id="v-determine-the-jdk"><strong>v. Determine the JDK</strong></h2>
-<p>For VS Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
+<h2 id="iii-maven-installation"><strong>iii. Maven installation</strong></h2>
+<ol start="7">
+<li><strong>Download</strong> and <strong>*install</strong> the latest Maven distribution using either the Windows or MacOS instruction sets below.<ul>
+<li><strong>macOS:</strong><ul>
+<li>The simplest method is using <a href="https://brew.sh" target="_blank"><strong>Homebrew</strong></a> to install and deploy Maven locally. To install Homebrew, execute the following with Terminal: <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
+<li>With Terminal, execute: <code>brew install maven</code></li>
+<li>Follow the prompts (confirming with <code>yes</code> if asked to confirm the install)</li>
+<li>After the install process has concluded, test with the following command using Terminal: <code>mvn --version</code></li>
+</ul>
+</li>
+<li><strong>macOS:</strong><ul>
+<li>Visit the official Maven website: <a href="https://maven.apache.org/download.cgi" target="_blank">https://maven.apache.org/download.cgi</a></li>
+<li>Under <strong>Files</strong>, click on the binary zip archive link (for example, <code>apache-maven-x.x.x-bin.zip</code>)</li>
+<li>Extract the zip file to a location on your local machine (for example, <code>C:\Apache\maven\</code>)</li>
+<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt: <code>MAVEN_HOME= &lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9</code></li>
+<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt: <code>&lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin</code></li>
+<li>Maven is now successfully installed and configured</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="iv-determine-the-jdk"><strong>iv. Determine the JDK</strong></h2>
+<p>For Visual Studio (VS) Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
 <table>
 <thead>
 <tr>
@@ -1091,7 +1009,7 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <li>Look for a message such as <code>Using the Java developer kit that is defined in &lt;location&gt; to run watsonx Code Assistant components. The path is: &lt;path&gt;</code> to determine the feature currently in use</li>
 </ul>
 <hr />
-<h2 id="vi-set-the-logging-level"><strong>vi. Set the logging level</strong></h2>
+<h2 id="v-set-the-logging-level"><strong>v. Set the logging level</strong></h2>
 <p>To adjust logging for the VS Code extension for WCA:</p>
 <ul>
 <li>From the <strong>Extensions</strong> panel of VS Code, locate the WCA extension and right-click to pull down a list of available options</li>
@@ -1100,8 +1018,8 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <li>You may adjust this field from the default <code>INFO</code> setting to alternative options (like <code>WARN</code>) to cycle between various logging levels</li>
 </ul>
 <hr />
-<h2 id="vii-next-steps"><strong>vii. Next steps</strong></h2>
-<p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p>
+<h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
+<p>In the following modules, participants will prepare the WCA extensions and plug-ins for Visual Studio Code and Eclipse IDE, respectively.</p>
 
 
 
@@ -1136,13 +1054,13 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
       
       
         
-        <a href="../4/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Install WCA plug-in for Eclipse IDE" rel="next">
+        <a href="../4/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Install WCA extension for Visual Studio Code" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              4. Install WCA plug-in for Eclipse IDE
+              3. Install WCA extension for Visual Studio Code
             </div>
           </div>
           <div class="md-footer__button md-icon">

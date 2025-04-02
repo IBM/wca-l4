@@ -17,7 +17,7 @@
     
     
       
-        <title>4. Install WCA plug-in for Eclipse IDE - IBM watsonx Code Assistant for Practitioners Level 4</title>
+        <title>3. Install WCA extension for Visual Studio Code - IBM watsonx Code Assistant for Practitioners Level 4</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration" class="md-skip">
+        <a href="#install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Install WCA plug-in for Eclipse IDE
+              3. Install WCA extension for Visual Studio Code
             
           </span>
         </div>
@@ -410,7 +410,7 @@
   
     <li class="md-nav__item">
       <a href="../3/" class="md-nav__link">
-        3. Install WCA extension for Visual Studio Code
+        3. Configure for enterprise Java
       </a>
     </li>
   
@@ -433,12 +433,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          4. Install WCA plug-in for Eclipse IDE
+          3. Install WCA extension for Visual Studio Code
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        4. Install WCA plug-in for Eclipse IDE
+        3. Install WCA extension for Visual Studio Code
       </a>
       
         
@@ -464,29 +464,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-locally-install-eclipse-ide" class="md-nav__link">
-    ii. Locally install Eclipse IDE
+  <a href="#ii-locally-install-vs-code" class="md-nav__link">
+    ii. Locally install VS Code
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-install-the-plug-in" class="md-nav__link">
-    iii. Install the plug-in
+  <a href="#iii-install-the-extension" class="md-nav__link">
+    iii. Install the extension
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-validate-the-plug-in" class="md-nav__link">
-    iv. Validate the plug-in
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v-conclusion" class="md-nav__link">
-    v. Conclusion
+  <a href="#iv-next-steps" class="md-nav__link">
+    iv. Next steps
   </a>
   
 </li>
@@ -495,6 +488,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        4. Install WCA plug-in for Eclipse IDE
+      </a>
     </li>
   
 
@@ -776,29 +783,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-locally-install-eclipse-ide" class="md-nav__link">
-    ii. Locally install Eclipse IDE
+  <a href="#ii-locally-install-vs-code" class="md-nav__link">
+    ii. Locally install VS Code
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iii-install-the-plug-in" class="md-nav__link">
-    iii. Install the plug-in
+  <a href="#iii-install-the-extension" class="md-nav__link">
+    iii. Install the extension
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#iv-validate-the-plug-in" class="md-nav__link">
-    iv. Validate the plug-in
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v-conclusion" class="md-nav__link">
-    v. Conclusion
+  <a href="#iv-next-steps" class="md-nav__link">
+    iv. Next steps
   </a>
   
 </li>
@@ -817,168 +817,105 @@
                 
 
 
-<h1 id="install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA plug-in for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
+<h1 id="install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration"><strong>Install WCA extension for Visual Studio Code</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
 <p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
-<p>This module guides participants through the process of installing Eclipse IDE on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
+<p>This module guides participants through the process of installing VS Code on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
 <div class="admonition note">
 <p class="admonition-title">WHY INSTALL LOCALLY?</p>
 <p>Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</p>
 <p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
 <p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users by far — with a less cumbersome experience with the lab guide instructions and much more responsive IDE interactions.</p>
 </div>
-<h2 id="ii-locally-install-eclipse-ide"><strong>ii. Locally install Eclipse IDE</strong></h2>
-<p>With the IBM Cloud credentials set up, the next step will be to install the Eclipse IDE locally and then integrate it with the WCA service via the IDE plug-in.</p>
+<h2 id="ii-locally-install-vs-code"><strong>ii. Locally install VS Code</strong></h2>
+<p>Before you configure the extension for VS Code, you must first install the IDE on your machine.</p>
 <hr />
 <ol>
 <li>
-<p><strong>Download</strong> the <em>Eclipse IDE</em> from the Eclipse Foundation.</p>
-<ul>
-<li>Use the <em>Eclipse Installer</em>, recommended at the top of the download page<sup>[A]</sup></li>
-<li>Select the version appropriate to your local machine's operating system</li>
-</ul>
-<div class="admonition warning">
-<p><strong>URL:</strong> <a href="https://www.eclipse.org/downloads/packages/" target="_blank">https://www.eclipse.org/downloads/packages/</a></p>
-</div>
+<p>Download the latest <strong>Stable Build</strong><sup>[A]</sup> release of VS Code available for your machine's operating system using the link below.</p>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.4.png" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.1.png" /></a></p>
+<div class="admonition warning">
+<p><strong>Download</strong>: <a href="https://code.visualstudio.com" target="_blank">https://code.visualstudio.com</a></p>
+<p>Follow along with the installer wizard steps and continue with the hands-on lab instructions once VS Code is running on your local machine.</p>
+</div>
 </li>
 </ol>
 <hr />
 <ol start="2">
 <li>
-<p>Run the installer on your local machine.</p>
-<ul>
-<li>Select the <strong>Eclipse IDE for Java Developers</strong> option<sup>[A]</sup></li>
-<li>Follow along with the remaining prompts until the Eclipse IDE has been installed</li>
-<li>Once the install process has concluded, click <strong>Launch</strong><sup>[B]</sup> from the installer or manually launch the Eclipse IDE application yourself</li>
-</ul>
+<p>Launch the VS Code application and take note of the sidebar along the left-side.</p>
+<p>Click the <strong>Extensions</strong><sup>[A]</sup> icon to open the marketplace of services and open source technologies that can be integrated with VS Code.</p>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/saas-4.5a.png" width="300" /></a>
-</br>
-<a class="glightbox" href="../_attachments/saas-4.5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/saas-4.5b.png" width="300" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.2.png" /></a></p>
 </li>
 </ol>
+<hr />
+<h2 id="iii-install-the-extension"><strong>iii. Install the extension</strong></h2>
+<p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-eja" target="_blank"><strong>watsonx Code Assistant for Enterprise Java Applications</strong></a> extension, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum and hands-on training.</p>
 <hr />
 <ol start="3">
 <li>
-<p>Upon launching the Eclipse IDE for the first time, users will be prompted to <em>Select a directory as workspace</em>. Choose a directory on your local machine<sup>[A]</sup> you feel appropriate (or select the one selected by default for you) and then click <strong>Launch</strong><sup>[B]</sup> to continue.</p>
+<p>Into the <strong>search bar</strong><sup>[A]</sup> under the <em>Extensions</em> tab, enter the following text:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>watsonx Code Assistant <span class="k">for</span> Enterprise Java Applications
+</code></pre></div>
+<ul>
+<li>After locating the extension, click the <strong>Install</strong><sup>[B]</sup> button</li>
+<li>When prompted, select <strong>Trust Publisher &amp; Install</strong><sup>[C]</sup> to confirm the procedure</li>
+</ul>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/saas-4.6.png" width="300" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.3a.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/saas-3.3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.3b.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">OTHER EXTENSIONS ARE AVAILABLE</p>
+<p>Note that Standard plan installation creates <strong>two</strong> entries in your Visual Studio Code Extensions panel: one for <em>watsonx Code Assistant</em> and one for <em>watsonx Code Assistant for Enterprise Java Applications</em>. The two extensions are dependencies for this installation.</p>
+<p>Two other plug-ins are available within VS Code for <em>IBM watsonx Code Assistant</em> specifically, and even more for other offerings such as <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> and <em>IBM watsonx Code Assistant for Z</em>. For WCA, there are alternative extensions available for <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Trial Plan</strong></a> and <a href="https://marketplace.visualstudio.com/items?itemName=IBM.wca-core" target="_blank"><strong>Essential Plan</strong></a> tiers.</p>
+</div>
 </li>
 </ol>
 <hr />
-<h2 id="iii-install-the-plug-in"><strong>iii. Install the plug-in</strong></h2>
-<p>Open the <a href="https://marketplace.eclipse.org/content/ibm®-watsonx™-code-assistant-enterprise-java-applications" target="_blank"><strong>Eclipse Marketplace</strong></a> listing for <em>IBM watsonx Code Assistant for Enterprise Java Applications</em> plug-in, which corresponds to the WCA Standard plan. This plug-in supports all the features of the Essentials plan, plus enterprise Java modernization capabilities, enhanced code explanation, and enhanced unit test generation — all of which will be necessary for the Level 4 curriculum.</p>
-<hr />
 <ol start="4">
 <li>
-<p>Locate the <strong>Install</strong> button on the Eclipse Marketplace page. The easiest method for installing this plug-in is to <strong>click and hold</strong><sup>[A]</sup> the mouse button down on this Install button, then <strong>drag and release</strong><sup>[B]</sup> on top of the open Eclipse IDE application.</p>
-<ul>
-<li>An install wizard will open within the Eclipse IDE automatically</li>
-<li><em>Confirm Selected Features</em>: verify the two WCA options are selected<sup>[C]</sup> and <strong>Confirm</strong><sup>[D]</sup></li>
-<li>Installation should take about 1 minute to conclude</li>
-<li>Wait for the <em>Review Licenses</em> panel to load</li>
-</ul>
+<p>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong><sup>[A]</sup> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</p>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.7a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.7a.png" /></a>
-</br>
-<a class="glightbox" href="../_attachments/saas-4.7b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.7b.png" /></a>
-</br>
-<a class="glightbox" href="../_attachments/saas-4.7c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.7c.png" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.4.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="5">
 <li>
-<p>Within the <em>Review Licenses</em> panel, read through all three license agreements<sup>[A]</sup> and click the <strong>I accept the terms of the license agreements</strong><sup>[B]</sup> option.</p>
-<ul>
-<li>To progress the installation, click <strong>Finish</strong></li>
-<li>Wait a few moments for the <em>Trust Authorities</em> panel to load</li>
-</ul>
+<p>Now let's authorize the extension for use with the WCA service provisioned on IBM Cloud. From the WCA panel, click <strong>Log in with your API key</strong><sup>[A]</sup> to continue.</p>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.8.png" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.5.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="6">
 <li>
-<p>Within the <em>Trust Authorities</em>, examine the <strong>Authority / Update Site</strong> table at the top to load.</p>
+<p>A drop-down menu will open at the top of the VS Code interface. <strong>Copy and paste</strong><sup>[A]</sup> the <em>WCA API Key</em> that was recorded in <a href="https://ibm.github.io/wca-l4/saas/2/#iv-create-a-service-id-and-api-key" target="_blank"><strong>Step 24 of Module 2</strong></a> into the prompt.</p>
 <ul>
-<li><strong>Select</strong><sup>[A]</sup> (tick the box) left of the <code>https://public.dhe.ibm.com</code> option field</li>
-<li>All other fields can remain as their default settings</li>
-<li>Click the <strong>Trust Selected</strong><sup>[B]</sup> button to continue</li>
-<li>Wait 1 to 2 minutes for the software to continue installing</li>
+<li>The interface should display a line of text indicating a <em>Valid API Key</em> has been detected</li>
+<li>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the input</li>
+<li>When prompted with <em>The extension 'watsonx Code Assistant' wants to sign in using WCA API Key</em>, click <strong>Allow</strong><sup>[B]</sup></li>
 </ul>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.9.png" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.6a.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/saas-3.6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.6b.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
-<p>After a few moments, a <em>Software Updates</em> window will prompt you to restart the Eclipse IDE.</p>
-<ul>
-<li>Click the <strong>Restart Now</strong><sup>[A]</sup> button to re-launch the application</li>
-<li>Installation of the WCA plug-in software and dependencies will continue after launching</li>
-<li>Wait a moment for the installation to conclude</li>
-</ul>
+<p>Confirm that the extension successfully authenticated with the WCA service by looking for an open <em>Chat session 1</em> with <code>watsonx</code> along the left side of the WCA extension page<sup>[A]</sup>. If this Chat interface is available and operational, that confirms that VS Code extension has been successfully integrated with the WCA service.</p>
 <p></br>
-<a class="glightbox" href="../_attachments/saas-4.10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.10.png" /></a></p>
-</li>
-</ol>
-<h2 id="iv-validate-the-plug-in"><strong>iv. Validate the plug-in</strong></h2>
-<p>At this stage, the WCA plug-in for Eclipse IDE has been successfully installed on your local machine. Now you must authorize the plug-in for use with the WCA service on IBM Cloud.</p>
-<hr />
-<ol start="8">
-<li>
-<p>From the Eclipse application, select <strong>Window</strong>, then <strong>Show View</strong>, and finally <strong>Other</strong><sup>[A]</sup> to open the plug-ins browser.</p>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-4.11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.11.png" /></a></p>
+<a class="glightbox" href="../_attachments/saas-3.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-3.7.png" /></a></p>
 </li>
 </ol>
 <hr />
-<ol start="9">
-<li>
-<p>From the table of option, scroll down and locate <em>watsonx Code Assistant</em>.</p>
-<ul>
-<li>Double-click on the folder (or click the arrow to the left of it)</li>
-<li>Select the <strong>Chat</strong><sup>[A]</sup> option and then click <strong>Open</strong><sup>[B]</sup></li>
-</ul>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-4.12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.12.png" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="10">
-<li>
-<p>A new window (among several open tabs) will open at the bottom of the Eclipse IDE<sup>[A]</sup>.</p>
-<ul>
-<li>Scroll down within the window to the bottom of the page</li>
-<li>Click the <strong>Log in with your API key</strong><sup>[B]</sup> button</li>
-</ul>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-4.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.13.png" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="11">
-<li>
-<p>A new <em>Preferences</em> window will open.</p>
-<ul>
-<li>Within the <em>API Key</em> field<sup>[A]</sup>, <strong>paste</strong> the <em>WCA API Key</em> that was recorded in <a href="https://ibm.github.io/wca-l4/saas/2/#iv-create-a-service-id-and-api-key" target="_blank"><strong>Step 24 of Module 2</strong></a> into the prompt</li>
-<li>The remaining settings can remain at the default values</li>
-<li>Click the <strong>Apply and Close</strong><sup>[B]</sup> button</li>
-<li>Click <strong>No</strong><sup>[C]</sup> when prompted to create a <em>Secure Storage - Password Hint Needed</em></li>
-</ul>
-<p></br>
-<a class="glightbox" href="../_attachments/saas-4.14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/saas-4.14.png" /></a></p>
-</li>
-</ol>
-<hr />
-<h2 id="v-conclusion"><strong>v. Conclusion</strong></h2>
-<p>The Eclipse IDE plug-in for IBM watsonx Code Assistant has been successfully installed and authorized for use with the WCA Standard (SaaS) plan deployed on IBM Cloud. The environment is now ready for use with the <em>Application Modernization</em> modules of the Level 4 curriculum.</p>
-<p>Having concluded the <strong>IBM Cloud (SaaS) Configuration</strong> hands-on modules, complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p>
+<h2 id="iv-next-steps"><strong>iv. Next steps</strong></h2>
+<p>The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p>
 
 
 
@@ -997,7 +934,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. Install WCA extension for Visual Studio Code" rel="prev">
+        <a href="../3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. Configure for enterprise Java" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1006,20 +943,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              3. Install WCA extension for Visual Studio Code
+              3. Configure for enterprise Java
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../appmod/1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Objectives and requirements" rel="next">
+        <a href="../5/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Install WCA plug-in for Eclipse IDE" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              1. Objectives and requirements
+              4. Install WCA plug-in for Eclipse IDE
             </div>
           </div>
           <div class="md-footer__button md-icon">
