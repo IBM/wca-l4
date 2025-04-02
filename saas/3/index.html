@@ -860,7 +860,7 @@
 <h2 id="ii-java-installation"><strong>ii. Java installation</strong></h2>
 <ol>
 <li>
-<p><strong>Download</strong> and <strong>*install</strong> the latest Java SDKs using the vendor link below. It is recommended that you install Java SE 11 with Java Developer Kit 11, or a later version.</p>
+<p><strong>Download</strong> and <strong>install</strong> the latest Java SDKs using the vendor link below. It is recommended that you install Java SE 11 with Java Developer Kit 11, or a later version.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">https://www.java.com/en/download/manual.jsp</a></strong></p>
 </div>
@@ -953,20 +953,30 @@ At this stage, the WCA Standard Plan extension for VS Code has been successfully
 <hr />
 <h2 id="iii-maven-installation"><strong>iii. Maven installation</strong></h2>
 <ol start="7">
-<li><strong>Download</strong> and <strong>*install</strong> the latest Maven distribution using either the Windows or MacOS instruction sets below.<ul>
+<li><strong>Download</strong> and <strong>install</strong> the latest Maven distribution using either the Windows or MacOS instruction sets below.<ul>
 <li><strong>macOS:</strong><ul>
-<li>The simplest method is using <a href="https://brew.sh" target="_blank"><strong>Homebrew</strong></a> to install and deploy Maven locally. To install Homebrew, execute the following with Terminal: <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
-<li>With Terminal, execute: <code>brew install maven</code></li>
+<li>The simplest method is using <a href="https://brew.sh" target="_blank"><strong>Homebrew</strong></a> to install and deploy Maven locally. To install Homebrew, execute the following with Terminal:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre></div></li>
+<li>With Terminal, execute:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew install maven
+</code></pre></div></li>
 <li>Follow the prompts (confirming with <code>yes</code> if asked to confirm the install)</li>
-<li>After the install process has concluded, test with the following command using Terminal: <code>mvn --version</code></li>
+<li>After the install process has concluded, test with the following command using Terminal:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn --version
+</code></pre></div></li>
 </ul>
 </li>
-<li><strong>macOS:</strong><ul>
+<li><strong>Windows:</strong><ul>
 <li>Visit the official Maven website: <a href="https://maven.apache.org/download.cgi" target="_blank">https://maven.apache.org/download.cgi</a></li>
 <li>Under <strong>Files</strong>, click on the binary zip archive link (for example, <code>apache-maven-x.x.x-bin.zip</code>)</li>
 <li>Extract the zip file to a location on your local machine (for example, <code>C:\Apache\maven\</code>)</li>
-<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt: <code>MAVEN_HOME= &lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9</code></li>
-<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt: <code>&lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin</code></li>
+<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>MAVEN_HOME= &lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9
+</code></pre></div></li>
+<li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
+</code></pre></div></li>
 <li>Maven is now successfully installed and configured</li>
 </ul>
 </li>
