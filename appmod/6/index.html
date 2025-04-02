@@ -1097,45 +1097,23 @@
 <span class="normal"><a href="#__codelineno-5-14">14</a></span>
 <span class="normal"><a href="#__codelineno-5-15">15</a></span>
 <span class="normal"><a href="#__codelineno-5-16">16</a></span>
-<span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span>
-<span class="normal"><a href="#__codelineno-5-20">20</a></span>
-<span class="normal"><a href="#__codelineno-5-21">21</a></span>
-<span class="normal"><a href="#__codelineno-5-22">22</a></span>
-<span class="normal"><a href="#__codelineno-5-23">23</a></span>
-<span class="normal"><a href="#__codelineno-5-24">24</a></span>
-<span class="normal"><a href="#__codelineno-5-25">25</a></span>
-<span class="normal"><a href="#__codelineno-5-26">26</a></span>
-<span class="normal"><a href="#__codelineno-5-27">27</a></span>
-<span class="normal"><a href="#__codelineno-5-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd&quot;</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5"></a>
 <a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="nt">&lt;enterprise-beans&gt;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>        <span class="nt">&lt;message-driven&gt;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>            <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>            <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>            <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a>            <span class="nt">&lt;message-driven-destination&gt;</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a>                <span class="nt">&lt;destination-type&gt;</span>javax.jms.Queue<span class="nt">&lt;/destination-type&gt;</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20"></a>                <span class="nt">&lt;destination-jndi-name&gt;</span>jms/legacyQueue<span class="nt">&lt;/destination-jndi-name&gt;</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21"></a>
-<a id="__codelineno-5-22" name="__codelineno-5-22"></a>            <span class="nt">&lt;/message-driven-destination&gt;</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23"></a>
-<a id="__codelineno-5-24" name="__codelineno-5-24"></a>        <span class="nt">&lt;/message-driven&gt;</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25"></a>
-<a id="__codelineno-5-26" name="__codelineno-5-26"></a>    <span class="nt">&lt;/enterprise-beans&gt;</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27"></a>
-<a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="nt">&lt;/ejb-jar&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>        <span class="nt">&lt;message-driven&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>            <span class="nt">&lt;ejb-name&gt;</span>LegacyMDB<span class="nt">&lt;/ejb-name&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>            <span class="nt">&lt;ejb-class&gt;</span>com.lariat.messaging.LegacyMDB<span class="nt">&lt;/ejb-class&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>            <span class="nt">&lt;transaction-type&gt;</span>Container<span class="nt">&lt;/transaction-type&gt;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>            <span class="nt">&lt;message-driven-destination&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>                <span class="nt">&lt;destination-type&gt;</span>javax.jms.Queue<span class="nt">&lt;/destination-type&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>                <span class="nt">&lt;destination-jndi-name&gt;</span>jms/legacyQueue<span class="nt">&lt;/destination-jndi-name&gt;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>            <span class="nt">&lt;/message-driven-destination&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>        <span class="nt">&lt;/message-driven&gt;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="nt">&lt;/enterprise-beans&gt;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nt">&lt;/ejb-jar&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -1220,7 +1198,32 @@
 <p>For the purposes of comparison and brevity, the WCA-generated Liberty code will be referred to simply as "<strong>WCA</strong>" and Lariat Corporation's best-practice modernized code will be referred to as "<strong>Lariat</strong>".</p>
 </div>
 <ol start="6">
-<li>In terms of <strong>EJB declarations</strong>, there is a divergence between the approaches taken by Lariat and favored by WCA.</li>
+<li>
+<p><strong>Explicit transaction control</strong> is vital for systems that rely heavily on transactional integrity (such as banking, healthcare, order processing, and so on), so let's compare how Lariat and WCA's modernization efforts performed in this regard.</p>
+<p></br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jms/JmsConnectionFactory&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">QueueConnectionFactory</span><span class="w"> </span><span class="n">connectionFactory</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jms/JmsXA&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">private</span><span class="w"> </span><span class="n">InitialContext</span><span class="w"> </span><span class="n">initialContext</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></p>
+<p></br>
+By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</code>, WCA allows developers to exact a high degree of control over the JMS lifecycle. For real-world enterprise operations, redundancy and explicit design can provide safety for production environments (and protect against misdeployments.)</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for clients that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
+<p></br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd&quot;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
+</code></pre></div></p>
+<p></br>
+WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for legacy JMS destinations - providing a degree of backwards compatibility to other legacy applications in the company's estate that isn't as easily achieved with Lariat's code.</p>
+</li>
 </ol>
 <hr />
 <h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
