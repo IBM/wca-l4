@@ -1219,7 +1219,7 @@ WCA has defined clear security boundaries which align to enterprise standards. X
 <hr />
 <ol start="7">
 <li>
-<p>Let's examine WCA's recommendations for fine-grained HTTP method control, as shown below:</p>
+<p>Let's examine WCA's recommendations for <strong>fine-grained HTTP method control</strong>:</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&lt;security-constraint&gt;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nt">&lt;web-resource-collection&gt;</span>
@@ -1235,19 +1235,21 @@ WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>P
 <hr />
 <ol start="8">
 <li>
-<p>Lastly, consider the explicit role-to-user mapping defined by WCA's recommendation:</p>
+<p>Lastly, consider the <strong>explicit role-to-user mapping</strong> defined by WCA's recommendation:</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">&lt;security-role-mapping&gt;</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nt">&lt;role-name&gt;</span>admin<span class="nt">&lt;/role-name&gt;</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nt">&lt;user&gt;</span>adminUser<span class="nt">&lt;/user&gt;</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nt">&lt;/security-role-mapping&gt;</span>
 </code></pre></div></p>
-<p>Once again, this recommendation has been specifically tailored for enterprise clients and use cases. WCA's defines which users belong to which roles — reflecting the need that Lariat and many other enterprise organizations have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
+<p></br>
+Once again, this recommendation has been specifically tailored for enterprise clients and use cases. WCA's defines which users belong to which roles — reflecting the need that Lariat and many other enterprise organizations have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
 </li>
 </ol>
 <hr />
 <h2 id="v-conclusion"><strong>v. Conclusion</strong></h2>
-<p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. Out of context fragments of application code cannot possibly convey that level of information and complexity. Those techniques will be explored in subsequent modules.</p>
+<p></br>
+Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. Out of context fragments of application code cannot possibly convey that level of information and complexity. Those techniques will be explored in subsequent hands-on modules.</p>
 <p>Having concluded the <strong>Application Modernization - WebSphere to Liberty</strong> hands-on modules, participants should now complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p>
 
 
