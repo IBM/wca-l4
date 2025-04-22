@@ -24,8 +24,8 @@ nav:
     - 1. Objectives and requirements: 'saas/1.md'
     - 2. Reserve an environment: 'saas/2.md'
     - 3. Configure for enterprise Java: 'saas/3.md' 
-    - 3. Install WCA extension for Visual Studio Code: 'saas/4.md'
-    - 4. Install WCA plug-in for Eclipse IDE: 'saas/5.md'
+    - 4. Install WCA extension for Visual Studio Code: 'saas/4.md'
+    - 5. Install WCA plug-in for Eclipse IDE: 'saas/5.md'
   - Application Modernization - WebSphere to Liberty:
     - 1. Objectives and requirements: 'appmod/1.md'
     - 2. Basic migration capabilities: 'appmod/2.md'
