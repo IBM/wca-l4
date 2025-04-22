@@ -786,11 +786,14 @@
 <p></br></p>
 <ol>
 <li>
-<p><strong>Download</strong> and <strong>install</strong> the latest Java SDKs using the vendor link below. It is recommended that you install Java SE 11 with Java Developer Kit 11, or a later version.</p>
+<p><strong>Download</strong> and <strong>install</strong> the latest Java SDKs using the vendor link below.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">https://www.java.com/en/download/manual.jsp</a></strong></p>
 </div>
-<p>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2.</p>
+<ul>
+<li>It is recommended that you <strong>install Java SE 11 with Java Developer Kit 11</strong>, or a later version.</li>
+<li>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2.</li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -829,7 +832,7 @@
 <li>Select <em>Edit the system environment variables</em> option</li>
 <li>Click the <strong>Environment Variables</strong> button</li>
 <li>Under <em>System Variables</em>, click <strong>New</strong></li>
-<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 9</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
+<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
 <li>Click <strong>OK</strong> to finalize</li>
 </ul>
 </li>
@@ -904,7 +907,7 @@
 </ol>
 <hr />
 <h2 id="iv-determine-the-jdk"><strong>iv. Determine the JDK</strong></h2>
-<p>For Visual Studio (VS) Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
+<p>For Visual Studio (VS) Code and WCA Standard Plans, watsonx Code Assistant needs to determine which Java developer kit (JDK) to use, in the following order of precedence (with <em>1</em> being the highest priority):</p>
 <table>
 <thead>
 <tr>

@@ -786,8 +786,8 @@
 </tr>
 </tbody>
 </table>
-<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
-<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
+<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
+<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that the process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere class loader configuration</strong>:</p>
@@ -834,8 +834,8 @@
 </div>
 </div>
 <p></br>
-The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
-<p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must explicitly set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+<p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separately by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty server configuration</strong>:</p>
@@ -1026,7 +1026,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>server.xml</code></label><label for="__tabbed_4_2">LIBERTY <code>shared-library.xml</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">WCA LIBERTY <code>server.xml</code></label><label for="__tabbed_4_2">WCA LIBERTY <code>shared-library.xml</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
@@ -1118,7 +1118,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
 </code></pre></div></p>
 <p></br></p>
-<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
+<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
 </li>
 </ol>
 <hr />

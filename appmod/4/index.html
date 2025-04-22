@@ -748,7 +748,7 @@
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p>Lariat Corporation's application stack utilizes a myriad of <strong>WebSphere Application Server APIs</strong>— Work Manager API, Async Beans, Scheduler API, and so on —which will likely be impacted and require remediation as part of the company's overall modernization towards WebSphere Liberty. WAS APIs may not be immediately portable in their current form, they are potentially more costly to maintain than their Liberty counterparts, and may have less functionality given their outdated implementations.</p>
-<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" those applications dependent on such APIs.</p>
+<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" the applications dependent on such APIs.</p>
 <p></br></p>
 <table>
 <thead>
@@ -776,8 +776,8 @@
 </tr>
 </tbody>
 </table>
-<p>Currently, Lariat's <strong>WebSphere Scheduler APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty's Jakarta EE-templated APIs</strong>.</p>
-<p>The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) should improve application portability and align with best practices.</p>
+<p>Currently, Lariat's <strong>WebSphere Scheduler APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and remediated before modernization with <strong>Liberty's Jakarta EE-templated APIs</strong>.</p>
+<p>The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) should improve application portability and align with industry best practices.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy Java code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere Scheduler API</strong>:</p>
@@ -830,11 +830,11 @@
 </div>
 </div>
 <p></br>
-The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to schedule periodic task executions within Lariat's application estate.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>Utilizing WAS-specific API calls requires explicit JDNI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of applications.</p>
+<p>Utilizing WAS-specific API calls requires explicit JNDI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of applications.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) Java code in support of <strong>Liberty's Jakarta EE-templated APIs</strong>:</p>
@@ -939,7 +939,7 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Resource</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>The previous (legacy) requirement of forcing JDNI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
+<p>The previous (legacy) requirement of forcing JNDI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
 <p>Ultimately, the modernization efforts have significantly increased the portability and extensibility of Lariat's API-driven application estate. The structure of the API code has been simplified and made much more portable by breaking away from propriety API standards.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
@@ -1036,7 +1036,7 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>server.xml</code> Part 1</label><label for="__tabbed_4_2">LIBERTY <code>server.xml</code> Part 2</label><label for="__tabbed_4_3">LIBERTY <code>server.xml</code> Part 3</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">WCA LIBERTY <code>server.xml</code> Part 1</label><label for="__tabbed_4_2">WCA LIBERTY <code>server.xml</code> Part 2</label><label for="__tabbed_4_3">WCA LIBERTY <code>server.xml</code> Part 3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
@@ -1186,14 +1186,14 @@ WCA recommended the use of <code>com.ibm.websphere.scheduler.Scheduler</code> an
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nt">&lt;/scheduler&gt;</span>
 </code></pre></div></p>
 <p></br>
-The WCA solution is arguably stronger in scenarios where complex scheduling tasks are anticipated, given the granularity of control that CRON offers with regular expression matching. The Lariat solution is simpler, but limited in terms of customization.</p>
+The WCA solution is arguably stronger in scenarios where complex scheduling tasks are anticipated, given the granularity of control that CRON offers with regular expression matching. The Lariat solution is simpler, but limited in terms of customizability.</p>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
 <p>In terms of <strong>portability</strong> of the Liberty codebase, Lariat's implementation has been designed around <em>Jakarta EE</em>'s API which provides simple mobility across nearly every Java EE-compliant runtime.</p>
-<p>WCA's recommendation to use the <em>Scheduler</em> API (a proprietary Liberty) format ensures full compatibility with WebSphere Liberty endpoints — which as you will recall the request to WCA was explicitly to modernize to <em>Liberty</em>. But the use of <em>Scheduler</em> also poses a potential lock-in risk for that particular distribution, to the exclusion of others.</p>
+<p>WCA's recommendation to use the <em>Scheduler</em> API (a proprietary Liberty) format ensures full compatibility with WebSphere Liberty endpoints — which, as you will recall, the request to WCA was explicitly to modernize to <em>Liberty</em>. But the use of <em>Scheduler</em> also poses a potential lock-in risk for that particular distribution, to the exclusion of others.</p>
 </li>
 </ol>
 <hr />

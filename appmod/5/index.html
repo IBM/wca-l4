@@ -748,7 +748,7 @@
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p>WebSphere <strong>Enterprise JavaBeans</strong> (<strong>EJB</strong>) represent server-side components used by Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) to encapsulate repeatable business logic. In turn, EJB can be used to provide scalable and highly performant handling for requests made by Lariat Corporation's web application estate. EJBs provide the resource access management for the databases, messaging services, and external APIs these such application require to power their business functions. WebSphere's EJBs make extensive use of <em>XML</em> deployment descriptors to configure their behavior.</p>
-<p><strong>Liberty EJBs</strong> use Java <strong>annotations</strong> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
+<p><strong>Liberty EJBs</strong> use Java <em>annotations</em> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
 <p></br></p>
 <table>
 <thead>
@@ -781,7 +781,7 @@
 </tr>
 </tbody>
 </table>
-<p>By modernizing WebSphere's EJB's stateless session beans into <strong>Liberty's standard-compliant EJB</strong> will provide Lariat with the net benefit of code that's easier to maintain, more portable, and extensible to today's modern cloud-native endpoints. Ultimately, this should yield a simplified developer experience and better resource management.</p>
+<p>Modernizing WebSphere's EJB's stateless session beans into <strong>Liberty's standard-compliant EJB</strong> will provide Lariat with the net benefit of code that's easier to maintain, more portable, and extensible for modern cloud-native endpoints. Ultimately, this should yield a simplified developer experience and better resource management.</p>
 <hr />
 <h2 id="ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's EJB Stateful Session Bean with XML</strong>:</p>
@@ -916,7 +916,7 @@
 </code></pre></div>
 <p></br> </p>
 <p>This approach also eliminates the need for explicit home interfaces, instead allowing Lariat's developers to directly specify remote interfaces within the bean definition. There are also positive side effects to the "readability" of the code — since transaction management and security settings are managed via annotations, the amount of XML overhead is reduced and thus the code can be more easily parsed (and maintained) by humans.</p>
-<p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable to developers, and easier to extend with capabilities over time.</p>
+<p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable for their developers, and easier to extend with capabilities over time.</p>
 <hr />
 <h2 id="iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <div class="admonition quote">
@@ -996,7 +996,7 @@
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="__tabbed_4_2">LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">WCA LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="__tabbed_4_2">WCA LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
@@ -1121,13 +1121,13 @@ WCA recommends that the EJB metadata remain in XML format, without the use of <c
 <hr />
 <ol start="7">
 <li>
-<p>With respect to <strong>resource injections</strong>, this pattern is absent from the Lariat codebase, but the company's benefit was automatically suggested by WCA's modernized code. WCA has configured the injection of a <code>DataSource</code> via <code>@Resource</code> in both Java and <code>ejb-jar.xml</code>. For example:</p>
+<p>With respect to <strong>resource injections</strong>, this pattern is absent from the Lariat codebase. By contrast, WCA has configured the injection of a <code>DataSource</code> via <code>@Resource</code> in both Java and <code>ejb-jar.xml</code>. For example:</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc/LegacyDS&quot;</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></p>
 <p></br>
-One consideration to keep in mind with this case is that WCA's approach is tailored specifically for dealing with older enterprise systems or in cases where applications need to override behaviors per environment (resource injection).</p>
+One consideration to keep in mind with this case is that WCA's approach is tailored specifically for dealing with older enterprise systems or in cases where applications need to override behaviors per environment (via resource injection).</p>
 </li>
 </ol>
 <hr />

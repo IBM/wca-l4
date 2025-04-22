@@ -747,7 +747,7 @@
 <p class="admonition-title">SECTION I. TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
+<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, and access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
 <p><strong>Liberty</strong> applications, by contrast, utilize <strong>Java annotations</strong> to embed security rules directly in-line within Java classes or methods. This helps to eliminate (or at least reduce) dependencies on external XML descriptors, creating a more robust security implementation and permitting simple to maintain configurations. Java annotations are patterned using Java Enterprise Edition (Java EE or Jakarta EE) standards which align directly with the best-practices of cloud-native design.</p>
 <p></br></p>
 <table>
@@ -836,7 +836,7 @@
 </div>
 </div>
 <p></br></p>
-<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be defined owing to this architectural choice.</p>
+<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be declared in a specific manner owing to this architectural choice.</p>
 <p>In order to modernize this code, Lariat will need to convert the role-based authorization mechanisms and deployment descriptors into Java annotations.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -1039,7 +1039,7 @@
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>web.xml</code> Part 1</label><label for="__tabbed_4_2">LIBERTY <code>web.xml</code> Part 2</label><label for="__tabbed_4_3">LIBERTY <code>web.xml</code> Part 3</label><label for="__tabbed_4_4">LIBERTY <code>web.xml</code> Part 4</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">WCA LIBERTY <code>web.xml</code> Part 1</label><label for="__tabbed_4_2">WCA LIBERTY <code>web.xml</code> Part 2</label><label for="__tabbed_4_3">WCA LIBERTY <code>web.xml</code> Part 3</label><label for="__tabbed_4_4">WCA LIBERTY <code>web.xml</code> Part 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
@@ -1137,7 +1137,7 @@
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nt">&lt;/security-constraint&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA has defined clear security boundaries which align to enterprise standards. XML-based descriptors are often preferred within enterprise environments because those definitions are explicit, centralized, and easily audited. Changes made to Lariat's security policies can be applied quickly without recompilation or needing to redeploy the code.</p>
+WCA has defined clear security boundaries which align to enterprise standards. XML-based descriptors are often preferred within enterprise environments because those definitions are explicit, centralized, and easily audited. Changes made to Lariat's security policies can be applied quickly without needing to recompile and redeploy the code.</p>
 </li>
 </ol>
 <hr />
@@ -1153,7 +1153,7 @@ WCA has defined clear security boundaries which align to enterprise standards. X
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>POST</code>, <code>PUT</code>, <code>DELETE</code>) independently of <code>GET</code> methods. This is essential for scenarios where reading data (with <code>GET</code>) might be broadly allowed by certain applications or users within the estate, but other restricted operations (like <code>POST</code>) need to remain tightly controlled.</p>
+WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>POST</code>, <code>PUT</code>, <code>DELETE</code>) independently of <code>GET</code> methods. This is essential for scenarios where reading data (with <code>GET</code>) might be broadly allowed by certain applications or users within the enterprise IT estate, but other restricted operations (like <code>POST</code>) need to remain tightly controlled.</p>
 </li>
 </ol>
 <hr />
@@ -1167,12 +1167,12 @@ WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>P
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nt">&lt;/security-role-mapping&gt;</span>
 </code></pre></div></p>
 <p></br>
-Once again, this recommendation has been specifically tailored for enterprise clients and use cases. WCA's defines which users belong to which roles — reflecting the need that Lariat and many other enterprise organizations have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
+Once again, this recommendation has been specifically tailored for enterprise use cases. WCA's defines which set of users belong to which roles — reflecting the need that Lariat, and many other enterprise organizations, have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
 </li>
 </ol>
 <hr />
 <h2 id="v-conclusion"><strong>v. Conclusion</strong></h2>
-<p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. <em>Out of context</em> fragments of application code cannot convey that level of information and complexity. Techniques such as these will be explored in following section.</p>
+<p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. <em>Out of context</em> fragments of application code cannot convey that level of information and complexity. Techniques for full-stack application modernization will be explored in following section.</p>
 
 
 

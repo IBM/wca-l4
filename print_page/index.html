@@ -2818,8 +2818,8 @@ Storage classes must be specified ahead of time when installing WCA. The followi
                         <section class="print-page" id="saas-1"><h1 id="saas-1-objectives-and-requirementsibm-cloud-saas-configuration"><strong>Objectives and requirements</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-1-i-about-this-lab"><strong>i. About this lab</strong></h2>
 <p>For the purposes of the Level 4 training curriculum, the hands-on components have been split across both on-premises and Software-as-a-Service (SaaS) environments on IBM Cloud. Both are supported by IBM Technology Zone (ITZ) infrastructure.</p>
-<p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively cover the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ teams means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
-<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum  (<em>Application Modernization</em> and <em>Tuning &amp; Configuration</em>) will each leverage the SaaS environment you've configured in the following steps.</p>
+<p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively covers the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ team means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
+<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. The <strong>IBM Cloud (SaaS) Configuration</strong> module will guide participants through the process of reserving the necessary <em>Standard</em> plan of WCA via ITZ and configuring the environment for use. Other modules in the L4 curriculum  (<strong><a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank">Application Modernization</a></strong>) will each leverage the SaaS environment configured in the following steps.</p>
 <p>There are two tiers of plans (editions) available for SaaS deployments of WCA:</p>
 <table>
 <thead>
@@ -2837,14 +2837,14 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </tr>
 <tr>
 <td><strong>STANDARD PLAN</strong></td>
-<td>In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan includes enterprise Java modernization capabilities, which will be of particular advantage for the <em>Application Modernization</em> modules of the Level 4 curriculum.</td>
-<td>Java upgrades, regardless of runtime. WebSphere to Liberty transformation. Enhanced test generation and code explanation.</td>
+<td>In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan includes enterprise Java modernization capabilities, which will be of particular advantage for the <a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank"><strong>Application Modernization</strong></a> modules of the Level 4 curriculum.</td>
+<td>Java upgrades, regardless of runtime. WebSphere to Liberty transformation. Enhanced unit test generation and code explanation.</td>
 </tr>
 </tbody>
 </table>
-<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning <strong>WCA Standard Plan</strong> for the SaaS environment.</p>
+<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning a <strong>WCA Standard Plan</strong> as the basis of the SaaS environment.</p>
 <h2 id="saas-1-ii-prerequisites"><strong>ii. Prerequisites</strong></h2>
-<p>There are two high-level architectural components to WCA:</p>
+<p>There are two high-level architectural components to WCA Standard Plan:</p>
 <div class="admonition note">
 <ol>
 <li><strong>WCA extension</strong>: The interface through which developers interact with WCA, in the form of an extension (sometimes called a "plug-in") running in an integrated development environment (IDE). The IDEs currently supported by WCA are Visual Studio Code (VS Code) and Eclipse.</li>
@@ -2958,7 +2958,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </div>
 <div class="admonition warning">
 <p class="admonition-title">REQUEST IS PENDING APPROVAL</p>
-<p>For ITZ templates marked as "Approval Gated", such as the WCA Standard Plan, reservations and provisioning requests are <strong>not</strong> automatically initiated. Per the IBM Technology Zone:</p>
+<p>For ITZ templates marked as "Approval Gated", such as the WCA Standard Plan, reservations and provisioning requests are <strong>not</strong> automatically approved and instantiated. Per the IBM Technology Zone:</p>
 <p>"Your request has successfully been submitted and is pending approval. <strong>Please allow 3 to 4 North American Business Days for the team to review for a decision.</strong> To find more information on the reviewing group, reference the <a href="https://github.com/IBM/itz-support-public/blob/main/IBM-Technology-Zone/IBM-Technology-Zone-Runbooks/approval-workflow.md" target="_blank"><strong>Approval Workflow Runbook</strong></a>. Leverage the <a href="https://github.com/IBM/itz-support-public/blob/main/IBM-Technology-Zone/IBM-Technology-Zone-Runbooks/approval-workflow.md" target="_blank"><strong>Custom Request Runbook</strong></a> for details."</p>
 </div>
 </li>
@@ -3044,7 +3044,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <h2 id="saas-2-iii-configuring-the-environment"><strong>iii. Configuring the environment</strong></h2>
-<p>A new tab will load to present the <strong>WCA Dashboard</strong>, which on a first-time login will automatically prompt you to configure the environment.</p>
+<p>A new tab will load to present the <strong>WCA Dashboard</strong>, which for a first-time login will automatically prompt you to configure the environment.</p>
 <hr />
 <ol start="12">
 <li>
@@ -3088,7 +3088,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <ol start="16">
 <li>
-<p>Once the deployment space has been prepared, a pop-up alert will display <em>The space is ready</em>. Click the <strong>X</strong><sup>[A]</sup> icon in the top-right corner to dismiss the message and continue with the configuration steps.</p>
+<p>Once the deployment space has been prepared, a pop-up alert will display <em>"The space is ready"</em>. Click the <strong>X</strong><sup>[A]</sup> icon in the top-right corner to dismiss the message and continue with the configuration steps.</p>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-2.16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-2.16.png" /></a></p>
 </li>
@@ -3284,11 +3284,14 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p></br></p>
 <ol>
 <li>
-<p><strong>Download</strong> and <strong>install</strong> the latest Java SDKs using the vendor link below. It is recommended that you install Java SE 11 with Java Developer Kit 11, or a later version.</p>
+<p><strong>Download</strong> and <strong>install</strong> the latest Java SDKs using the vendor link below.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://www.java.com/en/download/manual.jsp" target="_blank">https://www.java.com/en/download/manual.jsp</a></strong></p>
 </div>
-<p>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2.</p>
+<ul>
+<li>It is recommended that you <strong>install Java SE 11 with Java Developer Kit 11</strong>, or a later version.</li>
+<li>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2.</li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -3327,7 +3330,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>Select <em>Edit the system environment variables</em> option</li>
 <li>Click the <strong>Environment Variables</strong> button</li>
 <li>Under <em>System Variables</em>, click <strong>New</strong></li>
-<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 9</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
+<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
 <li>Click <strong>OK</strong> to finalize</li>
 </ul>
 </li>
@@ -3402,7 +3405,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <h2 id="saas-3-iv-determine-the-jdk"><strong>iv. Determine the JDK</strong></h2>
-<p>For Visual Studio (VS) Code and WCA Standard Plans, watsonx Code Assistant needs to determine the Java developer kit (JDK) to use, in the following order of precedence:</p>
+<p>For Visual Studio (VS) Code and WCA Standard Plans, watsonx Code Assistant needs to determine which Java developer kit (JDK) to use, in the following order of precedence (with <em>1</em> being the highest priority):</p>
 <table>
 <thead>
 <tr>
@@ -3448,16 +3451,16 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <h2 id="saas-3-vi-next-steps"><strong>vi. Next steps</strong></h2>
 <p>In the following modules, participants will prepare the WCA extensions and plug-ins for Visual Studio Code and Eclipse IDE, respectively.</p></section><section class="print-page" id="saas-4"><h1 id="saas-4-install-wca-extension-for-visual-studio-codeibm-cloud-saas-configuration"><strong>Install WCA extension for Visual Studio Code</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-4-i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
-<p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
+<p>With the IBM watsonx Code Assistant (WCA) service component of the Software-as-a-Service (SaaS) architecture now successfully provisioned via the IBM Technology Zone (ITZ), participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
 <p>This module guides participants through the process of installing VS Code on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
 <div class="admonition note">
 <p class="admonition-title">WHY INSTALL LOCALLY?</p>
 <p>Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</p>
-<p>The WCA Standard plan on SaaS requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
-<p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions built into VS Code and Eclipse IDE. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users by far — with a less cumbersome experience with the lab guide instructions and much more responsive IDE interactions.</p>
+<p>The WCA Standard plan on SaaS (this module) requires at least one reservation slot. The on-premises environment already provisioned through ITZ for the previous <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules is occupying the second available slot. Provisioning an ITZ-hosted virtual machine (VM) environment will require a third slot — exceeding what ITZ supports. Therefore, to accommodate a virtualized desktop, participants would <strong>need to retire and deprovision</strong> the on-premises environment that they've already gone to great lengths to set up. Let's avoid that scenario, if possible.</p>
+<p>IBM watsonx Code Assistant works great on locally-installed IDEs via extensions (or plug-ins) built into VS Code and Eclipse IDE, respectively. In fact, it's the <em>de facto</em> way to interact with the service and provides the best impression for users — with a less cumbersome experience executing the lab guide instructions and much more responsive IDE interactions.</p>
 </div>
 <h2 id="saas-4-ii-locally-install-vs-code"><strong>ii. Locally install VS Code</strong></h2>
-<p>Before you configure the extension for VS Code, you must first install the IDE on your machine.</p>
+<p>Before you configure the extension for VS Code, you must first install the application on your machine.</p>
 <hr />
 <ol>
 <li>
@@ -3506,7 +3509,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <ol start="4">
 <li>
-<p>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong><sup>[A]</sup> icon that has appeared along the left-hand side of the VS Code IDE. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</p>
+<p>To open WCA within VS Code, click on the <strong>watsonx Code Assistant</strong><sup>[A]</sup> icon that has appeared along the left-hand side of VS Code. You will be greeted with a <code>Welcome, let's get started!</code> prompt within the IDE.</p>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-3.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-3.4.png" /></a></p>
 </li>
@@ -3537,7 +3540,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <ol start="7">
 <li>
-<p>Confirm that the extension successfully authenticated with the WCA service by looking for an open <em>Chat session 1</em> with <code>watsonx</code> along the left side of the WCA extension page<sup>[A]</sup>. If this Chat interface is available and operational, that confirms that VS Code extension has been successfully integrated with the WCA service.</p>
+<p>Confirm that the extension successfully authenticated with the WCA service by looking for an open <em>Chat session 1</em> with <code>watsonx</code> along the left side of the WCA Extension tab<sup>[A]</sup>. If this Chat interface is available and operational, that confirms that VS Code extension has been successfully integrated with the WCA service.</p>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-3.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-3.7.png" /></a></p>
 </li>
@@ -3546,8 +3549,8 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <h2 id="saas-4-iv-next-steps"><strong>iv. Next steps</strong></h2>
 <p>At this stage, the WCA Standard Plan extension for VS Code has been successfully installed and configured. The following module will guide participants through the steps of locally configuring Eclipse IDE for use with the WCA extension.</p></section><section class="print-page" id="saas-5"><h1 id="saas-5-install-wca-plug-in-for-eclipse-ideibm-cloud-saas-configuration"><strong>Install WCA plug-in for Eclipse IDE</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="saas-5-i-objectives-and-rationale"><strong>i. Objectives and rationale</strong></h2>
-<p>With the WCA service component of the SaaS architecture now successfully provisioned via the ITZ, participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
-<p>This module guides participants through the process of installing Eclipse IDE on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
+<p>With the IBM watsonx Code Assistant (WCA) service component of the Software-as-a-Service (SaaS) architecture now successfully provisioned via the IBM Technology Zone (ITZ), participants will now need to set up the WCA extension within an integrated development environment (IDE). WCA currently supports both <em>Visual Studio Code</em> (<strong>VS Code</strong>) and <em>Eclipse IDE</em>.</p>
+<p>This module guides participants through the process of installing <strong>Eclipse IDE</strong> on their local machine. Afterwards, the WCA extension ("plug-in") can then be easily integrated with the IDE and authorized for use with the ITZ-provisioned WCA service.</p>
 <div class="admonition note">
 <p class="admonition-title">WHY INSTALL LOCALLY?</p>
 <p>Be aware that ITZ only allows two environments to be reserved for education and training purposes at any one time. Reservations for client demonstrations and pilots do not count against this limit.</p>
@@ -3561,7 +3564,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>
 <p><strong>Download</strong> the <em>Eclipse IDE</em> from the Eclipse Foundation.</p>
 <ul>
-<li>Use the <em>Eclipse Installer</em>, recommended at the top of the download page<sup>[A]</sup></li>
+<li>Use the <strong>Eclipse Installer</strong>, recommended at the top of the download page<sup>[A]</sup></li>
 <li>Select the version appropriate to your local machine's operating system</li>
 </ul>
 <div class="admonition warning">
@@ -3655,7 +3658,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </li>
 </ol>
 <h2 id="saas-5-iv-validate-the-plug-in"><strong>iv. Validate the plug-in</strong></h2>
-<p>At this stage, the WCA plug-in for Eclipse IDE has been successfully installed on your local machine. Now you must authorize the plug-in for use with the WCA service on IBM Cloud.</p>
+<p>At this stage, the WCA plug-in for Eclipse IDE has been successfully installed on your local machine. Now you must authorize the plug-in for use with the WCA Standard Plan on IBM Cloud.</p>
 <hr />
 <ol start="8">
 <li>
@@ -3704,7 +3707,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <h2 id="saas-5-v-conclusion"><strong>v. Conclusion</strong></h2>
-<p>The Eclipse IDE plug-in for IBM watsonx Code Assistant has been successfully installed and authorized for use with the WCA Standard (SaaS) plan deployed on IBM Cloud. The environment is now ready for use with the <em>Application Modernization</em> modules of the Level 4 curriculum.</p>
+<p>The Eclipse IDE plug-in for IBM watsonx Code Assistant has been successfully installed and authorized for use with the WCA Standard (SaaS) plan deployed on IBM Cloud. The environment is now ready for use with the <a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank"><strong>Application Modernization</strong></a> modules of the Level 4 curriculum.</p>
 <p>Having concluded the <strong>IBM Cloud (SaaS) Configuration</strong> hands-on modules, complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p></section><h1 class='nav-section-title-end'>Ended: IBM Cloud (SaaS) Configuration</h1>
                         <h1 class='nav-section-title' id='section-application-modernization-websphere-to-liberty'>
                             Application Modernization - WebSphere to Liberty <a class='headerlink' href='#section-application-modernization-websphere-to-liberty' title='Permanent link'>↵</a>
@@ -3718,14 +3721,14 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p></br>
 The approach taken with each module of <strong>Application Modernization - WebSphere to Liberty</strong>,  engaging with IBM watsonx Code Assistant's (WCA) Chat functionality in the chapters ahead, is to emulate the experience of collaborating with a trusted colleague on how to best take on the modernization of WebSphere Application Server code: segmented by specific use cases, tackling particular business functions that need to be revitalized for cloud-native, and exploring precise pain points within a client's code base. The WCA Chat experience reflects how you and that trusted colleague might, together, approach a scenario like modernizing usage of Enterprise JavaBeans with WebSphere Liberty, as an example.</p>
 <p>Thinking about modernization in discrete scenarios such as these, where the aperture is narrowly focused on a specific piece of functionality or use case— rather than trying to modernize an entire, complex application stack altogether —has immense value. It is far more akin and practical to the real-world scenarios that <em>you</em> will encounter during engagements with clients: as a seller; a business partner; a trusted advisor. Entrusted with bestowing best practices for how that client can modernize specific pain points in their application code; <em>not</em> taking on the task of modernizing the <em>entirety</em> of their application stack "in one go."</p>
-<p>Crafting complex modernization plans for enterprise-scale applications cannot be approached as explicit "A, then B, followed by C" rulebooks or rigid decision trees. It is essential that you understand how to approach modernization as a collaborative, problem-solving oriented, question-and-answer refinement exercise. WCA Chat, which you will use to these ends in the following chapters, is an ideal mechanism for refining the correct modernization approach.</p>
+<p>Crafting complex modernization plans for enterprise-scale applications cannot be approached as explicit "A, then B, followed by C" rulebooks or rigid decision trees. It is essential that you understand how to approach modernization as a collaborative, problem-solving oriented, question-and-answer refinement exercise. WCA Chat, which you will use to these ends in the following modules, is an ideal mechanism for refining the correct modernization approach.</p>
 <hr />
 <h2 id="appmod-1-ii-prerequisites"><strong>ii. Prerequisites</strong></h2>
 <p>This lab requires that participants have previously completed the <a href="https://ibm.github.io/wca-l4/saas/1/" target="_blank"><strong>IBM Cloud (SaaS) Configuration</strong></a> lab in its entirety. Those conducting the hands-on sections of this lab will require access to a deployed instance of WCA Standard Plan and have successfully integrated with the WCA service via either the <strong>Visual Studio Code</strong> (<strong>VS Code</strong>) extension or <strong>Eclipse IDE</strong> plug-ins.</p>
 <hr />
 <h2 id="appmod-1-iii-hands-on-topics"><strong>iii. Hands-on topics</strong></h2>
 <p>For each module of the <em>Application Modernization - WebSphere to Liberty</em> lab, participants will have the opportunity to dissect the contents and purpose of legacy <strong>WebSphere Application Server</strong> (<strong>WAS</strong>) code, examine its limitations in the context of more up-to-date alternatives, and then compare that to a best-practices implementation of that equivalent codebase written in <strong>WebSphere Liberty</strong>.</p>
-<p>Afterwards, participants will go hands-on with the <strong>IBM watsonx Code Assistant</strong> (<strong>WCA</strong>) Standard (SaaS) environment to reproduce the steps of modernizing the WAS legacy code into Liberty code. Differences in the two code bases and the benefits of WCA's approach to code modernization will also be examined.</p>
+<p>Afterwards, participants will go hands-on with the <strong>IBM watsonx Code Assistant</strong> (<strong>WCA</strong>) Standard environment to reproduce the steps of modernizing the WAS legacy code into Liberty code. Differences in the two code bases and the benefits of WCA's approach to code modernization will also be examined.</p>
 <p></br></p>
 <table>
 <thead>
@@ -3748,7 +3751,7 @@ The approach taken with each module of <strong>Application Modernization - WebSp
 </tr>
 <tr>
 <td><a href="https://ibm.github.io/wca-l4/appmod/4/" target="_blank"><strong>APIs and libraries</strong></a></td>
-<td><strong>WebSphere Scheduler APIs</strong> may not be immediately portable in their current form, they are potentially more costly to maintain than Liberty counterparts, and less functionality due to outdated implementations.</td>
+<td><strong>WebSphere Scheduler APIs</strong> may not be immediately portable in their current form, they are potentially more costly to maintain than Liberty counterparts, and have less functionality due to outdated implementations.</td>
 <td><strong>Liberty's Jakarta EE-templated APIs</strong> are more transferable across vendors and platforms, are built to cloud-native architecture by design, and are portable to containers.</td>
 </tr>
 <tr>
@@ -3758,7 +3761,7 @@ The approach taken with each module of <strong>Application Modernization - WebSp
 </tr>
 <tr>
 <td><a href="https://ibm.github.io/wca-l4/appmod/6/" target="_blank"><strong>Java Message Service integration</strong></a></td>
-<td><strong>WebSphere's MQ JMS integration</strong> uses complex configurations made up of verbose XML or admin console requirements and can be difficult to maintain due to their dispersed nature.</td>
+<td><strong>WebSphere's MQ JMS integration</strong> uses complex configurations made up of verbose XML or admin console requirements. They can be difficult to maintain due to their dispersed nature.</td>
 <td><strong>Liberty's MQ JMS integration</strong> provides a more centralized pattern to simplify the process of troubleshooting messaging integrations and maintaining existing policies.</td>
 </tr>
 <tr>
@@ -3811,8 +3814,8 @@ The approach taken with each module of <strong>Application Modernization - WebSp
 </tr>
 <tr>
 <td><strong>Maintainability</strong></td>
-<td>Challenging, multiple configuration files need to managed and changes reconciled across multiple locations.</td>
-<td>Streamlined, less complex.</td>
+<td>Challenging due multiple configuration files need to managed and changes reconciled across multiple locations.</td>
+<td>Streamlined and less complex.</td>
 </tr>
 <tr>
 <td><strong>Scalability</strong></td>
@@ -3886,7 +3889,8 @@ The application defines two modules— <code>legacyapp.war</code> and <code>lega
 <li>It also introduces WebSphere-specific bindings such as <code>ibm-web-bnd.xml</code> (<strong>line 17</strong>), which are employed for virtual hosting and resource references.</li>
 <li>Security roles and resource bindings are managed externally through the use of XML.</li>
 </ul>
-<p>The legacy code showcased here has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (<strong>line 1</strong>) and <code>ibm-web-bnd.xml</code> (<strong>line 17</strong>) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified. The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
+<p>The legacy code showcased above has a particular structural element that makes it a prime candidate for this type of Liberty modernization. Chiefly, the EAR application uses <em>separate</em> XML descriptors like <code>application.xml</code> (<strong>line 1</strong>) and <code>ibm-web-bnd.xml</code> (<strong>line 17</strong>) to define distinct modules. This setup, at enterprise scale, becomes cumbersome to maintain and can often result in frequent deployment delays (or human-induced configuration errors) each time the modules need to be modified.</p>
+<p>The maintenance burden of this more intricate structural design can be reduced with a more simplified, Liberty-based approach.</p>
 <hr />
 <h2 id="appmod-2-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider the modernized (functionally equivalent) code using <strong>Liberty WAR configuration</strong>:</p>
@@ -4107,7 +4111,7 @@ Ultimately, the modernized Liberty application code supports Lariat's objectives
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-2-__tabbed_4_1" name="appmod-2-__tabbed_4" type="radio" /><input id="appmod-2-__tabbed_4_2" name="appmod-2-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-2-__tabbed_4_1">LIBERTY <code>server.xml</code></label><label for="appmod-2-__tabbed_4_2">LIBERTY <code>web.xml</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-2-__tabbed_4_1" name="appmod-2-__tabbed_4" type="radio" /><input id="appmod-2-__tabbed_4_2" name="appmod-2-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-2-__tabbed_4_1">WCA LIBERTY <code>server.xml</code></label><label for="appmod-2-__tabbed_4_2">WCA LIBERTY <code>web.xml</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-2-__codelineno-6-1"> 1</a></span>
@@ -4255,7 +4259,7 @@ By contrast, WCA has explicitly pulled in individual features like <code>jsp-2.3
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#appmod-2-__codelineno-11-4"></a><span class="nt">&lt;/dataSource&gt;</span>
 </code></pre></div>
 <p></br>
-WCA's recommendation utilizes an IBM Db2-specific set of JDBC drivers. For clients with a highly-regulated, Db2-heavy enterprise environment, this code recommendation has much more utility to their requirements of their business:</p>
+WCA's recommendation utilizes an IBM Db2-specific set of JDBC drivers. For clients with a highly-regulated, Db2-heavy enterprise environment, this code recommendation has much more utility to the requirements of their business:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#appmod-2-__codelineno-12-1"></a><span class="nt">&lt;dataSource</span> <span class="na">jndiName=</span><span class="s">&quot;jdbc/LegacyDS&quot;</span> <span class="na">id=</span><span class="s">&quot;DefaultDataSource&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#appmod-2-__codelineno-12-2"></a>    <span class="nt">&lt;jdbcDriver</span> <span class="na">libraryRef=</span><span class="s">&quot;XADatabase&quot;</span><span class="nt">/&gt;</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#appmod-2-__codelineno-12-3"></a>    <span class="nt">&lt;properties.db2.jcc</span> <span class="err">...</span> <span class="nt">/&gt;</span>
@@ -4310,8 +4314,8 @@ WCA's recommendation utilizes an IBM Db2-specific set of JDBC drivers. For clien
 </tr>
 </tbody>
 </table>
-<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple, shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
-<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
+<p>Lariat's legacy <strong>WebSphere class loader configuration</strong> implementation suffers from significant (and unnecessary) complexity owing to bloated class-loader configurations. Multiple shared libraries need to be configured and adjusted via an admin console, resulting in redundant use of dependencies and libraries that could otherwise be shared with better design.</p>
+<p>Through modernization of the code to <strong>Liberty server configuration</strong>, the expectation is that the process of managing dependencies and application configuration can be simplified and more easily maintained.</p>
 <hr />
 <h2 id="appmod-3-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere class loader configuration</strong>:</p>
@@ -4358,8 +4362,8 @@ WCA's recommendation utilizes an IBM Db2-specific set of JDBC drivers. For clien
 </div>
 </div>
 <p></br>
-The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must <em>explicitly</em> set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
-<p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separate by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
+The legacy implementation utilizes separate, detailed descriptor files like <code>deployment.xml</code> (<strong>lines 1-9</strong>) and <code>shared-libraries.xml</code> (<strong>lines 11-18</strong>) to handle complex dependency and class-loading configurations. Lariat administrators who manage this code base must explicitly set class loader modes to control resource loading order — an inefficient, manual process achieved using the <code>PARENT_LAST</code> option.</p>
+<p>As a consequence, libraries that should ideally be shared by multiple applications instead need to be managed separately by each application in turn. This is terribly inefficient and produces needlessly complex classloader configurations. For Lariat's administrators, this approach to configuration and dependency management has frequently resulted in version conflicts for applications and complex debugging work for developers.</p>
 <hr />
 <h2 id="appmod-3-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty server configuration</strong>:</p>
@@ -4550,7 +4554,7 @@ The modernized Liberty code implementation simplifies the management of dependen
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-3-__tabbed_4_1" name="appmod-3-__tabbed_4" type="radio" /><input id="appmod-3-__tabbed_4_2" name="appmod-3-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-3-__tabbed_4_1">LIBERTY <code>server.xml</code></label><label for="appmod-3-__tabbed_4_2">LIBERTY <code>shared-library.xml</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-3-__tabbed_4_1" name="appmod-3-__tabbed_4" type="radio" /><input id="appmod-3-__tabbed_4_2" name="appmod-3-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-3-__tabbed_4_1">WCA LIBERTY <code>server.xml</code></label><label for="appmod-3-__tabbed_4_2">WCA LIBERTY <code>shared-library.xml</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-3-__codelineno-6-1">1</a></span>
@@ -4642,7 +4646,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#appmod-3-__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
 </code></pre></div></p>
 <p></br></p>
-<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
+<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
 </li>
 </ol>
 <hr />
@@ -4654,7 +4658,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p>Lariat Corporation's application stack utilizes a myriad of <strong>WebSphere Application Server APIs</strong>— Work Manager API, Async Beans, Scheduler API, and so on —which will likely be impacted and require remediation as part of the company's overall modernization towards WebSphere Liberty. WAS APIs may not be immediately portable in their current form, they are potentially more costly to maintain than their Liberty counterparts, and may have less functionality given their outdated implementations.</p>
-<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" those applications dependent on such APIs.</p>
+<p>Liberty-compatible APIs increase the portability of applications across different Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) application servers. The result is that developers can more easily facilitate cloud deployments or migrations to other runtimes. Liberty APIs follow standardized annotations and conventions that simplify the boilerplate code needed for applications to exchange data with these APIs. WAS-specific APIs, by contrast, are potentially locked to specific versions of WebSphere - which in turn "lock in" the applications dependent on such APIs.</p>
 <p></br></p>
 <table>
 <thead>
@@ -4682,8 +4686,8 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 </tr>
 </tbody>
 </table>
-<p>Currently, Lariat's <strong>WebSphere Scheduler APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and resolved before modernization with <strong>Liberty's Jakarta EE-templated APIs</strong>.</p>
-<p>The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) should improve application portability and align with best practices.</p>
+<p>Currently, Lariat's <strong>WebSphere Scheduler APIs</strong> rely upon IBM-specific extensions (such as <code>.com.ibm.websphere</code> packages) that will need to be identified and remediated before modernization with <strong>Liberty's Jakarta EE-templated APIs</strong>.</p>
+<p>The shift from proprietary WAS-based APIs to standardized Liberty-based APIs (built to Jakarta EE / Java EE specifications) should improve application portability and align with industry best practices.</p>
 <hr />
 <h2 id="appmod-4-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy Java code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere Scheduler API</strong>:</p>
@@ -4736,11 +4740,11 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 </div>
 </div>
 <p></br>
-The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to shcedule periodic task executions within Lariat's application estate.</p>
+The <code>LegacySchedulerTask</code> API describes a WAS-specific scheduler (identifiable by the <code>com.ibm.websphere.scheduler</code> import statements on <strong>lines 1 and 2</strong>), which invokes IBM-proprietary API standards. These API invocations are in turn used to schedule periodic task executions within Lariat's application estate.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod-4-__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.TaskHandler</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#appmod-4-__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.ibm.websphere.scheduler.Scheduler</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>Utilizing WAS-specific API calls requires explicit JDNI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of applications.</p>
+<p>Utilizing WAS-specific API calls requires explicit JNDI (Java Naming and Directory Interface) look-ups. Furthermore, it demands manual intervention on the part of application developers to create and manage scheduled API tasks. The result is that this legacy API code, by placing heavy reliance upon WebSphere platform-specific APIs, has impaired the portability of applications.</p>
 <hr />
 <h2 id="appmod-4-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) Java code in support of <strong>Liberty's Jakarta EE-templated APIs</strong>:</p>
@@ -4845,7 +4849,7 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-4-__codelineno-4-1"></a><span class="nd">@Resource</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod-4-__codelineno-4-2"></a><span class="n">ManagedScheduledExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>The previous (legacy) requirement of forcing JDNI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
+<p>The previous (legacy) requirement of forcing JNDI look-ups, therefore, has been remediated through the use of direct resource injection. The Jakarta EE standard also follows an annotation-driven model for scheduling tasks to reduce the overall complexity of the code and improve its "readability" for human developers.</p>
 <p>Ultimately, the modernization efforts have significantly increased the portability and extensibility of Lariat's API-driven application estate. The structure of the API code has been simplified and made much more portable by breaking away from propriety API standards.</p>
 <hr />
 <h2 id="appmod-4-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
@@ -4942,7 +4946,7 @@ In contrast to the legacy WAS-based Java API, the modernized Liberty approach (t
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="appmod-4-__tabbed_4_1" name="appmod-4-__tabbed_4" type="radio" /><input id="appmod-4-__tabbed_4_2" name="appmod-4-__tabbed_4" type="radio" /><input id="appmod-4-__tabbed_4_3" name="appmod-4-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-4-__tabbed_4_1">LIBERTY <code>server.xml</code> Part 1</label><label for="appmod-4-__tabbed_4_2">LIBERTY <code>server.xml</code> Part 2</label><label for="appmod-4-__tabbed_4_3">LIBERTY <code>server.xml</code> Part 3</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="appmod-4-__tabbed_4_1" name="appmod-4-__tabbed_4" type="radio" /><input id="appmod-4-__tabbed_4_2" name="appmod-4-__tabbed_4" type="radio" /><input id="appmod-4-__tabbed_4_3" name="appmod-4-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-4-__tabbed_4_1">WCA LIBERTY <code>server.xml</code> Part 1</label><label for="appmod-4-__tabbed_4_2">WCA LIBERTY <code>server.xml</code> Part 2</label><label for="appmod-4-__tabbed_4_3">WCA LIBERTY <code>server.xml</code> Part 3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-4-__codelineno-7-1">1</a></span>
@@ -5092,14 +5096,14 @@ WCA recommended the use of <code>com.ibm.websphere.scheduler.Scheduler</code> an
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#appmod-4-__codelineno-11-6"></a><span class="nt">&lt;/scheduler&gt;</span>
 </code></pre></div></p>
 <p></br>
-The WCA solution is arguably stronger in scenarios where complex scheduling tasks are anticipated, given the granularity of control that CRON offers with regular expression matching. The Lariat solution is simpler, but limited in terms of customization.</p>
+The WCA solution is arguably stronger in scenarios where complex scheduling tasks are anticipated, given the granularity of control that CRON offers with regular expression matching. The Lariat solution is simpler, but limited in terms of customizability.</p>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
 <p>In terms of <strong>portability</strong> of the Liberty codebase, Lariat's implementation has been designed around <em>Jakarta EE</em>'s API which provides simple mobility across nearly every Java EE-compliant runtime.</p>
-<p>WCA's recommendation to use the <em>Scheduler</em> API (a proprietary Liberty) format ensures full compatibility with WebSphere Liberty endpoints — which as you will recall the request to WCA was explicitly to modernize to <em>Liberty</em>. But the use of <em>Scheduler</em> also poses a potential lock-in risk for that particular distribution, to the exclusion of others.</p>
+<p>WCA's recommendation to use the <em>Scheduler</em> API (a proprietary Liberty) format ensures full compatibility with WebSphere Liberty endpoints — which, as you will recall, the request to WCA was explicitly to modernize to <em>Liberty</em>. But the use of <em>Scheduler</em> also poses a potential lock-in risk for that particular distribution, to the exclusion of others.</p>
 </li>
 </ol>
 <hr />
@@ -5111,7 +5115,7 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p>WebSphere <strong>Enterprise JavaBeans</strong> (<strong>EJB</strong>) represent server-side components used by Java Enterprise Edition (<em>Java EE</em> or <em>Jakarta EE</em>) to encapsulate repeatable business logic. In turn, EJB can be used to provide scalable and highly performant handling for requests made by Lariat Corporation's web application estate. EJBs provide the resource access management for the databases, messaging services, and external APIs these such application require to power their business functions. WebSphere's EJBs make extensive use of <em>XML</em> deployment descriptors to configure their behavior.</p>
-<p><strong>Liberty EJBs</strong> use Java <strong>annotations</strong> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
+<p><strong>Liberty EJBs</strong> use Java <em>annotations</em> instead of <em>XML</em>, applying them directly within Java classes for configuration. In many cases, this eliminates the need for external XML files completely (or at least significantly reduces their size and number).</p>
 <p></br></p>
 <table>
 <thead>
@@ -5144,7 +5148,7 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 </tr>
 </tbody>
 </table>
-<p>By modernizing WebSphere's EJB's stateless session beans into <strong>Liberty's standard-compliant EJB</strong> will provide Lariat with the net benefit of code that's easier to maintain, more portable, and extensible to today's modern cloud-native endpoints. Ultimately, this should yield a simplified developer experience and better resource management.</p>
+<p>Modernizing WebSphere's EJB's stateless session beans into <strong>Liberty's standard-compliant EJB</strong> will provide Lariat with the net benefit of code that's easier to maintain, more portable, and extensible for modern cloud-native endpoints. Ultimately, this should yield a simplified developer experience and better resource management.</p>
 <hr />
 <h2 id="appmod-5-ii-websphere-legacy-code"><strong>ii. WebSphere legacy code</strong></h2>
 <p>First, examine the legacy code (below), which as mentioned previously is a snapshot of a larger application using <strong>WebSphere's EJB Stateful Session Bean with XML</strong>:</p>
@@ -5279,7 +5283,7 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 </code></pre></div>
 <p></br> </p>
 <p>This approach also eliminates the need for explicit home interfaces, instead allowing Lariat's developers to directly specify remote interfaces within the bean definition. There are also positive side effects to the "readability" of the code — since transaction management and security settings are managed via annotations, the amount of XML overhead is reduced and thus the code can be more easily parsed (and maintained) by humans.</p>
-<p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable to developers, and easier to extend with capabilities over time.</p>
+<p>Ultimately, Liberty's modernized EJB implementation simplifies the bean declaration significantly and reduces the amount of boilerplate code necessary for the application. In turn, Lariat's code will be easier to maintain, more readable for their developers, and easier to extend with capabilities over time.</p>
 <hr />
 <h2 id="appmod-5-iv-hands-on-with-wca"><strong>iv. Hands-on with WCA</strong></h2>
 <div class="admonition quote">
@@ -5359,7 +5363,7 @@ The WCA solution is arguably stronger in scenarios where complex scheduling task
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-5-__tabbed_4_1" name="appmod-5-__tabbed_4" type="radio" /><input id="appmod-5-__tabbed_4_2" name="appmod-5-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-5-__tabbed_4_1">LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="appmod-5-__tabbed_4_2">LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-5-__tabbed_4_1" name="appmod-5-__tabbed_4" type="radio" /><input id="appmod-5-__tabbed_4_2" name="appmod-5-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-5-__tabbed_4_1">WCA LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="appmod-5-__tabbed_4_2">WCA LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-5-__codelineno-6-1"> 1</a></span>
@@ -5484,13 +5488,13 @@ WCA recommends that the EJB metadata remain in XML format, without the use of <c
 <hr />
 <ol start="7">
 <li>
-<p>With respect to <strong>resource injections</strong>, this pattern is absent from the Lariat codebase, but the company's benefit was automatically suggested by WCA's modernized code. WCA has configured the injection of a <code>DataSource</code> via <code>@Resource</code> in both Java and <code>ejb-jar.xml</code>. For example:</p>
+<p>With respect to <strong>resource injections</strong>, this pattern is absent from the Lariat codebase. By contrast, WCA has configured the injection of a <code>DataSource</code> via <code>@Resource</code> in both Java and <code>ejb-jar.xml</code>. For example:</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#appmod-5-__codelineno-10-1"></a><span class="nd">@Resource</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc/LegacyDS&quot;</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#appmod-5-__codelineno-10-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></p>
 <p></br>
-One consideration to keep in mind with this case is that WCA's approach is tailored specifically for dealing with older enterprise systems or in cases where applications need to override behaviors per environment (resource injection).</p>
+One consideration to keep in mind with this case is that WCA's approach is tailored specifically for dealing with older enterprise systems or in cases where applications need to override behaviors per environment (via resource injection).</p>
 </li>
 </ol>
 <hr />
@@ -5501,8 +5505,8 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 <p class="admonition-title">SECTION I. TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging is delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
-<p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of the messaging integrations.</p>
+<p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging are delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
+<p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of their messaging integrations.</p>
 <p></br></p>
 <table>
 <thead>
@@ -5584,7 +5588,7 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 </div>
 </div>
 <p>Lariat's particular implementation of WebSphere MQ JMS utilizes XML descriptors (<code>ejb-jar.xml</code>, <code>ibm-ejb-jar-bnd.xml</code> on <strong>lines 1 and 11</strong>, respectively) to define message-driven beans (MDB) and their JMS destinations.</p>
-<p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — a sharp contrast to the declarative approach we will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes setup of new configurations potentially more complex and prone to human-induced errors in the code.</p>
+<p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — in sharp contrast to the declarative approach you will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes the setup of new configurations potentially more complex and prone to human-induced errors within the code.</p>
 <hr />
 <h2 id="appmod-6-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JMS configuration</strong>:</p>
@@ -5760,7 +5764,7 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-6-__tabbed_4_1" name="appmod-6-__tabbed_4" type="radio" /><input id="appmod-6-__tabbed_4_2" name="appmod-6-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_4_1">LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="appmod-6-__tabbed_4_2">LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="appmod-6-__tabbed_4_1" name="appmod-6-__tabbed_4" type="radio" /><input id="appmod-6-__tabbed_4_2" name="appmod-6-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-6-__tabbed_4_1">WCA LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="appmod-6-__tabbed_4_2">WCA LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-6-__codelineno-5-1"> 1</a></span>
@@ -5886,13 +5890,13 @@ One consideration to keep in mind with this case is that WCA's approach is tailo
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#appmod-6-__codelineno-7-5"></a><span class="kd">private</span><span class="w"> </span><span class="n">InitialContext</span><span class="w"> </span><span class="n">initialContext</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></p>
 <p></br>
-By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</code>, WCA allows developers to exact a high degree of control over the JMS lifecycle. For real-world enterprise operations, redundancy and explicit design can provide safety for production environments (and protect against misdeployments.)</p>
+By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</code>, WCA allows developers to exact a high degree of control over the JMS lifecycle. For real-world enterprise operations, redundancy and explicit design can provide safety for production environments (as well as protection against misdeployments.)</p>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
-<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for clients that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
+<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for enterprise organizations that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#appmod-6-__codelineno-8-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#appmod-6-__codelineno-8-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
@@ -5900,7 +5904,7 @@ By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</cod
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#appmod-6-__codelineno-8-4"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for legacy JMS destinations - providing a degree of backwards compatibility to other legacy applications in the company's estate that isn't as easily achieved with Lariat's code.</p>
+WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for legacy JMS destinations, providing a degree of backwards compatibility to other legacy applications in the company's estate that isn't as easily achieved with Lariat's code.</p>
 </li>
 </ol>
 <hr />
@@ -5911,7 +5915,7 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 <p class="admonition-title">SECTION I. TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
+<p>Traditionally, Lariat Corporation has leveraged <strong>WebSphere's</strong> approach to defining application security configurations— for roles, authentication, authorization, and access constraints —via external, <strong>XML-based</strong> deployment descriptors. Oftentimes these take the forms of standard deployment descriptors (like <code>web.xml</code>) or IBM-specific descriptors (<code>ibm-application-bnd.xml</code>).</p>
 <p><strong>Liberty</strong> applications, by contrast, utilize <strong>Java annotations</strong> to embed security rules directly in-line within Java classes or methods. This helps to eliminate (or at least reduce) dependencies on external XML descriptors, creating a more robust security implementation and permitting simple to maintain configurations. Java annotations are patterned using Java Enterprise Edition (Java EE or Jakarta EE) standards which align directly with the best-practices of cloud-native design.</p>
 <p></br></p>
 <table>
@@ -6000,7 +6004,7 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 </div>
 </div>
 <p></br></p>
-<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be defined owing to this architectural choice.</p>
+<p>The legacy XML-based code defines security constraints explicitly in <code>web.xml</code> using roles and URL pattern-matching, creating conditions where form-based authentication settings are specified through XML. Naturally, this complicates security management for Lariat's developer teams, as external role definitions now need to be declared in a specific manner owing to this architectural choice.</p>
 <p>In order to modernize this code, Lariat will need to convert the role-based authorization mechanisms and deployment descriptors into Java annotations.</p>
 <hr />
 <h2 id="appmod-7-iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
@@ -6203,7 +6207,7 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="appmod-7-__tabbed_4_1" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_2" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_3" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_4" name="appmod-7-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_4_1">LIBERTY <code>web.xml</code> Part 1</label><label for="appmod-7-__tabbed_4_2">LIBERTY <code>web.xml</code> Part 2</label><label for="appmod-7-__tabbed_4_3">LIBERTY <code>web.xml</code> Part 3</label><label for="appmod-7-__tabbed_4_4">LIBERTY <code>web.xml</code> Part 4</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="appmod-7-__tabbed_4_1" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_2" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_3" name="appmod-7-__tabbed_4" type="radio" /><input id="appmod-7-__tabbed_4_4" name="appmod-7-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="appmod-7-__tabbed_4_1">WCA LIBERTY <code>web.xml</code> Part 1</label><label for="appmod-7-__tabbed_4_2">WCA LIBERTY <code>web.xml</code> Part 2</label><label for="appmod-7-__tabbed_4_3">WCA LIBERTY <code>web.xml</code> Part 3</label><label for="appmod-7-__tabbed_4_4">WCA LIBERTY <code>web.xml</code> Part 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#appmod-7-__codelineno-6-1"> 1</a></span>
@@ -6301,7 +6305,7 @@ WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for leg
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#appmod-7-__codelineno-10-9"></a><span class="nt">&lt;/security-constraint&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA has defined clear security boundaries which align to enterprise standards. XML-based descriptors are often preferred within enterprise environments because those definitions are explicit, centralized, and easily audited. Changes made to Lariat's security policies can be applied quickly without recompilation or needing to redeploy the code.</p>
+WCA has defined clear security boundaries which align to enterprise standards. XML-based descriptors are often preferred within enterprise environments because those definitions are explicit, centralized, and easily audited. Changes made to Lariat's security policies can be applied quickly without needing to recompile and redeploy the code.</p>
 </li>
 </ol>
 <hr />
@@ -6317,7 +6321,7 @@ WCA has defined clear security boundaries which align to enterprise standards. X
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#appmod-7-__codelineno-11-6"></a>    <span class="nt">&lt;/web-resource-collection&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>POST</code>, <code>PUT</code>, <code>DELETE</code>) independently of <code>GET</code> methods. This is essential for scenarios where reading data (with <code>GET</code>) might be broadly allowed by certain applications or users within the estate, but other restricted operations (like <code>POST</code>) need to remain tightly controlled.</p>
+WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>POST</code>, <code>PUT</code>, <code>DELETE</code>) independently of <code>GET</code> methods. This is essential for scenarios where reading data (with <code>GET</code>) might be broadly allowed by certain applications or users within the enterprise IT estate, but other restricted operations (like <code>POST</code>) need to remain tightly controlled.</p>
 </li>
 </ol>
 <hr />
@@ -6331,22 +6335,22 @@ WCA's Liberty code allows Lariat to restrict specific HTTP methods (like <code>P
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#appmod-7-__codelineno-12-4"></a><span class="nt">&lt;/security-role-mapping&gt;</span>
 </code></pre></div></p>
 <p></br>
-Once again, this recommendation has been specifically tailored for enterprise clients and use cases. WCA's defines which users belong to which roles — reflecting the need that Lariat and many other enterprise organizations have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
+Once again, this recommendation has been specifically tailored for enterprise use cases. WCA's defines which set of users belong to which roles — reflecting the need that Lariat, and many other enterprise organizations, have for transparency in user-role assignments. Explicit definitions such as these ensure that the modernized Liberty code is easily managed and tightly controlled by Lariat's developers.</p>
 </li>
 </ol>
 <hr />
 <h2 id="appmod-7-v-conclusion"><strong>v. Conclusion</strong></h2>
-<p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. <em>Out of context</em> fragments of application code cannot convey that level of information and complexity. Techniques such as these will be explored in following section.</p></section><section class="print-page" id="appmod-8"><h1 id="appmod-8-full-stack-modernizationapplication-modernization-websphere-to-liberty"><strong>Full stack modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
+<p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. <em>Out of context</em> fragments of application code cannot convey that level of information and complexity. Techniques for full-stack application modernization will be explored in following section.</p></section><section class="print-page" id="appmod-8"><h1 id="appmod-8-full-stack-modernizationapplication-modernization-websphere-to-liberty"><strong>Full stack modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <h2 id="appmod-8-i-objectives"><strong>i. Objectives</strong></h2>
-<p>As a capstone to the experimentation and <strong>IBM watsonx Code Assistant</strong> (<strong>WCA</strong>) feature-exploration conducted in the previous modules of this lab, participants will conclude the <em>Application Modernization</em> unit with a hands-on opportunity: modernization of a full-stack WebSphere Application Service (WAS) application into WebSphere Liberty.</p>
+<p>As a capstone to the experimentation and feature-exploration conducted with <strong>IBM watsonx Code Assistant</strong> (<strong>WCA</strong>) in the previous modules of this lab, participants will conclude the <em>Application Modernization</em> topic with a hands-on opportunity: modernization of a full-stack WebSphere Application Service (WAS) application into WebSphere Liberty.</p>
 <p>Participants will be tasked with:</p>
 <ul>
 <li>Explaining the purpose of the legacy WAS code and detailing the necessary transformations</li>
 <li>Modernizing legacy packages and libraries from WAS to Liberty</li>
-<li>Upgrading Java from <code>Java 8</code> to <code>Java 21</code></li>
+<li>Upgrading Java versions from <code>Java 8</code> to <code>Java 21</code></li>
 <li>Code recommendations will be generated using <em>WCA Chat</em>, as in the previous modules, alongside the <em>Modernize</em> and <em>Java Upgrade</em> capabilities built into WCA Standard plans</li>
 </ul>
-<p>The culmination of this work will be a fully modernized and interaction web application that tangibly demonstrates the benefits of the techniques discussed throughout this lab.</p>
+<p>The culmination of this work will be a fully modernized and interactive web application that tangibly demonstrates the benefits of the techniques discussed throughout this lab.</p>
 <hr />
 <h2 id="appmod-8-ii-setting-up"><strong>ii. Setting up</strong></h2>
 <p></br></p>
@@ -6356,7 +6360,7 @@ Once again, this recommendation has been specifically tailored for enterprise cl
 <hr />
 <ol start="2">
 <li>
-<p>Additional software must be prepared within VS Code before continuing with this style of WebSphere modernization.</p>
+<p>Additional software must be prepared within VS Code before continuing with WCA Standard Plan's enterprise capabilities for WebSphere modernization.</p>
 <ul>
 <li>From the left-hand side of the VS Code interface, click the <strong>Extensions</strong> tab<ul>
 <li>Within the <em>Extensions: Marketplace</em> <strong>search bar</strong>, search for <code>Liberty Tools</code></li>
@@ -6377,9 +6381,10 @@ Once again, this recommendation has been specifically tailored for enterprise cl
 <ol start="3">
 <li>
 <p><strong>Download</strong> the WebSphere Application Server (WAS) assets that are to be modernized from the following GitHub repository:</p>
-<p></br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#appmod-8-__codelineno-0-1"></a>**URL:** &lt;a href=&quot;https://github.com/sidharthmittal25/wca4ej-workshop/tree/main&quot; target=&quot;_blank&quot;&gt;https://github.com/sidharthmittal25/wca4ej-workshop/tree/main&lt;/a&gt;
-</code></pre></div></p>
+<p></br></p>
+<div class="admonition warning">
+<p><strong>URL:</strong> <a href="https://github.com/sidharthmittal25/wca4ej-workshop/tree/main" target="_blank">https://github.com/sidharthmittal25/wca4ej-workshop/tree/main</a></p>
+</div>
 <p></br>
 Click the green <strong>Code</strong> button to open a drop-down menu of options. Choose one of the following:</p>
 <ul>
@@ -6393,11 +6398,13 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <p></br></p>
 <ol start="4">
 <li>
-<p>Next, you will build the application project. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
+<p>Next, you will need to build the application <em>Project</em>. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
-<li>Navigate using the Terminal to the project folder where you saved <code>wca4ej-workshop</code> in Step 3. Replace the <code>&lt;your-path&gt;</code> variable with the path to where that folder was saved, then execute the following:</li>
+<li>Navigate using the Terminal to the <em>Project</em> folder where you saved <code>wca4ej-workshop</code> in Step 3.</li>
+<li>Replace the <code>&lt;your-path&gt;</code> variable with the path to where that folder was saved.</li>
+<li>With a Terminal console, execute the following instruction:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod-8-__codelineno-1-1"></a><span class="nb">cd</span> &lt;your-path&gt;/wca4ej-workshop/modresorts-twas-j8/was_dependency
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#appmod-8-__codelineno-0-1"></a><span class="nb">cd</span> &lt;your-path&gt;/wca4ej-workshop/modresorts-twas-j8/was_dependency
 </code></pre></div>
 </li>
 </ol>
@@ -6405,13 +6412,13 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <ol start="5">
 <li>
 <p>Once inside the folder, run the following command to <em>build</em> the application project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#appmod-8-__codelineno-2-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod-8-__codelineno-1-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WINDOWS USERS</p>
 <p>Windows users might need to provide the full path for the build files <code>was_public.jar</code> and <code>was_public-9.0.0.pom</code>, for example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod-8-__codelineno-3-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#appmod-8-__codelineno-2-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#appmod-8-__codelineno-2-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
 </code></pre></div></p>
 </div>
 </li>
@@ -6434,7 +6441,7 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <ul>
 <li>Right click on the <code>modresorts</code> project name to open the drop-down menu of options</li>
 <li>Click <strong>Start</strong> to initialize the project</li>
-<li>VS Code will automatically download the necessary packages: you can trace the progress within the Terminal console</li>
+<li>VS Code will automatically download the necessary packages (you can trace the progress within the Terminal console)</li>
 <li><strong>Wait</strong> until the initialization process has finished and the console has returned a <code>Source compilation was successful</code> message</li>
 <li><strong>Copy</strong> and record the <strong>Web application URL</strong> returned by the Terminal console (<code>http://localhost:9080/resorts</code> or similar)</li>
 </ul>
@@ -6443,7 +6450,7 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <hr />
 <ol start="8">
 <li>
-<p>Open a new web browser tab and visit the <strong>Web application URL</strong> recorded in the previous step. Explore and familiarize yourself with the various tabs and pages built into the legacy web application.</p>
+<p>Open a new web browser tab and visit the <strong>Web application URL</strong> recorded in Step 7. Explore and familiarize yourself with the various tabs and pages built into the legacy web application.</p>
 <div class="admonition warning">
 <p class="admonition-title">ERRORS AND BROKEN WEB LINKS</p>
 <p>As the legacy application has been built for WebSphere Application Server (WAS) using <code>Java 8</code>, but the deployment generated in Step 7 was intended for WebSphere Liberty using <code>Java 21</code>, there are a number of pages within the app that will produce an "Error" — for example, the location information module. These will be aspects of the application that you will remedy as part of the modernization steps that follow.</p>
@@ -6470,11 +6477,11 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <hr />
 <h2 id="appmod-8-v-build-a-modernization-plan"><strong>v. Build a modernization plan</strong></h2>
 <p></br></p>
-<p>Before modernizing the WAS application into Liberty, you'll need to scope out the necessary changes and level of effort required to do so. In order to do so, you will need to generate one using <strong><a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank">IBM Cloud Transformation Advisor</a></strong> tooling. For the purposes of this lab, one has been prepared ahead of time and included within the <code>modresorts-twas-j8</code> project folder.</p>
+<p>Before modernizing the WAS application into Liberty, you'll need to scope out the necessary changes and level of effort required to do so. To obtain that understanding, you will need to generate a modernization plan using <strong><a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank">IBM Cloud Transformation Advisor</a></strong>. For the purposes of this lab, one such plan has been prepared ahead of time and included within the <code>modresorts-twas-j8</code> project folder.</p>
 <hr />
 <ol start="10">
 <li>
-<p>With the <strong>Explore</strong> tab of VS Code still open, right click on <code>modresorts-twas-j8</code>, hover over <strong>watsonx Code Assistant</strong>, and then select <strong>Modernize to Liberty</strong>.</p>
+<p>Open the <strong>Explore</strong> tab of VS Code and right click on <code>modresorts-twas-j8</code>. Then hover over <strong>watsonx Code Assistant</strong> and select <strong>Modernize to Liberty</strong>.</p>
 <ul>
 <li>A <em>Modernize</em> tab will open on the right side of VS Code</li>
 <li>Click the <strong>Upload migration bundle</strong> button</li>
@@ -6486,7 +6493,7 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <hr />
 <ol start="11">
 <li>
-<p>Analysis will take a few moments to complete. When ready, the <em>Modernize</em> panel will generate a report that identifies issues with the application that need to be fixed. Some of these can be automatically repaired, others will require a degree of manual intervention.</p>
+<p>Analysis will take a few moments to complete. When ready, the <em>Modernize</em> panel will generate a report that identifies issues with the application that need to be fixed. Some of these can be automatically repaired, while others will require a degree of manual intervention.</p>
 <ul>
 <li>Under the <strong>Issues</strong> header, click the <strong>Automated fixes</strong> to pull open the list of 3 issues that can be automated</li>
 <li>See more details about each by clicking the drop-down error to the right of the issue</li>
@@ -6499,12 +6506,12 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <li>
 <p>View details about the fix(es) requiring a degree of manual intervention by clicking the <strong>Assisted fixes</strong> tab.</p>
 <ul>
-<li>Along the top of the tap, toggle open the grey <strong>Instructions</strong> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
+<li>Along the top of the tab, left-click the grey <strong>Instructions</strong> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
 <li>In this example, the <code>WebSphere Servlet API was superseded by a newer implementation</code> that uses <code>Servlet 3.0</code> functionality and as such a trio of packages used by the WAS app will no longer be available for use with Liberty</li>
 <li>Further down the panel, a pointer to the impacted file(s) in the legacy code will be provided</li>
 <li><strong>Click</strong> the name of the impacted file to inspect its source code:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-8-__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
 </li>
 </ol>
@@ -6521,23 +6528,23 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <hr />
 <ol start="14">
 <li>
-<p>WCA will engage a <em>Chat</em> session and generate within the conversation with <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
+<p>WCA will engage a <em>Chat</em> session and generate within the conversation <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
 <p></br>
 <strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code> that were copied in Step 13.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#appmod-8-__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#appmod-8-__codelineno-5-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#appmod-8-__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#appmod-8-__codelineno-5-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#appmod-8-__codelineno-5-6"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-8-__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod-8-__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#appmod-8-__codelineno-4-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#appmod-8-__codelineno-4-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#appmod-8-__codelineno-4-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#appmod-8-__codelineno-4-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p></br>
 <strong>Recommendation 2:</strong> The second fix will be <em>new</em> lines of code that are to be added to the <code>pom.xml</code> file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#appmod-8-__codelineno-6-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#appmod-8-__codelineno-6-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#appmod-8-__codelineno-6-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#appmod-8-__codelineno-6-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#appmod-8-__codelineno-6-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#appmod-8-__codelineno-5-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#appmod-8-__codelineno-5-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#appmod-8-__codelineno-5-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#appmod-8-__codelineno-5-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -6563,10 +6570,10 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <hr />
 <ol start="17">
 <li>
-<p>With the application code now modified— by a combination of automated fixes and manual interventions —the original deployment conducted in Step 4 will need to be re-launched.</p>
+<p>With the application code now modified— by a combination of automated fixes and manual interventions —the original deployment launched in Step 4 will need to be re-deployed.</p>
 <ul>
-<li>Open the VS Code <strong>Terminal</strong></li>
-<li>With the Terminal console open, press <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-c">C</kbd></span> to terminate the application</li>
+<li>Return to the open VS Code <strong>Terminal</strong></li>
+<li>Press <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-c">C</kbd></span> to terminate the application</li>
 </ul>
 </li>
 </ol>
@@ -6577,8 +6584,8 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <ul>
 <li>Click the <strong>Rebuild and refresh</strong> button to re-deploy the modernized application</li>
 <li>Wait for the Terminal to report a successful deployment</li>
-<li>Refresh the tab of the web application to inspect the modernized Liberty application</li>
-<li>Previously broken features, such as the <code>Logout</code> button, are now operable</li>
+<li><strong>Refresh</strong> the tab of the web application to inspect the modernized Liberty application</li>
+<li>Previously broken features, such as the <code>Logout</code> button, should now be fully operable</li>
 </ul>
 </li>
 </ol>
@@ -6588,7 +6595,13 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <p>Recall from before that the application's version of Java code was originally written for <code>Java 8</code>. However, to be compliant with modern versions of Liberty, that Java code will need to be upgraded to <code>Java 21</code>.</p>
 <hr />
 <ol start="19">
-<li>With the <strong>Explorer</strong> tab active, right click on the <code>modresorts-twas-j8</code> directory to expose a drop-down menu, hover over <strong>watsonx Code Assistant</strong>, and click <strong>Upgrade Java Version</strong>.</li>
+<li>
+<p>With the <strong>Explorer</strong> tab active, right click on the <code>modresorts-twas-j8</code> directory to expose a drop-down menu.</p>
+<ul>
+<li>Hover over <strong>watsonx Code Assistant</strong></li>
+<li>Left click <strong>Upgrade Java Version</strong> to continue</li>
+</ul>
+</li>
 </ol>
 <hr />
 <ol start="20">
@@ -6645,8 +6658,8 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <li>
 <p>With the application's Java version now upgraded to Java 21 by a combination of automated fixes and manual interventions —the application will once again need to be redeployed to reflect the changes.</p>
 <ul>
-<li>Open the VS Code <strong>Terminal</strong></li>
-<li>With the Terminal console open, press <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-c">C</kbd></span> to terminate the application</li>
+<li>Return to the open VS Code <strong>Terminal</strong></li>
+<li>Press <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-c">C</kbd></span> to terminate the application</li>
 </ul>
 </li>
 </ol>
@@ -6657,8 +6670,8 @@ Click the green <strong>Code</strong> button to open a drop-down menu of options
 <ul>
 <li>Click the <strong>Rebuild and refresh</strong> button to re-deploy the application</li>
 <li>Wait for the Terminal to report a successful deployment</li>
-<li>Refresh the tab of the web application to inspect the modernized Liberty application</li>
-<li>Previously broken features, such as the <code>Location</code> module, are now operable</li>
+<li><strong>Refresh</strong> the tab of the web application to inspect the modernized Liberty application</li>
+<li>Previously broken features, such as the <code>Location</code> module, should now be fully operable</li>
 </ul>
 </li>
 </ol>

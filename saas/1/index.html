@@ -730,8 +730,8 @@
 <h1 id="objectives-and-requirementsibm-cloud-saas-configuration"><strong>Objectives and requirements</strong></br><em>IBM Cloud (SaaS) Configuration</em></h1>
 <h2 id="i-about-this-lab"><strong>i. About this lab</strong></h2>
 <p>For the purposes of the Level 4 training curriculum, the hands-on components have been split across both on-premises and Software-as-a-Service (SaaS) environments on IBM Cloud. Both are supported by IBM Technology Zone (ITZ) infrastructure.</p>
-<p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively cover the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ teams means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
-<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. This module will guide you through the process of reserving the necessary <em>Standard</em> plan of WCA through ITZ and configuring the environment for use. Other modules in the L4 curriculum  (<em>Application Modernization</em> and <em>Tuning &amp; Configuration</em>) will each leverage the SaaS environment you've configured in the following steps.</p>
+<p>The <a href="https://ibm.github.io/wca-l4/on-premises/1/" target="_blank"><strong>On-Premises Installation and Deployment</strong></a> modules extensively covers the process of preparing, installing, and deploying a full-stack IBM watsonx Code Assistant (WCA) service "on-premises" (OpenShift on VMware). However, resource and budget constraints for ITZ team means that <strong>GPUs are unavailable for on-premises training environments</strong> like the one deployed in those modules. The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. These costs are beyond the scope of what can be supported for training with on-premises environments.</p>
+<p>Fortunately, participants <strong><em>do</em> have access to GPUs for SaaS training environments</strong> on IBM Cloud. The <strong>IBM Cloud (SaaS) Configuration</strong> module will guide participants through the process of reserving the necessary <em>Standard</em> plan of WCA via ITZ and configuring the environment for use. Other modules in the L4 curriculum  (<strong><a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank">Application Modernization</a></strong>) will each leverage the SaaS environment configured in the following steps.</p>
 <p>There are two tiers of plans (editions) available for SaaS deployments of WCA:</p>
 <table>
 <thead>
@@ -749,14 +749,14 @@
 </tr>
 <tr>
 <td><strong>STANDARD PLAN</strong></td>
-<td>In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan includes enterprise Java modernization capabilities, which will be of particular advantage for the <em>Application Modernization</em> modules of the Level 4 curriculum.</td>
-<td>Java upgrades, regardless of runtime. WebSphere to Liberty transformation. Enhanced test generation and code explanation.</td>
+<td>In addition to all the capabilities found in the <em>Essentials</em> plan, the <em>Standard</em> plan includes enterprise Java modernization capabilities, which will be of particular advantage for the <a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank"><strong>Application Modernization</strong></a> modules of the Level 4 curriculum.</td>
+<td>Java upgrades, regardless of runtime. WebSphere to Liberty transformation. Enhanced unit test generation and code explanation.</td>
 </tr>
 </tbody>
 </table>
-<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning <strong>WCA Standard Plan</strong> for the SaaS environment.</p>
+<p>To ensure that participants have access to the enterprise Java modernization capabilities, the instructions of this module call for provisioning a <strong>WCA Standard Plan</strong> as the basis of the SaaS environment.</p>
 <h2 id="ii-prerequisites"><strong>ii. Prerequisites</strong></h2>
-<p>There are two high-level architectural components to WCA:</p>
+<p>There are two high-level architectural components to WCA Standard Plan:</p>
 <div class="admonition note">
 <ol>
 <li><strong>WCA extension</strong>: The interface through which developers interact with WCA, in the form of an extension (sometimes called a "plug-in") running in an integrated development environment (IDE). The IDEs currently supported by WCA are Visual Studio Code (VS Code) and Eclipse.</li>

@@ -747,8 +747,8 @@
 <p class="admonition-title">SECTION I. TERMINOLOGY</p>
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
-<p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging is delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
-<p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of the messaging integrations.</p>
+<p><strong>WebSphere</strong> traditionally connects Java Enterprise Edition (Java EE) applications to <strong>IBM MQ</strong> using complex <strong>Java Message Service</strong> (<strong>JMS</strong>) configurations which depend upon external XML files. JMS is the standard by which Java APIs send, receive, and manage asynchronous messages between distributed Java EE applications. In turn, IBM MQ provides a middleware layer to ensure that such asynchronous messaging are delivered <em>reliably</em> between said applications. Collectively, these components come together to form the <strong>WebSphere MQ JMS integration</strong> that Lariat Corporation is using in their legacy systems today.</p>
+<p><strong>Liberty</strong> still makes use of JMS and MQ, but replaces the use of external XML file configuration management in favor of declarative configurations <em>directly within</em> Liberty's <code>server.xml</code> resource. The result is that configuration is no longer defined external to the server, which in turn reduces the complexity of managing such configurations for Lariat's developers and improves the maintainability of their messaging integrations.</p>
 <p></br></p>
 <table>
 <thead>
@@ -830,7 +830,7 @@
 </div>
 </div>
 <p>Lariat's particular implementation of WebSphere MQ JMS utilizes XML descriptors (<code>ejb-jar.xml</code>, <code>ibm-ejb-jar-bnd.xml</code> on <strong>lines 1 and 11</strong>, respectively) to define message-driven beans (MDB) and their JMS destinations.</p>
-<p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — a sharp contrast to the declarative approach we will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes setup of new configurations potentially more complex and prone to human-induced errors in the code.</p>
+<p>This is the <em>explicit</em> and <em>manual</em> style of configuring messaging endpoints through separate descriptor (XML) files — in sharp contrast to the declarative approach you will examine with Liberty momentarily. WebSphere's approach of using separate descriptor files makes the setup of new configurations potentially more complex and prone to human-induced errors within the code.</p>
 <hr />
 <h2 id="iii-liberty-modernized-code"><strong>iii. Liberty modernized code</strong></h2>
 <p>Consider below the modernized (but functionally equivalent) application code using <strong>Liberty's JMS configuration</strong>:</p>
@@ -1006,7 +1006,7 @@
 <ol start="5">
 <li>
 <p>After a few moments, WCA will return a combination of code blocks and explanations to the Chat session console. Cycle through the tab(s) below to examine the <strong>modernized, WCA-generated Liberty code</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="__tabbed_4_2">LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">WCA LIBERTY <code>ejb-jar.xml</code> Part 1</label><label for="__tabbed_4_2">WCA LIBERTY <code>ejb-jar.xml</code> Part 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
@@ -1132,13 +1132,13 @@
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">private</span><span class="w"> </span><span class="n">InitialContext</span><span class="w"> </span><span class="n">initialContext</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></p>
 <p></br>
-By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</code>, WCA allows developers to exact a high degree of control over the JMS lifecycle. For real-world enterprise operations, redundancy and explicit design can provide safety for production environments (and protect against misdeployments.)</p>
+By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</code>, WCA allows developers to exact a high degree of control over the JMS lifecycle. For real-world enterprise operations, redundancy and explicit design can provide safety for production environments (as well as protection against misdeployments.)</p>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
-<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for clients that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
+<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for enterprise organizations that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
@@ -1146,7 +1146,7 @@ By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</cod
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">version=</span><span class="s">&quot;3.1&quot;</span><span class="nt">&gt;</span>
 </code></pre></div></p>
 <p></br>
-WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for legacy JMS destinations - providing a degree of backwards compatibility to other legacy applications in the company's estate that isn't as easily achieved with Lariat's code.</p>
+WCA's invocation of <code>ejb-jar.xml</code> enables declarative binding for legacy JMS destinations, providing a degree of backwards compatibility to other legacy applications in the company's estate that isn't as easily achieved with Lariat's code.</p>
 </li>
 </ol>
 <hr />
