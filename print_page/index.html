@@ -1098,7 +1098,7 @@
 <tbody>
 <tr>
 <td><strong>Name</strong></td>
-<td>Give your reservation a unique name.</td>
+<td>Give the reservation a unique name.</td>
 </tr>
 <tr>
 <td><strong>Purpose</strong></td>
@@ -1106,7 +1106,7 @@
 </tr>
 <tr>
 <td><strong>Purpose Description</strong></td>
-<td>Give your reservation a unique description.</td>
+<td>Give the reservation a unique description.</td>
 </tr>
 <tr>
 <td><strong>Preferred Geography</strong></td>
@@ -1204,7 +1204,7 @@
 <h2 id="on-premises-2-iii-next-steps"><strong>iii. Next steps</strong></h2>
 <p>In the following module, you will access and configure the cluster's bastion node.</p></section><section class="print-page" id="on-premises-3"><h1 id="on-premises-3-bastion-host-setupon-premises-installation-and-deployment"><strong>Bastion host setup</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
-<p>The following section is based off of IBM Documentation write-ups that detail how to install IBM Software Hub on a Red Hat OpenShift Container Platform cluster. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=workstation-installing-software-hub-cli" target="_blank"><strong>Installing the IBM Software Hub command-line interface</strong></a>.</p>
+<p>The following section is based off of IBM Documentation detailing how to install IBM Software Hub on a Red Hat OpenShift Container Platform cluster. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=workstation-installing-software-hub-cli" target="_blank"><strong>Installing the IBM Software Hub command-line interface</strong></a>.</p>
 </div>
 <h2 id="on-premises-3-i-connect-to-the-bastion-host"><strong>i. Connect to the bastion host</strong></h2>
 <p>To access and configure the bastion host node, <strong>open a Terminal</strong> (Windows Terminal or the Terminal built into VS Code are good alternatives if you're on a PC).</p>
@@ -1465,7 +1465,7 @@
 <hr />
 <ol start="8">
 <li>
-<p>With your Terminal console, execute the following instruction to open the <strong>vi</strong> editor and create a shell script named <code>cpd_vars.sh</code> on the bastion host:</p>
+<p>With a Terminal console, execute the following instruction to open the <strong>vi</strong> editor (or a different editor of your choosing) and create a shell script named <code>cpd_vars.sh</code> on the bastion host:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#on-premises-3-__codelineno-7-1"></a>vi cpd_vars.sh
 </code></pre></div>
 <ul>
@@ -1580,7 +1580,7 @@
 </ol>
 </details></section><section class="print-page" id="on-premises-4"><h1 id="on-premises-4-cluster-preparationon-premises-installation-and-deployment"><strong>Cluster preparation</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <div class="admonition quote">
-<p>The following section is based off of IBM Documentation detailing how to prepare an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
+<p>The following section is based off of IBM Documentation for preparing an OpenShift cluster for IBM Cloud Pak for Data. Reference the instructions in full at the following resource: <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=installing-preparing-your-cluster" target="_blank"><strong>Preparing Your Cluster for IBM Software Hub</strong></a>.</p>
 </div>
 <h2 id="on-premises-4-i-change-process-ids-limit"><strong>i. Change process IDs limit</strong></h2>
 <p>With a newly installed cluster, a <em>KubeletConfig</em> will need to be manually created before the cluster's process IDs can be modified. This file will define the <code>podPidsLimit</code> and <code>maxPods</code> variables for the environment.</p>
@@ -1703,7 +1703,7 @@
 </ul>
 </div>
 <h2 id="on-premises-5-i-install-the-red-hat-openshift-cert-manager"><strong>i. Install the Red Hat OpenShift cert-manager</strong></h2>
-<p>After the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered in the following section.</p>
+<p>After the release of <strong>IBM Software Hub</strong>, previous methods for installing IBM Cloud Pak for Data (CP4D) that relied on IBM Cert Manager are no longer required. IBM Software Hub is now the recommended path and will be the method adhered to in the following section.</p>
 <hr />
 <ol>
 <li>
@@ -1779,7 +1779,7 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <ul>
 <li><strong>Click</strong> the title of the <code>cert-manager-Operator for Red Hat OpenShift</code> to open the details panel</li>
 <li>From the tabs along the top of the page, click <strong>Subscription</strong><sup>[A]</sup></li>
-<li>Under the <em>Subscription details</em> header, there are three panels: <em>Update channel</em>, <em>Update approval</em>, and <em>Update status</em>*</li>
+<li>Under the <em>Subscription details</em> header, there are three panels: <em>Update channel</em>, <em>Update approval</em>, and <em>Update status</em></li>
 <li>Click the hyperlinked <strong>1 requires approval</strong><sup>[B]</sup> text next to the <em>Update Status</em> panel</li>
 </ul>
 <p></br>
@@ -1831,29 +1831,29 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <hr />
 <h2 id="on-premises-5-ii-operators-for-gpus"><strong>ii. Operators for GPUs</strong></h2>
 <div class="admonition warning">
-<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p class="admonition-title">GPUs NOT SUPPORTED FOR L4 ON-PREMISES DEPLOYMENTS</p>
 <p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
-<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and, as such, at minimum two cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
 <p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
 </div>
 <p></br>
 Although GPUs will not be available to deploy or interact with for the <em>On-Premises Installation and Deployment</em> L4 training modules, participants will still be able to practice and learn the skills needed to prepare a cluster for GPUs.</p>
 <p>This section will cover all of the necessary configuration and setup required to make GPUs available to an IBM watsonx Code Asssitant service — shy of actually getting to use the GPUs with the on-premises deployment. Participants will still be able to interact with GPU-powered instances in the latter IBM Cloud (SaaS) modules of the L4 curriculum.</p>
-<p>Services such as IBM watsonx Code Assistant (on-premises), which requires access to GPUs, need to install several Operators on the OpenShift cluster to support the management of NVIDIA software components. Those components, in turn, are needed to provision the GPUs for access by the cluster.</p>
+<p>Services such as IBM watsonx Code Assistant (on-premises), which requires access to GPUs, need to install several Operators on the OpenShift cluster to support the management of NVIDIA software components. Those components, in turn, are needed to integrate the GPUs for access by the cluster.</p>
 <p>IBM watsonx Code Assistant requires that the following Operators be installed:
-    - <em>Node Feature Discovery Operator</em>: within the <code>openshift-nfd</code> namespace
-    - <em>NVIDIA GPU Operator</em>: within the <code>nvidia-gpu-operator</code> namespace
-    - <em>Red Hat OpenShift AI</em></p>
+- <em>Node Feature Discovery Operator</em>: within the <code>openshift-nfd</code> namespace
+- <em>NVIDIA GPU Operator</em>: within the <code>nvidia-gpu-operator</code> namespace
+- <em>Red Hat OpenShift AI</em></p>
 <hr />
 <h2 id="on-premises-5-iii-install-the-node-feature-discovery-operator"><strong>iii. Install the Node Feature Discovery Operator</strong></h2>
 <div class="admonition note">
 <p>The following section is based off a selection of the complete IBM Documentation available for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=software-installing-operators-services-that-require-gpus" target="_blank"><strong>Installing operators for services that require GPUs</strong></a>.</p>
 </div>
-<p>The following section will provide the instructions necessary to replicate this procedure. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
+<p>The following section will provide the instructions necessary to replicate the procedure of integrating NVIDIA GPUs with the OCP cluster. <strong>Participants are welcome to practice this with the L4 environment provided</strong> — just be aware that no physical GPU hardware will be available or connected at the conclusion of these steps.</p>
 <hr />
 <ol start="11">
 <li>
-<p>First, you will use the Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
+<p>Use a Terminal console to programmatically create a namespace <code>openshift-nfd</code> for the Node Feature Discovery (NDF) Operator. The following instruction set will create a namespace <strong>Custom Resource</strong> (CR) that defines the <code>openshift-ndf</code> namespace and then saves the YAML file to  <code>nfd-namespace.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#on-premises-5-__codelineno-3-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF </span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#on-premises-5-__codelineno-3-2"></a><span class="s">apiVersion: v1</span>
@@ -1871,7 +1871,7 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <hr />
 <ol start="12">
 <li>
-<p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by first defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
+<p>Install the <strong>NDF Operator</strong> within the <code>openshift-nfd</code> namespace that was created in Step 11 by defining the following objects. This will create an OperatorGroup CR and subsequently save the YAML file to <code>operatorgroup.yaml</code>.</p>
 <p>Copy and paste the following code block into the Terminal console, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#on-premises-5-__codelineno-4-1"></a>oc apply -f - <span class="s">&lt;&lt;EOF</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#on-premises-5-__codelineno-4-2"></a><span class="s">apiVersion: operators.coreos.com/v1</span>
@@ -2098,8 +2098,8 @@ Initially, the console may return a response such as <code>No resources found in
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#on-premises-5-__codelineno-13-1"></a>oc get installplan -n nvidia-gpu-operator
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">No resources found in nvidia-gpu-operator namespace.</p>
-<p><strong>Troubleshooting:</strong> The <code>nvidia-gpu-operator</code> namespace is still being deployed. Wait for 1 minute and then try executing Step 20 again.</p>
+<p class="admonition-title">TROUBLESHOOTING: No resources found in nvidia-gpu-operator namespace.</p>
+<p>The <code>nvidia-gpu-operator</code> namespace is still being deployed. Wait for 1 minute and then try executing Step 20 again.</p>
 </div>
 <p></br>
 The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>).</p>
@@ -2136,11 +2136,6 @@ Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; 
 </code></pre></div>
 </li>
 </ol>
-<hr />
-<div class="admonition tip">
-<p class="admonition-title">NOTE TO THE AUTHOR</p>
-<p><strong> THIS WILL BE THE SECTION YOU WILL NEED TO FILL OUT WITH A DEDICATED CLUSTER WITH GPU ACCESS, PURELY FOR DEMONSTRATION PURPOSES. REFER TO 00:21:00 TIMESTAMP IN THE RECORDING.</strong></p>
-</div>
 <hr />
 <h2 id="on-premises-5-v-install-red-hat-openshift-ai"><strong>v. Install Red Hat OpenShift AI</strong></h2>
 <div class="admonition note">
@@ -2382,7 +2377,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <hr />
 <ol>
 <li>
-<p>Three environment variables were "set" earlier in this lab, which are pertinent now to the license service (as well as the scheduler) that IBM Software Hub requires. These include:</p>
+<p>Three environment variables were set earlier in this lab, which are pertinent now to the license service (as well as the scheduler) that IBM Software Hub requires. These include:</p>
 <ul>
 <li><code>$PROJECT_LICENSE_SERVICE</code></li>
 <li><code>$PROJECT_SCHEDULING_SERVICE</code></li>
@@ -2432,7 +2427,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 </ol>
 <hr />
 <h2 id="on-premises-6-ii-install-an-instance-of-ibm-software-hub"><strong>ii. Install an instance of IBM Software Hub</strong></h2>
-<p>Finally, the cluster has been prepared to a state where it is ready to install an instance of IBM Software Hub. Although the following section requires relatively few inputs from the participant, it will take approximately 45 minutes for the installation process to complete.</p>
+<p>Finally, the cluster has been prepared to a state where it is ready to install an instance of IBM Software Hub. Although the following section requires relatively few inputs from the participant, it will take approximately <strong>45 minutes</strong> for the installation process to complete.</p>
 <hr />
 <ol start="4">
 <li>
@@ -2518,7 +2513,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <p>The following section is based off of IBM Documentation for <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=wca-installing" target="_blank"><strong>Installing watsonx Code Assistant v5.1.x</strong></a>.</p>
 </div>
 <h2 id="on-premises-7-i-user-responsibilities"><strong>i. User responsibilities</strong></h2>
-<p>Following the release of Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
+<p>Following the release of IBM Software Hub <code>v5.x</code>, watsonx Code Assistant (WCA) administrators need to only specify the <code>watsonx-code-assistant</code> component in order for the Software Hub to automatically fetch the required dependencies.</p>
 <hr />
 <p>To install WCA on-premises, you must be an <em>instance administrator</em> with permissions to install software in the following Red Hat OpenShift projects:</p>
 <ul>
@@ -2538,7 +2533,7 @@ All of the components that are associated with an instance of IBM Software Hub m
 <p></br>
 <strong>ENVIRONMENT VARIABLES</strong>
 </br>
-The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in Module 3.</p>
+The commands in this task use environment variables so that you can run the commands exactly as written. In the case of this lab, those variables are defined within the <code>cpd_vars.sh</code> manifest that was created in <strong><a href="https://ibm.github.io/wca-l4/on-premises/3/" target="_blank">Module 3</a></strong>.</p>
 <ul>
 <li>
 <p>If you want to read more about how to structure scripts like <code>cpd_vars.sh</code>, which define environment variables within a single source of truth, <a href="https://www.ibm.com/docs/en/SSNFH6_5.1.x/hub/install/collect-info-install-variables.html" target="_blank"><strong>review the IBM Documentation</strong></a>.</p>
@@ -2559,7 +2554,7 @@ WCA requires the availability of IBM Software Hub common core services. If the c
 <p></br>
 <strong>STORAGE</strong>
 </br>
-Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future clusters you may deploy, ensure that you specify a storage class with an equivalent definition.</p>
+Storage classes must be specified ahead of time when installing WCA. The following storage classes are recommended. However, if you don't use these particular storage classes on future cluster deployments, ensure that you specify a storage class with an equivalent definition.</p>
 <table>
 <thead>
 <tr>
@@ -2694,7 +2689,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </ol>
 <hr />
 <h2 id="on-premises-7-v-installing-software"><strong>v. Installing software</strong></h2>
-<p>Creating the custom resources for watsonx Code Assistant and kicking off the installation process is achieved with relatively few inputs from the administrator.</p>
+<p>Creating the custom resources for watsonx Code Assistant and kicking off the installation process is achieved with relatively few inputs from the administrator, but will still require several hours to resolve.</p>
 <hr />
 <ol start="3">
 <li>
@@ -2779,11 +2774,11 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </li>
 </ol>
 <h2 id="on-premises-7-vi-conclusion"><strong>vi. Conclusion</strong></h2>
-<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment!</br></br>Explore and inspect various aspects of the on-premises environment as you wish, but keep in mind that without GPUs attached to the environment you will be significantly restricted in terms of usability. Some features may be unavailable or broken without such hardware. That is why for the <em>Application Modernization</em> hands-on modules, you will have full GPU access via the provided IBM Cloud environments. Those modules will delve deeply into the administrative and developer-oriented tasks that are limited for the on-premises environment.</p>
+<p>Congratulations — you have successfully completed the installation of IBM watsonx Code Assistant within an on-premises environment!</br></br>Explore and inspect various aspects of the on-premises environment as you wish, but keep in mind that without GPUs attached to the environment you will be significantly restricted in terms of usability. Some features may be unavailable or broken without such hardware. That is why for the <strong><a href="https://ibm.github.io/wca-l4/appmod/1/" target="_blank">Application Modernization</a></strong> hands-on modules, you will have full GPU access via the provided IBM Cloud environments. Those modules will delve deeply into the administrative and developer-oriented tasks that are limited for the on-premises environment.</p>
 <details class="warning">
-<summary>GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</summary>
+<summary>GPUs NOT SUPPORTED FOR L4 ON-PREMISES DEPLOYMENTS</summary>
 <p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
-<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and, as such, at minimum two cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
 <p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
 </details>
 <details class="note">
