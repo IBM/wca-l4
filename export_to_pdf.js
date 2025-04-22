@@ -38,7 +38,7 @@ footerHtml = ` `;
         printBackground: true, // print background
         landscape: false, // use horizontal page layout
         headerTemplate: headerHtml, // indicate html template for header
- //       footerTemplate: footerHtml,
+        footerTemplate: footerHtml,
         scale: 0.8, //Scale amount must be between 0.1 and 2
         margin: { // increase margins (in this example, required!)
             top: 80,
