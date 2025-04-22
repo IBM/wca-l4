@@ -493,7 +493,7 @@
   
     <li class="md-nav__item">
       <a href="../../saas/4/" class="md-nav__link">
-        3. Install WCA extension for Visual Studio Code
+        4. Install WCA extension for Visual Studio Code
       </a>
     </li>
   
@@ -507,7 +507,7 @@
   
     <li class="md-nav__item">
       <a href="../../saas/5/" class="md-nav__link">
-        4. Install WCA plug-in for Eclipse IDE
+        5. Install WCA plug-in for Eclipse IDE
       </a>
     </li>
   
@@ -753,7 +753,7 @@
 <p><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data/5.1.x" target="_blank"><strong>IBM Cloud Pak for Data v5.1.x</strong></a>: a set of services comprising a data fabric solution for data governance, data engineering, data analysis, and AI lifecycle tasks.</p>
 </li>
 <li>
-<p><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank"><strong>IBM Software Hub v5.1</strong></a>: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform.</p>
+<p><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank"><strong>IBM Software Hub v5.1</strong></a>: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform (OCP).</p>
 </li>
 <li>
 <p><a href="https://www.ibm.com/docs/en/wx-code-assistant/5.1.x" target="_blank"><strong>IBM watsonx Code Assistant v5.1</strong></a>: a generative AI coding companion that provides contextually aware assistance for programming languages.</p>
@@ -761,12 +761,10 @@
 </ul>
 <p>Special acknowledgement and thanks to IBM colleagues Coralie Jonvel, Nelson Nunes, and Noe Samaille for adaptation of their <a href="https://github.ibm.com/CESC-Infrastructure-Services/Installation-CP4D-WatsonX" target="_blank"><strong>deployment instructions</strong></a> for watsonx.ai on Red Hat OpenShift.</p>
 <hr />
-<p><strong> INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE </strong></p>
-<hr />
 <div class="admonition warning">
-<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p class="admonition-title">GPUs NOT SUPPORTED FOR L4 ON-PREMISES DEPLOYMENTS</p>
 <p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
-<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and, as such, at minimum two cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
 <p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
 </div>
 <hr />
@@ -774,7 +772,7 @@
 <div class="admonition note">
 <p>Requirements specific to the hands-on environment are outlined in the section below. Comprehensive details about the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services" target="_blank"><strong>hardware requirements for x86_64 cluster services</strong></a> are available from IBM Software Hub documentation.</p>
 </div>
-<p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
+<p>Although the hands-on environment that will be provisioned in this module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <p></br></p>
 <p><strong>IBM Software Hub platform</strong>
 </br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform" target="_blank"><strong>IBM Documentation</strong></a></p>
@@ -922,9 +920,9 @@
 </li>
 <li>
 <p>Paste and <strong>save</strong> the entitlement key to a text file on your local machine.</p>
+<p><a class="glightbox" href="../_attachments/onprem-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-1.1.png" width="400" /></a></p>
 </li>
 </ol>
-<p><a class="glightbox" href="../_attachments/onprem-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/onprem-1.1.png" width="400" /></a></p>
 <hr />
 <h2 id="iv-troubleshooting-and-support"><strong>iv. Troubleshooting and support</strong></h2>
 <p>If you require assistance or run into issues with the hands-on lab, help is available.</p>

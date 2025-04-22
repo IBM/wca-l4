@@ -419,7 +419,7 @@
   
     <li class="md-nav__item">
       <a href="../saas/4/" class="md-nav__link">
-        3. Install WCA extension for Visual Studio Code
+        4. Install WCA extension for Visual Studio Code
       </a>
     </li>
   
@@ -433,7 +433,7 @@
   
     <li class="md-nav__item">
       <a href="../saas/5/" class="md-nav__link">
-        4. Install WCA plug-in for Eclipse IDE
+        5. Install WCA plug-in for Eclipse IDE
       </a>
     </li>
   
@@ -716,14 +716,14 @@
         
           <li class="md-nav__item">
   <a href="#saas-4" class="md-nav__link">
-    3. Install WCA extension for Visual Studio Code
+    4. Install WCA extension for Visual Studio Code
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#saas-5" class="md-nav__link">
-    4. Install WCA plug-in for Eclipse IDE
+    5. Install WCA plug-in for Eclipse IDE
   </a>
   
 </li>
@@ -876,7 +876,7 @@
 <p><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data/5.1.x" target="_blank"><strong>IBM Cloud Pak for Data v5.1.x</strong></a>: a set of services comprising a data fabric solution for data governance, data engineering, data analysis, and AI lifecycle tasks.</p>
 </li>
 <li>
-<p><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank"><strong>IBM Software Hub v5.1</strong></a>: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform.</p>
+<p><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank"><strong>IBM Software Hub v5.1</strong></a>: a cloud-native solution that clients use to install, manage, and monitor IBM solutions on Red Hat OpenShift Container Platform (OCP).</p>
 </li>
 <li>
 <p><a href="https://www.ibm.com/docs/en/wx-code-assistant/5.1.x" target="_blank"><strong>IBM watsonx Code Assistant v5.1</strong></a>: a generative AI coding companion that provides contextually aware assistance for programming languages.</p>
@@ -884,12 +884,10 @@
 </ul>
 <p>Special acknowledgement and thanks to IBM colleagues Coralie Jonvel, Nelson Nunes, and Noe Samaille for adaptation of their <a href="https://github.ibm.com/CESC-Infrastructure-Services/Installation-CP4D-WatsonX" target="_blank"><strong>deployment instructions</strong></a> for watsonx.ai on Red Hat OpenShift.</p>
 <hr />
-<p><strong> INSERT ARCHITECTURE GRAPHIC AND DESCRIPTION HERE </strong></p>
-<hr />
 <div class="admonition warning">
-<p class="admonition-title">GPUs NOT SUPPORTED FOR ON-PREMISES DEPLOYMENTS</p>
+<p class="admonition-title">GPUs NOT SUPPORTED FOR L4 ON-PREMISES DEPLOYMENTS</p>
 <p>Resource and budget constraints for IBM Technology Zone and the IBM Enablement teams means that GPUs are <strong>unavailable for the on-premises portion</strong> of the Level 4 curriculum.</p>
-<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and as such at minimum two of such cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
+<p>The NVIDIA A100 or H100 GPUs required are simply too cost-prohibitive to be made available for individual IBMers and business partners. GPUs cannot be shared in a multi-tenant access pattern for IBM watsonx Code Assistant — and, as such, at minimum two cards would need to be made available for every L4 reservation. These costs are beyond the scope of what can be supported by this training.</p>
 <p>Participants <strong><em>will</em> have access to GPUs for the IBM Cloud (SaaS) portion</strong> of the Level 4 curriculum.</p>
 </div>
 <hr />
@@ -897,7 +895,7 @@
 <div class="admonition note">
 <p>Requirements specific to the hands-on environment are outlined in the section below. Comprehensive details about the <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#services" target="_blank"><strong>hardware requirements for x86_64 cluster services</strong></a> are available from IBM Software Hub documentation.</p>
 </div>
-<p>Although the hands-on environment that will be provisioned in the next module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
+<p>Although the hands-on environment that will be provisioned in this module utilizes a templated, pre-defined ITZ infrastructure configuration, it will be useful for those enrolled to understand the resources required to reproduce a similar cluster in real-world client scenarios. This includes details about the CPU, memory, GPU, and other hardware components required to support the necessary cluster services.</p>
 <p></br></p>
 <p><strong>IBM Software Hub platform</strong>
 </br>Additional details available from <a href="https://www.ibm.com/docs/en/software-hub/5.1.x?topic=requirements-x86-64-hardware#platform" target="_blank"><strong>IBM Documentation</strong></a></p>
@@ -1045,9 +1043,9 @@
 </li>
 <li>
 <p>Paste and <strong>save</strong> the entitlement key to a text file on your local machine.</p>
+<p><a class="glightbox" href="../on-premises/_attachments/onprem-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-1.1.png" width="400" /></a></p>
 </li>
 </ol>
-<p><a class="glightbox" href="../on-premises/_attachments/onprem-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt=""  src="../on-premises/_attachments/onprem-1.1.png" width="400" /></a></p>
 <hr />
 <h2 id="on-premises-1-iv-troubleshooting-and-support"><strong>iv. Troubleshooting and support</strong></h2>
 <p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
@@ -3723,7 +3721,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p></br>
-The approach taken with each module of <strong>Application Modernization - WebSphere to Liberty</strong>,  engaging with IBM watsonx Code Assistant's (WCA) Chat functionality in the chapters ahead, is to emulate the experience of collaborating with a trusted colleague on how to best take on the modernization of WCA code: segmented by specific use cases, tackling particular business functions that need to be revitalized for cloud-native, and exploring precise pain points within a client's code base. The WCA Chat experience reflects how you and that trusted colleague might, together, approach a scenario like modernizing usage of Enterprise JavaBeans with WebSphere Liberty, as an example.</p>
+The approach taken with each module of <strong>Application Modernization - WebSphere to Liberty</strong>,  engaging with IBM watsonx Code Assistant's (WCA) Chat functionality in the chapters ahead, is to emulate the experience of collaborating with a trusted colleague on how to best take on the modernization of WebSphere Application Server code: segmented by specific use cases, tackling particular business functions that need to be revitalized for cloud-native, and exploring precise pain points within a client's code base. The WCA Chat experience reflects how you and that trusted colleague might, together, approach a scenario like modernizing usage of Enterprise JavaBeans with WebSphere Liberty, as an example.</p>
 <p>Thinking about modernization in discrete scenarios such as these, where the aperture is narrowly focused on a specific piece of functionality or use case— rather than trying to modernize an entire, complex application stack altogether —has immense value. It is far more akin and practical to the real-world scenarios that <em>you</em> will encounter during engagements with clients: as a seller; a business partner; a trusted advisor. Entrusted with bestowing best practices for how that client can modernize specific pain points in their application code; <em>not</em> taking on the task of modernizing the <em>entirety</em> of their application stack "in one go."</p>
 <p>Crafting complex modernization plans for enterprise-scale applications cannot be approached as explicit "A, then B, followed by C" rulebooks or rigid decision trees. It is essential that you understand how to approach modernization as a collaborative, problem-solving oriented, question-and-answer refinement exercise. WCA Chat, which you will use to these ends in the following chapters, is an ideal mechanism for refining the correct modernization approach.</p>
 <hr />
