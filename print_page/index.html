@@ -3389,35 +3389,30 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </li>
 </ol>
 <hr />
-<div class="admonition warning">
-<p>Modify the <strong>JAVA_HOME</strong> path in the <code>export JAVA_HOME=/.../</code> statements below if the pathway recorded in <em>Step 2</em> for <em>your machine</em> differs. For example, if using a different Java developer kit version from JDK 24, replace <code>/jdk-24.jdk/</code> with the version installed on <em>your</em> machine.</p>
-</div>
 <ol start="3">
 <li>
 <p>Set the <code>JAVA_HOME</code> environment variable.</p>
-<ul>
-<li><strong>macOS:</strong> Edit the shell configuration file<ul>
-<li>Default shell (<code>zsh</code>) with Terminal:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a>nano ~/.zshrc
-</code></pre></div></li>
-<li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#saas-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home
+<div class="admonition warning">
+<p>Modify the <strong>JAVA_HOME</strong> path in the <code>export JAVA_HOME=/.../</code> statements below if the pathway recorded in <em>Step 2</em> for <em>your machine</em> differs. For example, if using a different Java developer kit version from JDK 24, replace <code>/jdk-24.jdk/</code> with the version installed on <em>your</em> machine.</p>
+</div>
+<p></br>
+- <strong>macOS:</strong> Edit the shell configuration file
+    - Default shell (<code>zsh</code>) with Terminal:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a>nano ~/.zshrc
+</code></pre></div>
+    - <strong>Add</strong> the following line to the file:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#saas-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#saas-3-__codelineno-3-2"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
-</code></pre></div></li>
-<li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
-<li><strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
-</ul>
-</li>
-<li><strong>Windows:</strong><ul>
-<li>Open the <strong>Start</strong> menu and search for <code>Environment Variables</code></li>
-<li>Select <em>Edit the system environment variables</em> option</li>
-<li>Click the <strong>Environment Variables</strong> button</li>
-<li>Under <em>System Variables</em>, click <strong>New</strong></li>
-<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)</li>
-<li>Click <strong>OK</strong> to finalize</li>
-</ul>
-</li>
-</ul>
+</code></pre></div>
+    - <strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename
+    - <strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>
+- <strong>Windows:</strong>
+    - Open the <strong>Start</strong> menu and search for <code>Environment Variables</code>
+    - Select <em>Edit the system environment variables</em> option
+    - Click the <strong>Environment Variables</strong> button
+    - Under <em>System Variables</em>, click <strong>New</strong>
+    - Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-17</code>)
+    - Click <strong>OK</strong> to finalize</p>
 </li>
 </ol>
 <hr />
