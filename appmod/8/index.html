@@ -784,7 +784,13 @@
 <h2 id="ii-setting-up"><strong>ii. Setting up</strong></h2>
 <p></br></p>
 <ol>
-<li>Return to the Visual Studio Code (VS Code) application. It should already be signed in and authenticated with the WCA service on IBM Cloud — if it's not, follow the instructions in the <a href="https://ibm.github.io/wca-l4/saas/4/#iii-install-the-extension" target="_blank"><strong>IBM Cloud (SaaS) Configuration</strong></a> lab.</li>
+<li>
+<p>Return to the Visual Studio Code (VS Code) application. It should already be signed in and authenticated with the WCA service on IBM Cloud — if it's not, follow the instructions in the <a href="https://ibm.github.io/wca-l4/saas/4/#iii-install-the-extension" target="_blank"><strong>IBM Cloud (SaaS) Configuration</strong></a> lab.</p>
+<ul>
+<li>Ensure that the <strong>Explorer</strong> tab is cleared of any previously-opened folders or files before continuing.</li>
+<li>With the VS Code <strong>Explorer</strong> tab selected and open, click <strong>File</strong> &gt; <strong>Close Folder</strong> from the top taskbar.</li>
+</ul>
+</li>
 </ol>
 <hr />
 <ol start="2">
@@ -809,16 +815,20 @@
 <hr />
 <ol start="3">
 <li>
-<p><strong>Download</strong> the WebSphere Application Server (WAS) assets that are to be modernized from the following GitHub repository:</p>
+<p>Next, participants must download the WebSphere Application Server (WAS) assets that are to be modernized. The assets will be retrieved from the following GitHub repository:</p>
 <p></br></p>
 <div class="admonition warning">
-<p><strong>URL:</strong> <a href="https://github.com/sidharthmittal25/wca4ej-workshop/tree/main" target="_blank">https://github.com/sidharthmittal25/wca4ej-workshop/tree/main</a></p>
+<p class="admonition-title">GitHub URL</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://github.ibm.com/cdbienko/wca-assets-2025.git
+</code></pre></div>
 </div>
-<p></br>
-Click the <strong>Code</strong> button to open a drop-down menu of options. Choose one of the following:</p>
+<p></br></p>
 <ul>
-<li>Copy the <strong>GitHub CLI</strong> command line instructions and paste these into the VS Code terminal (open the Terminal by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar)</li>
-<li>Alternatively, click <strong>Download ZIP</strong> to download the assets directly to your local desktop with the web browser</li>
+<li>Open the <strong>Explorer</strong> tab from the VS Code interface</li>
+<li>Click the <strong>Clone Repository</strong> button to open a pop-up window in the top-center of the VS Code interface</li>
+<li>Paste in the full <strong>GitHub URL</strong> (above) and then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> (or click the <strong>Clone from URL</strong> button just below the pop-up window)</li>
+<li>VS Code will ask you to select where on the local machine to clone the repository: select your Desktop (or another location you can easily find later)</li>
+<li>Once cloned, the <code>wca-assets-2025</code> folder will automatically open within the <strong>Explorer</strong> tab</li>
 </ul>
 </li>
 </ol>
@@ -827,27 +837,28 @@ Click the <strong>Code</strong> button to open a drop-down menu of options. Choo
 <p></br></p>
 <ol start="4">
 <li>
-<p>Next, you will need to build the application <em>Project</em>. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
+<p>Participants now need to build the application <em>Project</em>. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
-<li>Navigate using the Terminal to the <em>Project</em> folder where you saved <code>wca4ej-workshop</code> in Step 3</li>
-<li>Replace the <code>&lt;your-path&gt;</code> variable with the path to where that folder was saved</li>
-<li>With a Terminal console, execute the following instruction:</li>
+<li>Navigate using the Terminal to the folder where you cloned <code>wca-assets-2025</code> in <em>Step 3</em> and drill down into the <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory (substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
+</code></pre></div></li>
+<li>Source the <code>~/.zshrc</code> <em>PATH</em> and <em>JAVA_HOME</em> variables (set up previously in the <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a> module) by executing the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span> ~/.zshrc
+</code></pre></div></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span> &lt;your-path&gt;/wca4ej-workshop/modresorts-twas-j8/was_dependency
-</code></pre></div>
 </li>
 </ol>
 <hr />
 <ol start="5">
 <li>
-<p>Once inside the folder, run the following command to <em>build</em> the application project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
+<p>The necessary Maven dependencies must be prepared within the <code>was_dependency</code> directory before the application can be deployed. Using a Terminal, <strong>execute</strong> the following instruction:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WINDOWS USERS</p>
 <p>Windows users might need to provide the full path for the build files <code>was_public.jar</code> and <code>was_public-9.0.0.pom</code>, for example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
 </code></pre></div></p>
 </div>
 </li>
@@ -855,24 +866,23 @@ Click the <strong>Code</strong> button to open a drop-down menu of options. Choo
 <hr />
 <ol start="6">
 <li>
-<p>With the application project built and the <em>Liberty Tools</em> extension added to VS Code, click the <strong>watsonx Code Assistant</strong> tab from the left-hand interface.</p>
+<p>With the <code>was_dependency</code> folder now prepared with the necessary drivers, you are ready to <em>build</em> and <em>deploy</em> the application project into a live web application</p>
 <ul>
-<li>Look for a <strong>Liberty Dashboard</strong> drop-down panel amongst the tabs</li>
-<li>Click the <strong>Add project to Liberty Dashboard</strong> button</li>
-<li>Specify the path to the <code>modresort-twas-j8</code> folder</li>
+<li>Open the <strong>Explorer</strong> tab from the left-hand side of the VS Code interface</li>
+<li>Below the list of assets belonging the <code>modresorts-twas-j8</code> directory, locate and toggle the <strong>LIBERTY DASHBOARD</strong> drop-down panel amongst the tabs</li>
 </ul>
 </li>
 </ol>
 <hr />
 <ol start="7">
 <li>
-<p>After selecting the application project, a <code>modresorts</code> app will show up under the <em>Liberty Dashboard</em> panel.</p>
+<p>Within the <strong>LIBERTY DASHBOARD</strong> , a <code>modresorts</code> app will show up under the <em>Liberty Dashboard</em> panel.</p>
 <ul>
 <li>Right click on the <code>modresorts</code> project name to open the drop-down menu of options</li>
 <li>Click <strong>Start</strong> to initialize the project</li>
 <li>VS Code will automatically download the necessary packages (you can trace the progress within the Terminal console)</li>
 <li><strong>Wait</strong> until the initialization process has finished and the console has returned a <code>Source compilation was successful</code> message</li>
-<li><strong>Copy</strong> and record the <strong>Web application URL</strong> returned by the Terminal console (<code>http://localhost:9080/resorts</code> or similar)</li>
+<li><strong>Copy</strong> and record the <em>Web application available (default host): ...</em> address returned by the Terminal console (<code>http://localhost:9080/resorts</code> or similar)</li>
 </ul>
 </li>
 </ol>
@@ -940,7 +950,7 @@ Click the <strong>Code</strong> button to open a drop-down menu of options. Choo
 <li>Further down the panel, a pointer to the impacted file(s) in the legacy code will be provided</li>
 <li><strong>Click</strong> the name of the impacted file to inspect its source code:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>src/main/java/com/acme/modres/UpperServlet.java
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
 </li>
 </ol>
@@ -960,20 +970,20 @@ Click the <strong>Code</strong> button to open a drop-down menu of options. Choo
 <p>WCA will engage a <em>Chat</em> session and generate within the conversation <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
 <p></br>
 <strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code> that were copied in Step 13.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p></br>
 <strong>Recommendation 2:</strong> The second fix will be <em>new</em> lines of code that are to be added to the <code>pom.xml</code> file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
