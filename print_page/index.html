@@ -3385,12 +3385,13 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>Set the <code>JAVA_HOME</code> environment variable.</p>
 <ul>
 <li><strong>macOS:</strong> Edit the shell configuration file<ul>
-<li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
-<li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
-<li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#saas-3-__codelineno-0-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>
+<li>Default shell (<code>zsh</code>) with Terminal:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#saas-3-__codelineno-0-1"></a>nano ~/.zshrc
 </code></pre></div></li>
-<li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
+<li><strong>Add</strong> the following line to the file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#saas-3-__codelineno-1-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>
+</code></pre></div></li>
+<li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
 <li><strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
 </ul>
 </li>
@@ -3409,13 +3410,11 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <ol start="4">
 <li>Apply the changes immediately.<ul>
-<li><strong>macOS</strong>: Run <em>either</em> of these commands with Terminal<ul>
-<li>For <code>zsh</code> shell:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#saas-3-__codelineno-1-1"></a><span class="nb">source</span> ~/.zshrc
+<li><strong>macOS</strong>:<ul>
+<li>Run the following command with Terminal:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a><span class="nb">source</span> ~/.zshrc
 </code></pre></div></li>
-<li>For <code>bash</code> shell:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a><span class="nb">source</span> ~/.bash_profile
-</code></pre></div></li>
+<li>If no errors are reported, the variables have been successfully sourced (set)</li>
 </ul>
 </li>
 <li><strong>Windows:</strong><ul>
