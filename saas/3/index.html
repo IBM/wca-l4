@@ -822,7 +822,7 @@
 <li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
 <li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
 <li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash&lt;br&gt;export <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>&lt;br&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>
 </code></pre></div></li>
 <li><strong>Save</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>) and <strong>exit</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>) the editor</li>
 </ul>
@@ -859,12 +859,12 @@
 <ol start="5">
 <li>Verify the <code>JAVA_HOME</code> environment variable has been correctly set.<ul>
 <li><strong>macOS:</strong><ul>
-<li>With Terminal, execute: <code>bash&lt;br&gt;echo $JAVA_HOME&lt;br&gt;</code></li>
+<li>With Terminal, execute: <code>bash echo $JAVA_HOME</code></li>
 <li>The console will return the Java installation path</li>
 </ul>
 </li>
 <li><strong>Windows:</strong><ul>
-<li>With Command Prompt, execute: <code>cmd&lt;br&gt;echo %JAVA_HOME%&lt;br&gt;</code></li>
+<li>With Command Prompt, execute: <code>cmd echo %JAVA_HOME%</code></li>
 <li>The console will return the Java installation path</li>
 </ul>
 </li>
