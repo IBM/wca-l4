@@ -822,7 +822,7 @@
 <li>Default shell (<code>zsh</code>) with Terminal: <code>nano ~/.zshrc</code></li>
 <li>Alternatively, older shell (<code>bash</code>) with Terminal: <code>nano ~/.bash_profile</code></li>
 <li><strong>Add</strong> the following line to the file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>
 </code></pre></div></li>
 <li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span>, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
 <li><strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
@@ -844,8 +844,12 @@
 <ol start="4">
 <li>Apply the changes immediately.<ul>
 <li><strong>macOS</strong>: Run <em>either</em> of these commands with Terminal<ul>
-<li>For <code>zsh</code> shell: <code>source ~/.zshrc</code></li>
-<li>For <code>bash</code> shell: <code>source ~/.bash_profile</code></li>
+<li>For <code>zsh</code> shell:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">source</span> ~/.zshrc
+</code></pre></div></li>
+<li>For <code>bash</code> shell:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span> ~/.bash_profile
+</code></pre></div></li>
 </ul>
 </li>
 <li><strong>Windows:</strong><ul>
@@ -860,12 +864,16 @@
 <ol start="5">
 <li>Verify the <code>JAVA_HOME</code> environment variable has been correctly set.<ul>
 <li><strong>macOS:</strong><ul>
-<li>With Terminal, execute: <code>bash echo $JAVA_HOME</code></li>
+<li>With Terminal, execute:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span> <span class="nv">$JAVA_HOME</span>
+</code></pre></div></li>
 <li>The console will return the Java installation path</li>
 </ul>
 </li>
 <li><strong>Windows:</strong><ul>
-<li>With Command Prompt, execute: <code>cmd echo %JAVA_HOME%</code></li>
+<li>With Command Prompt, execute:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cmd <span class="nb">echo</span> %JAVA_HOME%
+</code></pre></div></li>
 <li>The console will return the Java installation path</li>
 </ul>
 </li>
@@ -879,14 +887,14 @@
 <li><strong>Download</strong> and <strong>install</strong> the latest Maven distribution using either the MacOS or Windows instruction sets below.<ul>
 <li><strong>macOS:</strong><ul>
 <li>The simplest method is using <a href="https://brew.sh" target="_blank"><strong>Homebrew</strong></a> to install and deploy Maven locally. To install Homebrew, execute the following with Terminal:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </code></pre></div></li>
 <li>With Terminal, execute:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew install maven
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>brew install maven
 </code></pre></div></li>
 <li>Follow the prompts (confirming with <code>yes</code> if asked to confirm the install)</li>
 <li>After the install process has concluded, test with Terminal:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn --version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mvn --version
 </code></pre></div></li>
 </ul>
 </li>
@@ -895,10 +903,10 @@
 <li>Under <strong>Files</strong>, click on the binary zip archive link (for example, <code>apache-maven-x.x.x-bin.zip</code>)</li>
 <li>Extract the zip file to a location on your local machine (for example, <code>C:\Apache\maven\</code>)</li>
 <li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>MAVEN_HOME= &lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>MAVEN_HOME= &lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9
 </code></pre></div></li>
 <li><strong>Replace</strong> <code>&lt;path-to-folder&gt;</code> with your machine's installation path and then execute the following with Command Prompt:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;path-to-folder&gt;\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
 </code></pre></div></li>
 <li>Maven is now successfully installed and configured</li>
 </ul>
