@@ -816,19 +816,17 @@
 <ol start="3">
 <li>
 <p>Next, participants must download the WebSphere Application Server (WAS) assets that are to be modernized. The assets will be retrieved from the following GitHub repository:</p>
-<p></br></p>
-<div class="admonition warning">
+<div class="admonition note">
 <p class="admonition-title">GitHub URL</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://github.ibm.com/cdbienko/wca-assets-2025.git
 </code></pre></div>
 </div>
-<p></br></p>
 <ul>
 <li>Open the <strong>Explorer</strong> tab from the VS Code interface</li>
 <li>Click the <strong>Clone Repository</strong> button to open a pop-up window in the top-center of the VS Code interface</li>
 <li>Paste in the full <strong>GitHub URL</strong> (above) and then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> (or click the <strong>Clone from URL</strong> button just below the pop-up window)</li>
 <li>VS Code will ask you to select where on the local machine to clone the repository: select your Desktop (or another location you can easily find later)</li>
-<li>Once cloned, the <code>wca-assets-2025</code> folder will automatically open within the <strong>Explorer</strong> tab</li>
+<li>Once cloned, the <code>wca-assets-2025</code> folder will automatically open within <strong>Explorer</strong></li>
 </ul>
 </li>
 </ol>
@@ -839,7 +837,7 @@
 <li>
 <p>Participants now need to build the application <em>Project</em>. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
-<li>Navigate using the Terminal to the folder where you cloned <code>wca-assets-2025</code> in <em>Step 3</em> and drill down into the <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory (substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory):
+<li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was cloned in <em>Step 3</em> and drill down into <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory (substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
 </code></pre></div></li>
 <li>Source the <code>~/.zshrc</code> <em>PATH</em> and <em>JAVA_HOME</em> variables (set up previously in the <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a> module) by executing the following:
