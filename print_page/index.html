@@ -6429,6 +6429,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <h2 id="appmod-7-v-conclusion"><strong>v. Conclusion</strong></h2>
 <p>Full-stack modernization requires access to the entire application code base of libraries, dependencies, compiled assets, and the contents of the application's directory structure — combined as well with the transformation guidance that is built out using <a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank"><strong>IBM Cloud Transformation Advisor</strong></a>. <em>Out of context</em> fragments of application code cannot convey that level of information and complexity. Techniques for full-stack application modernization will be explored in following section.</p></section><section class="print-page" id="appmod-8"><h1 id="appmod-8-full-stack-modernizationapplication-modernization-websphere-to-liberty"><strong>Full stack modernization</strong></br><em>Application Modernization - WebSphere to Liberty</em></h1>
 <h2 id="appmod-8-i-objectives"><strong>i. Objectives</strong></h2>
+<hr />
 <p>As a capstone to the experimentation and feature-exploration conducted with <strong>IBM watsonx Code Assistant</strong> (<strong>WCA</strong>) in the previous modules of this lab, participants will conclude the <em>Application Modernization</em> topic with a hands-on opportunity: modernization of a full-stack WebSphere Application Service (WAS) application into WebSphere Liberty.</p>
 <p>Participants will be tasked with:</p>
 <ul>
@@ -6486,7 +6487,6 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ul>
 </li>
 </ol>
-<hr />
 <h2 id="appmod-8-iii-deploy-the-application"><strong>iii. Deploy the application</strong></h2>
 <p>Participants now need to build the application <em>Project</em>. </p>
 <hr />
@@ -6495,7 +6495,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
 <li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was cloned in <em>Step 3</em> and drill down <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory</li>
-<li><strong>Attention:</strong> Substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory
+<li><strong>Attention:</strong> Substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> directory
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#appmod-8-__codelineno-0-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
 </code></pre></div></li>
 <li>Source the <code>~/.zshrc</code> <em>PATH</em> and <em>JAVA_HOME</em> variables (set up previously in the <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a> module) by executing the following:
@@ -6510,7 +6510,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>The necessary Maven dependencies must be prepared within the <code>was_dependency</code> directory before the application can be deployed. Using a Terminal, <strong>execute</strong> the following instruction:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#appmod-8-__codelineno-2-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
 </code></pre></div>
-<div class="admonition warning">
+<div class="admonition note">
 <p class="admonition-title">WINDOWS USERS</p>
 <p>Windows users might need to provide the full path for the build files <code>was_public.jar</code> and <code>was_public-9.0.0.pom</code>, for example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
@@ -6546,7 +6546,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <ol start="8">
 <li>
 <p>Open a new web browser tab and visit the <strong>Web application URL</strong> recorded in Step 7. Explore and familiarize yourself with the various tabs and pages built into the legacy web application.</p>
-<div class="admonition warning">
+<div class="admonition note">
 <p class="admonition-title">ERRORS AND BROKEN WEB LINKS</p>
 <p>As the legacy application has been built for WebSphere Application Server (WAS) using <code>Java 8</code>, but the deployment generated in Step 7 was intended for WebSphere Liberty using <code>Java 21</code>, there are a number of pages within the app that will produce an "Error" — for example, the location information module. These will be aspects of the application that you will remedy as part of the modernization steps that follow.</p>
 </div>
@@ -6562,7 +6562,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>Right-click on <code>modresorts-twas-j8</code> to open a drop-down menu of options</li>
 <li>Hover over the <strong>watsonx Code Assistant</strong> option and then select <strong>Explain Application</strong></li>
 <li>When prompted, click <strong>Proceed with code analysis</strong></li>
-<li>Wait approximately <strong>1-2 minutes</strong> for the analysis to complete, at which time a pop-up will appear in the bottom-right corner of VS Code stating that <code>The explanation has been completed</code></li>
+<li>Wait <strong>1-2 minutes</strong> for the analysis to complete, at which time a pop-up will appear in the bottom-right corner of VS Code stating that <code>The explanation has been completed</code></li>
 <li>Click the <strong>Open explanation</strong> button within the pop-up to open and peruse the report</li>
 </ul>
 </li>
@@ -6599,7 +6599,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <ul>
 <li>Along the top of the tab, left-click the grey <strong>Instructions</strong> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
 <li>In this example, the <code>WebSphere Servlet API was superseded by a newer implementation</code> that uses <code>Servlet 3.0</code> functionality and as such a trio of packages used by the WAS app will no longer be available for use with Liberty</li>
-<li>Further down the panel, a pointer to the impacted file(s) in the legacy code will be provided</li>
+<li>Further down the panel, impacted file(s) in the legacy application code will be provided</li>
 <li><strong>Click</strong> the name of the impacted file to inspect its source code:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-8-__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
