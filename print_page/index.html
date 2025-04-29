@@ -6526,6 +6526,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <ul>
 <li>Open the <strong>Explorer</strong> tab from the left-hand side of the VS Code interface</li>
 <li>Below the list of assets belonging the <code>modresorts-twas-j8</code> directory, locate and toggle the <strong>LIBERTY DASHBOARD</strong> drop-down panel amongst the tabs</li>
+<li>If <code>modresorts</code> is not displayed, click the <strong>Add project to Liberty Dashboard</strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when prompted to select the <code>modresorts-twas-j8</code> project</li>
 </ul>
 </li>
 </ol>
@@ -6540,6 +6541,9 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li><strong>Wait</strong> until the initialization process has finished and the console has returned a <code>Source compilation was successful</code> message</li>
 <li><strong>Copy</strong> and record the <em>Web application available (default host): ...</em> address returned by the Terminal console (<code>http://localhost:9080/resorts</code> or similar)</li>
 </ul>
+<div class="admonition tip">
+<p><strong>Record</strong> the value of the <em>Liberty Debug Port</em> to a notepad for reference later.</p>
+</div>
 </li>
 </ol>
 <hr />
@@ -6636,7 +6640,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>
 <p>An editor window will open on the right side of VS Code, displaying the contents of <code>UpperServlet.java</code> for editing. The next set of instructions will follow along with the guidance recommended by the <em>Modernize</em> panel (in the center of the VS Code interface):</p>
 <ul>
-<li>Select all of the class that uses the <code>ResponseUtils.encodeDataString()</code> method, beginning on <strong>Line 14</strong> (<code>@WebServlet("/resorts/upper")</code>) and ending on <strong>Line 27</strong></li>
+<li>Select all of the class that uses the <code>ResponseUtils.encodeDataString()</code> method, beginning on <strong>Line 14</strong> from <code>@WebServlet("/resorts/upper")</code> and ending on <strong>Line 27</strong> (an empty newline)</li>
 </ul>
 <div class="admonition tip">
 <p><strong>Record</strong> the text (if any) that appears directly above <em>Line 14</em> within the open <code>UpperServlet.java</code> file contents window. Save this information to a notepad for reference later.</p>
@@ -6652,15 +6656,30 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>WCA will engage a <em>Chat</em> session and generate within the conversation <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
 <p></br>
 <strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code>, beginning on <em>Line 23</em> and ending on <em>Line 26</em>. A new line will also need to be added to the <code>import</code> statements at the beginning of the file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#appmod-8-__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#appmod-8-__codelineno-5-3"></a><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#appmod-8-__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#appmod-8-__codelineno-5-5"></a><span class="n">String</span><span class="w"> </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;input&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#appmod-8-__codelineno-5-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">originalStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#appmod-8-__codelineno-5-7"></a><span class="w">    </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#appmod-8-__codelineno-5-8"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#appmod-8-__codelineno-5-9"></a><span class="n">String</span><span class="w"> </span><span class="n">escapedStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringEscapeUtils</span><span class="p">.</span><span class="na">escapeHtml4</span><span class="p">(</span><span class="n">originalStr</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a><span class="c1">// Assisted by watsonx Code Assistant</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#appmod-8-__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.commons.text.StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#appmod-8-__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#appmod-8-__codelineno-5-4"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#appmod-8-__codelineno-5-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#appmod-8-__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#appmod-8-__codelineno-5-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#appmod-8-__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#appmod-8-__codelineno-5-9"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#appmod-8-__codelineno-5-10"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#appmod-8-__codelineno-5-11"></a><span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">setContentType</span><span class="p">(</span><span class="s">&quot;text/html&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#appmod-8-__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#appmod-8-__codelineno-5-13"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;input&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#appmod-8-__codelineno-5-14"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">originalStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#appmod-8-__codelineno-5-15"></a><span class="w">            </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#appmod-8-__codelineno-5-16"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#appmod-8-__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#appmod-8-__codelineno-5-18"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">escapedStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringEscapeUtils</span><span class="p">.</span><span class="na">escapeHtml4</span><span class="p">(</span><span class="n">originalStr</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#appmod-8-__codelineno-5-19"></a><span class="w">        </span><span class="n">newStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringEscapeUtils</span><span class="p">.</span><span class="na">escapeHtml4</span><span class="p">(</span><span class="n">newStr</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#appmod-8-__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#appmod-8-__codelineno-5-21"></a><span class="w">        </span><span class="n">PrintWriter</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#appmod-8-__codelineno-5-22"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;&lt;br/&gt;&lt;b&gt;capitalized input &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">newStr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&lt;/b&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#appmod-8-__codelineno-5-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#appmod-8-__codelineno-5-24"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p></br>
 <strong>Recommendation 2:</strong> The second fix will be <em>new</em> lines of code that are to be added to the <code>pom.xml</code> file.</p>
@@ -6686,7 +6705,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <ul>
 <li>Double-click on the filename to edit the contents</li>
 <li>Scroll down until you reach <strong>Level 58</strong> (<code>&lt;/dependency&gt;</code>) and place your cursor at the end of the line, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to create a new line</li>
-<li>Beginning on the new <strong>Line 59</strong> of the <code>pom.xml</code> contents, <strong>add</strong> the contents of WCA's <strong>Recommendation 2</strong> (the second code block of Step 14) to the file</li>
+<li>Beginning on the new <strong>Line 59</strong> of the <code>pom.xml</code> contents, <strong>add</strong> the contents of WCA's <strong>Recommendation 2</strong> (the second code block of <em>Step 14</em>) to the file</li>
 <li>The new lines of code should now occupy Lines 59-63 of the modified <code>pom.xml</code> code</li>
 <li>Ensure that the indentation lines up with other <code>&lt;dependency&gt;</code> declarations within the parent <code>&lt;dependencies&gt;</code> nesting</li>
 <li>Save the changes to the file (<strong>File</strong> &gt; <strong>Save</strong>)</li>
@@ -6712,10 +6731,15 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>To re-deploy the application, return to the <strong>Modernize</strong> panel (right hand side). Take note of the fact that all <em>Issues</em> previously reported by the tool have been resolved.</p>
 <ul>
 <li>Click the <strong>Rebuild and refresh</strong> button to re-deploy the modernized application</li>
-<li>Wait for the Terminal to report a successful deployment</li>
+<li>Wait for the <em>Modernize ModResorts</em> summary to refresh: it should now should only 1 Automated fix (optional and can be ignore) and 0 Assisted fixes are recommended</li>
+<li>Open the <strong>Explorer</strong> tab and locate the <strong>LIBERTY DASHBOARD</strong> drop-down</li>
+<li>Right click on <code>modresorts</code>, click <strong>Start</strong>, and wait for the console to report a successful deployment</li>
 <li><strong>Refresh</strong> the tab of the web application to inspect the modernized Liberty application</li>
 <li>Previously broken features, such as the <code>Logout</code> button, should now be fully operable</li>
 </ul>
+<div class="admonition tip">
+<p><strong>Click</strong> the <em>Logout</em> button on the redeployed ModResorts page. Wait for the page to refresh and then <strong>record</strong> the message on the page to a notepad for reference later.</p>
+</div>
 </li>
 </ol>
 <h2 id="appmod-8-vi-java-version-upgrades"><strong>vi. Java version upgrades</strong></h2>
