@@ -966,7 +966,8 @@
 <li>Along the top of the tab, left-click the grey <strong>Instructions</strong> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
 <li>In this example, the <code>WebSphere Servlet API was superseded by a newer implementation</code> that uses <code>Servlet 3.0</code> functionality and as such a trio of packages used by the WAS app will no longer be available for use with Liberty</li>
 <li>Further down the panel, impacted file(s) in the legacy application code will be provided</li>
-<li><strong>Click</strong> the name of the impacted file to inspect its source code:</li>
+<li><strong>Click</strong> the drop-down arrow to the <em>right</em> of the impacted file to reveal a detailed set of instructions for how to improve the code</li>
+<li>Afterwards, <strong>click</strong> the <em>name</em> of the impacted file to inspect its source code in a new editor window:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
@@ -975,9 +976,14 @@
 <hr />
 <ol start="13">
 <li>
-<p>An editor window will open in VS Code, displaying the contents of <code>UpperServlet.java</code> for editing. The next set of instructions will follow along with the guidance recommended by the <em>Modernize</em> panel (on the right side of the VS Code interface):</p>
+<p>An editor window will open on the right side of VS Code, displaying the contents of <code>UpperServlet.java</code> for editing. The next set of instructions will follow along with the guidance recommended by the <em>Modernize</em> panel (in the center of the VS Code interface):</p>
 <ul>
 <li>Select all of the class that uses the <code>ResponseUtils.encodeDataString()</code> method, beginning on <strong>Line 14</strong> (<code>@WebServlet("/resorts/upper")</code>) and ending on <strong>Line 27</strong></li>
+</ul>
+<div class="admonition tip">
+<p><strong>Record</strong> the text (if any) that appears directly above <em>Line 14</em> within the open <code>UpperServlet.java</code> file contents window. Save this information to a notepad for reference later.</p>
+</div>
+<ul>
 <li>With the relevant code highlighted, click the <strong>Help me</strong> button in the <em>Modernize</em> panel</li>
 </ul>
 </li>
@@ -987,13 +993,16 @@
 <li>
 <p>WCA will engage a <em>Chat</em> session and generate within the conversation <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
 <p></br>
-<strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code> that were copied in Step 13.</p>
+<strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code>, beginning on <em>Line 23</em> and ending on <em>Line 26</em>. A new line will also need to be added to the <code>import</code> statements at the beginning of the file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">String</span><span class="w"> </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;input&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">originalStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">originalStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">String</span><span class="w"> </span><span class="n">escapedStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringEscapeUtils</span><span class="p">.</span><span class="na">escapeHtml4</span><span class="p">(</span><span class="n">originalStr</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p></br>
 <strong>Recommendation 2:</strong> The second fix will be <em>new</em> lines of code that are to be added to the <code>pom.xml</code> file.</p>
@@ -1008,7 +1017,7 @@
 <hr />
 <ol start="15">
 <li>
-<p>Edit the contents of <code>UpperServlet.java</code> by <strong>replacing</strong> the highlighted lines of code (Step 13) with the WCA-generated <strong>Recommendation 1</strong> code (the first code block of Step 14).</p>
+<p>Edit the contents of <code>UpperServlet.java</code> by <strong>replacing</strong> the highlighted lines of code as instructed in <em>Step 14</em> with the WCA-generated <strong>Recommendation 1</strong> code.</p>
 <p>Save the changes to the file (<strong>File</strong> &gt; <strong>Save</strong>).</p>
 </li>
 </ol>
@@ -1018,8 +1027,10 @@
 <p>Locate the <code>pom.xml</code> file from the list of assets under the <strong>Explorer</strong> tab.</p>
 <ul>
 <li>Double-click on the filename to edit the contents</li>
-<li>Beginning on <strong>Line 59</strong> of the <code>pom.xml</code> contents, <strong>add</strong> the contents of WCA's <strong>Recommendation 2</strong> (the second code block of Step 14) to the file</li>
+<li>Scroll down until you reach <strong>Level 58</strong> (<code>&lt;/dependency&gt;</code>) and place your cursor at the end of the line, then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to create a new line</li>
+<li>Beginning on the new <strong>Line 59</strong> of the <code>pom.xml</code> contents, <strong>add</strong> the contents of WCA's <strong>Recommendation 2</strong> (the second code block of Step 14) to the file</li>
 <li>The new lines of code should now occupy Lines 59-63 of the modified <code>pom.xml</code> code</li>
+<li>Ensure that the indentation lines up with other <code>&lt;dependency&gt;</code> declarations within the parent <code>&lt;dependencies&gt;</code> nesting</li>
 <li>Save the changes to the file (<strong>File</strong> &gt; <strong>Save</strong>)</li>
 </ul>
 </li>
@@ -1032,6 +1043,9 @@
 <li>Return to the open VS Code <strong>Terminal</strong></li>
 <li>Press <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-c">C</kbd></span> to terminate the application</li>
 </ul>
+<div class="admonition tip">
+<p><strong>Record</strong> the message returned by the console after terminating the application. Save this information to a notebook for reference later.</p>
+</div>
 </li>
 </ol>
 <hr />
