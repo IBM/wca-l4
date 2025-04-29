@@ -6470,6 +6470,11 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ul>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">INCOMPATIBILITY WITH JDK 24</p>
+<p>Note that the <em>Full stack modernization</em> module in <a href="https://ibm.github.io/wca-l4/appmod/8/#i-objectives" target="_blank"><strong>Application Modernization - WebSphere to Liberty</strong></a> will encounter compatibility errors with JDK 24 drivers when attempting to Explain or Modernize the source application. This is owing to a deprecation of <code>sun.misc.Unsafe</code> method as of March 2025. <a href="https://openjdk.org/jeps/498" target="_blank"><strong>Additional details may be found here.</strong></a></p>
+<p>As a result, participants in this lab should ensure they are running <strong>JDK 21</strong> (or as early as JDK 11), but specifically <em>not</em> JDK 24. If you are running JDK 24, you should uninstall the JDK from your machine and reinstall with the links provided in <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a>.</p>
+</div>
 </li>
 </ol>
 <hr />
