@@ -810,22 +810,27 @@
 </ul>
 </li>
 </ul>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.2a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.2a.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/appmod-8.2b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.2b.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/appmod-8.2c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.2c.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="3">
 <li>
-<p>Next, participants must download the WebSphere Application Server (WAS) assets that are to be modernized. The assets will be retrieved from the following GitHub repository:</p>
+<p>Next, participants must download the WebSphere Application Server (WAS) assets that are to be modernized. The assets will be retrieved from the linked application repository:</p>
 <div class="admonition note">
-<p class="admonition-title">GITHUB REPOSITORY</p>
-<p><strong>URL:</strong> <a href="https://github.ibm.com/cdbienko/wca-assets-2025.git" target="_blank">https://github.ibm.com/cdbienko/wca-assets-2025.git</a></p>
+<p class="admonition-title"><code>wca-assets-2025.zip</code></p>
+<p><strong>URL:</strong> <a href="https://ibm.box.com/s/ps65ax6mupmwx3pww2b2ylvc9ed18njp" target="_blank">https://ibm.box.com/s/ps65ax6mupmwx3pww2b2ylvc9ed18njp</a></p>
 </div>
 <ul>
+<li><strong>Save</strong> the <code>wca-assets-2025.zip</code> file to your local machine and unzip the contents</li>
 <li>Open the <strong>Explorer</strong> tab from the VS Code interface</li>
-<li>Click the <strong>Clone Repository</strong> button to open a pop-up window in the top-center of the VS Code interface</li>
-<li>Paste in the full <strong>GitHub URL</strong> (above) and then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> (or click the <strong>Clone from URL</strong> button just below the pop-up window)</li>
-<li>VS Code will ask you to select where on the local machine to clone the repository: select your Desktop (or another location you can easily find later)</li>
-<li>Once cloned, the <code>wca-assets-2025</code> folder will automatically open within <strong>Explorer</strong></li>
+<li>Click the blue <strong>Open Folder</strong> button and select the unzipped <code>wca-assets-2025</code> directory</li>
+<li>The <code>wca-assets-2025</code> contents will automatically open within <strong>Explorer</strong></li>
 </ul>
 </li>
 </ol>
@@ -836,7 +841,7 @@
 <li>
 <p>Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
-<li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was cloned in <em>Step 3</em> and drill down <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory</li>
+<li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was saved in <em>Step 3</em> and drill down <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory</li>
 <li><strong>Attention:</strong> Substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> directory
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
 </code></pre></div></li>
@@ -870,6 +875,10 @@
 <li>Below the list of assets belonging the <code>modresorts-twas-j8</code> directory, locate and toggle the <strong>LIBERTY DASHBOARD</strong> drop-down panel amongst the tabs</li>
 <li>If <code>modresorts</code> is not displayed, click the <strong>Add project to Liberty Dashboard</strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when prompted to select the <code>modresorts-twas-j8</code> project</li>
 </ul>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.6a.png" /></a>
+</br>
+<a class="glightbox" href="../_attachments/appmod-8.6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.6b.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -886,6 +895,8 @@
 <div class="admonition tip">
 <p><strong>Record</strong> the value of the <em>Liberty Debug Port</em> to a notepad for reference later.</p>
 </div>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.7.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -896,6 +907,8 @@
 <p class="admonition-title">ERRORS AND BROKEN WEB LINKS</p>
 <p>As the legacy application has been built for WebSphere Application Server (WAS) using <code>Java 8</code>, but the deployment generated in Step 7 was intended for WebSphere Liberty using <code>Java 21</code>, there are a number of pages within the app that will produce an "Error" — for example, the location information module. These will be aspects of the application that you will remedy as part of the modernization steps that follow.</p>
 </div>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.8.png" /></a></p>
 </li>
 </ol>
 <h2 id="iv-explain-the-project-code"><strong>iv. Explain the project code</strong></h2>
@@ -914,6 +927,8 @@
 <div class="admonition tip">
 <p><strong>Record</strong> the entire output of the <em>Explain Application</em> report to a notepad for reference later.</p>
 </div>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.9.png" /></a></p>
 </li>
 </ol>
 <h2 id="v-build-a-modernization-plan"><strong>v. Build a modernization plan</strong></h2>
@@ -975,6 +990,8 @@
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.12.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -990,6 +1007,8 @@
 <ul>
 <li>With the relevant code highlighted, click the <strong>Help me</strong> button in the <em>Modernize</em> panel</li>
 </ul>
+<p></br>
+<a class="glightbox" href="../_attachments/appmod-8.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.13.png" /></a></p>
 </li>
 </ol>
 <hr />
