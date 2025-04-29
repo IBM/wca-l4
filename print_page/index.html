@@ -3396,7 +3396,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <ol start="3">
 <li>
 <p>Set the <code>JAVA_HOME</code> environment variable.</p>
-<div class="admonition warning">
+<div class="admonition note">
 <p>Modify the <strong>JAVA_HOME</strong> path in the <code>export JAVA_HOME=/.../</code> statements below if the pathway recorded in <em>Step 2</em> for <em>your machine</em> differs. For example, if using a different Java developer kit version from JDK 24, replace <code>/jdk-24.jdk/</code> with the version installed on <em>your</em> machine.</p>
 </div>
 <p></br>
@@ -6438,22 +6438,21 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>Code recommendations will be generated using <em>WCA Chat</em>, as in the previous modules, alongside the <em>Modernize</em> and <em>Java Upgrade</em> capabilities built into WCA Standard plans</li>
 </ul>
 <p>The culmination of this work will be a fully modernized and interactive web application that tangibly demonstrates the benefits of the techniques discussed throughout this lab.</p>
-<hr />
 <h2 id="appmod-8-ii-setting-up"><strong>ii. Setting up</strong></h2>
-<p></br></p>
-<ol>
-<li>
 <p>Return to the Visual Studio Code (VS Code) application. It should already be signed in and authenticated with the WCA service on IBM Cloud — if it's not, follow the instructions in the <a href="https://ibm.github.io/wca-l4/saas/4/#iii-install-the-extension" target="_blank"><strong>IBM Cloud (SaaS) Configuration</strong></a> lab.</p>
-<ul>
-<li>Ensure that the <strong>Explorer</strong> tab is cleared of any previously-opened folders or files before continuing.</li>
-<li>With the VS Code <strong>Explorer</strong> tab selected and open, click <strong>File</strong> &gt; <strong>Close Folder</strong> from the top taskbar.</li>
-</ul>
-</li>
+<hr />
+<ol>
+<li>Ensure that the <strong>Explorer</strong> tab is cleared of any previously-opened folders or files before continuing. With the VS Code <strong>Explorer</strong> tab selected and open, click <strong>File</strong> &gt; <strong>Close Folder</strong> from the top taskbar.</li>
 </ol>
 <hr />
 <ol start="2">
 <li>
 <p>Additional software must be prepared within VS Code before continuing with WCA Standard Plan's enterprise capabilities for WebSphere modernization.</p>
+<div class="admonition warning">
+<p class="admonition-title">INCOMPATIBILITY WITH JDK 24</p>
+<p>Note that the <em>Full stack modernization</em> module in <a href="https://ibm.github.io/wca-l4/appmod/8/#i-objectives" target="_blank"><strong>Application Modernization - WebSphere to Liberty</strong></a> will encounter compatibility errors with JDK 24 drivers when attempting to Explain or Modernize the source application. This is owing to a deprecation of <code>sun.misc.Unsafe</code> method as of March 2025. <a href="https://openjdk.org/jeps/498" target="_blank"><strong>Additional details may be found here.</strong></a></p>
+<p>As a result, participants in this lab should ensure they are running <strong>JDK 21</strong> (or as early as JDK 11), but specifically <em>not</em> JDK 24. If you are running JDK 24, you should uninstall the JDK from your machine and reinstall with the links provided in <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a>.</p>
+</div>
 <ul>
 <li>From the left-hand side of the VS Code interface, click the <strong>Extensions</strong> tab<ul>
 <li>Within the <em>Extensions: Marketplace</em> <strong>search bar</strong>, search for <code>Liberty Tools</code></li>
@@ -6468,21 +6467,15 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ul>
 </li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">INCOMPATIBILITY WITH JDK 24</p>
-<p>Note that the <em>Full stack modernization</em> module in <a href="https://ibm.github.io/wca-l4/appmod/8/#i-objectives" target="_blank"><strong>Application Modernization - WebSphere to Liberty</strong></a> will encounter compatibility errors with JDK 24 drivers when attempting to Explain or Modernize the source application. This is owing to a deprecation of <code>sun.misc.Unsafe</code> method as of March 2025. <a href="https://openjdk.org/jeps/498" target="_blank"><strong>Additional details may be found here.</strong></a></p>
-<p>As a result, participants in this lab should ensure they are running <strong>JDK 21</strong> (or as early as JDK 11), but specifically <em>not</em> JDK 24. If you are running JDK 24, you should uninstall the JDK from your machine and reinstall with the links provided in <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a>.</p>
-</div>
 </li>
 </ol>
 <hr />
 <ol start="3">
 <li>
 <p>Next, participants must download the WebSphere Application Server (WAS) assets that are to be modernized. The assets will be retrieved from the following GitHub repository:</p>
-<div class="admonition note">
-<p class="admonition-title">GitHub URL</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#appmod-8-__codelineno-0-1"></a>https://github.ibm.com/cdbienko/wca-assets-2025.git
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">GITHUB REPOSITORY</p>
+<p><strong>URL:</strong> <a href="https://github.ibm.com/cdbienko/wca-assets-2025.git" target="_blank">https://github.ibm.com/cdbienko/wca-assets-2025.git</a></p>
 </div>
 <ul>
 <li>Open the <strong>Explorer</strong> tab from the VS Code interface</li>
@@ -6495,16 +6488,18 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ol>
 <hr />
 <h2 id="appmod-8-iii-deploy-the-application"><strong>iii. Deploy the application</strong></h2>
-<p></br></p>
+<p>Participants now need to build the application <em>Project</em>. </p>
+<hr />
 <ol start="4">
 <li>
-<p>Participants now need to build the application <em>Project</em>. Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
+<p>Open a <strong>Terminal</strong> within VS Code (if you haven't already) by clicking <strong>Terminal</strong> &gt; <strong>New Terminal</strong> from the top taskbar.</p>
 <ul>
-<li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was cloned in <em>Step 3</em> and drill down into <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory (substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod-8-__codelineno-1-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
+<li>Navigate using the Terminal to the folder where <code>wca-assets-2025</code> was cloned in <em>Step 3</em> and drill down <code>/1-java-modernization/modresorts-twas-j8/was_dependency</code> directory</li>
+<li><strong>Attention:</strong> Substitute the <code>&lt;REPLACE&gt;</code> placeholder with the path to <em>your</em> locally-cloned directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#appmod-8-__codelineno-0-1"></a><span class="nb">cd</span> &lt;REPLACE&gt;/wca-assets-2025/1-java-modernization/modresorts-twas-j8/was_dependency
 </code></pre></div></li>
 <li>Source the <code>~/.zshrc</code> <em>PATH</em> and <em>JAVA_HOME</em> variables (set up previously in the <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a> module) by executing the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#appmod-8-__codelineno-2-1"></a><span class="nb">source</span> ~/.zshrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#appmod-8-__codelineno-1-1"></a><span class="nb">source</span> ~/.zshrc
 </code></pre></div></li>
 </ul>
 </li>
@@ -6513,13 +6508,13 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <ol start="5">
 <li>
 <p>The necessary Maven dependencies must be prepared within the <code>was_dependency</code> directory before the application can be deployed. Using a Terminal, <strong>execute</strong> the following instruction:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#appmod-8-__codelineno-2-1"></a>mvn install:install-file -Dfile<span class="o">=</span>was_public.jar -DpomFile<span class="o">=</span>was_public-9.0.0.pom
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WINDOWS USERS</p>
 <p>Windows users might need to provide the full path for the build files <code>was_public.jar</code> and <code>was_public-9.0.0.pom</code>, for example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-8-__codelineno-4-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#appmod-8-__codelineno-4-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#appmod-8-__codelineno-3-1"></a>mvm install:install-file -Dfile<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts<span class="se">\t</span>was<span class="se">\j</span><span class="m">8</span><span class="se">\w</span>as_dependency<span class="se">\w</span>as_public.jar
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#appmod-8-__codelineno-3-2"></a> -Dpom-File<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator.CE-APAC-WIND202<span class="se">\D</span>ocuments<span class="se">\w</span>ca4ej-workshop<span class="se">\m</span>odresorts-twas-j8<span class="se">\w</span>as_dependency<span class="se">\w</span>as_public-9.0.0.pom
 </code></pre></div></p>
 </div>
 </li>
@@ -6557,9 +6552,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </div>
 </li>
 </ol>
-<hr />
 <h2 id="appmod-8-iv-explain-the-project-code"><strong>iv. Explain the project code</strong></h2>
-<p></br></p>
 <p>Let's better understand the entirety of the project by using the <strong>explainability</strong> features built into watsonx Code Assistant.</p>
 <hr />
 <ol start="9">
@@ -6574,9 +6567,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ul>
 </li>
 </ol>
-<hr />
 <h2 id="appmod-8-v-build-a-modernization-plan"><strong>v. Build a modernization plan</strong></h2>
-<p></br></p>
 <p>Before modernizing the WAS application into Liberty, you'll need to scope out the necessary changes and level of effort required to do so. To obtain that understanding, you will need to generate a modernization plan using <strong><a href="https://www.ibm.com/products/cloud-pak-for-applications/transformation-advisor" target="_blank">IBM Cloud Transformation Advisor</a></strong>. For the purposes of this lab, one such plan has been prepared ahead of time and included within the <code>modresorts-twas-j8</code> project folder.</p>
 <hr />
 <ol start="10">
@@ -6611,7 +6602,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>Further down the panel, a pointer to the impacted file(s) in the legacy code will be provided</li>
 <li><strong>Click</strong> the name of the impacted file to inspect its source code:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a>src/main/java/com/acme/modres/UpperServlet.java
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#appmod-8-__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
 </li>
 </ol>
@@ -6631,20 +6622,20 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>WCA will engage a <em>Chat</em> session and generate within the conversation <strong>TWO</strong> sets of code fixes that can be added to the legacy code in order to remedy the issue.</p>
 <p></br>
 <strong>Recommendation 1:</strong> The first fix will be a <em>substitute</em> of the lines of code for <code>UpperServlet.java</code> that were copied in Step 13.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#appmod-8-__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#appmod-8-__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#appmod-8-__codelineno-6-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#appmod-8-__codelineno-6-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#appmod-8-__codelineno-6-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#appmod-8-__codelineno-6-6"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#appmod-8-__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.</span><span class="w"> </span><span class="n">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">StringEscapeUtils</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#appmod-8-__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#appmod-8-__codelineno-5-3"></a><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&quot;/resorts/upper&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#appmod-8-__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UpperServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServley</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#appmod-8-__codelineno-5-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#appmod-8-__codelineno-5-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p></br>
 <strong>Recommendation 2:</strong> The second fix will be <em>new</em> lines of code that are to be added to the <code>pom.xml</code> file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#appmod-8-__codelineno-7-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#appmod-8-__codelineno-7-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#appmod-8-__codelineno-7-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#appmod-8-__codelineno-7-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#appmod-8-__codelineno-7-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#appmod-8-__codelineno-6-1"></a><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#appmod-8-__codelineno-6-2"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#appmod-8-__codelineno-6-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">text</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#appmod-8-__codelineno-6-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.12.0</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#appmod-8-__codelineno-6-5"></a><span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -6689,9 +6680,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ul>
 </li>
 </ol>
-<hr />
 <h2 id="appmod-8-vi-java-version-upgrades"><strong>vi. Java version upgrades</strong></h2>
-<p></br></p>
 <p>Recall from before that the application's version of Java code was originally written for <code>Java 8</code>. However, to be compliant with modern versions of Liberty, that Java code will need to be upgraded to <code>Java 21</code>.</p>
 <hr />
 <ol start="19">
