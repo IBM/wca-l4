@@ -872,13 +872,11 @@
 <p>With the <code>was_dependency</code> folder now prepared with the necessary drivers, you are ready to <em>build</em> and <em>deploy</em> the application project into a live web application</p>
 <ul>
 <li>Open the <strong>Explorer</strong> tab from the left-hand side of the VS Code interface</li>
-<li>Below the list of assets belonging the <code>modresorts-twas-j8</code> directory, locate and toggle the <strong>LIBERTY DASHBOARD</strong> drop-down panel amongst the tabs</li>
-<li>If <code>modresorts</code> is not displayed, click the <strong>Add project to Liberty Dashboard</strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when prompted to select the <code>modresorts-twas-j8</code> project</li>
+<li>Below the list of assets belonging the <code>modresorts-twas-j8</code> directory, locate and toggle the <strong>LIBERTY DASHBOARD</strong><sup>[A]</sup> drop-down panel amongst the tabs</li>
+<li>If <code>modresorts</code> is not displayed, click the <strong>Add project to Liberty Dashboard</strong><sup>[B]</sup> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when prompted to select the <code>modresorts-twas-j8</code> project<sup>[C]</sup></li>
 </ul>
 <p></br>
-<a class="glightbox" href="../_attachments/appmod-8.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.6a.png" /></a>
-</br>
-<a class="glightbox" href="../_attachments/appmod-8.6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.6b.png" /></a></p>
+<a class="glightbox" href="../_attachments/appmod-8.6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.6a.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -918,8 +916,8 @@
 <li>
 <p>Open the <strong>Explorer</strong> tab from the left-hand interface to view the contents of the <code>modresorts-twas-j8</code> project</p>
 <ul>
-<li>Right-click anywhere inside the <code>modresorts-twas-j8</code> workspace to open a drop-down menu of options</li>
-<li>Hover over the <strong>watsonx Code Assistant</strong> option and then select <strong>Explain Application</strong></li>
+<li>Right-click anywhere inside the <code>modresorts-twas-j8</code> workspace<sup>[A]</sup> to open a drop-down menu of options</li>
+<li>Hover over the <strong>watsonx Code Assistant</strong> option and then select <strong>Explain Application</strong><sup>[B]</sup></li>
 <li>When prompted, click <strong>Proceed with code analysis</strong></li>
 <li>Wait <strong>1-2 minutes</strong> for the analysis to complete, at which time a pop-up will appear in the bottom-right corner of VS Code stating that <code>The explanation has been completed</code></li>
 <li>Click the <strong>Open explanation</strong> button within the pop-up to open and peruse the report</li>
@@ -982,11 +980,11 @@
 <p><strong>Record</strong> the total number of <em>Assisted fixes</em>, <em>Self-directed fixes</em>, and <em>Additional information</em> suggestions to a notepad for future reference.</p>
 </div>
 <ul>
-<li>Along the top of the tab, left-click the grey <strong>Instructions</strong> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
+<li>Along the top of the tab, left-click the grey <strong>Instructions</strong><sup>[A]</sup> panel to reveal the WCA-generated guidance on how to resolve the migration problems.</li>
 <li>In this example, the <code>WebSphere Servlet API was superseded by a newer implementation</code> that uses <code>Servlet 3.0</code> functionality and as such a trio of packages used by the WAS app will no longer be available for use with Liberty</li>
 <li>Further down the panel, impacted file(s) in the legacy application code will be provided</li>
-<li><strong>Click</strong> the drop-down arrow to the <em>right</em> of the impacted file to reveal a detailed set of instructions for how to improve the code</li>
-<li>Afterwards, <strong>click</strong> the <em>name</em> of the impacted file to inspect its source code in a new editor window:</li>
+<li><strong>Click</strong><sup>[B]</sup> the drop-down arrow to the <em>right</em> of the impacted file to reveal a detailed set of instructions for how to improve the code</li>
+<li>Afterwards, <strong>click</strong><sup>[C]</sup> the <em>name</em> of the impacted file to inspect its source code in a new editor window:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>src/main/java/com/acme/modres/UpperServlet.java
 </code></pre></div>
@@ -999,13 +997,13 @@
 <li>
 <p>An editor window will open on the right side of VS Code, displaying the contents of <code>UpperServlet.java</code> for editing. The next set of instructions will follow along with the guidance recommended by the <em>Modernize</em> panel (in the center of the VS Code interface):</p>
 <ul>
-<li>Select all of the class that uses the <code>ResponseUtils.encodeDataString()</code> method, beginning on <strong>Line 14</strong> from <code>@WebServlet("/resorts/upper")</code> and ending on <strong>Line 27</strong> (an empty newline)</li>
+<li><strong>Select</strong><sup>[A]</sup> all of the class that uses the <code>ResponseUtils.encodeDataString()</code> method, beginning on <strong>Line 14</strong> from <code>@WebServlet("/resorts/upper")</code> and ending on <strong>Line 27</strong> (an empty newline)</li>
 </ul>
 <div class="admonition tip">
 <p><strong>Record</strong> the text (if any) that appears directly above <em>Line 14</em> within the open <code>UpperServlet.java</code> file contents window. Save this information to a notepad for reference later.</p>
 </div>
 <ul>
-<li>With the relevant code highlighted, click the <strong>Help me</strong> button in the <em>Modernize</em> panel</li>
+<li>With the relevant code selected, click the <strong>Help me</strong><sup>[B]</sup> button in the <em>Modernize</em> panel</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../_attachments/appmod-8.13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/appmod-8.13.png" /></a></p>
