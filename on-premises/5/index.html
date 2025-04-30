@@ -852,11 +852,18 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 <ol start="8">
 <li>
 <p>A new page, <em>InstallPlan details</em> for <code>install-12xyz</code>, will load.</p>
+<div class="admonition note">
+<p>The string <code>12xyz</code> appended to <code>install-</code> is randomized. Your OCP <em>cert-manager</em> will have a unique name to the one in this example.</p>
+</div>
 <ul>
 <li>Click the blue <strong>Preview InstallPlan</strong><sup>[A]</sup> button</li>
 <li>When the panel refreshes, click the blue <strong>Approve</strong> button to begin updating to <code>v1.13.1</code></li>
 <li>Wait for the status to the right of <code>install-12xyz</code> to read <code>Complete</code><sup>[B]</sup></li>
 </ul>
+<div class="admonition tip">
+<p>After the status of the <code>install-12xyz</code> <em>InstallPlan</em> reads as <code>Complete</code>, the OCP dashboard will automatically refresh to display <code>cert-manager-operator.v1.13.1</code>'s multiple components and services. These can also be viewed again later by drilling down into <strong>Operators</strong> &gt; <strong>Installed Operators</strong> &gt; <strong>cert-manager-operator.v1.13.1</strong> from the left-hand interface.</p>
+<p><strong>Record</strong> the <em>Name</em> of the component where the <em>Kind</em> value set to <code>ServiceAccount</code>. Save this information to a notepad for reference later.</p>
+</div>
 <p></br>
 <a class="glightbox" href="../_attachments/onprem-5.8a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-5.8a.png" /></a>
 </br>
@@ -974,8 +981,11 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>Check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
-<p></br>
-Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning. Check the status of the deployment with the following steps:</p>
+<div class="admonition note">
+<p class="admonition-title"><code>No resources found in openshift-ndf namespace.</code></p>
+<p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning.</p>
+</div>
+<p>Check the status of the deployment with the following steps:</p>
 <ul>
 <li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong><sup>[A]</sup></li>
 <li>Within the table, look for a resource named <code>nfd</code><sup>[B]</sup></li>
