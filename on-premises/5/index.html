@@ -1352,14 +1352,17 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>oc get pods -n redhat-ods-applications
 </code></pre></div>
 <div class="admonition warning">
-<p>If no pods are detected, wait an additional <strong>3 minutes</strong> and try again. Confirm that <strong>ALL FIVE</strong> of the following pods are deployed with a <code>Running</code> status before continuing to Step 29.
+<p>If no pods are detected, wait an additional <strong>3 minutes</strong> and try again. Confirm that <strong>ALL FIVE</strong> of the following pods are deployed with a <code>Running</code> status before continuing to <em>Step 29</em>.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>NAME                                          READY   STATUS    RESTARTS   AGE
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>kserve-controller-manager-7b745757cb-wx7qc    <span class="m">1</span>/1     Running   <span class="m">0</span>          42s
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>kubeflow-training-operator-659b5dcb99-5t8vt   <span class="m">1</span>/1     Running   <span class="m">0</span>          56s
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>kubeflow-&lt;REDACTED&gt;-659b5dcb99-5t8vt          <span class="m">1</span>/1     Running   <span class="m">0</span>          56s
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>odh-model-controller-b774fb859-2b4b4          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>odh-model-controller-b774fb859-4gxhv          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>odh-model-controller-b774fb859-fpnrl          <span class="m">1</span>/1     Running   <span class="m">0</span>          117s
 </code></pre></div></p>
+</div>
+<div class="admonition tip">
+<p><strong>Record</strong> the full name of the <code>kubeflow-...</code> pod to a notepad for reference later.</p>
 </div>
 </li>
 </ol>
@@ -1372,6 +1375,7 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <li>From the <em>Project</em><sup>[B]</sup> drop-down list, select <code>redhat-ods-applications</code><sup>[C]</sup></li>
 <li>Click the <code>inferenceservice-config</code> resource<sup>[D]</sup> and open the <strong>YAML</strong> tab<sup>[E]</sup></li>
 <li>In the <code>metadata.annotations</code> section<sup>[F]</sup> (Lines 4-5) of the file, add a new Line 8<sup>[G]</sup> which reads <code>opendatahub.io/managed: 'false'</code> </li>
+<li><strong>Do not</strong> save the changes yet (there are more changes in <em>Step 30</em> to perform before saving the YAML file)</li>
 <li>The resulting YAML file should resemble the following:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
@@ -1401,6 +1405,13 @@ The <em>Red Hat OpenShift AI Operator</em> automatically installs and manages se
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="s">&quot;domainTemplate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="err">,</span><span class="w"></span>
 </code></pre></div>
 <p>Click <strong>Save</strong><sup>[C]</sup> (bottom-left) to finalize the changes to the YAML file. If prompted with a <em>Managed resource</em> warning, click <strong>Save</strong><sup>[D]</sup> again to confirm.</p>
+<div class="admonition tip">
+<p>Copy and paste the full contents of the <code>inferenceservice-config</code> YAML file to a text editor.</p>
+<ul>
+<li><strong>Search</strong> for the the following: <code>datasciencecluster</code></li>
+<li><strong>Record</strong> the full value of the <code>apiVersion:</code> attribute containing this value and save the information to a notepad for reference later.</li>
+</ul>
+</div>
 <p></br>
 <a class="glightbox" href="../_attachments/onprem-5.30a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/onprem-5.30a.png" /></a>
 </br>
