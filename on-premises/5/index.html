@@ -981,11 +981,12 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 <p>Check on the <strong>status</strong> of the OpenShift pods with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>oc get pods -n openshift-nfd
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title"><code>No resources found in openshift-ndf namespace.</code></p>
+<div class="admonition warning">
+<p class="admonition-title">TROUBLESHOOTING: No resources found in openshift-ndf namespace.</p>
 <p>Initially, the console may return a response such as <code>No resources found in openshift-ndf namespace.</code> This likely is because the pod is still provisioning.</p>
 </div>
-<p>Check the status of the deployment with the following steps:</p>
+<p><br/>
+Use the OCP Dashboard to <strong>monitor</strong> the progress of the pod deployments:</p>
 <ul>
 <li>Return to the OCP Dashboard and navigate to <strong>Operators</strong> &gt; <strong>Installed Operators</strong><sup>[A]</sup></li>
 <li>Within the table, look for a resource named <code>nfd</code><sup>[B]</sup></li>
@@ -1169,7 +1170,8 @@ Although GPUs will not be available to deploy or interact with for the <em>On-Pr
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">TROUBLESHOOTING: No resources found in nvidia-gpu-operator namespace.</p>
-<p>The <code>nvidia-gpu-operator</code> namespace is still being deployed. Wait for 1 minute and then try executing Step 20 again.</p>
+<p>The <code>nvidia-gpu-operator</code> namespace is still being deployed.
+<strong>Wait</strong> for 1 minute and then try executing <em>Step 20</em> again.</p>
 </div>
 <p></br>
 The console will return a statement that Operator's <em>APPROVAL</em> status is currently set to <code>Manual</code> and incomplete (<em>APPROVED</em> state is set to <code>false</code>).</p>
