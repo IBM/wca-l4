@@ -2203,6 +2203,9 @@ Return to the OCP Dashboard and drill down into <strong>Operators</strong> &gt; 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#on-premises-5-__codelineno-16-1"></a>oc get csv -n nvidia-gpu-operator <span class="si">${</span><span class="nv">CURRENT_CSV</span><span class="si">}</span> -ojsonpath<span class="o">={</span>.metadata.annotations.alm-examples<span class="o">}</span> <span class="p">|</span> jq .<span class="o">[</span><span class="m">0</span><span class="o">]</span> &gt; clusterpolicy.json
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#on-premises-5-__codelineno-16-2"></a>oc apply -f clusterpolicy.json
 </code></pre></div>
+<div class="admonition tip">
+<p><strong>Record</strong> the status message returned by the console to a notepad for reference later.</p>
+</div>
 </li>
 </ol>
 <hr />
