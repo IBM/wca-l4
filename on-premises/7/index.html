@@ -787,7 +787,7 @@ The commands in this task use environment variables so that you can run the comm
 </li>
 <li>
 <p>To use the environment variables from the script, you must source the environment variables before you run the commands in this task. For example, run:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">source</span> ./cpd_vars.sh
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">source</span> cpd_vars.sh
 </code></pre></div></p>
 </li>
 </ul>
@@ -911,7 +911,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>1 minute</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847686Z You may find output and logs <span class="k">in</span> the &lt;REDACTED&gt; directory.
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:02:06.847741Z The apply-entitlement <span class="nb">command</span> ran successfully.
 </code></pre></div></p>
 </div>
@@ -928,9 +928,12 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </code></pre></div>
 <div class="admonition warning">
 <p>Completion of this operation will take approximately <strong>15 minutes</strong>, after which the console will return:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690505Z You may find output and logs <span class="k">in</span> the &lt;REDACTED&gt; directory.
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-19T23:16:42.690774Z The apply-olm <span class="nb">command</span> ran successfully.
 </code></pre></div></p>
+</div>
+<div class="admonition tip">
+<p><strong>Record</strong> the final automation task performed just prior to (the line before) the two <code>[SUCCESS]</code> returned by the console. Save this information to a notepad for future reference.</p>
 </div>
 </li>
 </ol>
@@ -972,7 +975,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="hll">CPD Url: cpd-cpd-watsonx.apps.67da04cc1b2e441b1d48a668.ocp.techzone.ibm.com
 </span><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="hll">CPD Username: cpadmin
 </span><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="hll">CPD Password: xEhwFROJ5rAL4DZ3ggTNKzlREXDYDYHU
-</span><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949702Z You may find output and logs <span class="k">in</span> the /home/itzuser/cpd-cli-workspace/olm-utils-workspace/work directory.
+</span><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949702Z You may find output and logs <span class="k">in</span> the &lt;REDACTED&gt; directory.
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="o">[</span>SUCCESS<span class="o">]</span> <span class="m">2025</span>-03-20T03:20:18.949759Z The get-cpd-instance-details <span class="nb">command</span> ran successfully.
 </code></pre></div>
 </li>
