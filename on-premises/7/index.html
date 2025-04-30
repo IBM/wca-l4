@@ -957,6 +957,10 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">[</span>SUCCESS<span class="o">]</span>... The apply-cr <span class="nb">command</span> ran successfully
 </code></pre></div></p>
 </div>
+<details class="note">
+<summary>TIMED OUT</summary>
+<p>The time needed for the operation to complete means that participant's Terminal connections to the OCP cluster will likely time out (due to inactivity) before the installation and deployment have concluded. Do not worry - the installation will continue even if the SSH connection with Terminal is interrupted. To re-authenticate with the cluster, follow the <a href="https://ibm.github.io/wca-l4/on-premises/7/#vi-conclusion" target="_blank"><strong>Troubleshooting: Logging in and session timeouts</strong></a> instructions at the bottom of this module.</p>
+</details>
 </li>
 </ol>
 <hr />
