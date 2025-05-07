@@ -63,7 +63,7 @@ IBM watsonx Code Assistant supports over 115 different programming languages for
 
 ---
 
-The curriculum for the Level 4 hands-on labs is segmented across 3 chapters, each containining multiple modules that address topics of on-premises cluster deployments, configuration of Software-as-a-Service (SaaS) deployments on cloud, and modernization of legacy WebSphere Application Server code into WebSphere Liberty.
+The curriculum for the Level 4 hands-on labs is segmented across 3 chapters, each containing multiple modules that address topics of on-premises cluster deployments, configuration of Software-as-a-Service (SaaS) deployments on cloud, and modernization of legacy WebSphere Application Server code into WebSphere Liberty.
 
 | CHAPTER | MODULES |
 | - | - |
