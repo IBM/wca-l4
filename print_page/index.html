@@ -900,7 +900,7 @@
 </div>
 <h2 id="index-iii-curriculum"><strong>iii. Curriculum</strong></h2>
 <hr />
-<p>The curriculum for the Level 4 hands-on labs is segmented across 3 chapters, each containining multiple modules that address topics of on-premises cluster deployments, configuration of Software-as-a-Service (SaaS) deployments on cloud, and modernization of legacy WebSphere Application Server code into WebSphere Liberty.</p>
+<p>The curriculum for the Level 4 hands-on labs is segmented across 3 chapters, each containing multiple modules that address topics of on-premises cluster deployments, configuration of Software-as-a-Service (SaaS) deployments on cloud, and modernization of legacy WebSphere Application Server code into WebSphere Liberty.</p>
 <table>
 <thead>
 <tr>
@@ -1123,7 +1123,7 @@
 <h2 id="on-premises-1-v-next-steps"><strong>v. Next steps</strong></h2>
 <p>In the following module, you will provision an OpenShift Container Platform cluster via IBM Technology Zone, which will serve as the basis for the on-premises environment.</p></section><section class="print-page" id="on-premises-2"><h1 id="on-premises-2-reserve-an-environmenton-premises-installation-and-deployment"><strong>Reserve an environment</strong></br><em>On-Premises Installation and Deployment</em></h1>
 <h2 id="on-premises-2-i-configuring-the-ibm-technology-zone-reservation"><strong>i. Configuring the IBM Technology Zone reservation</strong></h2>
-<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank"><strong>IBM Technolgy Zone (ITZ) Certified Base Images</strong></a>.</p>
+<p>The foundation for the on-premises environment utilizes the <code>OpenShift Cluster (VMware on IBM Cloud) - UPI - Public</code> template from the collection of <a href="https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments" target="_blank"><strong>IBM Technology Zone (ITZ) Certified Base Images</strong></a>.</p>
 <hr />
 <ol>
 <li>
@@ -1439,7 +1439,7 @@
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#------------------------------------------------------------------------------</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># Set the following variables if you want to override the default behavior of the Cloud Pak for Data CLI.</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">#</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># To export these variables, you must uncomment each command in this sec-tion.</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># To export these variables, you must uncomment each command in this section.</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">#export CPD_CLI_MANAGE_WORKSPACE=&lt;enter a fully qualified directory&gt;</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># following lines could be used for environment with self-signed certificates and hostnames not resolved by DNS server</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1">#export OLM_UTILS_LAUNCH_ARGS=&quot;-v ./api-wxai.pem:/etc/k8scert --env K8S_AUTH_SSL_CA_CERT=/etc/k8scert --add-host oauth-openshift.apps.ocpinstall.gym.lan:192.168.252.4 --add-host api.ocpinstall.gym.lan:192.168.252.3&quot;</span>
@@ -1470,7 +1470,7 @@
 <a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERATORS</span><span class="o">=</span>cpd-operators
 <a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="nb">export</span> <span class="nv">PROJECT_CPD_INST_OPERANDS</span><span class="o">=</span>cpd-watsonx
 <a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED=&lt;enter your tethered project&gt;</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED_LIST=&lt;a comma-separated list of teth-ered projects&gt;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="c1"># export PROJECT_CPD_INSTANCE_TETHERED_LIST=&lt;a comma-separated list of tethered projects&gt;</span>
 <a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="c1">#------------------------------------------------------------------------------</span>
 <a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="c1"># Storage</span>
 <a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="c1">#------------------------------------------------------------------------------</span>
@@ -1911,7 +1911,7 @@ Monitor the progress by observing changes to the fourth column of the table. <st
 </div>
 <p></br>
 Although GPUs will not be available to deploy or interact with for the <em>On-Premises Installation and Deployment</em> L4 training modules, participants will still be able to practice and learn the skills needed to prepare a cluster for GPUs.</p>
-<p>This section will cover all of the necessary configuration and setup required to make GPUs available to an IBM watsonx Code Asssitant service — shy of actually getting to use the GPUs with the on-premises deployment. Participants will still be able to interact with GPU-powered instances in the latter IBM Cloud (SaaS) modules of the L4 curriculum.</p>
+<p>This section will cover all of the necessary configuration and setup required to make GPUs available to an IBM watsonx Code Assitant service — shy of actually getting to use the GPUs with the on-premises deployment. Participants will still be able to interact with GPU-powered instances in the latter IBM Cloud (SaaS) modules of the L4 curriculum.</p>
 <p>Services such as IBM watsonx Code Assistant (on-premises), which requires access to GPUs, need to install several Operators on the OpenShift cluster to support the management of NVIDIA software components. Those components, in turn, are needed to integrate the GPUs for access by the cluster.</p>
 <p>IBM watsonx Code Assistant requires that the following Operators be installed:
 - <em>Node Feature Discovery Operator</em>: within the <code>openshift-nfd</code> namespace
@@ -3101,7 +3101,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>You will be presented with a prompt asking for your permission to switch your personal IBM Cloud account's view into the WCA service (ITZ-provisioned) IBM Cloud account — which will resemble something like <code>itz-watsonx-24</code>. Click <strong>Proceed</strong><sup>[A]</sup> to confirm.</p>
 <div class="admonition note">
 <p class="admonition-title">LOCATING THE ITZ-PROVISIONED ACCOUNT NAME</p>
-<p>Participants can retrieve the name of the ITZ-provisioned WCA service account (<code>itz-watsonx-24</code>, etc.) by looking at the contents of the <strong>Account: Action required: You are invited to join an account in IBM Cloud</strong> email: <em>IBM IBM Technology Zone Adhoc 01 invited you to join the following IBM Cloud account: itz-watsonx-...</em></p>
+<p>Participants can retrieve the name of the ITZ-provisioned WCA service account (<code>itz-watsonx-24</code>, etc.) by looking at the contents of the <strong>Account: Action required: You are invited to join an account in IBM Cloud</strong> email: <em>IBM Technology Zone invited you to join the following IBM Cloud account: itz-watsonx-...</em></p>
 </div>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-2.7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-2.7.png" /></a></p>
@@ -3398,7 +3398,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p><strong>URL:</strong> <strong><a href="https://www.oracle.com/java/technologies/downloads/?er=221886#jdk21-mac" target="_blank">https://www.oracle.com/java/technologies/downloads/?er=221886#jdk21-mac</a></strong></p>
 </div>
 <ul>
-<li>It is stronlgy recommended that you <strong>install JDK 21</strong> (or as early as JDK 11)</li>
+<li>It is strongly recommended that you <strong>install JDK 21</strong> (or as early as JDK 11)</li>
 <li>Newer-generation MacOS users will probably want to select the <em>ARM64 DMG Installer</em></li>
 <li>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2</li>
 </ul>
@@ -3920,7 +3920,7 @@ The approach taken with each module of <strong>Application Modernization - WebSp
 <p>For readability, <a href="https://www.ibm.com/products/websphere-application-server" target="_blank"><strong>IBM WebSphere Application Server</strong></a> (WAS) in this chapter is referred to in shorthand as "WebSphere", unless noted otherwise. Similarly, <a href="https://www.ibm.com/products/cloud-pak-for-applications/liberty" target="_blank"><strong>IBM WebSphere Liberty</strong></a> is referenced in shorthand as simply "Liberty".</p>
 </div>
 <p>Lariat Corporation has a large collection of <strong>WebSphere Enterprise Archive</strong> (EAR) applications designed specifically for deployments using <strong>WAS</strong>. These are packaged archive files that bundle together multiple Java Enterprise Edition (Java EE shorthand, or more recently referred to by Jakarta EE) components: web modules, Enterprise JavaBeans (EJB) files, resource adapters, libraries, and so on. Collectively, all of these components allow for Lariat's engineers and developers to manage complex enterprise applications "efficiently" (as the theory goes) by encapsulating all of the necessary components into a single, structured archive. </p>
-<p><strong>Liberty</strong>, however, supports comparatively simple and standardized configurations that greatly reduce the complexities found with WebSphere applications. <strong>Liberty Web Archive</strong> (<strong>WAR</strong>) configurations remove the need for multiple external descriptors and consolidate settings into one unified file (<code>server.xml</code>). Overally, this approach improves the maintainability of the code base in the long term and improves the deployment speed for new instances (or versions) of the Liberty-based application.</p>
+<p><strong>Liberty</strong>, however, supports comparatively simple and standardized configurations that greatly reduce the complexities found with WebSphere applications. <strong>Liberty Web Archive</strong> (<strong>WAR</strong>) configurations remove the need for multiple external descriptors and consolidate settings into one unified file (<code>server.xml</code>). Overall, this approach improves the maintainability of the code base in the long term and improves the deployment speed for new instances (or versions) of the Liberty-based application.</p>
 <p></br></p>
 <table>
 <thead>
@@ -4424,7 +4424,7 @@ WCA's recommendation utilizes an IBM Db2-specific set of JDBC drivers. For clien
 <tr>
 <td><strong>Configuration Complexity</strong></td>
 <td>High: hierarchical and administration-intensive.</td>
-<td>Low: conise and self-contained.</td>
+<td>Low: concise and self-contained.</td>
 </tr>
 <tr>
 <td><strong>Maintainability</strong></td>
@@ -4577,7 +4577,7 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 </div>
 </div>
 <p></br>
-The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths.</p>
+The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and dependency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths.</p>
 <p>Other benefits from the modernization work also include:</p>
 <ul>
 <li>
@@ -4775,7 +4775,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#appmod-3-__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
 </code></pre></div></p>
 <p></br></p>
-<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
+<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As a result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
 </li>
 </ol>
 <hr />
@@ -6025,7 +6025,7 @@ By injecting a <code>QueueConnectionFactory</code> and <code>InitialContext</cod
 <hr />
 <ol start="7">
 <li>
-<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for enterprise organizations that might use runtime orchestration tools to override configurations with deployment desciptors. Let's compare the two solutions against this scenario.</p>
+<p>For many enterprises with <strong>continuous integration and continuous delivery</strong> (<strong>CI/CD</strong>) requirements, a Liberty codebase that uses an "<code>application code</code> + <code>server.xml</code>" approach may hamper those CI/CD pipelines. This is also true for enterprise organizations that might use runtime orchestration tools to override configurations with deployment descriptors. Let's compare the two solutions against this scenario.</p>
 <p></br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#appmod-6-__codelineno-8-1"></a><span class="nt">&lt;ejb-jar</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#appmod-6-__codelineno-8-2"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
@@ -6849,7 +6849,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <hr />
 <ol start="23">
 <li>
-<p>According to WCA, there is an incompabitility with the <code>getOps</code> method within the <code>DMBeanUtils.java</code> codebase — specifically with the <code>MBeanOperationInfo</code> constructor that the method calls on line 28.</p>
+<p>According to WCA, there is an incompatibility with the <code>getOps</code> method within the <code>DMBeanUtils.java</code> codebase — specifically with the <code>MBeanOperationInfo</code> constructor that the method calls on line 28.</p>
 <ul>
 <li>Click the <strong>Help me</strong> button to engage a new <em>WCA Chat</em> session</li>
 <li>WCA will generate code recommendations within the <em>Chat</em> panel that can substitute the problematic legacy code</li>

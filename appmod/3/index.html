@@ -767,7 +767,7 @@
 <tr>
 <td><strong>Configuration Complexity</strong></td>
 <td>High: hierarchical and administration-intensive.</td>
-<td>Low: conise and self-contained.</td>
+<td>Low: concise and self-contained.</td>
 </tr>
 <tr>
 <td><strong>Maintainability</strong></td>
@@ -920,7 +920,7 @@ The legacy implementation utilizes separate, detailed descriptor files like <cod
 </div>
 </div>
 <p></br>
-The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and depedency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths.</p>
+The modernized Liberty code implementation simplifies the management of dependencies by removing the discrete (separate) descriptors like <code>deployment.xml</code> and <code>shared-libraries.xml</code> from the WAS implementation. Instead, configuration and dependency management has been consolidated into a single <code>server.xml</code> descriptor, which more clearly defines the permitted libraries and their associated paths.</p>
 <p>Other benefits from the modernization work also include:</p>
 <ul>
 <li>
@@ -1118,7 +1118,7 @@ WCA uses a <strong>global</strong> scoped <em>Classloader</em> which will impact
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">&lt;/application&gt;</span>
 </code></pre></div></p>
 <p></br></p>
-<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As as result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
+<p>Conversely, WCA's modernized Liberty code recommendations <em>do not include</em> a WAR deployment instruction set. This may be an artifact of the original WAS script (submitted in Step 4) that was only a snippet of the larger application — and therefore not indicative of a full-fledged, end to end application. As a result, WCA's recommendation does not include WAR deployment definitions which would be needed to actually load an application.</p>
 </li>
 </ol>
 <hr />
