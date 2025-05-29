@@ -2989,8 +2989,9 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>
 <p>There are multiple templates and flavors of WCA available:</p>
 <ul>
-<li>Locate the <strong>Request watsonx Code Assistant - Standard (GA) [Approval Gated]</strong><sup>[A]</sup> tile</li>
+<li>Locate the <strong>Request watsonx Code Assistant - Standard</strong><sup>[A]</sup> tile</li>
 <li>Hover over and click the <strong>IBM Cloud environment / Reserve It</strong><sup>[B]</sup> button</li>
+<li>When prompted, click the <strong>Reserve an environment</strong> button</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-2.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-2.2.png" /></a></p>
@@ -3034,7 +3035,7 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 </tr>
 </tbody>
 </table>
-<p>When ready, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit for Approval</strong><sup>[A]</sup>.</p>
+<p>When ready, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[A]</sup>.</p>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-2.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-2.3.png" /></a></p>
 </li>
@@ -3042,33 +3043,23 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <hr />
 <ol start="4">
 <li>
-<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress. Initially, the request will be marked as <em>Pending Approval</em><sup>[A]</sup>.</p>
+<p>Navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ to monitor the progress. Initially, the request will be marked as <em>Scheduled</em> or <em>Provisioning</em><sup>[A]</sup>.</p>
 <ul>
-<li>
-<p>You will receive an email with the header <em>Request Approved</em> once the request has been adjudicated by the approvals team</p>
-</li>
-<li>
-<p><strong>Wait</strong> for the ITZ reservation to be marked as <em>Ready</em> before continuing to Step 5</p>
-</li>
+<li><strong>Wait</strong> for the ITZ reservation to be marked as <em>Ready</em> before continuing to Step 5</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../saas/_attachments/saas-2.4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-2.4.png" /></a></p>
 <div class="admonition note">
 <ul>
-<li><strong>Pending Approval:</strong> marked in grey, the reservation is awaiting approval from ITZ</li>
+<li><strong>Scheduled:</strong> marked in grey, the reservation is awaiting approval from ITZ</li>
 <li><strong>Provisioning:</strong> marked in yellow, the reservation is being deployed</li>
 <li><strong>Ready:</strong> marked in green, the reservation has successfully deployed</li>
 </ul>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">REQUEST IS PENDING APPROVAL</p>
-<p>For ITZ templates marked as "Approval Gated", such as the WCA Standard Plan, reservations and provisioning requests are <strong>not</strong> automatically approved and instantiated. Per the IBM Technology Zone:</p>
-<p>"Your request has successfully been submitted and is pending approval. <strong>Please allow 3 to 4 North American Business Days for the team to review for a decision.</strong> To find more information on the reviewing group, reference the <a href="https://github.com/IBM/itz-support-public/blob/main/IBM-Technology-Zone/IBM-Technology-Zone-Runbooks/approval-workflow.md" target="_blank"><strong>Approval Workflow Runbook</strong></a>. Leverage the <a href="https://github.com/IBM/itz-support-public/blob/main/IBM-Technology-Zone/IBM-Technology-Zone-Runbooks/approval-workflow.md" target="_blank"><strong>Custom Request Runbook</strong></a> for details."</p>
-</div>
 </li>
 </ol>
 <h2 id="saas-2-ii-accessing-the-service-details"><strong>ii. Accessing the service details</strong></h2>
-<p>Once the WCA service has been approved and provisioned, you will receive <strong>two</strong> emails with the following headers:</p>
+<p>Once the WCA service has been provisioned, you will receive <strong>two</strong> emails with the following headers:</p>
 <ul>
 <li><strong>Reservation Ready on IBM Technology Zone:</strong> indicates that the ITZ cluster has been successfully provisioned</li>
 <li><strong>Account: Action required: You are invited to join an account in IBM Cloud:</strong> additional steps required by the administrator (you) in order to link the WCA service to IBM Cloud</li>
@@ -6642,7 +6633,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p>As the modernization plan prepared earlier by <em>IBM Cloud Transformation Advisor</em> has not yet been uploaded to WCA at this stage, the modernization recommendations proposed <em>currently</em> by the service are less granular and contextualized than they will be <em>after</em> uploading the migration bundle. This presents an interesting opportunity to compare the before and after impacts of the migration bundle on the WCA modernization plan.</p>
 </div>
 <div class="admonition tip">
-<p><em>Before</em> uploading the migration bundle, take note of the following information and record it to a notepad for reference later: how many proposed fixes are suggested for <strong>Automated Fixes</strong>, <strong>Assisted Fixes</strong>, and <strong>Self-Directed Fixes</strong>?</p>
+<p><strong>Before uploading the migration bundle</strong>, take note of the following information and record it to a notepad for reference later: how many proposed fixes are suggested for <em>Automated Fixes</em>, <em>Assisted Fixes</em>, and <em>Self-Directed Fixes</em>?</p>
 </div>
 <ul>
 <li>To supply the migration bundle, click the <strong>Return to Upload / analyze</strong> button in the top-right corner of the <em>Modernize to Liberty</em> panel</li>
@@ -6653,7 +6644,7 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <p><strong>Observe</strong> the state of the <em>Selected files to be added to the project</em> before making any adjustments or selections. Record these observations to a notepad for reference later.</p>
 </div>
 <ul>
-<li>Be sure that both the <code>server.xml</code> and <code>Containerfile</code> assets are selected, then click <strong>Proceed</strong> to </li>
+<li>Be sure that both the <code>server.xml</code> and <code>Containerfile</code> assets are selected, then click <strong>Proceed</strong> to continue</li>
 </ul>
 <p></br>
 <a class="glightbox" href="../appmod/_attachments/appmod-8.10a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../appmod/_attachments/appmod-8.10a.png" /></a></p>
