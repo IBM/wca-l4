@@ -11,7 +11,7 @@ The hands-on modules included within this GitHub documentation— and outlined i
 !!! warning ""
 	**IBM YourLearning (IBMers):** <a href="https://yourlearning.ibm.com/activity/PLAN-5C0B3BB33307" target="_blank">https://yourlearning.ibm.com/activity/PLAN-5C0B3BB33307</a>
 	
-    **IBM Training (Business Partners):** <a href="https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012" target="_blank">https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012</a>
+    **IBM Training (Partners):** <a href="https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012" target="_blank">https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012</a>
 
 </br>
 The "Practitioners" (Deploy) coursework extensively covers deployment of the service for both on-premises and IBM Cloud environments. Before taking this course, those enrolling should have earned the **<a href="https://www.credly.com/org/ibm/badge/watsonx-code-assistant-sales-foundation" target="_blank">watsonx Code Assistant Sales Foundation</a>** badge and the **<a href="https://www.credly.com/org/ibm/badge/watsonx-code-assistant-technical-sales-intermediate" target="_blank">watsonx Code Assistant Technical Sales Intermediate</a>** badge, and have the technical background and proficiency at giving hands-on demos to clients.

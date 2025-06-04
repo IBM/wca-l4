@@ -1,15 +1,22 @@
-// Credits for script: https://github.com/majkinetor/mm-docs-template/blob/master/source/pdf/print.js
-// Requires: npm i --save puppeteer
+
+// Requires: npm install puppeteer pdf-lib
 
 const puppeteer = require('puppeteer');
-var args = process.argv.slice(2);
-var url = args[0];
-var pdfPath = args[1];
-var title = args[2];
+const fs = require('fs');
+const path = require('path');
+const { PDFDocument } = require('pdf-lib');
 
-console.log('Saving', url, 'to', pdfPath);
+const args = process.argv.slice(2);
+const url = args[0];
+const finalPdfPath = args[1];
+const title = args[2];
+const coverPdfPath = args[3];  // Cover page
+const legalPdfPath = args[4];  // Legal notice page
+const logoPdfPath = args[5];   // Logo final page
 
-// Header HTML (right-aligned title with page numbering)
+const TEMP_PDF = path.join(__dirname, 'temp_body.pdf');
+
+// Header (invisible)
 const headerHtml = `
 <style>
   .invisible-header {
@@ -20,7 +27,7 @@ const headerHtml = `
 </style>
 <div class="invisible-header"></div>`;
 
-// Footer HTML (centered, small, greyscale legal notice)
+// Footer (IBM branding)
 const footerHtml = `
 <style>
   .custom-footer {
@@ -31,11 +38,9 @@ const footerHtml = `
     border-top: 0.5px solid #ccc;
     position: relative;
   }
-
   .footer-center {
     text-align: center;
   }
-
   .footer-page-number {
     position: absolute;
     right: 30px;
@@ -43,12 +48,10 @@ const footerHtml = `
     font-size: 8px;
     color: #666;
   }
-
   .footer-bold-title {
     font-weight: bold;
   }
 </style>
-
 <div class="custom-footer">
   <div class="footer-page-number">
     <span class="pageNumber"></span>
@@ -60,31 +63,79 @@ const footerHtml = `
 </div>`;
 
 (async () => {
+  try {
     const browser = await puppeteer.launch({
-        headless: true,
-        executablePath: process.env.CHROME_BIN || null,
-        args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-dev-shm-usage']
+      headless: true,
+      executablePath: process.env.CHROME_BIN || null,
+      args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-dev-shm-usage']
     });
 
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     await page.pdf({
-        path: pdfPath,
-        format: 'A4',
-        displayHeaderFooter: true, // enable header and footer rendering
-        printBackground: true,
-        landscape: false,
-        headerTemplate: headerHtml,
-        footerTemplate: footerHtml,
-        scale: 0.8,
-        margin: {
-            top: 80,
-            bottom: 80,
-            left: 30,
-            right: 30
-        }
+      path: TEMP_PDF,
+      format: 'A4',
+      displayHeaderFooter: true,
+      printBackground: true,
+      landscape: false,
+      headerTemplate: headerHtml,
+      footerTemplate: footerHtml,
+      scale: 0.8,
+      margin: {
+        top: 80,
+        bottom: 80,
+        left: 30,
+        right: 30
+      }
     });
 
     await browser.close();
+
+    const A4_WIDTH = 595.28;
+    const A4_HEIGHT = 841.89;
+    const MARGIN_LEFT = 30;
+    const MARGIN_RIGHT = 30;
+    const MARGIN_TOP = 80;
+    const MARGIN_BOTTOM = 80;
+    const USABLE_WIDTH = A4_WIDTH - MARGIN_LEFT - MARGIN_RIGHT;
+    const USABLE_HEIGHT = A4_HEIGHT - MARGIN_TOP - MARGIN_BOTTOM;
+
+    const mergedPdf = await PDFDocument.create();
+
+    const embedAndDraw = async (pdfPath) => {
+      const srcDoc = await PDFDocument.load(fs.readFileSync(pdfPath));
+      const embedded = await mergedPdf.embedPage(srcDoc.getPages()[0]);
+      const { width, height } = embedded;
+      const scale = Math.min(USABLE_WIDTH / width, USABLE_HEIGHT / height);
+      const scaledWidth = width * scale;
+      const scaledHeight = height * scale;
+      const page = mergedPdf.addPage([A4_WIDTH, A4_HEIGHT]);
+      page.drawPage(embedded, {
+        x: (A4_WIDTH - scaledWidth) / 2,
+        y: (A4_HEIGHT - scaledHeight) / 2,
+        xScale: scale,
+        yScale: scale
+      });
+    };
+
+    if (coverPdfPath) await embedAndDraw(coverPdfPath);
+    if (legalPdfPath) await embedAndDraw(legalPdfPath);
+
+    const bodyPdf = await PDFDocument.load(fs.readFileSync(TEMP_PDF));
+    const bodyPages = await mergedPdf.copyPages(bodyPdf, bodyPdf.getPageIndices());
+    bodyPages.forEach(p => mergedPdf.addPage(p));
+
+    if (logoPdfPath) await embedAndDraw(logoPdfPath);
+
+    const finalBytes = await mergedPdf.save();
+    fs.writeFileSync(finalPdfPath, finalBytes);
+    console.log(`✅ Final PDF created at ${finalPdfPath}`);
+  } catch (err) {
+    console.error('❌ Error generating PDF:', err.message);
+  } finally {
+    if (fs.existsSync(TEMP_PDF)) {
+      fs.unlinkSync(TEMP_PDF);
+    }
+  }
 })();
