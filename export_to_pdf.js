@@ -27,7 +27,7 @@ const headerHtml = `
 </style>
 <div class="invisible-header"></div>`;
 
-// Footer (IBM branding)
+// Footer
 const footerHtml = `
 <style>
   .custom-footer {
@@ -130,9 +130,9 @@ const footerHtml = `
 
     const finalBytes = await mergedPdf.save();
     fs.writeFileSync(finalPdfPath, finalBytes);
-    console.log(`✅ Final PDF created at ${finalPdfPath}`);
+    console.log(`Final PDF created at ${finalPdfPath}`);
   } catch (err) {
-    console.error('❌ Error generating PDF:', err.message);
+    console.error('Error generating PDF:', err.message);
   } finally {
     if (fs.existsSync(TEMP_PDF)) {
       fs.unlinkSync(TEMP_PDF);
