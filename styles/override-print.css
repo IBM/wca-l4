@@ -80,6 +80,13 @@
     overflow: auto;
   }
 
+  screen {
+  .md-nav__link[href$="toc/"],
+  .md-nav__link[href$="toc.md"],
+  .md-nav__link[href$="toc.html"] {
+    display: none !important;
+  }
+
   .highlight pre,
   .highlight code {
     background-color: #f5f5f5 !important;
