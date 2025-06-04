@@ -886,13 +886,21 @@
         </section>
         <section class="print-page" id="toc"><style>
   @media screen {
-    .md-content {
-      display: none;
+    .md-main__inner {
+      display: none !important;
+    }
+
+    .md-header,
+    .md-footer,
+    .md-sidebar {
+      display: none !important;
     }
   }
 
-  h2 {
-    page-break-before: auto !important;
+  @media print {
+    h2 {
+      page-break-before: auto !important;
+    }
   }
 </style>
 
