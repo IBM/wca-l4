@@ -1,0 +1,33 @@
+@page {
+  @top-right {
+    content: none !important;
+  }
+  @bottom-right {
+    content: none !important;
+  }
+}
+
+@media print {
+  img {
+    max-width: 85% !important;
+    height: auto !important;
+    display: block;
+    margin: 1em 0 1em 0 !important;  /* top/bottom spacing, no auto-centering */
+  }
+  h2 {
+    page-break-before: always;
+  }
+  h2:first-child {
+    page-break-before: auto;
+  }
+}
+
+/* Hide footer and header DOM-based page numbers */
+.page-number,
+.footer,
+.print-footer,
+.header,
+.header .page-number,
+.top-page-number {
+  display: none !important;
+}

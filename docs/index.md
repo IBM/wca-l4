@@ -1,17 +1,20 @@
-# **watsonx Code Assistant for Practitioners Level 4**
+# **watsonx Code Assistant Level 4**
 
 ## **i. Introduction**
 
 ---
 
-The curriculum of **watsonx Code Assistant for Practitioners Level 4** is designed to teach IBM technical sellers and business partners on how to best plan, execute on, and deploy **IBM watsonx Code Assistant**. Level 4 learning plans assume that participants have the technical background and proficiency to demonstrate a product or solution to a client, as well as a deep level of understanding for how it can help the client achieve their business goals. Level 4 learning plans are the next logical learning step that goes beyond the demonstrations covered in the Level 3 learning. In keeping with the offering's hybrid cloud architecture, this will encompass deployments both on-premises and for Software-as-a-Service (SaaS) cloud.
+The curriculum of **watsonx Code Assistant Level 4** is designed to teach IBM technical sellers and business partners on how to best plan, execute on, and deploy **IBM watsonx Code Assistant**. Level 4 learning plans assume that participants have the technical background and proficiency to demonstrate a product or solution to a client, as well as a deep level of understanding for how it can help the client achieve their business goals. Level 4 learning plans are the next logical learning step that goes beyond the demonstrations covered in the Level 3 learning. In keeping with the offering's hybrid cloud architecture, this will encompass deployments both on-premises and for Software-as-a-Service (SaaS) cloud.
 
 The hands-on modules included within this GitHub documentation— and outlined in the section below —are part of a broader Level 4 curriculum hosted on *IBM YourLearning* and *IBM Training*. To view the curriculum in its entirety and receive full accreditation for completing the Level 4 material, visit the following links:
 
 !!! warning ""
 	**IBM YourLearning (IBMers):** <a href="https://yourlearning.ibm.com/activity/PLAN-5C0B3BB33307" target="_blank">https://yourlearning.ibm.com/activity/PLAN-5C0B3BB33307</a>
 	
-    **IBM Training (Business Partners):** <a href="google.com" target="_blank">https://yourlearning.ibm.com/activity/PLAN-5C0B3BB33307</a>
+    **IBM Training (Business Partners):** <a href="https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012" target="_blank">https://www.ibm.com/training/learning-path/watsonx-code-assistant-level-4-1012</a>
+
+</br>
+The "Practitioners" (Deploy) coursework extensively covers deployment of the service for both on-premises and IBM Cloud environments. Before taking this course, those enrolling should have earned the **<a href="https://www.credly.com/org/ibm/badge/watsonx-code-assistant-sales-foundation" target="_blank">watsonx Code Assistant Sales Foundation</a>** badge and the **<a href="https://www.credly.com/org/ibm/badge/watsonx-code-assistant-technical-sales-intermediate" target="_blank">watsonx Code Assistant Technical Sales Intermediate</a>** badge, and have the technical background and proficiency at giving hands-on demos to clients.
 
 ## **ii. WCA Portfolio**
 

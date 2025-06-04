@@ -1,6 +1,6 @@
 # Project info
-site_name: IBM watsonx Code Assistant for Practitioners Level 4
-site_description: IBM watsonx Code Assistant for Practitioners Level 4
+site_name: IBM watsonx Code Assistant Level 4
+site_description: IBM watsonx Code Assistant Level 4
 site_author: Christopher Bienko (cdbienko@us.ibm.com)
 copyright: Copyright &copy; 2025 IBM
 
@@ -57,7 +57,7 @@ plugins:
   - glightbox
   - print-site:
       add_to_navigation: false
-      print_page_title: 'IBM watsonx Code Assistant for Practitioners Level 4 Lab Guide'
+      print_page_title: 'IBM watsonx Code Assistant Level 4 Lab Guide'
       add_print_site_banner: false
       # Table of contents
       add_table_of_contents: false
@@ -96,3 +96,6 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - tables
+
+extra_css:
+  - styles/override-print.css

@@ -9,20 +9,34 @@ var title = args[2];
 
 console.log('Saving', url, 'to', pdfPath);
 
-// date –  formatted print date
-// title – document title
-// url  – document location
-// pageNumber – current page number
-// totalPages – total pages in the document
-headerHtml = `
-<div style="font-size: 10px; padding-right: 1em; text-align: right; width: 100%;">
-    <span>${title}</span>  <span class="pageNumber"></span> / <span class="totalPages"></span>
+// Header HTML (right-aligned title with page numbering)
+const headerHtml = `
+<style>
+  .invisible-header {
+    font-size: 0;
+    color: transparent;
+    height: 1px;
+  }
+</style>
+<div class="invisible-header"></div>`;
+
+// Footer HTML (centered, small, greyscale legal notice)
+const footerHtml = `
+<div style="
+    width: 100%;
+    font-size: 8px;
+    color: #666;
+    text-align: center;
+    padding-top: 5px;
+    border-top: 0.5px solid #ccc;
+">
+    watsonx Code Assistant Level 4 — Lab Guide<br>
+    Course materials may not be reproduced in whole or in part without the prior written permission of IBM.
 </div>`;
 
-footerHtml = ` `;
 
 
-(async() => {
+(async () => {
     const browser = await puppeteer.launch({
         headless: true,
         executablePath: process.env.CHROME_BIN || null,
@@ -31,16 +45,17 @@ footerHtml = ` `;
 
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
+
     await page.pdf({
-        path: pdfPath, // path to save pdf file
-        format: 'A4', // page format
-        displayHeaderFooter: false, // display header and footer (in this example, required!)
-        printBackground: true, // print background
-        landscape: false, // use horizontal page layout
-        headerTemplate: headerHtml, // indicate html template for header
+        path: pdfPath,
+        format: 'A4',
+        displayHeaderFooter: true, // enable header and footer rendering
+        printBackground: true,
+        landscape: false,
+        headerTemplate: headerHtml,
         footerTemplate: footerHtml,
-        scale: 0.8, //Scale amount must be between 0.1 and 2
-        margin: { // increase margins (in this example, required!)
+        scale: 0.8,
+        margin: {
             top: 80,
             bottom: 80,
             left: 30,
