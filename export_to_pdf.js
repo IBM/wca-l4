@@ -35,7 +35,7 @@ const footerHtml = `
     font-size: 8px;
     color: #666;
     padding-top: 5px;
-    border-top: 0.5px solid #ccc;
+    /* border-top removed */
     position: relative;
   }
   .footer-center {
@@ -52,6 +52,7 @@ const footerHtml = `
     font-weight: bold;
   }
 </style>
+
 <div class="custom-footer">
   <div class="footer-page-number">
     <span class="pageNumber"></span>
