@@ -22,19 +22,42 @@ const headerHtml = `
 
 // Footer HTML (centered, small, greyscale legal notice)
 const footerHtml = `
-<div style="
+<style>
+  .custom-footer {
     width: 100%;
     font-size: 8px;
     color: #666;
-    text-align: center;
     padding-top: 5px;
     border-top: 0.5px solid #ccc;
-">
-    watsonx Code Assistant Level 4 — Lab Guide<br>
-    Course materials may not be reproduced in whole or in part without the prior written permission of IBM.
+    position: relative;
+  }
+
+  .footer-center {
+    text-align: center;
+  }
+
+  .footer-page-number {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    font-size: 8px;
+    color: #666;
+  }
+
+  .footer-bold-title {
+    font-weight: bold;
+  }
+</style>
+
+<div class="custom-footer">
+  <div class="footer-page-number">
+    <span class="pageNumber"></span>
+  </div>
+  <div class="footer-center">
+    <div class="footer-bold-title">watsonx Code Assistant Level 4: Lab Guide</div>
+    <div>Course materials may not be reproduced in whole or in part without the prior written permission of IBM.</div>
+  </div>
 </div>`;
-
-
 
 (async () => {
     const browser = await puppeteer.launch({
