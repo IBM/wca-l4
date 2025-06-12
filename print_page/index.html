@@ -3421,8 +3421,10 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p><strong>URL:</strong> <strong><a href="https://www.oracle.com/java/technologies/downloads/?er=221886#jdk21-mac" target="_blank">https://www.oracle.com/java/technologies/downloads/?er=221886#jdk21-mac</a></strong></p>
 </div>
 <ul>
-<li>It is strongly recommended that you <strong>install JDK 21</strong> (or as early as JDK 11)</li>
-<li>Newer-generation MacOS users will probably want to select the <em>ARM64 DMG Installer</em></li>
+<li>Participants must install <strong>JDK 21</strong></li>
+<li>From the downloads page, ensure that the <strong>JDK 21</strong><sup>[A]</sup> option is selected</li>
+<li>Further down the page, click the operating system<sup>[B]</sup> option that aligns with your machine operating system type (e.g. <em>macOS</em>)</li>
+<li>Click the link for the <strong>Download</strong><sup>[C]</sup> link for the installer that matches your machine's processing architecture (e.g. newer-generation <em>macOS</em> users will probably want to select the <em>ARM64 DMG Installer</em>)</li>
 <li>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2</li>
 </ul>
 <div class="admonition warning">
@@ -3430,6 +3432,8 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <p>Note that the <em>Full stack modernization</em> module in <a href="https://ibm.github.io/wca-l4/appmod/8/#i-objectives" target="_blank"><strong>Application Modernization - WebSphere to Liberty</strong></a> will encounter compatibility errors with JDK 24 drivers when attempting to Explain or Modernize the source application. This is owing to a deprecation of <code>sun.misc.Unsafe</code> method as of March 2025. <a href="https://openjdk.org/jeps/498" target="_blank"><strong>Additional details may be found here.</strong></a></p>
 <p>As a result, participants in this lab should ensure they are running <strong>JDK 21</strong> (or as early as JDK 11), but specifically <em>not</em> JDK 24. If you are running JDK 24, you should uninstall the JDK from your machine and reinstall with the links provided in <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a>.</p>
 </div>
+<p></br>
+<a class="glightbox" href="../saas/_attachments/saas-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-1.1.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -3464,24 +3468,30 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <div class="admonition note">
 <p>Modify the <strong>JAVA_HOME</strong> path in the <code>export JAVA_HOME=/.../</code> statements below if the pathway recorded in <em>Step 2</em> for <em>your machine</em> differs. For example, if using a different Java developer kit version from JDK 24, replace <code>/jdk-24.jdk/</code> with the version installed on <em>your</em> machine.</p>
 </div>
-<p></br>
-- <strong>macOS:</strong> Edit the shell configuration file
-    - Default shell (<code>zsh</code>) with Terminal:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a>nano ~/.zshrc
-</code></pre></div>
-    - <strong>Add</strong> the following line to the file:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#saas-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+<p></br></p>
+<ul>
+<li><strong>macOS:</strong><ul>
+<li>Edit the shell configuration file (<code>zsh</code>) with Terminal:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a>nano ~/.zshrc
+</code></pre></div></li>
+<li><strong>Add</strong> the following line to the file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#saas-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#saas-3-__codelineno-3-2"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
-</code></pre></div>
-    - <strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename
-    - <strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span>
-- <strong>Windows:</strong>
-    - Open the <strong>Start</strong> menu and search for <code>Environment Variables</code>
-    - Select <em>Edit the system environment variables</em> option
-    - Click the <strong>Environment Variables</strong> button
-    - Under <em>System Variables</em>, click <strong>New</strong>
-    - Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-21</code>)
-    - Click <strong>OK</strong> to finalize</p>
+</code></pre></div></li>
+<li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
+<li><strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
+</ul>
+</li>
+<li><strong>Windows:</strong><ul>
+<li>Open the <strong>Start</strong> menu and search for <code>Environment Variables</code></li>
+<li>Select <em>Edit the system environment variables</em> option</li>
+<li>Click the <strong>Environment Variables</strong> button</li>
+<li>Under <em>System Variables</em>, click <strong>New</strong></li>
+<li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-21</code>)</li>
+<li>Click <strong>OK</strong> to finalize</li>
+</ul>
+</li>
+</ul>
 </li>
 </ol>
 <hr />
