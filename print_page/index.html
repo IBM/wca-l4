@@ -3427,13 +3427,13 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>Click the link for the <strong>Download</strong><sup>[C]</sup> link for the installer that matches your machine's processing architecture (e.g. newer-generation <em>macOS</em> users will probably want to select the <em>ARM64 DMG Installer</em>)</li>
 <li>Follow the prompts of the installation wizard and complete the installation before continuing to Step 2</li>
 </ul>
+<p></br>
+<a class="glightbox" href="../saas/_attachments/saas-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-1.1.png" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">INCOMPATIBILITY WITH JDK 24</p>
 <p>Note that the <em>Full stack modernization</em> module in <a href="https://ibm.github.io/wca-l4/appmod/8/#i-objectives" target="_blank"><strong>Application Modernization - WebSphere to Liberty</strong></a> will encounter compatibility errors with JDK 24 drivers when attempting to Explain or Modernize the source application. This is owing to a deprecation of <code>sun.misc.Unsafe</code> method as of March 2025. <a href="https://openjdk.org/jeps/498" target="_blank"><strong>Additional details may be found here.</strong></a></p>
 <p>As a result, participants in this lab should ensure they are running <strong>JDK 21</strong> (or as early as JDK 11), but specifically <em>not</em> JDK 24. If you are running JDK 24, you should uninstall the JDK from your machine and reinstall with the links provided in <a href="https://ibm.github.io/wca-l4/saas/3/" target="_blank"><strong>Configure the enterprise Java environment</strong></a>.</p>
 </div>
-<p></br>
-<a class="glightbox" href="../saas/_attachments/saas-1.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../saas/_attachments/saas-1.1.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -3474,19 +3474,19 @@ Storage classes must be specified ahead of time when installing WCA. The followi
 <li>Edit the shell configuration file (<code>zsh</code>) with Terminal:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#saas-3-__codelineno-2-1"></a>nano ~/.zshrc
 </code></pre></div></li>
-<li><strong>Add</strong> the following line to the file:
+<li>Add the following line to the file:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#saas-3-__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#saas-3-__codelineno-3-2"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 </code></pre></div></li>
-<li><strong>Save</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
-<li><strong>Exit</strong> by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
+<li>Save by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-o">O</kbd></span> and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm the filename</li>
+<li>Exit by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-x">X</kbd></span></li>
 </ul>
 </li>
 <li><strong>Windows:</strong><ul>
-<li>Open the <strong>Start</strong> menu and search for <code>Environment Variables</code></li>
+<li>Open the <em>Start</em> menu and search for <code>Environment Variables</code></li>
 <li>Select <em>Edit the system environment variables</em> option</li>
-<li>Click the <strong>Environment Variables</strong> button</li>
-<li>Under <em>System Variables</em>, click <strong>New</strong></li>
+<li>Click the <em>Environment Variables</em> button</li>
+<li>Under <em>System Variables</em>, click <em>New</em></li>
 <li>Set the <em>Variable Name</em> = <code>JAVA_HOME</code> and <em>Variable Value</em> = <em>JDK path from Step 1</em> (e.g. <code>C:\Program Files\Java\jdk-21</code>)</li>
 <li>Click <strong>OK</strong> to finalize</li>
 </ul>
