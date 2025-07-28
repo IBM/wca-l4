@@ -43,7 +43,7 @@ const footerHtml = `
     text-align: left;
     left: 110px;
     font-weight: bold;
-    bottom: 60px;
+    bottom: 40px;
   }
   .footer-page-number {
     position: absolute;
