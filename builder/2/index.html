@@ -881,24 +881,29 @@
 <hr />
 <h2 id="i-what-youre-building-toward"><strong>i. What you're building toward</strong></h2>
 <hr />
-<p>Within this chapter, you will assemble the Demo Builder environment end-to-end: install the <strong>Client Engineering Bob Marketplace</strong> extension; create the <strong>GitHub Personal Access Token (PAT)</strong> that unlocks its catalog; stand up a fresh project workspace; and install the <strong>IBM Pre-Sales Demo Builder</strong> itself — the packaged Mode, Skills, and MCP servers that the remainder of this module runs upon.</p>
-<p>The screen capture below serves as a one-page map of the setup ahead. Follow along in the subsequent steps for detailed, step-by-step guidance — with links and highlighted screen captures throughout.</p>
+<p>Within this chapter, you will assemble the Demo Builder environment end-to-end:</p>
+<ul>
+<li>Install the <strong>Client Engineering Bob Marketplace</strong> extension</li>
+<li>Create the <strong>GitHub Personal Access Token (PAT)</strong> that unlocks its catalog</li>
+<li>Stand up a fresh project workspace; and</li>
+<li>Install the <strong>IBM Pre-Sales Demo Builder</strong> itself: the packaged Mode, Skills, and MCP servers that the remainder of this lab runs upon</li>
+</ul>
 <p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/83b65053-d280-4447-9de9-c285df882f00/File_bf25e53e8bd64c56b12b8b1c5e93b227_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/83b65053-d280-4447-9de9-c285df882f00/File_bf25e53e8bd64c56b12b8b1c5e93b227_text_export.jpeg" alt="" width="600" /></a>
 </p>
-
-<hr />
+<div class="admonition quote">
+<p>The illustration above serves as a one page map of the setup work ahead. Follow along in the subsequent steps for detailed, step-by-step guidance (with links and highlighted screen captures throughout.)</p>
+</div>
 <h2 id="ii-before-you-start"><strong>ii. Before you start</strong></h2>
 <hr />
 <ul>
 <li><strong>IBM Bob</strong> is installed and open</li>
 <li>You can sign in to <a href="http://github.ibm.com/?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">github.ibm.com</a></li>
+<li>Your <strong>IBMid</strong> credentials are at hand</li>
+<li>You are connected to the <strong>IBM Intranet</strong> (or via Cisco AnyConnect VPN)</li>
+<li>A local folder is available to serve as your Bob project workspace</li>
 </ul>
 <p>No additional downloads or staged files are required before you begin.</p>
-<div class="admonition note">
-<p class="admonition-title">QUICKSTART INSTALLATION (IN DEVELOPMENT)</p>
-<p>A streamlined quickstart installer for the Marketplace is in development, though at the time of this publication it does not yet behave reliably across all operating systems (Windows in particular). The manual path documented below works consistently everywhere, requires only a few minutes of effort, and — as a useful side-effect — walks you (the administrator) through every moving part of the configuration.</p>
-</div>
 <hr />
 <h2 id="iii-hands-on-install-the-ce-bob-marketplace-demo-builder"><strong>iii. Hands-on: Install the CE Bob Marketplace &amp; Demo Builder</strong></h2>
 <hr />
@@ -906,7 +911,7 @@
 <hr />
 <ol>
 <li>
-<p>Start by navigating to the following page:</p>
+<p>Start by navigating to the following page within a web browser:</p>
 <p><a href="https://github.ibm.com/ClientEngineering/bob/tree/main/How-To/Bob-Marketplace?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">https://github.ibm.com/ClientEngineering/bob/tree/main/How-To/Bob-Marketplace</a></p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/48419d99-6cfb-42c5-8bb6-0e3cdf06565f/File_90cde6fef04040ddad5fa28e2686b431_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/48419d99-6cfb-42c5-8bb6-0e3cdf06565f/File_90cde6fef04040ddad5fa28e2686b431_text_export.jpeg" alt="" width="600" /></a>
@@ -926,7 +931,7 @@
 <hr />
 <ol start="3">
 <li>
-<p>You will be redirected to the extension's file page. <strong>Click the Download raw file button</strong> (the arrow pointing downwards).</p>
+<p>You will be redirected to the extension's file page. Click the <strong>Download raw file</strong> button (the arrow pointing downwards.)</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/c4dc2fc3-62ee-499a-8c34-9ce0f1b30742/File_1f73cb392d1a4c558efe5920a3217e8a_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/c4dc2fc3-62ee-499a-8c34-9ce0f1b30742/File_1f73cb392d1a4c558efe5920a3217e8a_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -963,7 +968,7 @@
 <hr />
 <ol start="7">
 <li>
-<p>Assign your GitHub PAT a name that you will recognize later. Populate the <strong>Note</strong> field with <strong>"Bob Marketplace"</strong> or something similar.</p>
+<p>Assign your GitHub PAT a name that you will recognize later. Populate the <strong>Note</strong> field with <code>Bob Marketplace</code> or something similar.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/bf21c83a-baaa-4a8f-aece-141c25fdf20a/File_5982113a0bcf495392e8fec0578a6bcd_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/bf21c83a-baaa-4a8f-aece-141c25fdf20a/File_5982113a0bcf495392e8fec0578a6bcd_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -972,7 +977,7 @@
 <hr />
 <ol start="8">
 <li>
-<p>Expand the <strong>Expiration</strong> field and select <strong>90 days</strong>.</p>
+<p>Expand the <strong>Expiration</strong> field and select <code>90 days</code>.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/ab905020-a63e-4ff6-a94a-152a168e6a74/File_cc3e71ddea2943279fa6e17fc28708de_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/ab905020-a63e-4ff6-a94a-152a168e6a74/File_cc3e71ddea2943279fa6e17fc28708de_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -981,7 +986,7 @@
 <hr />
 <ol start="9">
 <li>
-<p>Under <em>Select scopes</em>, highlight the <strong>repo</strong> option at the top.</p>
+<p>Under <em>Select scopes</em>, toggle <strong>on</strong> (checkmark) the <code>repo</code> option. This will automatically select the nested options (<code>repostatus</code>, <code>repo_deployment</code>, etc) as well.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/08dcd8c7-14ff-49a7-97ea-d7893c4de1da/File_f8848392f05a4bf6a69a73d8c901f60f_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/08dcd8c7-14ff-49a7-97ea-d7893c4de1da/File_f8848392f05a4bf6a69a73d8c901f60f_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -999,7 +1004,7 @@
 <hr />
 <ol start="11">
 <li>
-<p>Press the <strong>copy</strong> button (the two overlapping squares) to copy your newly-generated GitHub PAT to the clipboard.</p>
+<p>Press the <strong>copy</strong> button (the two overlapping squares) to copy the newly-generated GitHub Personal Access Token (PAT) to the clipboard.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/25860032-a987-4a61-8256-ed348cd71d9a/File_b4bbd68c0b374d55a3b07cd6a9863bf9_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/25860032-a987-4a61-8256-ed348cd71d9a/File_b4bbd68c0b374d55a3b07cd6a9863bf9_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1019,11 +1024,12 @@
 </li>
 </ol>
 <hr />
-<p>To complete the tasks detailed throughout this module, you will make use of <strong>3 custom Bob Modes</strong>. Each has been packaged for a frictionless one-click install from the Bob Marketplace for Client Engineering. First, the Marketplace extension itself must be installed:</p>
+<p>To complete the tasks detailed throughout this module, you will make use of <strong>three Bob Custom Modes</strong>. Each has been packaged for a frictionless, one-click install from the Bob Marketplace for Client Engineering.</p>
+<p>First, the Marketplace extension itself must be installed:</p>
 <hr />
 <ol start="13">
 <li>
-<p>Click <strong>Extensions</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-x">X</kbd></span>).</p>
+<p>Within the Bob IDE, click the <strong>Extensions</strong> tab from the left-hand side of the interface (or alternatively press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-x">X</kbd></span>).</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d739f5bf-0a5e-4430-ad22-85323d95f02b/File_c2226678e0564046b20d1374f942c2fa_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d739f5bf-0a5e-4430-ad22-85323d95f02b/File_c2226678e0564046b20d1374f942c2fa_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1032,6 +1038,7 @@
 <hr />
 <ol start="14">
 <li>
+<p>The <strong>Extensions</strong> panel will open. In the top-right corner of the panel, next to the circular (loop) icon, click the three-dotted icon (<code>...</code>) to open a drop-down menu of additional options.</p>
 <p>Click <strong>Install from VSIX...</strong></p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/95057a19-1cdf-42e0-a6a5-3429ea6e8b75/File_0e47061acda14d6a86dfdc676fb82738_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/95057a19-1cdf-42e0-a6a5-3429ea6e8b75/File_0e47061acda14d6a86dfdc676fb82738_text_export.jpeg" alt="" width="600" /></a>
@@ -1041,7 +1048,8 @@
 <hr />
 <ol start="15">
 <li>
-<p>Within the File Explorer, select <strong>Bob-PreSales-DEMO-Builder-Marketplace.vsix</strong> — the file you downloaded earlier when you pressed <strong>Download raw file</strong>.</p>
+<p>Within the File Explorer, select <strong>Bob-PreSales-DEMO-Builder-Marketplace.vsix</strong> — the file you downloaded earlier when you pressed <strong>Download raw file</strong>. Likely this file is sitting in your local <em>Downloads</em> folder.</p>
+<p>Click the <strong>Install</strong> button to continue.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/721e2b99-9058-4464-95fd-5f4f380fef09/File_af7551ef21ac49979ce01b9c03ee7ce3_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/721e2b99-9058-4464-95fd-5f4f380fef09/File_af7551ef21ac49979ce01b9c03ee7ce3_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1050,7 +1058,8 @@
 <hr />
 <ol start="16">
 <li>
-<p><strong>Client Engineering Bob Marketplace</strong> now populates the <em>Installed</em> column. Take note that a Marketplace icon has also appeared in the sidebar.</p>
+<p><strong>Client Engineering Bob Marketplace</strong> should now appear within the <em>Installed</em> section of the <strong>Extensions</strong> panel.</p>
+<p>Take note that a Marketplace icon has also appeared along the tabs on the left-hand sidebar of the Bob IDE.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/67d4033e-30c8-49b9-8c17-231cf475d5e4/File_dd96d7505baf4725ba9f32a221c07878_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/67d4033e-30c8-49b9-8c17-231cf475d5e4/File_dd96d7505baf4725ba9f32a221c07878_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1059,7 +1068,7 @@
 <hr />
 <ol start="17">
 <li>
-<p>Click the <strong>CE Bob Marketplace</strong> icon.</p>
+<p>Click the <strong>CE Bob Marketplace</strong> tab from the sidebar.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/da150891-98c1-47b8-91ec-e7e3edf33a6e/File_94ca814cf8a34a288efcdbdf3c6076ea_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/da150891-98c1-47b8-91ec-e7e3edf33a6e/File_94ca814cf8a34a288efcdbdf3c6076ea_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1068,7 +1077,7 @@
 <hr />
 <ol start="18">
 <li>
-<p>Click the triangle icon to expand <strong>Collections</strong>.</p>
+<p>Click the triangular <code>&gt;</code> icon next to the <strong>Collections</strong> drop-down to expose the contents.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/392770a3-d802-43d3-9762-301a8b123566/File_e59a186cb7744e1d86b6108665e6c8a5_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/392770a3-d802-43d3-9762-301a8b123566/File_e59a186cb7744e1d86b6108665e6c8a5_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1077,8 +1086,11 @@
 <hr />
 <ol start="19">
 <li>
-<p>With collections expanded, the <strong>IBM Pre-Sales Demo Builder</strong> explored throughout this module comes into view. Before it can be installed, you must register the GitHub PAT created earlier.</p>
-<p>Click the small <strong>key icon</strong> (<em>Bob Marketplace: Set Repository Token</em>) near the top of your screen.</p>
+<p>The <strong>IBM Pre-Sales Demo Builder</strong> extension will appear under the <em>Collections</em> dropdown. <strong>Double-click</strong> it to open a detailed panel view.</p>
+<ul>
+<li>Before the extension can be installed, you must first register the GitHub PAT created earlier.</li>
+<li>Click the small <strong>key icon</strong> (<em>Bob Marketplace: Set Repository Token</em>) near the top of the CE Bob Marketplace panel.</li>
+</ul>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b638848b-943b-4bf0-835c-b1ecfa9f73ad/File_893d6e3fab4f43a2af1c5b377a60c9fe_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b638848b-943b-4bf0-835c-b1ecfa9f73ad/File_893d6e3fab4f43a2af1c5b377a60c9fe_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1096,7 +1108,7 @@
 <hr />
 <ol start="21">
 <li>
-<p>Open the document where you stored your GitHub PAT, paste it into that input window, and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p>Copy and paste the GitHUB PAT into the input window and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to continue.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/adabc9c0-f3b0-4ff8-94a0-5508aa7432cb/File_722d6bb2f3ef4bd18b449240f259fc82_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/adabc9c0-f3b0-4ff8-94a0-5508aa7432cb/File_722d6bb2f3ef4bd18b449240f259fc82_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
@@ -1105,7 +1117,7 @@
 <hr />
 <ol start="22">
 <li>
-<p>A <strong>"Token saved [...]"</strong> notification appears at the bottom of your screen.</p>
+<p>A <strong>"Token saved [...]"</strong> notification will appear in the bottom-right portion of your screen.</p>
 <p><p align="left">
 <a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/041eb37f-8a90-47eb-a30e-5e5d404f3033/File_6d4aa5a9ed0b4e51a2811de232aaf1c4_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/041eb37f-8a90-47eb-a30e-5e5d404f3033/File_6d4aa5a9ed0b4e51a2811de232aaf1c4_text_export.jpeg" alt="" width="600" /></a>
 </p></p>
