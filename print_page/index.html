@@ -7647,22 +7647,33 @@ With the environment assembled and validated, you will now shift attention to a 
 <h2 id="builder-3-ii-use-case-definition-the-what"><strong>ii. Use-case definition: the "what"</strong></h2>
 <hr />
 <p>The single biggest cause of weak demos is a vague problem statement. The Demo Builder's Phase-1 intake expects a <strong>structured brief</strong> — so front-load it.</p>
-<p><strong>Lead with the business pain, not the technology.</strong></p>
+<div class="admonition quote">
+<p class="admonition-title">Lead with the business pain, not the technology.</p>
 <p>❌ "Build a watsonx.ai demo for a bank."</p>
 <p>✅ "A retail bank loses ~$4M/year on false-positive fraud alerts that block legitimate cardholders. Show how Granite 3 + a transaction-context RAG cuts false positives 40% while keeping recall ≥ 99.2%."</p>
 <p>The first version forces Bob to invent a problem. The second pins the KPI, the baseline, and the target — which then drive the Dashboard KPIs, the ResultsPage before/after, and the PILOT_PLAN success metrics. One sentence of business pain propagates through the entire artifact set.</p>
-<p><strong>Name the persona AND the demo audience — separately.</strong></p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Name the persona AND the demo audience — separately.</p>
 <p>These are not the same. The <strong>persona</strong> is who uses the app on screen; the <strong>audience</strong> is who's watching the demo.</p>
 <blockquote>
 <p><em>Persona: Fraud Operations Analyst. Demo audience: CRO + Head of Fraud + 2 IT directors. Duration: 20 min, live, in-person.</em></p>
 </blockquote>
-<p>This one line tells Bob to (a) shape the SolutionPage around an analyst's workflow, (b) keep the DEMO_SCRIPT.md talk-track at exec-friendly altitude, and (c) sequence the three preset scenarios from "obvious win" → "edge case" → "governance moment."</p>
-<p><strong>Specify the "wow moment" explicitly.</strong></p>
-<p>Every Demo Builder demo has a SolutionPage with an interactive AI step. Tell Bob exactly what should happen there.</p>
+<p>This one line tells Bob to:</p>
+<ul>
+<li>Shape the SolutionPage around an analyst's workflow</li>
+<li>Express the <code>DEMO_SCRIPT.md</code> talk track in executive-friendly terms</li>
+<li>Sequence the three preset scenarios from "obvious win" → "edge case" → "governance moment"</li>
+</ul>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Specify the <em>wow moment</em> explicitly.</p>
+<p>Every Demo Builder demo has a <code>SolutionPage</code> with an interactive AI step. Tell Bob exactly what should happen there.</p>
 <blockquote>
 <p><em>Wow moment: Analyst clicks a flagged transaction, watsonx.ai returns a 3-bullet rationale citing the cardholder's last 30 days of behavior + a confidence score, and the analyst clears it in 8 seconds vs. 6 minutes today.</em></p>
 </blockquote>
-<p>That single sentence becomes the SolutionPage scenario, the AIResponsePanel content, and the ResultsPage delta. One sentence locks three pages.</p>
+<p>That single sentence becomes the <code>SolutionPage</code> scenario, the <code>AIResponsePanel</code> content, and the <code>ResultsPage</code> delta. One sentence unambiguously defines three pages.</p>
+</div>
 <hr />
 <h2 id="builder-3-iii-context-data-the-with-what"><strong>iii. Context &amp; data: the "with what"</strong></h2>
 <hr />
