@@ -1260,7 +1260,7 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition quote">
+<div class="admonition note">
 <p class="admonition-title">THESE KEYS ARE IMPERMANENT — BY DESIGN</p>
 <p>The credentials you have just gathered are time-sensitive:</p>
 <ul>
@@ -1291,17 +1291,23 @@
 <ol start="35">
 <li>
 <p>Copy the following prompt to your clipboard. Before executing the instruction within the Agentic Sidebar, <strong>modify Line 2 and Line 3</strong> to replace <code>&lt;PLACEHOLDER&gt;</code> with your TechZone and Carbon MCP server credentials.</p>
-<p>When ready, paste the modified prompt into the Agentic Sidebar and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute.</p>
+<p>When ready, paste the modified prompt into the Agentic Sidebar and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute the instruction.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Configure the TechZone and Carbon MCP servers and help me verify they are connected. Here are my keys:
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="hll">TechZone: &lt;PLACEHOLDER&gt;
 </span><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="hll">Carbon: &lt;PLACEHOLDER&gt;
 </span></code></pre></div></td></tr></table></div>
-<details class="quote">
+<details class="warning">
 <summary>ALTERNATIVE: MANUAL MCP CONFIGURATION</summary>
+<p>Should you prefer to wire the MCP servers by hand (or need to troubleshoot what Bob configured on your behalf), the TechZone MCP configuration JSON is published at <a href="https://github.ibm.com/ClientEngineering/bob/blob/main/MCP/ibm-techzone-mcp-bob/techzone-mcp-config.json" target="_blank">github.ibm.com/ClientEngineering/bob — techzone-mcp-config.json</a>.</p>
+<p>Copy the entirety of its contents into the <strong>Project MCPs</strong> configuration and save, then verify that the <em>techzone request</em> and <em>techzone documentation</em> servers appear. A quick functional test:</p>
+<ul>
+<li>Prompt Bob to list environments</li>
+<li>Search for <code>StudentID</code> environments</li>
+<li>Request a 1-day test environment</li>
+</ul>
 </details>
-<p>Should you prefer to wire the MCP servers by hand (or need to troubleshoot what Bob configured on your behalf), the TechZone MCP configuration JSON is published at <a href="https://github.ibm.com/ClientEngineering/bob/blob/main/MCP/ibm-techzone-mcp-bob/techzone-mcp-config.json" target="_blank">github.ibm.com/ClientEngineering/bob — techzone-mcp-config.json</a>. Copy its entire contents into your <strong>Project MCPs</strong> configuration and save, then verify that the <em>techzone request</em> and <em>techzone documentation</em> servers appear. A quick functional test: prompt Bob to list environments, search for StudentID environments, and request a 1-day test environment.</p>
 </li>
 </ol>
 <hr />
@@ -1310,12 +1316,12 @@
 <ul>
 <li>The <strong>CE Bob Marketplace</strong> is the distribution channel for Client Engineering's packaged assets — Modes, Skills, and MCP servers are installed as a <code>VSIX</code> extension</li>
 <li>A <strong>GitHub PAT</strong> (with <code>repo</code> scope and a 90-day expiry) is the key that unlocks the Marketplace catalog; store it within a password manager and expect to refresh it periodically</li>
-<li>Installing the <strong>IBM Pre-Sales Demo Builder</strong> places a complete <code>.bob/</code> folder into your workspace</li>
+<li>Installing the <strong>IBM Pre-Sales Demo Builder</strong> places a complete <code>.bob/</code> folder into your project workspace</li>
 <li>The <strong>TechZone</strong> and <strong>Carbon</strong> MCP credentials are deliberately short-lived; when MCP calls misbehave, regenerating fresh credentials is the first remedy to attempt</li>
 <li>Validate the complete chain (Marketplace, token, catalog, Modes, Skills, and MCP servers) <em>before</em> any demo work begins</li>
 </ul>
 <p></br>
-With the environment assembled and validated, we will shift our attention to the discipline that shapes demo quality more than any other: effectively briefing and prompting the Demo Builder itself.</p>
+With the environment assembled and validated, you will now shift attention to a discipline that can tremendously influence the quality of your generated demos: being able to effectively brief and prompt the Bob Demo-Builder Mode itself.</p>
 <hr />
 
 
