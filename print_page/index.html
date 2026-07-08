@@ -7637,16 +7637,16 @@ With the environment assembled and validated, you will now shift attention to a 
 </div>
 <p>Recall the principle established in the very first pages of this hands-on material: IBM Bob and generative AI are <em>non-deterministic</em> systems. <strong>Precision</strong> is what tips the odds in your favor. Every prompt submitted to the Demo Builder should answer six things:</p>
 <ol>
-<li><strong>WHO</strong> | Industry + persona + audience seniority</li>
-<li><strong>WHAT</strong> | Business problem defined in one sentence and what is the "wow moment"?</li>
-<li><strong>HOW IT'S CONSUMED</strong> | UI flow, channel, demo duration, scenarios</li>
-<li><strong>DATA</strong> | What synthetic data shape, volume, fields</li>
-<li><strong>TECH STACK</strong> | Which IBM products, which are <em>primary</em> vs. <em>expansion</em></li>
-<li><strong>OUT OF SCOPE</strong> | What Bob must <em>not</em> build</li>
+<li><strong>WHO</strong>                  | Industry + persona + audience seniority</li>
+<li><strong>WHAT</strong>                 | Business problem defined in one sentence, the "wow moment"</li>
+<li><strong>HOW IT'S CONSUMED</strong>    | UI flow, channel, demo duration, scenarios</li>
+<li><strong>DATA</strong>                 | What synthetic data shape, volume, fields</li>
+<li><strong>TECH STACK</strong>           | Which IBM products, which are <em>primary</em> vs. <em>expansion</em></li>
+<li><strong>OUT OF SCOPE</strong>         | What Bob must <em>not</em> build</li>
 </ol>
 <p>Skip any one of these, and Bob will endeavour to fill the gap with its defaults. These might be <em>good enough</em>, but they'll be generic and guesswork at best. Enterprise audiences recognize generic demonstrations quickly, and discredit them accordingly.</p>
 <hr />
-<h2 id="builder-3-ii-use-case-definition-the-what"><strong>ii. Use-case definition — the "what"</strong></h2>
+<h2 id="builder-3-ii-use-case-definition-the-what"><strong>ii. Use-case definition: the "what"</strong></h2>
 <hr />
 <p>The single biggest cause of weak demos is a vague problem statement. The Demo Builder's Phase-1 intake expects a <strong>structured brief</strong> — so front-load it.</p>
 <p><strong>Lead with the business pain, not the technology.</strong></p>
@@ -7666,7 +7666,7 @@ With the environment assembled and validated, you will now shift attention to a 
 </blockquote>
 <p>That single sentence becomes the SolutionPage scenario, the AIResponsePanel content, and the ResultsPage delta. One sentence locks three pages.</p>
 <hr />
-<h2 id="builder-3-iii-context-data-the-with-what"><strong>iii. Context &amp; data — the "with what"</strong></h2>
+<h2 id="builder-3-iii-context-data-the-with-what"><strong>iii. Context &amp; data: the "with what"</strong></h2>
 <hr />
 <p>The Demo Builder <strong>always</strong> uses synthetic data — a non-negotiable that ships as an ambient Rule, in precisely the pattern you configured within <em>Module 3 | Tailor</em>. The user's (your) responsibility is to shape that synthetic data so the demonstration feels like the client's world.</p>
 <p><strong>Describe data shape, not just data type.</strong></p>
@@ -7685,7 +7685,7 @@ With the environment assembled and validated, you will now shift attention to a 
 <p><em>Use code DEMO-FS-042. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails @example.com. Include the DemoBanner on every page.</em></p>
 </blockquote>
 <hr />
-<h2 id="builder-3-iv-scope-boundaries-the-what-not-to-build"><strong>iv. Scope boundaries — the "what NOT to build"</strong></h2>
+<h2 id="builder-3-iv-scope-boundaries-the-what-not-to-build"><strong>iv. Scope boundaries: the "what <em>not</em> to build"</strong></h2>
 <hr />
 <p>This is the section most users skip — and it's the single biggest accelerator. Bob will happily build everything; your job is to tell him not to.</p>
 <p><strong>Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</strong></p>
@@ -7705,7 +7705,7 @@ With the environment assembled and validated, you will now shift attention to a 
 </blockquote>
 <p>Each of these is a 2-hour rabbit hole that adds nothing to the storytelling.</p>
 <hr />
-<h2 id="builder-3-v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection — the "with which products"</strong></h2>
+<h2 id="builder-3-v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection: the "with which products"</strong></h2>
 <hr />
 <p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (you will demo them) versus <strong>expansion</strong> (they appear in the architecture diagram, carrying the land-and-expand story).</p>
 <p><strong>Pick 1–2 primary products. Maximum.</strong></p>
@@ -7725,7 +7725,7 @@ With the environment assembled and validated, you will now shift attention to a 
 </blockquote>
 <p>This guarantees the demo runs on the train Wi-Fi.</p>
 <hr />
-<h2 id="builder-3-vi-quality-checks-the-how-do-i-know-its-done"><strong>vi. Quality checks — the "how do I know it's done"</strong></h2>
+<h2 id="builder-3-vi-quality-checks-the-how-do-i-know-its-done"><strong>vi. Quality checks: the "how do I know it's done"</strong></h2>
 <hr />
 <p>The Demo Builder runs <code>check-compliance.sh</code> at the end of a build. Ask for it explicitly — and then actually read the output.</p>
 <p><strong>Demand the compliance run, then read it.</strong></p>
@@ -7747,7 +7747,7 @@ With the environment assembled and validated, you will now shift attention to a 
 <p><em>DEMO_SCRIPT.md has timed sections (Open 2', Problem 3', Solution 7', Results 2', Close 1') with talk-track sentences I can read out loud. PILOT_PLAN.md has 3 measurable success criteria with baseline + target. ARCHITECTURE.md has a Mermaid diagram with 6+ subgraphs.</em></p>
 </blockquote>
 <hr />
-<h2 id="builder-3-vii-expected-outcomes-setting-the-quality-bar"><strong>vii. Expected outcomes — setting the quality bar</strong></h2>
+<h2 id="builder-3-vii-expected-outcomes-setting-the-quality-bar"><strong>vii. Expected outcomes: setting the quality bar</strong></h2>
 <hr />
 <p>Set the bar at the <em>top</em> of the prompt, so Bob calibrates from the start.</p>
 <p><strong>Anchor on the "Client Engineering pilot in 3–4 weeks" close.</strong> The demo's job is to land the pilot — which makes PILOT_PLAN.md the most important document in the package:</p>
@@ -7763,7 +7763,7 @@ With the environment assembled and validated, you will now shift attention to a 
 <p><em>All 3 SolutionPage scenarios pre-filled. Submit button always returns a result within 1.5s (mock latency). Loading, error, and empty states on every page. No flickering. No console errors. WCAG 2.1 AA: keyboard nav works end-to-end.</em></p>
 </blockquote>
 <hr />
-<h2 id="builder-3-viii-quick-reference-the-prompt-template"><strong>viii. Quick reference — the prompt template</strong></h2>
+<h2 id="builder-3-viii-quick-reference-the-prompt-template"><strong>viii. Quick reference: the prompt template</strong></h2>
 <hr />
 <p>Copy, fill in, and paste:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#builder-3-__codelineno-0-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
@@ -7803,7 +7803,7 @@ With the environment assembled and validated, you will now shift attention to a 
 <a id="__codelineno-0-35" name="__codelineno-0-35" href="#builder-3-__codelineno-0-35"></a>- I will provide WATSONX_API_KEY + WATSONX_PROJECT_ID via .env at runtime.
 </code></pre></div>
 <hr />
-<h2 id="builder-3-ix-three-sample-briefs-different-industries"><strong>ix. Three sample briefs — different industries</strong></h2>
+<h2 id="builder-3-ix-three-sample-briefs-for-different-industries"><strong>ix. Three sample briefs for different industries</strong></h2>
 <hr />
 <p>Three complete, ready-to-adapt Use-Case Briefs follow — one each for Financial Services, Healthcare, and Manufacturing. Study how each fills all six fields of the golden rule, and take note of how much <em>business</em> detail (KPIs, baselines, dollar impacts) each carries relative to technical detail.</p>
 <details class="quote">
@@ -7950,7 +7950,7 @@ With the environment assembled and validated, you will now shift attention to a 
 </code></pre></div>
 </details>
 <hr />
-<h2 id="builder-3-x-common-pitfalls-anti-patterns-to-avoid"><strong>x. Common pitfalls — anti-patterns to avoid</strong></h2>
+<h2 id="builder-3-x-common-pitfalls-and-anti-patterns-to-avoid"><strong>x. Common pitfalls and anti-patterns to avoid</strong></h2>
 <hr />
 <table>
 <thead>
