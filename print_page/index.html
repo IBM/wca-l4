@@ -609,6 +609,110 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          IBM Bob Demo-Builder Mode
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IBM Bob Demo-Builder Mode" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          IBM Bob Demo-Builder Mode
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builder/1/" class="md-nav__link">
+        1. Objectives and requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builder/2/" class="md-nav__link">
+        2. Setup and registration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builder/3/" class="md-nav__link">
+        3. Prompting the demo builder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builder/4/" class="md-nav__link">
+        4. Strategies for building better demos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builder/5/" class="md-nav__link">
+        5. Building consistently with asset templates
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -817,6 +921,54 @@
           <li class="md-nav__item">
   <a href="#appmod-8" class="md-nav__link">
     8. Full stack modernization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-ibm-bob-demo-builder-mode" class="md-nav__link">
+    IBM Bob Demo-Builder Mode
+  </a>
+  
+    <nav class="md-nav" aria-label="IBM Bob Demo-Builder Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builder-1" class="md-nav__link">
+    1. Objectives and requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#builder-2" class="md-nav__link">
+    2. Setup and registration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#builder-3" class="md-nav__link">
+    3. Prompting the demo builder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#builder-4" class="md-nav__link">
+    4. Strategies for building better demos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#builder-5" class="md-nav__link">
+    5. Building consistently with asset templates
   </a>
   
 </li>
@@ -6933,7 +7085,1479 @@ Once again, this recommendation has been specifically tailored for enterprise us
 </ol>
 <hr />
 <h2 id="appmod-8-vii-conclusion"><strong>vii. Conclusion</strong></h2>
-<p>Having concluded the <strong>Application Modernization - WebSphere to Liberty</strong> hands-on modules, participants should now complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1></div>
+<p>Having concluded the <strong>Application Modernization - WebSphere to Liberty</strong> hands-on modules, participants should now complete the corresponding <em>Evaluation</em> quiz and then continue with the remainder of the Level 4 curriculum.</p></section><h1 class='nav-section-title-end'>Ended: Application Modernization - WebSphere to Liberty</h1>
+                        <h1 class='nav-section-title' id='section-ibm-bob-demo-builder-mode'>
+                            IBM Bob Demo-Builder Mode <a class='headerlink' href='#section-ibm-bob-demo-builder-mode' title='Permanent link'>↵</a>
+                        </h1>
+                        <section class="print-page" id="builder-1"><p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="builder-1-getting-started-with-bob-demo-builder-mode"><strong>GETTING STARTED WITH BOB DEMO-BUILDER MODE</strong></h1>
+<hr />
+<h2 id="builder-1-i-putting-the-ai-maturity-curve-to-work"><strong>i. Putting the AI Maturity Curve to work</strong></h2>
+<hr />
+<p>Across the four core modules of this Level 3 course, you progressively handed IBM Bob more responsibility along the <strong>AI Maturity Curve</strong> — with Bob earning that trust by keeping you, the human-in-the-loop, in command the entire way. The standalone module ahead puts that maturity to work against the most valuable artifact in the pre-sales motion: a <strong>working, compliant, runnable client demonstration</strong>, produced in hours rather than weeks.</p>
+<p>Recall the closing note of <a href="https://ibm.github.io/bob-l3/scale/4-3/" target="_blank"><strong>Module 4 | Scale &amp; Extend</strong></a>, which previewed a dedicated series of hands-on labs covering the <strong>IBM Bob Marketplace</strong>, the <strong>Model Context Protocol (MCP)</strong>, and their synergies with IBM Technology Zone client-facing demonstrations. The module ahead is that follow-on. It assumes you have completed the core curriculum (or hold equivalent familiarity with the Bob IDE, the Agentic Sidebar, Custom Modes, and MCP), and it begins from a fresh workspace — nothing from the <em>Galaxium Travels</em> environment carries over.</p>
+<p><strong>IBM Bob Demo-Builder MODE</strong> (formally, the <em>IBM Pre-Sales Demo Builder</em>) is a packaged Custom Mode — precisely the kind of asset you authored by hand in <a href="https://ibm.github.io/bob-l3/tailor/3-3/" target="_blank"><strong>Module 3 | Tailor</strong></a> — built and maintained by IBM Client Engineering. It captures the method of a senior solution engineer as a reusable asset: a persona, a build lifecycle, decision gates, compliance guardrails, and the product knowledge required to embed IBM platforms into a real full-stack solution (Carbon frontend, FastAPI backend, synthetic data throughout).</p>
+<p><a class="glightbox" href="../builder/1/_attachments/Demo-Builder-OnePager.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../builder/1/_attachments/Demo-Builder-OnePager.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">THE MODULE AT A GLANCE</p>
+<p>The graphic above serves as your map for this module. Its phases structure the work ahead: configure the <strong>Carbon MCP</strong>; configure the <strong>TechZone MCP</strong>; install the <strong>IBM Pre-Sales DEMO Builder MODE</strong>; and, from that point onward, <em>you're ready to build</em>. Take note that the asset types being wired together here — MCP servers for reach, a Mode for method — are the very extensibility concepts introduced within <strong>Module 4 | Scale &amp; Extend</strong>. This module is where those concepts compound into a client-facing capability.</p>
+</div>
+<hr />
+<h2 id="builder-1-ii-why-this-matters"><strong>ii. Why this matters</strong></h2>
+<hr />
+<p>Every seller has encountered the demo trade-off. A bespoke demonstration is persuasive, but consumes weeks of scarce technical talent; a canned demonstration is instant, but generic — and enterprise audiences recognize the difference quickly. The Demo Builder is designed to collapse that trade-off. It scales <em>expertise</em> rather than headcount: the method of IBM's best client engineers, captured once as a Mode, applied by any practitioner, on any opportunity, within a single working session.</p>
+<p>The discipline you practiced across the core modules carries over intact: <strong>Bob does the building; the human (you) does the deciding.</strong> The Demo Builder asks crisp, optioned questions at genuine decision points — use case, product fit, environment, build path, compliance, hand-off — and works autonomously between them. The user remains in the decision seat the entire way. What changes is the output: each session concludes with a demonstration you can place in front of a CRO.</p>
+<hr />
+<h2 id="builder-1-iii-whats-in-this-module"><strong>iii. What's in this module</strong></h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>CHAPTER</th>
+<th>TOPIC</th>
+<th>WHAT YOU'LL TAKE AWAY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#builder-1-5-1.md"><strong>5-1. Setup &amp; Registration</strong></a></td>
+<td>Install the CE Bob Marketplace, create your GitHub PAT, and install the Demo Builder</td>
+<td>A fully configured Demo Builder environment, validated end-to-end</td>
+</tr>
+<tr>
+<td><a href="#builder-1-5-2.md"><strong>5-2. Prompting the Demo Builder</strong></a></td>
+<td>The Use-Case Brief: six things every prompt must answer</td>
+<td>Briefs that produce client-ready demos in a single session, without re-prompting</td>
+</tr>
+<tr>
+<td><a href="#builder-1-5-3.md"><strong>5-3. The Strategy: Agents Uplift, Humans Decide</strong></a></td>
+<td>The asset model behind the Demo Builder — MODES, SKILLS, MCPs, and RULES</td>
+<td>The operating philosophy to carry into a C-suite conversation about agentic AI</td>
+</tr>
+<tr>
+<td><a href="#builder-1-5-4.md"><strong>5-4. Asset Templates: Uniform by Construction</strong></a></td>
+<td>Authoring your own Modes, Skills, and Rules from the official templates</td>
+<td>The ability to extend the asset library yourself — correctly, the first time</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="builder-1-iv-before-you-start"><strong>iv. Before you start</strong></h2>
+<hr />
+<p>The prerequisites are deliberately minimal:</p>
+<ul>
+<li><strong>IBM Bob</strong> is installed and open</li>
+<li>You can sign in to <a href="http://github.ibm.com/?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">github.ibm.com</a></li>
+<li>Your <strong>IBMid</strong> credentials are at hand</li>
+<li>You are connected to the <strong>IBM Intranet</strong> (or via Cisco AnyConnect VPN)</li>
+<li>A local folder is available to serve as your Bob project workspace</li>
+</ul>
+<p>No additional downloads or staged files are required before you begin.</p>
+<hr />
+<h2 id="builder-1-v-next-steps"><strong>v. Next steps</strong></h2>
+<hr />
+<p>In the chapter ahead, you will install the Client Engineering Bob Marketplace, create the GitHub token that unlocks its catalog, and install the IBM Pre-Sales Demo Builder into a fresh workspace — validating the complete chain before any demo work begins.</p>
+<hr /></section><section class="print-page" id="builder-2"><p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="builder-2-setup-registration"><strong>SETUP &amp; REGISTRATION</strong></h1>
+<hr />
+<h2 id="builder-2-i-what-youre-building-toward"><strong>i. What you're building toward</strong></h2>
+<hr />
+<p>Within this chapter, you will assemble the Demo Builder environment end-to-end: install the <strong>Client Engineering Bob Marketplace</strong> extension; create the <strong>GitHub Personal Access Token (PAT)</strong> that unlocks its catalog; stand up a fresh project workspace; and install the <strong>IBM Pre-Sales Demo Builder</strong> itself — the packaged Mode, Skills, and MCP servers that the remainder of this module runs upon.</p>
+<p>The screen capture below serves as a one-page map of the setup ahead. Follow along in the subsequent steps for detailed, step-by-step guidance — with links and highlighted screen captures throughout.</p>
+<p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/83b65053-d280-4447-9de9-c285df882f00/File_bf25e53e8bd64c56b12b8b1c5e93b227_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/83b65053-d280-4447-9de9-c285df882f00/File_bf25e53e8bd64c56b12b8b1c5e93b227_text_export.jpeg" alt="" width="600" /></a>
+</p>
+
+<hr />
+<h2 id="builder-2-ii-before-you-start"><strong>ii. Before you start</strong></h2>
+<hr />
+<ul>
+<li><strong>IBM Bob</strong> is installed and open</li>
+<li>You can sign in to <a href="http://github.ibm.com/?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">github.ibm.com</a></li>
+</ul>
+<p>No additional downloads or staged files are required before you begin.</p>
+<div class="admonition note">
+<p class="admonition-title">QUICKSTART INSTALLATION (IN DEVELOPMENT)</p>
+<p>A streamlined quickstart installer for the Marketplace is in development, though at the time of this publication it does not yet behave reliably across all operating systems (Windows in particular). The manual path documented below works consistently everywhere, requires only a few minutes of effort, and — as a useful side-effect — walks you (the administrator) through every moving part of the configuration.</p>
+</div>
+<hr />
+<h2 id="builder-2-iii-hands-on-install-the-ce-bob-marketplace-demo-builder"><strong>iii. Hands-on: Install the CE Bob Marketplace &amp; Demo Builder</strong></h2>
+<hr />
+<p>The work ahead proceeds in four phases: download the Marketplace extension; create the GitHub PAT that authenticates it; install the extension and register your token; and, finally, install the Demo Builder into a fresh workspace.</p>
+<hr />
+<ol>
+<li>
+<p>Start by navigating to the following page:</p>
+<p><a href="https://github.ibm.com/ClientEngineering/bob/tree/main/How-To/Bob-Marketplace?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">https://github.ibm.com/ClientEngineering/bob/tree/main/How-To/Bob-Marketplace</a></p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/48419d99-6cfb-42c5-8bb6-0e3cdf06565f/File_90cde6fef04040ddad5fa28e2686b431_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/48419d99-6cfb-42c5-8bb6-0e3cdf06565f/File_90cde6fef04040ddad5fa28e2686b431_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Scroll down to the <em>Installation Guide</em> subsection and <strong>click the link</strong> under <em>Step 1 - Download the extension</em>:</p>
+<p><a href="https://github.ibm.com/ClientEngineering/bob/blob/main/Extensions/Bob-PreSales-DEMO-Builder-Marketplace.vsix?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">https://github.ibm.com/ClientEngineering/bob/blob/main/Extensions/Bob-PreSales-DEMO-Builder-Marketplace.vsix</a></p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/8bd3e3c6-e34d-4664-ab4b-2caf31caa1e6/File_6db5c7af583649daa99432406b25a5a2_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/8bd3e3c6-e34d-4664-ab4b-2caf31caa1e6/File_6db5c7af583649daa99432406b25a5a2_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>You will be redirected to the extension's file page. <strong>Click the Download raw file button</strong> (the arrow pointing downwards).</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/c4dc2fc3-62ee-499a-8c34-9ce0f1b30742/File_1f73cb392d1a4c558efe5920a3217e8a_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/c4dc2fc3-62ee-499a-8c34-9ce0f1b30742/File_1f73cb392d1a4c558efe5920a3217e8a_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p><strong>Click README.md</strong> (under <em>How-To/Bob-Marketplace</em> in the File Explorer on the side).</p>
+<p>This redirects you to <a href="https://github.ibm.com/ClientEngineering/bob/blob/main/How-To/Bob-Marketplace/README.md?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">https://github.ibm.com/ClientEngineering/bob/blob/main/How-To/Bob-Marketplace/README.md</a> <em>(alternatively, you may follow that link directly).</em></p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/e7804813-bc84-4315-bc0c-d8b9cba19e0f/File_da3ac33c2ca04cd08fa474334f4cd4bf_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/e7804813-bc84-4315-bc0c-d8b9cba19e0f/File_da3ac33c2ca04cd08fa474334f4cd4bf_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Back on the README page, scroll down until you reach <em>Step 2 - Create a GitHub API Token</em>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d7a039af-57bc-4fb7-9ca3-9ea16f5817c5/File_3df3ddcebb214c61b7beca17b91f2e9b_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d7a039af-57bc-4fb7-9ca3-9ea16f5817c5/File_3df3ddcebb214c61b7beca17b91f2e9b_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p><strong>Click the link:</strong> <a href="https://github.ibm.com/settings/tokens/new?utm_source=skills_network&amp;utm_content=in_lab_content_link&amp;utm_id=Lab-Bob+Demo+Builder+L3+v1-v1">https://github.ibm.com/settings/tokens/new</a></p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/a926b748-bb6e-43ed-a93d-2b907be9e82b/File_7f1e65418ce247dfa28c931f9fec303c_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/a926b748-bb6e-43ed-a93d-2b907be9e82b/File_7f1e65418ce247dfa28c931f9fec303c_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Assign your GitHub PAT a name that you will recognize later. Populate the <strong>Note</strong> field with <strong>"Bob Marketplace"</strong> or something similar.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/bf21c83a-baaa-4a8f-aece-141c25fdf20a/File_5982113a0bcf495392e8fec0578a6bcd_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/bf21c83a-baaa-4a8f-aece-141c25fdf20a/File_5982113a0bcf495392e8fec0578a6bcd_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Expand the <strong>Expiration</strong> field and select <strong>90 days</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/ab905020-a63e-4ff6-a94a-152a168e6a74/File_cc3e71ddea2943279fa6e17fc28708de_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/ab905020-a63e-4ff6-a94a-152a168e6a74/File_cc3e71ddea2943279fa6e17fc28708de_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Under <em>Select scopes</em>, highlight the <strong>repo</strong> option at the top.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/08dcd8c7-14ff-49a7-97ea-d7893c4de1da/File_f8848392f05a4bf6a69a73d8c901f60f_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/08dcd8c7-14ff-49a7-97ea-d7893c4de1da/File_f8848392f05a4bf6a69a73d8c901f60f_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Leave all other settings at their defaults. Scroll to the bottom of the page and click the green <strong>Generate token</strong> button.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/2e876ba7-a0ea-4a81-ae45-ce945c5d23b0/File_632a88197395430bacf27651d3a77311_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/2e876ba7-a0ea-4a81-ae45-ce945c5d23b0/File_632a88197395430bacf27651d3a77311_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Press the <strong>copy</strong> button (the two overlapping squares) to copy your newly-generated GitHub PAT to the clipboard.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/25860032-a987-4a61-8256-ed348cd71d9a/File_b4bbd68c0b374d55a3b07cd6a9863bf9_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/25860032-a987-4a61-8256-ed348cd71d9a/File_b4bbd68c0b374d55a3b07cd6a9863bf9_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>Paste and save your GitHub PAT within a password manager (or, less securely, within any text editor).</p>
+<div class="admonition warning">
+<p class="admonition-title">RETAIN YOUR CREDENTIALS DOCUMENT</p>
+<p>You will paste this token into Bob shortly — but do <strong>not</strong> delete it once you have done so. The saved credentials are your first resort for troubleshooting later in this chapter.</p>
+</div>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/6973ea58-3909-4ac9-b4bc-36e68d012191/File_e499df02c1e0467cabc4737b604071ca_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/6973ea58-3909-4ac9-b4bc-36e68d012191/File_e499df02c1e0467cabc4737b604071ca_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<p>To complete the tasks detailed throughout this module, you will make use of <strong>3 custom Bob Modes</strong>. Each has been packaged for a frictionless one-click install from the Bob Marketplace for Client Engineering. First, the Marketplace extension itself must be installed:</p>
+<hr />
+<ol start="13">
+<li>
+<p>Click <strong>Extensions</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-x">X</kbd></span>).</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d739f5bf-0a5e-4430-ad22-85323d95f02b/File_c2226678e0564046b20d1374f942c2fa_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/d739f5bf-0a5e-4430-ad22-85323d95f02b/File_c2226678e0564046b20d1374f942c2fa_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>Click <strong>Install from VSIX...</strong></p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/95057a19-1cdf-42e0-a6a5-3429ea6e8b75/File_0e47061acda14d6a86dfdc676fb82738_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/95057a19-1cdf-42e0-a6a5-3429ea6e8b75/File_0e47061acda14d6a86dfdc676fb82738_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Within the File Explorer, select <strong>Bob-PreSales-DEMO-Builder-Marketplace.vsix</strong> — the file you downloaded earlier when you pressed <strong>Download raw file</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/721e2b99-9058-4464-95fd-5f4f380fef09/File_af7551ef21ac49979ce01b9c03ee7ce3_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/721e2b99-9058-4464-95fd-5f4f380fef09/File_af7551ef21ac49979ce01b9c03ee7ce3_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p><strong>Client Engineering Bob Marketplace</strong> now populates the <em>Installed</em> column. Take note that a Marketplace icon has also appeared in the sidebar.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/67d4033e-30c8-49b9-8c17-231cf475d5e4/File_dd96d7505baf4725ba9f32a221c07878_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/67d4033e-30c8-49b9-8c17-231cf475d5e4/File_dd96d7505baf4725ba9f32a221c07878_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="17">
+<li>
+<p>Click the <strong>CE Bob Marketplace</strong> icon.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/da150891-98c1-47b8-91ec-e7e3edf33a6e/File_94ca814cf8a34a288efcdbdf3c6076ea_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/da150891-98c1-47b8-91ec-e7e3edf33a6e/File_94ca814cf8a34a288efcdbdf3c6076ea_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>Click the triangle icon to expand <strong>Collections</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/392770a3-d802-43d3-9762-301a8b123566/File_e59a186cb7744e1d86b6108665e6c8a5_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/392770a3-d802-43d3-9762-301a8b123566/File_e59a186cb7744e1d86b6108665e6c8a5_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>With collections expanded, the <strong>IBM Pre-Sales Demo Builder</strong> explored throughout this module comes into view. Before it can be installed, you must register the GitHub PAT created earlier.</p>
+<p>Click the small <strong>key icon</strong> (<em>Bob Marketplace: Set Repository Token</em>) near the top of your screen.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b638848b-943b-4bf0-835c-b1ecfa9f73ad/File_893d6e3fab4f43a2af1c5b377a60c9fe_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b638848b-943b-4bf0-835c-b1ecfa9f73ad/File_893d6e3fab4f43a2af1c5b377a60c9fe_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>An input window expands at the top of your screen, within the IBM Bob search bar.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/fe7b0774-f73f-4dca-8451-c0c89034c96d/File_a2010f6ce84f4d30b6c200798c3cb874_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/fe7b0774-f73f-4dca-8451-c0c89034c96d/File_a2010f6ce84f4d30b6c200798c3cb874_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>Open the document where you stored your GitHub PAT, paste it into that input window, and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/adabc9c0-f3b0-4ff8-94a0-5508aa7432cb/File_722d6bb2f3ef4bd18b449240f259fc82_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/adabc9c0-f3b0-4ff8-94a0-5508aa7432cb/File_722d6bb2f3ef4bd18b449240f259fc82_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>A <strong>"Token saved [...]"</strong> notification appears at the bottom of your screen.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/041eb37f-8a90-47eb-a30e-5e5d404f3033/File_6d4aa5a9ed0b4e51a2811de232aaf1c4_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/041eb37f-8a90-47eb-a30e-5e5d404f3033/File_6d4aa5a9ed0b4e51a2811de232aaf1c4_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="23">
+<li>
+<p>Next, a project workspace must be established. Click the <strong>Explorer</strong> icon (the folded paper).</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/21fa5455-1688-4cf3-94b1-567c9bc0c42f/File_e56a6c0f0b104d428d7c0fba61544505_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/21fa5455-1688-4cf3-94b1-567c9bc0c42f/File_e56a6c0f0b104d428d7c0fba61544505_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Click <strong>Open Folder</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/0929afc5-facf-490d-a994-72b7db70b0ec/File_614e7c914d384825bb87958b5624e979_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/0929afc5-facf-490d-a994-72b7db70b0ec/File_614e7c914d384825bb87958b5624e979_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>Create a <strong>New folder</strong> and name it <strong>Bob L3 Demo Builder</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/8df3ae5e-7abc-4d73-a1bb-429926ed00f3/File_2e5cd70852b74fa18d591a17fc1a03e6_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/8df3ae5e-7abc-4d73-a1bb-429926ed00f3/File_2e5cd70852b74fa18d591a17fc1a03e6_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>
+<p>Click <strong>Select folder</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b6ed57b6-cf4d-4e25-936d-57d2c1ab42e6/File_ff9cc51c6934413198d7967374f3fa43_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/b6ed57b6-cf4d-4e25-936d-57d2c1ab42e6/File_ff9cc51c6934413198d7967374f3fa43_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Click <strong>"Yes, I trust the authors"</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/efb42451-33a8-4bcd-8e81-446a42115d79/File_5c0207610ecd49c3be6947a72b115be0_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/efb42451-33a8-4bcd-8e81-446a42115d79/File_5c0207610ecd49c3be6947a72b115be0_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="28">
+<li>
+<p>Click <strong>"CE Bob Marketplace"</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/5a5494c6-2985-42f3-890a-b391a48ee7c8/File_b0aa361b213941eea35652c75d0300bd_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/5a5494c6-2985-42f3-890a-b391a48ee7c8/File_b0aa361b213941eea35652c75d0300bd_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Expand <strong>Collections</strong> once again and click <strong>Install</strong> next to <strong>IBM Pre-Sales Demo Builder</strong>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/de0e6dca-297e-4f45-a6ac-7c8754bb0853/File_ce043162055549669dd7db88a4897ccc_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/de0e6dca-297e-4f45-a6ac-7c8754bb0853/File_ce043162055549669dd7db88a4897ccc_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="30">
+<li>
+<p>Click <strong>Install</strong> on the pop-up window that appears.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/5fae6952-13e1-4e03-9a73-f27f5a75ea36/File_3ce258d416b34db2ad94a3fa23c81a30_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/5fae6952-13e1-4e03-9a73-f27f5a75ea36/File_3ce258d416b34db2ad94a3fa23c81a30_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="31">
+<li>
+<p>A message confirms that the install was successful. Next, click the <strong>Explorer</strong> icon.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/fe15e194-1dae-424a-8183-55bcad469126/File_302e88702fbd40dfb5110bf717b9ad19_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/fe15e194-1dae-424a-8183-55bcad469126/File_302e88702fbd40dfb5110bf717b9ad19_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<ol start="32">
+<li>
+<p>Back within the File Explorer view, a <strong><code>.bob</code></strong> folder has been installed automatically into your project — carrying all of the components needed to complete this module. You will recognize the pattern from <a href="https://ibm.github.io/bob-l3/tailor/3-1/" target="_blank"><strong>Module 3 | Tailor</strong></a>: Modes, Rules, and Skills, distributed as version-controlled files within <code>.bob/</code>.</p>
+<p><p align="left">
+<a class="glightbox" href="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/4dd2c81a-1b7e-4a27-9ea8-6685386ef4fe/File_e459f2e0e2124ebc89086b068b6d2297_text_export.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-29/4dd2c81a-1b7e-4a27-9ea8-6685386ef4fe/File_e459f2e0e2124ebc89086b068b6d2297_text_export.jpeg" alt="" width="600" /></a>
+</p></p>
+</li>
+</ol>
+<hr />
+<h2 id="builder-2-iv-validation"><strong>iv. Validation</strong></h2>
+<hr />
+<p>At this point, you have: installed the <strong>Client Engineering Bob Marketplace</strong>; created a <strong>GitHub PAT</strong> and linked it to the Marketplace; and installed the <strong>Demo Builder</strong>.</p>
+<p>Before proceeding, verify each of the following:</p>
+<ul>
+<li>[ ] Client Engineering Bob Marketplace icon is visible</li>
+<li>[ ] GitHub API token is configured</li>
+<li>[ ] Marketplace catalog loads successfully</li>
+<li>[ ] Modes are visible</li>
+<li>[ ] Skills are visible</li>
+<li>[ ] MCP Servers are visible</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NEED A HAND?</p>
+<p>Experiencing issues with one or more of these? Contact <a href="mailto:quintin.phillips@ibm.com">quintin.phillips@ibm.com</a> via email or Slack for support.</p>
+</div>
+<hr />
+<h2 id="builder-2-v-connect-the-mcp-servers"><strong>v. Connect the MCP servers</strong></h2>
+<hr />
+<p>The Demo Builder relies upon two MCP servers — <strong>TechZone</strong> (environment provisioning and documentation) and <strong>Carbon</strong> (IBM's design system) — and each requires a short-lived credential from you. Gather these first:</p>
+<table>
+<thead>
+<tr>
+<th>CREDENTIAL</th>
+<th>WHERE TO GET IT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TechZone API token</strong></td>
+<td>Your TechZone profile page: <a href="https://techzone.ibm.com/my/profile" target="_blank">techzone.ibm.com/my/profile</a></td>
+</tr>
+<tr>
+<td><strong>Carbon authorization code</strong></td>
+<td>The Carbon MCP IBMid flow: <a href="https://mcp.carbondesignsystem.com/mcp/auth/ibmid/web" target="_blank">mcp.carbondesignsystem.com/mcp/auth/ibmid/web</a></td>
+</tr>
+<tr>
+<td><strong>GitHub PAT</strong></td>
+<td>Already saved from <em>section iii</em></td>
+</tr>
+</tbody>
+</table>
+<p>With all of your credentials recorded, send the following prompt in the Agentic Sidebar — with IBM Bob in <strong>Agent mode</strong> — appending your keys where indicated:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#builder-2-__codelineno-0-1"></a>Configure the TechZone and Carbon MCP servers and help me verify they are connected. Here are my keys:
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">THESE KEYS ARE IMPERMANENT — BY DESIGN</p>
+<p>The credentials you have just gathered are time-sensitive:</p>
+<ul>
+<li>Your <strong>TechZone API key</strong> resets every time you re-log into TechZone</li>
+<li>Your <strong>Carbon authorization code</strong> resets every <strong>2 hours</strong></li>
+</ul>
+<p><strong>If you are experiencing issues with the MCP servers:</strong></p>
+<ol>
+<li>Re-log into TechZone and Carbon, and gather all 3 credentials again</li>
+<li>Paste the following message in the IBM Bob Agentic Sidebar, in Agent mode, with your fresh credentials appended:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#builder-2-__codelineno-1-1"></a>Please test the Carbon and MCP servers and ensure they are working. Here are my credentials:
+</code></pre></div>
+</div>
+<details class="note">
+<summary>ALTERNATIVE: MANUAL MCP CONFIGURATION</summary>
+<p>Should you prefer to wire the MCP servers by hand (or need to troubleshoot what Bob configured on your behalf), the TechZone MCP configuration JSON is published at <a href="https://github.ibm.com/ClientEngineering/bob/blob/main/MCP/ibm-techzone-mcp-bob/techzone-mcp-config.json" target="_blank">github.ibm.com/ClientEngineering/bob — techzone-mcp-config.json</a>. Copy its entire contents into your <strong>Project MCPs</strong> configuration and save, then verify that the <em>techzone request</em> and <em>techzone documentation</em> servers appear. A quick functional test: prompt Bob to list environments, search for StudentID environments, and request a 1-day test environment.</p>
+</details>
+<hr />
+<h2 id="builder-2-vi-key-takeaways"><strong>vi. Key takeaways</strong></h2>
+<hr />
+<ul>
+<li>The <strong>CE Bob Marketplace</strong> is the distribution channel for Client Engineering's packaged assets — Modes, Skills, and MCP servers — installed as a VSIX extension</li>
+<li>A <strong>GitHub PAT</strong> (with <code>repo</code> scope and a 90-day expiry) is the key that unlocks the Marketplace catalog; store it within a password manager and expect to refresh it periodically</li>
+<li>Installing the <strong>IBM Pre-Sales Demo Builder</strong> places a complete <code>.bob/</code> folder into your workspace — the same version-controlled asset pattern you authored by hand in Module 3</li>
+<li>The <strong>TechZone</strong> and <strong>Carbon</strong> MCP credentials are deliberately short-lived; when MCP calls misbehave, re-gathering fresh credentials is the first remedy to attempt</li>
+<li>Validate the complete chain — Marketplace, token, catalog, Modes, Skills, MCP servers — <em>before</em> any demo work begins</li>
+</ul>
+<p></br>
+With the environment assembled and validated, attention turns to the discipline that determines demo quality more than any other: briefing the Demo Builder well. That is the subject of the chapter ahead.</p>
+<hr /></section><section class="print-page" id="builder-3"><p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="builder-3-prompting-the-demo-builder"><strong>PROMPTING THE DEMO BUILDER</strong></h1>
+<hr />
+<h2 id="builder-3-i-the-brief-is-the-demo"><strong>i. The brief is the demo</strong></h2>
+<hr />
+<p>With the Demo Builder installed, the temptation is to submit a prompt along the lines of <em>"build me a watsonx demo"</em> and let Bob take it from there. Such a prompt will produce output — but the single biggest determinant of demo quality is neither the Mode, the model, nor the MCP servers. It is the <strong>brief that you (the user) feed Bob at the start</strong>. This chapter distills the field-tested practices that carry a seller from "use case in your head" to a working, compliant, runnable demo within a single session, without re-prompting six times over.</p>
+<div class="admonition note">
+<p class="admonition-title">THE GOLDEN RULE</p>
+<p>Bob is a <strong>builder</strong>, not an advisor. The richer the brief you feed him, the less he has to invent. A good prompt looks like a <strong>Use-Case Brief</strong>, not a question.</p>
+</div>
+<p>Recall the principle established in the very first pages of this course: generative AI is <em>non-deterministic</em>, and precision is what tips the odds in your favor. Every prompt submitted to the Demo Builder should answer six things:</p>
+<ol>
+<li><strong>WHO</strong> — Industry + persona + audience seniority</li>
+<li><strong>WHAT</strong> — Business problem in one sentence + the "wow moment"</li>
+<li><strong>HOW IT'S CONSUMED</strong> — UI flow, channel, demo duration, scenarios</li>
+<li><strong>DATA</strong> — What synthetic data shape, volume, fields</li>
+<li><strong>TECH STACK</strong> — Which IBM products + which are <em>primary</em> vs. <em>expansion</em></li>
+<li><strong>OUT OF SCOPE</strong> — What Bob must NOT build</li>
+</ol>
+<p>Skip any one of these, and Bob will fill the gap with its defaults — which are good, but generic. Enterprise audiences recognize generic demonstrations quickly, and discount them accordingly.</p>
+<hr />
+<h2 id="builder-3-ii-use-case-definition-the-what"><strong>ii. Use-case definition — the "what"</strong></h2>
+<hr />
+<p>The single biggest cause of weak demos is a vague problem statement. The Demo Builder's Phase-1 intake expects a <strong>structured brief</strong> — so front-load it.</p>
+<p><strong>Lead with the business pain, not the technology.</strong></p>
+<p>❌ "Build a watsonx.ai demo for a bank."</p>
+<p>✅ "A retail bank loses ~$4M/year on false-positive fraud alerts that block legitimate cardholders. Show how Granite 3 + a transaction-context RAG cuts false positives 40% while keeping recall ≥ 99.2%."</p>
+<p>The first version forces Bob to invent a problem. The second pins the KPI, the baseline, and the target — which then drive the Dashboard KPIs, the ResultsPage before/after, and the PILOT_PLAN success metrics. One sentence of business pain propagates through the entire artifact set.</p>
+<p><strong>Name the persona AND the demo audience — separately.</strong></p>
+<p>These are not the same. The <strong>persona</strong> is who uses the app on screen; the <strong>audience</strong> is who's watching the demo.</p>
+<blockquote>
+<p><em>Persona: Fraud Operations Analyst. Demo audience: CRO + Head of Fraud + 2 IT directors. Duration: 20 min, live, in-person.</em></p>
+</blockquote>
+<p>This one line tells Bob to (a) shape the SolutionPage around an analyst's workflow, (b) keep the DEMO_SCRIPT.md talk-track at exec-friendly altitude, and (c) sequence the three preset scenarios from "obvious win" → "edge case" → "governance moment."</p>
+<p><strong>Specify the "wow moment" explicitly.</strong></p>
+<p>Every Demo Builder demo has a SolutionPage with an interactive AI step. Tell Bob exactly what should happen there.</p>
+<blockquote>
+<p><em>Wow moment: Analyst clicks a flagged transaction, watsonx.ai returns a 3-bullet rationale citing the cardholder's last 30 days of behavior + a confidence score, and the analyst clears it in 8 seconds vs. 6 minutes today.</em></p>
+</blockquote>
+<p>That single sentence becomes the SolutionPage scenario, the AIResponsePanel content, and the ResultsPage delta. One sentence locks three pages.</p>
+<hr />
+<h2 id="builder-3-iii-context-data-the-with-what"><strong>iii. Context &amp; data — the "with what"</strong></h2>
+<hr />
+<p>The Demo Builder <strong>always</strong> uses synthetic data — a non-negotiable that ships as an ambient Rule, in precisely the pattern you configured within <em>Module 3 | Tailor</em>. The user's (your) responsibility is to shape that synthetic data so the demonstration feels like the client's world.</p>
+<p><strong>Describe data shape, not just data type.</strong></p>
+<p>❌ "Generate transaction data."</p>
+<p>✅ "500 synthetic card transactions over the last 90 days, fields: tx_id, cardholder_id, merchant_category (MCC), amount_usd, country_code, device_fingerprint, is_flagged. ~3% should be flagged. Include 5 'edge case' rows we can demo on (geo-velocity, MCC mismatch, amount anomaly, new-device, fast burst)."</p>
+<p>This maps cleanly to <code>synthetic_data_service.py</code> (Faker seed=42) and hands Bob the exact preset scenarios for the SolutionPage.</p>
+<p><strong>Call out integration <em>boundaries</em> — not implementations.</strong></p>
+<p>Tell Bob what the demo <strong>pretends</strong> to integrate with, so the architecture diagram and mock services are believable:</p>
+<blockquote>
+<p><em>Pretend integrations (mock-only): core banking system (Db2-style REST), case management (ServiceNow-style ticket creation), QRadar (alert ingestion via Kafka topic). Do not build real clients — generate OpenAPI stubs and mark them as mock.</em></p>
+</blockquote>
+<p>Bob will then produce a credible ARCHITECTURE.md with proper subgraphs (Integration Layer, Data Layer) without burning the build window on real connectors.</p>
+<p><strong>Confidentiality is non-negotiable — say it anyway.</strong></p>
+<p>The synthetic-data policy is baked in, but restating it at intake prevents accidental drift:</p>
+<blockquote>
+<p><em>Use code DEMO-FS-042. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails @example.com. Include the DemoBanner on every page.</em></p>
+</blockquote>
+<hr />
+<h2 id="builder-3-iv-scope-boundaries-the-what-not-to-build"><strong>iv. Scope boundaries — the "what NOT to build"</strong></h2>
+<hr />
+<p>This is the section most users skip — and it's the single biggest accelerator. Bob will happily build everything; your job is to tell him not to.</p>
+<p><strong>Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</strong></p>
+<p>The Demo Builder's defaults are a 5-page React shell (Dashboard, Problem, Solution, Results, Architecture) plus 3 preset scenarios. <strong>Don't expand this for a first build.</strong></p>
+<blockquote>
+<p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on SolutionPage. No user-typed input during live demo.</em></p>
+</blockquote>
+<p><strong>Explicitly defer "real" integrations to the pilot.</strong></p>
+<p>Anything requiring real credentials, real data, or real customer systems belongs in PILOT_PLAN.md, not in the demo build:</p>
+<blockquote>
+<p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in PILOT_PLAN.md as Sprint 2/3 items.</em></p>
+</blockquote>
+<p>This protects the 90-minute build window and keeps the demo runnable on a laptop with <code>docker-compose up</code>.</p>
+<p><strong>Forbid the common scope-creep traps.</strong></p>
+<blockquote>
+<p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email/SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
+</blockquote>
+<p>Each of these is a 2-hour rabbit hole that adds nothing to the storytelling.</p>
+<hr />
+<h2 id="builder-3-v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection — the "with which products"</strong></h2>
+<hr />
+<p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (you will demo them) versus <strong>expansion</strong> (they appear in the architecture diagram, carrying the land-and-expand story).</p>
+<p><strong>Pick 1–2 primary products. Maximum.</strong></p>
+<p>A 20-minute demo cannot do justice to four products. Pick the hero, name a co-star, and let everything else live in the architecture diagram:</p>
+<blockquote>
+<p><em>Primary: watsonx.ai (Granite 3-8B-instruct) for inference. Co-star: watsonx.data (Iceberg + Milvus) for the RAG context. Expansion-only (architecture diagram, not built): watsonx.governance (FactSheets), Instana (observability), CP4BA (case routing).</em></p>
+</blockquote>
+<p><strong>Specify the model and region — don't let Bob default.</strong></p>
+<p>The default <code>ibm/granite-3-8b-instruct</code> on <code>us-south</code> is fine for most demos, but be explicit when you have a reason:</p>
+<blockquote>
+<p><em>Model: <code>meta-llama/llama-3-405b-instruct</code> (client uses Llama internally for benchmarks). Region: <code>eu-de</code> (client is EU-based, GDPR sensitivity). Project ID will be filled in at runtime — generate <code>.env.example</code> with placeholder.</em></p>
+</blockquote>
+<p><strong>State your access posture: live vs. mock-only.</strong></p>
+<p>The Demo Builder's backend is dual-mode — mock by default, live with credentials. Tell it which one matters:</p>
+<blockquote>
+<p><em>Build mock-mode first and ensure full functionality with zero credentials. Live mode is "nice to have" — keep the SDK calls in <code>watsonx_service.py</code> ready but commented-out fallback paths are fine. I'll add the API key offline before the client meeting.</em></p>
+</blockquote>
+<p>This guarantees the demo runs on the train Wi-Fi.</p>
+<hr />
+<h2 id="builder-3-vi-quality-checks-the-how-do-i-know-its-done"><strong>vi. Quality checks — the "how do I know it's done"</strong></h2>
+<hr />
+<p>The Demo Builder runs <code>check-compliance.sh</code> at the end of a build. Ask for it explicitly — and then actually read the output.</p>
+<p><strong>Demand the compliance run, then read it.</strong></p>
+<blockquote>
+<p><em>After the build, run <code>scripts/check-compliance.sh</code> and paste the output. I want to see: no PII, no hardcoded keys, Carbon v11 in deps, UBI 9 base images, DemoBanner present, all 4 docs present (README, ARCHITECTURE, PILOT_PLAN, DEMO_SCRIPT).</em></p>
+</blockquote>
+<p>If Bob skips a check, push back: <em>"Re-run check-compliance.sh and confirm item X."</em></p>
+<p><strong>Smoke-test the three "must work" flows yourself.</strong></p>
+<p>Before declaring done, manually verify:</p>
+<ol>
+<li><code>docker-compose up</code> starts both services without errors.</li>
+<li><code>http://localhost:3000</code> renders all 5 pages without console errors.</li>
+<li>The 3 preset scenarios on SolutionPage all return mock responses with latency tags + confidence scores.</li>
+</ol>
+<p>If any of these fails, the demo is not done. Tell Bob: <em>"Scenario 2 errors with <code>undefined.tokens</code> — fix <code>watsonxMocks.js</code> and re-verify."</em></p>
+<p><strong>Verify the storytelling artifacts, not just the code.</strong></p>
+<p>Code that runs but has no narrative is not a demo:</p>
+<blockquote>
+<p><em>DEMO_SCRIPT.md has timed sections (Open 2', Problem 3', Solution 7', Results 2', Close 1') with talk-track sentences I can read out loud. PILOT_PLAN.md has 3 measurable success criteria with baseline + target. ARCHITECTURE.md has a Mermaid diagram with 6+ subgraphs.</em></p>
+</blockquote>
+<hr />
+<h2 id="builder-3-vii-expected-outcomes-setting-the-quality-bar"><strong>vii. Expected outcomes — setting the quality bar</strong></h2>
+<hr />
+<p>Set the bar at the <em>top</em> of the prompt, so Bob calibrates from the start.</p>
+<p><strong>Anchor on the "Client Engineering pilot in 3–4 weeks" close.</strong> The demo's job is to land the pilot — which makes PILOT_PLAN.md the most important document in the package:</p>
+<blockquote>
+<p><em>Close the demo with the line: "Working pilot in 3–4 weeks with IBM Client Engineering." PILOT_PLAN.md must show: Sprint 0 (env+access), Sprint 1 (data+model), Sprint 2 (integration+governance), Sprint 3 (E2E+handover). Team: 1 Tech Sales, 1–2 Client Engineers, 1 Data Eng, 1 AI Eng, 1 PM.</em></p>
+</blockquote>
+<p><strong>Demand IBM-grade UI fidelity:</strong></p>
+<blockquote>
+<p><em>All UI must use @carbon/react v11. Theme g90. IBM Plex fonts. Color scale: Blue 60 (#0f62fe) for primary, Purple 60 (#6929c4) for watsonx.data accents, Teal 70 (#005d5d) for governance. Branding: "Built with IBM watsonx" — never "Powered by Watson".</em></p>
+</blockquote>
+<p><strong>Make the demo presenter-proof.</strong> The presenter should never type during a live demo:</p>
+<blockquote>
+<p><em>All 3 SolutionPage scenarios pre-filled. Submit button always returns a result within 1.5s (mock latency). Loading, error, and empty states on every page. No flickering. No console errors. WCAG 2.1 AA: keyboard nav works end-to-end.</em></p>
+</blockquote>
+<hr />
+<h2 id="builder-3-viii-quick-reference-the-prompt-template"><strong>viii. Quick reference — the prompt template</strong></h2>
+<hr />
+<p>Copy, fill in, and paste:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#builder-3-__codelineno-0-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#builder-3-__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#builder-3-__codelineno-0-3"></a># CLIENT BRIEF
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#builder-3-__codelineno-0-4"></a>- Client Code:        DEMO-XXX-NNN
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#builder-3-__codelineno-0-5"></a>- Industry:           [Financial Services | Healthcare | Manufacturing | Retail | Telco | Energy | Public Sector]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#builder-3-__codelineno-0-6"></a>- Business Challenge: [one sentence: the pain + the $ or % impact]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#builder-3-__codelineno-0-7"></a>- Persona (in app):   [job title]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#builder-3-__codelineno-0-8"></a>- Demo Audience:      [seniority + roles, e.g. CRO + 2 IT Directors]
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#builder-3-__codelineno-0-9"></a>- Demo Duration:      [5 / 15 / 20 / 30 / 60 min]
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#builder-3-__codelineno-0-10"></a>- Delivery Format:    [live | recorded | self-guided]
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#builder-3-__codelineno-0-11"></a>- Wow Moment:         [one sentence: what happens on SolutionPage]
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#builder-3-__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#builder-3-__codelineno-0-13"></a># IBM PRODUCTS
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#builder-3-__codelineno-0-14"></a>- Primary (built):    [e.g. watsonx.ai with Granite 3-8B]
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#builder-3-__codelineno-0-15"></a>- Co-star (built):    [e.g. watsonx.data + Milvus for RAG]
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#builder-3-__codelineno-0-16"></a>- Expansion (diagram only): [e.g. watsonx.governance, Instana, CP4BA]
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#builder-3-__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#builder-3-__codelineno-0-18"></a># DATA
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#builder-3-__codelineno-0-19"></a>- Volume:    [e.g. 500 records, 90 days]
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#builder-3-__codelineno-0-20"></a>- Schema:    [list fields]
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#builder-3-__codelineno-0-21"></a>- Edge cases for the 3 scenarios: [scenario 1 / 2 / 3]
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#builder-3-__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#builder-3-__codelineno-0-23"></a># OUT OF SCOPE — DO NOT BUILD
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#builder-3-__codelineno-0-24"></a>- [e.g. real auth, real DB, CI/CD, anything beyond the 5 standard pages]
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#builder-3-__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#builder-3-__codelineno-0-26"></a># QUALITY BAR
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#builder-3-__codelineno-0-27"></a>- Run check-compliance.sh and paste output.
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#builder-3-__codelineno-0-28"></a>- Mock mode must work with zero credentials.
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#builder-3-__codelineno-0-29"></a>- Generate all 4 docs: README, ARCHITECTURE, PILOT_PLAN, DEMO_SCRIPT.
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#builder-3-__codelineno-0-30"></a>- Carbon v11, theme g90, &quot;Built with IBM watsonx&quot; branding.
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#builder-3-__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#builder-3-__codelineno-0-32"></a># TECH ACCESS
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#builder-3-__codelineno-0-33"></a>- Region: [us-south | eu-de | eu-gb | jp-tok | au-syd]
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#builder-3-__codelineno-0-34"></a>- Model:  [ibm/granite-3-8b-instruct | meta-llama/llama-3-405b-instruct | ...]
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#builder-3-__codelineno-0-35"></a>- I will provide WATSONX_API_KEY + WATSONX_PROJECT_ID via .env at runtime.
+</code></pre></div>
+<hr />
+<h2 id="builder-3-ix-three-sample-briefs-different-industries"><strong>ix. Three sample briefs — different industries</strong></h2>
+<hr />
+<p>Three complete, ready-to-adapt Use-Case Briefs follow — one each for Financial Services, Healthcare, and Manufacturing. Study how each fills all six fields of the golden rule, and take note of how much <em>business</em> detail (KPIs, baselines, dollar impacts) each carries relative to technical detail.</p>
+<details class="quote">
+<summary>SAMPLE 1 — FINANCIAL SERVICES (watsonx.ai + watsonx.data RAG)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#builder-3-__codelineno-1-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#builder-3-__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#builder-3-__codelineno-1-3"></a># CLIENT BRIEF
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#builder-3-__codelineno-1-4"></a>- Client Code:        DEMO-FS-042
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#builder-3-__codelineno-1-5"></a>- Industry:           Financial Services (mid-size retail bank)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#builder-3-__codelineno-1-6"></a>- Business Challenge: Fraud ops team handles ~12,000 alerts/day with 78% false-positive rate, costing
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#builder-3-__codelineno-1-7"></a>                      ~$4M/year in customer attrition and 6 minutes avg disposition time per alert.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#builder-3-__codelineno-1-8"></a>- Persona (in app):   Senior Fraud Operations Analyst
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#builder-3-__codelineno-1-9"></a>- Demo Audience:      CRO, Head of Fraud, 2 IT Directors (live, in-person, 20 min)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#builder-3-__codelineno-1-10"></a>- Wow Moment:         Analyst clicks a flagged transaction; watsonx.ai (with watsonx.data RAG over the
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#builder-3-__codelineno-1-11"></a>                      cardholder&#39;s last 30 days) returns a 3-bullet rationale + confidence score in &lt;2s,
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#builder-3-__codelineno-1-12"></a>                      and the analyst clears or escalates in one click.
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#builder-3-__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#builder-3-__codelineno-1-14"></a># IBM PRODUCTS
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#builder-3-__codelineno-1-15"></a>- Primary (built):           watsonx.ai — ibm/granite-3-8b-instruct
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#builder-3-__codelineno-1-16"></a>- Co-star (built):           watsonx.data — Iceberg + Milvus vector store for cardholder behavior RAG
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#builder-3-__codelineno-1-17"></a>- Expansion (diagram only):  watsonx.governance (FactSheets, drift), QRadar (alert ingestion),
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#builder-3-__codelineno-1-18"></a>                              CP4BA-BAW (case escalation), Instana (APM)
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#builder-3-__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#builder-3-__codelineno-1-20"></a># DATA
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#builder-3-__codelineno-1-21"></a>- 500 synthetic card transactions over 90 days
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#builder-3-__codelineno-1-22"></a>- Fields: tx_id, cardholder_id, merchant_category (MCC), amount_usd, country_code,
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#builder-3-__codelineno-1-23"></a>          device_fingerprint, is_flagged, fraud_score
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#builder-3-__codelineno-1-24"></a>- ~3% flagged, with 5 demo-able edge cases:
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#builder-3-__codelineno-1-25"></a>  Scenario 1: Geo-velocity (NYC → Singapore in 2 hrs)
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#builder-3-__codelineno-1-26"></a>  Scenario 2: MCC mismatch (luxury jewelry on a college student card)
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#builder-3-__codelineno-1-27"></a>  Scenario 3: Amount anomaly + new device fingerprint
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#builder-3-__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#builder-3-__codelineno-1-29"></a># OUT OF SCOPE
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#builder-3-__codelineno-1-30"></a>- No real auth, no real Db2 connection, no real QRadar feed
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#builder-3-__codelineno-1-31"></a>- No multi-tenant, no admin panel
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#builder-3-__codelineno-1-32"></a>- All emails @example.com, all entities fictional (Meridian Financial style)
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#builder-3-__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#builder-3-__codelineno-1-34"></a># QUALITY BAR
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#builder-3-__codelineno-1-35"></a>- Mock mode works with zero credentials
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#builder-3-__codelineno-1-36"></a>- check-compliance.sh passes
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#builder-3-__codelineno-1-37"></a>- DEMO_SCRIPT.md times to 20 min exactly
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#builder-3-__codelineno-1-38"></a>- PILOT_PLAN.md shows fraud-rate KPI baseline=78%, target=≤45% in 4 weeks
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#builder-3-__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#builder-3-__codelineno-1-40"></a># TECH ACCESS
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#builder-3-__codelineno-1-41"></a>- Region: us-south.ml.cloud.ibm.com
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#builder-3-__codelineno-1-42"></a>- Model: ibm/granite-3-8b-instruct
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#builder-3-__codelineno-1-43"></a>- Vector DB: Milvus (mock in-memory for demo, real Milvus on watsonx.data in pilot)
+</code></pre></div>
+</details>
+<details class="quote">
+<summary>SAMPLE 2 — HEALTHCARE (watsonx Assistant + Discovery + watsonx.ai)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#builder-3-__codelineno-2-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#builder-3-__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#builder-3-__codelineno-2-3"></a># CLIENT BRIEF
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#builder-3-__codelineno-2-4"></a>- Client Code:        DEMO-HC-017
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#builder-3-__codelineno-2-5"></a>- Industry:           Healthcare (regional hospital network, 12 hospitals)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#builder-3-__codelineno-2-6"></a>- Business Challenge: Clinical staff spend ~45 min/shift searching protocol PDFs and EHR notes for
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#builder-3-__codelineno-2-7"></a>                      drug-interaction and dosing guidance. Errors cost an average of $3,200 per
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#builder-3-__codelineno-2-8"></a>                      adverse event; ~140 events/year.
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#builder-3-__codelineno-2-9"></a>- Persona (in app):   ER Nurse / Clinical Pharmacist
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#builder-3-__codelineno-2-10"></a>- Demo Audience:      CMIO, Chief Nursing Officer, IT VP (15 min, recorded for committee playback)
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#builder-3-__codelineno-2-11"></a>- Wow Moment:         Nurse types a free-text question (&quot;80yo on warfarin, new Rx amoxicillin, ok?&quot;);
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#builder-3-__codelineno-2-12"></a>                      watsonx Assistant routes to a watsonx.ai+Discovery RAG over 200 synthetic
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#builder-3-__codelineno-2-13"></a>                      protocol PDFs and returns a structured answer with citations in &lt;3s.
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#builder-3-__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#builder-3-__codelineno-2-15"></a># IBM PRODUCTS
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#builder-3-__codelineno-2-16"></a>- Primary (built):           watsonx.ai — ibm/granite-3-8b-instruct (clinical reasoning)
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#builder-3-__codelineno-2-17"></a>- Co-star (built):           watsonx Assistant (chat UI) + Watson Discovery (mock SDU + enrichment)
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#builder-3-__codelineno-2-18"></a>- Expansion (diagram only):  watsonx.governance (HIPAA audit trail), CP4D Knowledge Catalog,
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#builder-3-__codelineno-2-19"></a>                              Db2 (EHR system of record)
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#builder-3-__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#builder-3-__codelineno-2-21"></a># DATA
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#builder-3-__codelineno-2-22"></a>- 200 synthetic clinical protocol &quot;documents&quot; (JSON with title, body, drug_class, last_updated)
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#builder-3-__codelineno-2-23"></a>- 50 synthetic patient records: patient_id, age, weight_kg, current_meds[], allergies[],
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#builder-3-__codelineno-2-24"></a>  conditions[] (CMS-synthetic-patient style — never real PHI)
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#builder-3-__codelineno-2-25"></a>- 3 preset scenarios:
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#builder-3-__codelineno-2-26"></a>  Scenario 1: Drug-drug interaction (warfarin + amoxicillin)
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#builder-3-__codelineno-2-27"></a>  Scenario 2: Renal dosing adjustment (eGFR &lt; 30, metformin)
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#builder-3-__codelineno-2-28"></a>  Scenario 3: Pediatric weight-based dosing
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#builder-3-__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#builder-3-__codelineno-2-30"></a># OUT OF SCOPE
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#builder-3-__codelineno-2-31"></a>- No real EHR/FHIR connection
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#builder-3-__codelineno-2-32"></a>- No real PHI under any circumstance — flag this in DemoBanner explicitly
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#builder-3-__codelineno-2-33"></a>- No login flow, no role-based access (mention RBAC in PILOT_PLAN)
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#builder-3-__codelineno-2-34"></a>- All patient names fictional, all emails @demo.ibm.com
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#builder-3-__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#builder-3-__codelineno-2-36"></a># QUALITY BAR
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#builder-3-__codelineno-2-37"></a>- Every AI response shows citations with synthetic doc IDs (e.g. PROTO-7a3f9e21)
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#builder-3-__codelineno-2-38"></a>- AIResponsePanel shows confidence + &quot;Reviewed by clinical team — synthetic data only&quot; tag
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#builder-3-__codelineno-2-39"></a>- WCAG 2.1 AA strict: clinical environments have low-vision users
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#builder-3-__codelineno-2-40"></a>- check-compliance.sh passes; explicit &quot;no PHI&quot; check in README
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#builder-3-__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#builder-3-__codelineno-2-42"></a># TECH ACCESS
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#builder-3-__codelineno-2-43"></a>- Region: us-south.ml.cloud.ibm.com (eu-de in pilot for any EU sites)
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#builder-3-__codelineno-2-44"></a>- Model: ibm/granite-3-8b-instruct (Granite Guardian as safety filter — mention in architecture)
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#builder-3-__codelineno-2-45"></a>- Assistant: WATSON_ASSISTANT_URL + WATSON_ASSISTANT_ID via .env
+</code></pre></div>
+</details>
+<details class="quote">
+<summary>SAMPLE 3 — MANUFACTURING (watsonx.ai + watsonx.data + Instana)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#builder-3-__codelineno-3-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#builder-3-__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#builder-3-__codelineno-3-3"></a># CLIENT BRIEF
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#builder-3-__codelineno-3-4"></a>- Client Code:        DEMO-MFG-009
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#builder-3-__codelineno-3-5"></a>- Industry:           Manufacturing (Tier-1 automotive supplier, 8 plants)
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#builder-3-__codelineno-3-6"></a>- Business Challenge: Unplanned downtime on stamping presses costs ~$22,000/hr. Current MTBF is
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#builder-3-__codelineno-3-7"></a>                      ~340 hrs; OEE sits at 71%. Goal: predictive maintenance to push OEE &gt; 82%.
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#builder-3-__codelineno-3-8"></a>- Persona (in app):   Plant Reliability Engineer
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#builder-3-__codelineno-3-9"></a>- Demo Audience:      VP Operations, Plant Director, OT Security Lead (30 min, in-person)
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#builder-3-__codelineno-3-10"></a>- Wow Moment:         Engineer opens a press-line dashboard; watsonx.ai (Granite Time Series) flags
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#builder-3-__codelineno-3-11"></a>                      Press #4 with a 91%-confidence &quot;bearing wear&quot; signature 14 days before failure,
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#builder-3-__codelineno-3-12"></a>                      and recommends a maintenance window with cost-of-action vs cost-of-failure deltas.
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#builder-3-__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#builder-3-__codelineno-3-14"></a># IBM PRODUCTS
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#builder-3-__codelineno-3-15"></a>- Primary (built):           watsonx.ai — Granite Time Series (anomaly + forecast)
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#builder-3-__codelineno-3-16"></a>- Co-star (built):           watsonx.data (Iceberg) — sensor lakehouse with hot/warm tiering
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#builder-3-__codelineno-3-17"></a>- Expansion (diagram only):  Instana (OT-edge sensor APM), Turbonomic (compute right-sizing for
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#builder-3-__codelineno-3-18"></a>                              Spark jobs), CP4BA (work-order routing into Maximo), Envizi (ESG)
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#builder-3-__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#builder-3-__codelineno-3-20"></a># DATA
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#builder-3-__codelineno-3-21"></a>- 30 days of synthetic telemetry from 8 stamping presses, 1-min granularity
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#builder-3-__codelineno-3-22"></a>- Sensors per press: vibration_rms_g, motor_temp_c, hydraulic_psi, cycle_time_ms, current_amps
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#builder-3-__codelineno-3-23"></a>- Inject 3 demo-able failure signatures:
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#builder-3-__codelineno-3-24"></a>  Scenario 1: Press #4 — bearing wear (rising vibration_rms_g + temp drift over 7 days)
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#builder-3-__codelineno-3-25"></a>  Scenario 2: Press #7 — hydraulic seal degradation (psi variance increase)
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#builder-3-__codelineno-3-26"></a>  Scenario 3: Press #2 — normal (use as the contrast in the wow moment)
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#builder-3-__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#builder-3-__codelineno-3-28"></a># OUT OF SCOPE
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#builder-3-__codelineno-3-29"></a>- No real OPC-UA / MQTT broker — generate JSON/Parquet files only
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#builder-3-__codelineno-3-30"></a>- No real OpenShift deploy — Dockerfile + compose only
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#builder-3-__codelineno-3-31"></a>- No mobile app — desktop dashboard only
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#builder-3-__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#builder-3-__codelineno-3-33"></a># QUALITY BAR
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#builder-3-__codelineno-3-34"></a>- Charts: Carbon Charts area chart for sensor trends, gauge for OEE, treemap for plant rollup
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#builder-3-__codelineno-3-35"></a>- ResultsPage shows: MTBF before/after, OEE before/after, $ saved per quarter
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#builder-3-__codelineno-3-36"></a>- ARCHITECTURE.md Mermaid: subgraphs for OT Edge, Data Layer (watsonx.data), AI Layer
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#builder-3-__codelineno-3-37"></a>  (watsonx.ai), Action Layer (mock Maximo/CP4BA), Observability (Instana)
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#builder-3-__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#builder-3-__codelineno-3-39"></a># TECH ACCESS
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#builder-3-__codelineno-3-40"></a>- Region: us-south.ml.cloud.ibm.com
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#builder-3-__codelineno-3-41"></a>- Model: ibm/granite-timeseries-ttm-v1 for forecasting; ibm/granite-3-8b-instruct for the
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#builder-3-__codelineno-3-42"></a>        natural-language recommendation summary
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#builder-3-__codelineno-3-43"></a>- watsonx.data: Presto endpoint for the Iceberg sensor table (mock-mode = local DuckDB stand-in)
+</code></pre></div>
+</details>
+<hr />
+<h2 id="builder-3-x-common-pitfalls-anti-patterns-to-avoid"><strong>x. Common pitfalls — anti-patterns to avoid</strong></h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>ANTI-PATTERN</th>
+<th>WHY IT FAILS</th>
+<th>FIX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Just build me a watsonx demo"</td>
+<td>Bob has to invent industry, persona, data, and KPIs. Output is generic.</td>
+<td>Use the prompt template. Fill all 6 fields.</td>
+</tr>
+<tr>
+<td>"Show all the watsonx products"</td>
+<td>20 min cannot cover .ai + .data + .governance + Assistant + Orchestrate.</td>
+<td>Pick 1–2 primary, rest live in the architecture diagram only.</td>
+</tr>
+<tr>
+<td>"Use my client's real numbers / a sample of real data"</td>
+<td>Violates Bob's synthetic-data policy. He'll refuse or sanitize, costing time.</td>
+<td>Provide a synthetic equivalent that matches the <em>shape</em> of the real data.</td>
+</tr>
+<tr>
+<td>"Make it production-ready"</td>
+<td>Bob is a <em>demo</em> builder. Production hardening belongs in the pilot.</td>
+<td>Ask for "demo-grade" + a PILOT_PLAN.md showing the production path.</td>
+</tr>
+<tr>
+<td>Skipping the wow moment</td>
+<td>SolutionPage ends up being three buttons that all do the same thing.</td>
+<td>One sentence: "user does X, AI returns Y in &lt;Zs, business impact is W".</td>
+</tr>
+<tr>
+<td>"Surprise me on the data"</td>
+<td>Synthetic data won't match the demo narrative.</td>
+<td>Specify volume, fields, and which 3 rows drive the 3 scenarios.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="builder-3-xi-technology-reference-appendices"><strong>xi. Technology reference appendices</strong></h2>
+<hr />
+<p>The collapsible references below carry the exact endpoints, model IDs, sample code, and environment keys that the Demo Builder's generated services rely upon — useful both for briefing Bob with precision and for verifying what it has built.</p>
+<details class="note">
+<summary>APPENDIX A — TECHNOLOGY REFERENCE: watsonx.ai</summary>
+<p><strong>Endpoints by region</strong></p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dallas (default)</td>
+<td><code>https://us-south.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Frankfurt</td>
+<td><code>https://eu-de.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>London</td>
+<td><code>https://eu-gb.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Tokyo</td>
+<td><code>https://jp-tok.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Sydney</td>
+<td><code>https://au-syd.ml.cloud.ibm.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>API path for text generation: <code>POST /ml/v1/text/generation</code> (Bearer token via IBM Cloud IAM).</p>
+<p><strong>Model IDs (most-used in demos)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model ID</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ibm/granite-3-8b-instruct</code></td>
+<td>General instruct, RAG, summarization (default)</td>
+</tr>
+<tr>
+<td><code>ibm/granite-3-2b-instruct</code></td>
+<td>Lower-latency, edge-style demos</td>
+</tr>
+<tr>
+<td><code>ibm/granite-code-34b-instruct</code></td>
+<td>Code generation, watsonx Code Assistant scenarios</td>
+</tr>
+<tr>
+<td><code>ibm/granite-timeseries-ttm-v1</code></td>
+<td>Time-series forecasting (mfg, energy, telco)</td>
+</tr>
+<tr>
+<td><code>ibm/granite-guardian-3-8b</code></td>
+<td>Safety / harm filtering layer</td>
+</tr>
+<tr>
+<td><code>meta-llama/llama-3-405b-instruct</code></td>
+<td>When the client benchmarks on Llama</td>
+</tr>
+<tr>
+<td><code>mistralai/mixtral-8x7b-instruct-v01</code></td>
+<td>Mixture-of-experts, multilingual</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample code — native SDK (recommended for Bob's <code>watsonx_service.py</code>)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#builder-3-__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#builder-3-__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai</span> <span class="kn">import</span> <span class="n">Credentials</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#builder-3-__codelineno-4-3"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai.foundation_models</span> <span class="kn">import</span> <span class="n">ModelInference</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#builder-3-__codelineno-4-4"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai.metanames</span> <span class="kn">import</span> <span class="n">GenTextParamsMetaNames</span> <span class="k">as</span> <span class="n">GenParams</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#builder-3-__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#builder-3-__codelineno-4-6"></a><span class="n">credentials</span> <span class="o">=</span> <span class="n">Credentials</span><span class="p">(</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#builder-3-__codelineno-4-7"></a>    <span class="n">url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_URL&quot;</span><span class="p">],</span>            <span class="c1"># e.g. https://us-south.ml.cloud.ibm.com</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#builder-3-__codelineno-4-8"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_API_KEY&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#builder-3-__codelineno-4-9"></a><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#builder-3-__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#builder-3-__codelineno-4-11"></a><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#builder-3-__codelineno-4-12"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">DECODING_METHOD</span><span class="p">:</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#builder-3-__codelineno-4-13"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">:</span>  <span class="mi">1024</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#builder-3-__codelineno-4-14"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">TEMPERATURE</span><span class="p">:</span>     <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#builder-3-__codelineno-4-15"></a><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#builder-3-__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#builder-3-__codelineno-4-17"></a><span class="n">model</span> <span class="o">=</span> <span class="n">ModelInference</span><span class="p">(</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#builder-3-__codelineno-4-18"></a>    <span class="n">model_id</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;WATSONX_MODEL_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;ibm/granite-3-8b-instruct&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#builder-3-__codelineno-4-19"></a>    <span class="n">params</span>     <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#builder-3-__codelineno-4-20"></a>    <span class="n">credentials</span><span class="o">=</span> <span class="n">credentials</span><span class="p">,</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#builder-3-__codelineno-4-21"></a>    <span class="n">project_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_PROJECT_ID&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#builder-3-__codelineno-4-22"></a><span class="p">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#builder-3-__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#builder-3-__codelineno-4-24"></a><span class="n">response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate_text</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Summarize the fraud signal for tx_id=...&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Sample code — LangChain wrapper (alternate, for agent-style demos)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#builder-3-__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#builder-3-__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#builder-3-__codelineno-5-3"></a><span class="kn">from</span> <span class="nn">langchain_ibm</span> <span class="kn">import</span> <span class="n">WatsonxLLM</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#builder-3-__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#builder-3-__codelineno-5-5"></a><span class="n">load_dotenv</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#builder-3-__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#builder-3-__codelineno-5-7"></a><span class="n">watsonx_api_key</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_API_KEY&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#builder-3-__codelineno-5-8"></a><span class="n">watsonx_project_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_PROJECT_ID&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#builder-3-__codelineno-5-9"></a><span class="n">watsonx_url</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_URL&quot;</span><span class="p">)</span>        <span class="c1"># https://us-south.ml.cloud.ibm.com</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#builder-3-__codelineno-5-10"></a><span class="n">watsonx_model_id</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_MODEL_ID&quot;</span><span class="p">)</span>   <span class="c1"># e.g. meta-llama/llama-3-405b-instruct</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#builder-3-__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#builder-3-__codelineno-5-12"></a><span class="n">agent_llm</span> <span class="o">=</span> <span class="n">WatsonxLLM</span><span class="p">(</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#builder-3-__codelineno-5-13"></a>    <span class="n">model_id</span>   <span class="o">=</span> <span class="n">watsonx_model_id</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#builder-3-__codelineno-5-14"></a>    <span class="n">url</span>        <span class="o">=</span> <span class="n">watsonx_url</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#builder-3-__codelineno-5-15"></a>    <span class="n">project_id</span> <span class="o">=</span> <span class="n">watsonx_project_id</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#builder-3-__codelineno-5-16"></a>    <span class="n">params</span>     <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#builder-3-__codelineno-5-17"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Required <code>.env</code> keys</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#builder-3-__codelineno-6-1"></a><span class="na">WATSONX_API_KEY</span><span class="o">=</span><span class="s">&lt;your IBM Cloud API key&gt;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#builder-3-__codelineno-6-2"></a><span class="na">WATSONX_PROJECT_ID</span><span class="o">=</span><span class="s">&lt;your watsonx project UUID&gt;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#builder-3-__codelineno-6-3"></a><span class="na">WATSONX_URL</span><span class="o">=</span><span class="s">https://us-south.ml.cloud.ibm.com</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#builder-3-__codelineno-6-4"></a><span class="na">WATSONX_MODEL_ID</span><span class="o">=</span><span class="s">ibm/granite-3-8b-instruct</span><span class="w"></span>
+</code></pre></div>
+</details>
+<details class="note">
+<summary>APPENDIX B — TECHNOLOGY REFERENCE: watsonx.data</summary>
+<p><strong>What it is, in one line:</strong> a Presto + Spark lakehouse over <strong>Apache Iceberg</strong> tables, with federation (Db2, PostgreSQL, MongoDB, S3, Netezza) and <strong>Milvus</strong> for vector RAG.</p>
+<p><strong>Sample code — control plane (manage buckets, catalogs, schemas)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#builder-3-__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">ibm_watsonxdata</span> <span class="kn">import</span> <span class="n">WatsonxDataV2</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#builder-3-__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">ibm_cloud_sdk_core.authenticators</span> <span class="kn">import</span> <span class="n">IAMAuthenticator</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#builder-3-__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#builder-3-__codelineno-7-4"></a><span class="n">authenticator</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="s2">&quot;YOUR_IAM_API_KEY&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#builder-3-__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#builder-3-__codelineno-7-6"></a><span class="n">wxd_service</span> <span class="o">=</span> <span class="n">WatsonxDataV2</span><span class="p">(</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#builder-3-__codelineno-7-7"></a>    <span class="n">authenticator</span> <span class="o">=</span> <span class="n">authenticator</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#builder-3-__codelineno-7-8"></a>    <span class="n">service_url</span>   <span class="o">=</span> <span class="s2">&quot;YOUR_WATSONX_DATA_BASE_URL&quot;</span>     <span class="c1"># e.g. https://&lt;host&gt;:&lt;port&gt;/lakehouse/api</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#builder-3-__codelineno-7-9"></a><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#builder-3-__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#builder-3-__codelineno-7-11"></a><span class="c1"># Example: list buckets / catalogs / schemas (depending on API version)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#builder-3-__codelineno-7-12"></a><span class="c1"># response = wxd_service.list_buckets()</span>
+</code></pre></div>
+<p><strong>Sample code — data plane (query Iceberg via Presto)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#builder-3-__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">prestodb</span> <span class="kn">import</span> <span class="n">dbapi</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#builder-3-__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#builder-3-__codelineno-8-3"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">dbapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#builder-3-__codelineno-8-4"></a>    <span class="n">host</span>        <span class="o">=</span> <span class="s2">&quot;YOUR_PRESTO_HOST&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#builder-3-__codelineno-8-5"></a>    <span class="n">port</span>        <span class="o">=</span> <span class="mi">8443</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#builder-3-__codelineno-8-6"></a>    <span class="n">user</span>        <span class="o">=</span> <span class="s2">&quot;ibmlhuser&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#builder-3-__codelineno-8-7"></a>    <span class="n">catalog</span>     <span class="o">=</span> <span class="s2">&quot;iceberg_minio&quot;</span><span class="p">,</span>          <span class="c1"># or your specific catalog</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#builder-3-__codelineno-8-8"></a>    <span class="n">schema</span>      <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#builder-3-__codelineno-8-9"></a>    <span class="n">http_scheme</span> <span class="o">=</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#builder-3-__codelineno-8-10"></a>    <span class="n">auth</span>        <span class="o">=</span> <span class="n">dbapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">JWTAuthentication</span><span class="p">(</span><span class="s2">&quot;YOUR_USER_API_KEY&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#builder-3-__codelineno-8-11"></a>    <span class="n">verify</span>      <span class="o">=</span> <span class="s2">&quot;path/to/ssl_certificate.crt&quot;</span>   <span class="c1"># for self-signed certs</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#builder-3-__codelineno-8-12"></a><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#builder-3-__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#builder-3-__codelineno-8-14"></a><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#builder-3-__codelineno-8-15"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SHOW CATALOGS&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#builder-3-__codelineno-8-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</code></pre></div>
+<p><strong>Required <code>.env</code> keys</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#builder-3-__codelineno-9-1"></a><span class="na">WATSONXDATA_IAM_API_KEY</span><span class="o">=</span><span class="s">&lt;IBM Cloud IAM key&gt;</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#builder-3-__codelineno-9-2"></a><span class="na">WATSONXDATA_BASE_URL</span><span class="o">=</span><span class="s">https://&lt;host&gt;:&lt;port&gt;/lakehouse/api</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#builder-3-__codelineno-9-3"></a><span class="na">PRESTO_HOST</span><span class="o">=</span><span class="s">&lt;presto coordinator host&gt;</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#builder-3-__codelineno-9-4"></a><span class="na">PRESTO_PORT</span><span class="o">=</span><span class="s">8443</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#builder-3-__codelineno-9-5"></a><span class="na">PRESTO_USER</span><span class="o">=</span><span class="s">ibmlhuser</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#builder-3-__codelineno-9-6"></a><span class="na">PRESTO_CATALOG</span><span class="o">=</span><span class="s">iceberg_data</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#builder-3-__codelineno-9-7"></a><span class="na">PRESTO_USER_API_KEY</span><span class="o">=</span><span class="s">&lt;JWT for Presto auth&gt;</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#builder-3-__codelineno-9-8"></a><span class="na">PRESTO_SSL_CERT_PATH</span><span class="o">=</span><span class="s">./certs/lh-ssl-ts.crt</span><span class="w"></span>
+</code></pre></div>
+<p><strong>When to demo it</strong></p>
+<ul>
+<li><strong>RAG context store</strong> (with Milvus as vector index) — pair with watsonx.ai</li>
+<li><strong>Unified analytics</strong> across siloed sources (federation story)</li>
+<li><strong>Hot/warm/cold tiering</strong> with IBM Cloud Object Storage (cost-optimization story)</li>
+<li><strong>Open formats</strong> (Iceberg) — vendor-lock-in counter-narrative</li>
+</ul>
+</details>
+<details class="note">
+<summary>APPENDIX C — ONE-PAGE COMPLIANCE CHECKLIST (paste this back to Bob)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#builder-3-__codelineno-10-1"></a>[ ] No PII or real client data in any file
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#builder-3-__codelineno-10-2"></a>[ ] DemoBanner visible on every page
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#builder-3-__codelineno-10-3"></a>[ ] No hardcoded API keys or secrets
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#builder-3-__codelineno-10-4"></a>[ ] .env.example has placeholder values only
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#builder-3-__codelineno-10-5"></a>[ ] All emails @example.com or @demo.ibm.com
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#builder-3-__codelineno-10-6"></a>[ ] @carbon/react v11 used for all UI
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#builder-3-__codelineno-10-7"></a>[ ] IBM Plex fonts loaded
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#builder-3-__codelineno-10-8"></a>[ ] &quot;Built with IBM watsonx&quot; branding (never &quot;Powered by Watson&quot;)
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#builder-3-__codelineno-10-9"></a>[ ] No competitor product names
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#builder-3-__codelineno-10-10"></a>[ ] No eval() or unsafe HTML
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#builder-3-__codelineno-10-11"></a>[ ] UBI 9 base images in Dockerfiles
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#builder-3-__codelineno-10-12"></a>[ ] Input validation on all forms
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#builder-3-__codelineno-10-13"></a>[ ] WCAG 2.1 AA: keyboard nav, ARIA, contrast
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#builder-3-__codelineno-10-14"></a>[ ] README.md, ARCHITECTURE.md, PILOT_PLAN.md, DEMO_SCRIPT.md all present
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#builder-3-__codelineno-10-15"></a>[ ] Demo works fully in mock mode (zero credentials)
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#builder-3-__codelineno-10-16"></a>[ ] All 5 pages render without errors
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#builder-3-__codelineno-10-17"></a>[ ] 3 preset scenarios load correctly
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#builder-3-__codelineno-10-18"></a>[ ] Charts display with synthetic data
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#builder-3-__codelineno-10-19"></a>[ ] CSV export works on tables
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#builder-3-__codelineno-10-20"></a>[ ] Loading states shown during API calls
+</code></pre></div>
+</details>
+<hr />
+<h2 id="builder-3-xii-key-takeaways"><strong>xii. Key takeaways</strong></h2>
+<hr />
+<ul>
+<li>A good prompt is a <strong>Use-Case Brief</strong>, not a question — and every brief answers six things: WHO, WHAT, HOW IT'S CONSUMED, DATA, TECH STACK, and OUT OF SCOPE.</li>
+<li>Lead with the <strong>business pain and the KPI</strong>, not the technology; one well-specified "wow moment" locks three pages of the demo.</li>
+<li><strong>Scope boundaries are the biggest accelerator</strong> — 5 pages, 3 scenarios, 1 wow moment; defer everything "real" to PILOT_PLAN.md.</li>
+<li>Pick <strong>1–2 primary products maximum</strong>; the rest of the portfolio earns its place in the architecture diagram.</li>
+<li>Done means <strong>verified</strong>: compliance script green, the three must-work flows smoke-tested, and the storytelling artifacts (DEMO_SCRIPT, PILOT_PLAN, ARCHITECTURE) reviewed by you.</li>
+</ul>
+<p></br>
+In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo Builder behaves the way it does — the strategy and asset model that allow a single, well-formed brief to produce a compliant, runnable solution.</p>
+<hr /></section><section class="print-page" id="builder-4"><p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="builder-4-the-strategy-agents-uplift-humans-decide"><strong>THE STRATEGY: AGENTS UPLIFT, HUMANS DECIDE</strong></h1>
+<hr />
+<h2 id="builder-4-i-scaling-the-ai-maturity-curve-across-an-organization"><strong>i. Scaling the AI Maturity Curve across an organization</strong></h2>
+<hr />
+<p>Everything you have practiced across this course — accepting suggestions, approving plans, encoding rules, governing tools — represented an <em>individual</em> progression along the <strong>AI Maturity Curve</strong>. This chapter examines what happens when an <em>organization</em> undertakes that same progression deliberately. The Demo Builder you installed in Chapter 5-1 is not a clever prompt; it is the visible surface of a strategy for <strong>agent-assisted software development</strong>, authored by the EMEA Bob program for IBM pre-sales and solutioning. Its one-line thesis deserves to be quoted in full:</p>
+<div class="admonition note">
+<p class="admonition-title">THE ONE-LINE THESIS</p>
+<p><strong>Bob does the building; humans do the deciding.</strong> We scale expertise — not headcount — by capturing our best engineers' <em>method</em> (MODES), <em>knowledge</em> (SKILLS), <em>reach</em> (MCPs), and <em>standards</em> (RULES) as reusable, version-verified assets, so any practitioner can produce production-grade IBM solution demos in hours while staying firmly in the decision seat.</p>
+</div>
+<p>Hold that sentence against the AI Maturity Curve for a moment, and take note that every stage of your journey is represented within it. <em>Method</em> is the plan-first discipline of <strong>Module 2 | Delegate</strong>, packaged as an asset. <em>Standards</em> are the Rules of <strong>Module 3 | Tailor</strong>, made ambient. <em>Reach</em> is the MCP of <strong>Module 4 | Scale &amp; Extend</strong>, governed. The strategy takes what an individual developer learns to do by hand and converts it into an organizational asset — which is precisely the storyline a C-suite audience needs to hear about scaling AI beyond isolated pilots.</p>
+<hr />
+<h2 id="builder-4-ii-the-operating-philosophy"><strong>ii. The operating philosophy</strong></h2>
+<hr />
+<p>The experience this strategy delivers is that of working with a senior engineer who does the heavy lifting — <strong>not</strong> a code generator the human babysits. The division of labor is explicit:</p>
+<table>
+<thead>
+<tr>
+<th>THE HUMAN'S JOB</th>
+<th>BOB'S JOB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frame the problem &amp; business intent</td>
+<td>Translate intent into a working solution</td>
+</tr>
+<tr>
+<td>Choose between options at <strong>decision gates</strong></td>
+<td>Surface the options, with trade-offs</td>
+</tr>
+<tr>
+<td>Approve architecture, product fit, compliance</td>
+<td>Generate complete, runnable artifacts</td>
+</tr>
+<tr>
+<td>Own the client relationship &amp; the narrative</td>
+<td>Build, run, test, and self-correct</td>
+</tr>
+<tr>
+<td>Say "go / no-go"</td>
+<td>Report outcomes faithfully (incl. failures)</td>
+</tr>
+</tbody>
+</table>
+<p>Equally important are the <strong>anti-patterns that the strategy explicitly designs out</strong> — each one representing a regression toward a less mature posture along the curve:</p>
+<ul>
+<li>Human copy-pastes code from Bob and runs it manually.</li>
+<li>Human debugs Bob's output line-by-line.</li>
+<li>Bob asks the human to perform steps Bob can perform itself.</li>
+<li>Bob produces descriptions or pseudocode instead of runnable artifacts.</li>
+</ul>
+<p>The standard to hold: <strong>if a step can be automated, verified, or looked up, Bob does it.</strong> The human's time is spent only where judgment is required — and when Bob needs a decision, it asks a crisp, optioned question, then proceeds and executes.</p>
+<hr />
+<h2 id="builder-4-iii-the-asset-model-three-composable-assets-one-ambient-layer"><strong>iii. The asset model: three composable assets + one ambient layer</strong></h2>
+<hr />
+<p>Everything built for Bob under this strategy is one of four asset types. Three are <strong>pulled</strong> on demand — MODE, SKILL, MCP — and one is <strong>pushed</strong>, always on for its scope: the RULE. Keeping them cleanly separated is the core governance rule of the entire strategy.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#builder-4-__codelineno-0-1"></a>  ┌─────────────────────────────────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#builder-4-__codelineno-0-2"></a>  │  RULE  AMBIENT GUARDRAILS &amp; HOUSE STYLE — always on, by scope        │  &quot;the standards&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#builder-4-__codelineno-0-3"></a>  │  non-negotiables · conventions · client carve-outs   (pushed)        │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#builder-4-__codelineno-0-4"></a>  │  ┌───────────────────────────────────────────────────────────────┐  │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#builder-4-__codelineno-0-5"></a>  │  │  MODE  METHOD &amp; PERSONA — how to think and sequence the work   │  │  &quot;the know-how&quot;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#builder-4-__codelineno-0-6"></a>  │  │  build lifecycle · non-negotiables · decision gates            │  │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#builder-4-__codelineno-0-7"></a>  │  │             │ references                 │ uses                │  │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#builder-4-__codelineno-0-8"></a>  │  │  ┌──────────▼───────────────┐   ┌────────▼──────────────────┐  │  │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#builder-4-__codelineno-0-9"></a>  │  │  │ SKILL KNOWLEDGE &amp; CAPAB.  │   │  MCP  INTEGRATION BRIDGE   │  │  │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#builder-4-__codelineno-0-10"></a>  │  │  │ product/CLI/contract know │   │  reach a system when no    │  │  │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#builder-4-__codelineno-0-11"></a>  │  │  │ verified, single-source   │◄──┤  SDK/CLI is available      │  │  │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#builder-4-__codelineno-0-12"></a>  │  │  │ &quot;the playbook&quot;            │   │  &quot;the hands&quot;               │  │  │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#builder-4-__codelineno-0-13"></a>  │  │  └───────────────────────────┘   └───────────────────────────┘  │  │
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#builder-4-__codelineno-0-14"></a>  │  └───────────────────────────────────────────────────────────────┘  │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#builder-4-__codelineno-0-15"></a>  └─────────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#builder-4-__codelineno-0-16"></a>   pulled on demand:  MODE (selected) · SKILL (by relevance) · MCP (invoked)
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#builder-4-__codelineno-0-17"></a>   pushed always-on:  RULE (by scope) — wraps and constrains everything above
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>LAYER</th>
+<th>ANSWERS</th>
+<th>LIVES ONCE IN…</th>
+<th>ANALOGY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MODE</strong></td>
+<td><em>How do we approach this class of engagement?</em></td>
+<td>a <code>customModes</code> YAML</td>
+<td>The senior engineer's playbook + judgment</td>
+</tr>
+<tr>
+<td><strong>SKILL</strong></td>
+<td><em>What do I need to know to use product/capability X correctly?</em></td>
+<td>a <code>SKILL.md</code> (+ <code>references/</code>)</td>
+<td>A verified field manual</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td><em>How do I actually reach system Y from Bob?</em></td>
+<td>an MCP server</td>
+<td>A tool plugged into Bob's hands</td>
+</tr>
+<tr>
+<td><strong>RULE</strong></td>
+<td><em>What must always hold, regardless of task or mode?</em></td>
+<td>a <code>.bob/rules/</code> file (or <code>AGENTS.md</code>)</td>
+<td>The team's standing orders / house rules</td>
+</tr>
+</tbody>
+</table>
+<p>You have encountered every one of these previously — as an individual practitioner. Custom Modes were the subject of <strong>Module 3.3</strong>; Rules the subject of <strong>Module 3.2</strong>; MCP the subject of <strong>Module 4.3</strong>. What the asset model contributes is the <em>organizational</em> discipline layered above them: who owns each asset type, where each fact lives, and how the layers compose without duplication.</p>
+<hr />
+<h2 id="builder-4-iv-the-golden-rules"><strong>iv. The golden rules</strong></h2>
+<hr />
+<p>Six non-negotiables keep the asset model coherent as it scales past a dozen modes and skills:</p>
+<ol>
+<li><strong>Knowledge lives once.</strong> Deep product/CLI/API knowledge belongs in a <strong>SKILL</strong>, never duplicated into a mode. Modes <em>reference</em> skills. (If you find yourself pasting CLI flags or YAML schemas into a mode, stop — that's a skill.)</li>
+<li><strong>Modes are method, not memory.</strong> A mode carries persona, build lifecycle, non-negotiables, decision gates, and <em>pointers</em> to the skills it relies on.</li>
+<li><strong>MCP is the last resort, not the first.</strong> Prefer a native <strong>SDK or CLI</strong> — deterministic, testable, versionable. Build or adopt an MCP <em>only</em> when no SDK/CLI exists, or it isn't available in the user's environment.</li>
+<li><strong>Rules constrain, they don't teach.</strong> A rule is a short, always-on imperative ("synthetic data only", "Carbon for all UI"). Product <em>know-how</em> stays in a SKILL the rule may point to. If a rule grows flags, schemas, or how-to, it has become a skill — move it. Every line in an always-on rule is paid for on <em>every</em> turn, so the global set stays lean.</li>
+<li><strong>Every asset is verified against reality</strong>, not model memory — and stamped with the product version (skills/modes/MCPs) or owner + review date (rules).</li>
+<li><strong>One source of distribution.</strong> Assets ship through the EMEA Bob Box (<code>https://ibm.biz/emea-bob-box</code>); the authoring source is the repo.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">THE LITMUS THAT PREVENTS THE TWO COMMON MISTAKES</p>
+<p><em>Mode vs Skill:</em> method/persona for a whole engagement class → <strong>MODE</strong>; reusable product knowledge → <strong>SKILL</strong>.</p>
+<p><em>Skill vs Rule:</em> "Should this apply even when nobody asked and no trigger fired?" → <strong>RULE</strong> (ambient, by scope). "Does it only matter when a specific product/task comes up, and need depth?" → <strong>SKILL</strong> (pulled by relevance).</p>
+</div>
+<p>Take note of how directly golden rule 4 restates the context window economics of <strong>Module 4.1</strong>: always-on text competes for the same finite attention budget as everything else within a session. The strategy converts that lesson into standing policy.</p>
+<hr />
+<h2 id="builder-4-v-modes-three-general-methods-industry-specializations"><strong>v. Modes: three general methods + industry specializations</strong></h2>
+<hr />
+<p>A mode is a <strong>strategic asset</strong> — the codified know-how of how a senior engineer approaches a class of work, potentially carrying IBM IP. A session runs in exactly one mode. Three general (horizontal) modes form the method backbone:</p>
+<table>
+<thead>
+<tr>
+<th>MODE</th>
+<th>SLUG</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General Solution Builder</strong></td>
+<td><code>ibm-presales-demo-builder</code></td>
+<td>Embed IBM platforms into a <em>real</em> full-stack solution — Carbon frontend + FastAPI backend + synthetic data + DevOps — that runs in mock or live mode. The default.</td>
+</tr>
+<tr>
+<td><strong>Application Modernization</strong></td>
+<td><code>ibm-presales-java-modernization</code></td>
+<td>Modernize/refactor application estates (JSphere Suite + Bob): Java/runtime modernization, dependency &amp; CVE remediation, OpenShift targeting.</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td><code>ibm-presales-infrastructure-builder</code></td>
+<td>Showcase IBM Automation, Integration, Observability, Security, and Asset/Operations platforms when the story is infrastructure, not an app.</td>
+</tr>
+</tbody>
+</table>
+<p>Beyond these sit the <strong>industry modes</strong> — Financial Services, Telco, Healthcare, Energy, Manufacturing, Automotive (plus Connected-Vehicle/SDV and EV &amp; Mobility variants), Defense/DIB, and Public Sector. The critical design decision: industry modes are <strong>replacements, not add-ons</strong>. You pick the vertical mode <em>instead of</em> the general one when the engagement is clearly in that domain and depth matters. An industry mode inherits the general mode's method and adds only the vertical knowledge base (standards, regulations, integration landscape), guardrails and carve-outs carried as mode-specific rules, use-case blueprints and mandatory domain artifacts, and stricter synthetic-data rigor.</p>
+<div class="admonition note">
+<p class="admonition-title">RULE OF THUMB</p>
+<p><strong>Start in a general mode; switch to an industry mode</strong> when the demo's credibility depends on domain depth — regulatory mapping, standards, sub-vertical templates. Don't fork an industry mode for a one-off; extend via a skill.</p>
+</div>
+<p>Every mode — general or industry — must satisfy a shared <strong>core contract</strong>: a clear persona and engagement class; the shared build lifecycle (intake → solution mapping → build → document → verify/compliance → hand-off); the shared non-negotiables (runnable artifacts only, synthetic data only, secrets via env vars, mock-mode with zero external dependencies, accessibility, honest capability claims, compliance checklist before "done"); decision gates implemented as optioned questions; references — never duplications — of the skills it depends on; and a self-check script (<code>check-compliance.sh</code> / <code>check-carveouts.sh</code>) that can fail the build. The next chapter shows you the templates that enforce this contract by construction.</p>
+<hr />
+<h2 id="builder-4-vi-skills-and-rules-knowledge-pulled-standards-pushed"><strong>vi. Skills and rules: knowledge pulled, standards pushed</strong></h2>
+<hr />
+<p><strong>A skill</strong> is a portable, verified knowledge/capability pack — how Bob "knows" a product, an ingestion contract, an API, or how to drive an MCP. Its design principles will feel familiar from Module 3, sharpened for scale: single responsibility (one product per skill, no mega-skills); <strong>description-driven discovery</strong> (the <code>description</code> field is what triggers the skill — write it as "use this whenever the user mentions/needs X," and be generous with trigger terms; it is the most important line in the file); <strong>progressive disclosure</strong> (keep <code>SKILL.md</code> focused, push depth into <code>references/*.md</code> loaded on demand); verification against reality (run the CLI, hit the API — then stamp the version and date); and pairing with — not merging into — any MCP it drives.</p>
+<p><strong>A rule</strong> is a short, always-on constraint that holds regardless of mode or task. Where modes, skills, and MCPs are <em>pulled</em>, rules are <em>pushed</em>: Bob loads them automatically for their scope and applies them to every response. Rules are the mechanism that makes trust <em>ambient</em> — present even in a quick edit, not just inside a formal mode. Scope is a deliberate choice:</p>
+<table>
+<thead>
+<tr>
+<th>SCOPE</th>
+<th>PATH</th>
+<th>USE FOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global</strong></td>
+<td><code>~/.bob/rules/</code></td>
+<td>Org-wide standards — the non-negotiables, security/debug/db hygiene</td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td><code>&lt;project&gt;/.bob/rules/</code></td>
+<td>This project or client's conventions</td>
+</tr>
+<tr>
+<td><strong>Mode-specific</strong></td>
+<td><code>&lt;project&gt;/.bob/rules-{slug}/</code></td>
+<td>Guardrails owned by one mode/vertical (e.g. FSI data rigor, Defense carve-outs)</td>
+</tr>
+<tr>
+<td><strong>Team standard</strong></td>
+<td><code>AGENTS.md</code> (workspace root)</td>
+<td>Cross-tool team standards, auto-loaded</td>
+</tr>
+</tbody>
+</table>
+<p>Rules and self-check scripts are <strong>defense in depth</strong>, not redundancy: the rule keeps the constraint in front of Bob continuously, shaping every turn; the script <em>fails the build</em> if the constraint is violated anyway. One reminds; the other blocks.</p>
+<hr />
+<h2 id="builder-4-vii-decision-gates-the-human-in-the-decision-seat"><strong>vii. Decision gates: the human in the decision seat</strong></h2>
+<hr />
+<p>The decision-gate model is the thread that ties this entire strategy back to the AI Maturity Curve. Bob runs the build; the human steers at <strong>gates</strong> — each gate a crisp, optioned question (recommended option first), after which Bob proceeds autonomously until the next one.</p>
+<table>
+<thead>
+<tr>
+<th>GATE</th>
+<th>WHEN</th>
+<th>THE HUMAN DECIDES</th>
+<th>BOB THEN…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G0 Intake</strong></td>
+<td>Start</td>
+<td>Use case, industry, audience, duration</td>
+<td>Formalizes the Use-Case Brief</td>
+</tr>
+<tr>
+<td><strong>G1 Product fit</strong></td>
+<td>After intake</td>
+<td>Which IBM products to feature</td>
+<td>Maps use case → products, shows expansion path</td>
+</tr>
+<tr>
+<td><strong>G2 Environment</strong></td>
+<td>Before build</td>
+<td>Mock vs live; which credentials/instance</td>
+<td>Configures dual-mode; wires SDK/CLI/MCP</td>
+</tr>
+<tr>
+<td><strong>G3 Build path</strong></td>
+<td>Phase 3</td>
+<td>App / Agent / Infra / Hybrid</td>
+<td>Generates the right artifact set</td>
+</tr>
+<tr>
+<td><strong>G4 Compliance</strong></td>
+<td>Before "done"</td>
+<td>Accepts guardrail/carve-out posture</td>
+<td>Runs the self-check script, fixes issues</td>
+</tr>
+<tr>
+<td><strong>G5 Hand-off</strong></td>
+<td>End</td>
+<td>Go/no-go; next step (pilot)</td>
+<td>Produces docs, demo script, pilot plan</td>
+</tr>
+</tbody>
+</table>
+<p>Between gates, Bob is autonomous: it generates, runs, tests, debugs, and reports — it does not hand back work that it could perform itself. Where <strong>Module 2 | Delegate</strong> taught you to approve <em>the plan</em>, the gate model generalizes that same discipline across an entire engagement: control concentrated at the moments where judgment matters, with autonomy everywhere in between. This is the right-most portion of the AI Maturity Curve, operating as designed.</p>
+<hr />
+<h2 id="builder-4-viii-trust-compliance-by-construction"><strong>viii. Trust &amp; compliance by construction</strong></h2>
+<hr />
+<p>The most differentiated modes in the portfolio — Defense/DIB, Public Sector — prove a principle that applies to every mode: <strong>guardrails are part of the asset, not an afterthought.</strong> The pillar is delivered through rules (ambient, every session) and backed by self-check scripts (build-time gates):</p>
+<ul>
+<li><strong>Carve-outs are declared in the persona and enforced by a script.</strong> Prohibited use cases — weapons/targeting, offensive cyber, unlawful surveillance, and the like — are refused regardless of framing, checked as an early build step, with <code>check-carveouts.sh</code> failing the build if prohibited features appear.</li>
+<li><strong>Synthetic data only</strong>, with vertical-specific rigor (reserved ID ranges, clearly-fake codes, no real client data or PII), plus a visible disclaimer banner.</li>
+<li><strong>AI never makes the determination — an authorized human does.</strong> Human-in-the-loop is enforced in both UI and backend; no endpoint auto-issues an authoritative decision.</li>
+<li><strong>Accessibility is a requirement</strong> (WCAG 2.1 AA / Section 508), with its own check.</li>
+<li><strong>Honest capability claims.</strong> Never oversell; flag product gaps explicitly.</li>
+<li><strong>Secrets via environment only</strong>; mock mode runs with zero credentials.</li>
+</ul>
+<p>For a seller, this section provides the answer to the hardest question in any C-suite AI conversation — <em>"how do we trust it?"</em> The answer offered here is not a promise; it is architecture.</p>
+<hr />
+<h2 id="builder-4-ix-how-the-layers-compose-a-worked-example"><strong>ix. How the layers compose: a worked example</strong></h2>
+<hr />
+<blockquote>
+<p><em>"Build a card-fraud demo for a retail bank; they have a watsonx.ai instance."</em></p>
+</blockquote>
+<ol start="0">
+<li><strong>RULES (ambient, before anything)</strong> → the global rule set — synthetic-data-only, secrets-via-env, accessibility, honest claims, human-in-the-loop — is already loaded and constraining every step, plus the FSI mode-specific rules for vertical data rigor.</li>
+<li><strong>MODE</strong> → switch to <strong>Financial Services</strong> (<code>ibm-presales-demo-builder-fsi</code>) — inherits the general method; adds SR 11-7 / BCBS 239 mapping, mandatory FSI artifacts (MODEL_FACTSHEET, DATA_LINEAGE) and components (ExplainabilityPanel, HumanInLoopActions).</li>
+<li><strong>Decision gates</strong> → G0–G2 confirm scope, products (watsonx.ai + watsonx.governance), and live credentials.</li>
+<li><strong>SKILLS</strong> → Bob pulls <code>watsonx-orchestrate</code> (if an agent is involved), <code>ibm-instana-data-spec</code> (if observability is shown), <code>nvd-security</code> (dependency audit), and the Carbon UI knowledge — each verified, single-source.</li>
+<li><strong>MCPs</strong> → Bob uses the <code>techzone</code> MCP to provision a test environment, <code>tavily</code> for current facts, and <code>external-llm</code> for an adversarial design review — only where no SDK/CLI fits.</li>
+<li><strong>Output</strong> → a real, runnable solution plus ARCHITECTURE/PILOT/DEMO documentation, compliance passed (rules ambient + script green), with the human approving at gates — and with no copy-paste steps and no manual debugging required of that human at any point.</li>
+</ol>
+<p>Across the entire engagement, the human made roughly <strong>six decisions</strong>; Bob performed the remainder of the work — operating within Rules that it never once had to be reminded of.</p>
+<hr />
+<h2 id="builder-4-x-key-takeaways"><strong>x. Key takeaways</strong></h2>
+<hr />
+<ul>
+<li>The thesis in one line: <strong>Bob does the building; humans do the deciding</strong> — expertise scaled as assets, not headcount.</li>
+<li>Four asset types, cleanly separated: <strong>MODES</strong> (method), <strong>SKILLS</strong> (knowledge), <strong>MCPs</strong> (reach), <strong>RULES</strong> (standards). Three pulled on demand; rules pushed, always on.</li>
+<li>The golden rules keep it coherent: knowledge lives once; modes reference rather than duplicate; MCP is the last resort; rules constrain, they don't teach; every asset is verified against reality.</li>
+<li><strong>Decision gates G0–G5</strong> generalize the plan-approval discipline of Module 2 to whole engagements — control at the branch points, autonomy in between.</li>
+<li>Trust is <strong>by construction</strong>: ambient rules remind; self-check scripts block. That architecture — not any promise — is the enterprise answer to "how do we trust it?"</li>
+</ul>
+<p></br>
+One question remains: when you (the practitioner) wish to add to this library — a new Mode for your industry, a Skill for your product, a Rule for your team — how is that done without breaking the discipline documented here? The asset templates in the chapter ahead exist for precisely this purpose.</p>
+<hr /></section><section class="print-page" id="builder-5"><p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="builder-5-asset-templates-uniform-by-construction"><strong>ASSET TEMPLATES: UNIFORM BY CONSTRUCTION</strong></h1>
+<hr />
+<h2 id="builder-5-i-from-consumer-to-contributor"><strong>i. From consumer to contributor</strong></h2>
+<hr />
+<p>This closing chapter is positioned deliberately as an aside — somewhat apart from the hands-on flow, and readable at your own pace — for the moment when <em>consuming</em> the asset library is no longer sufficient. To this point you have operated as a consumer: you installed the Demo Builder, briefed it well, and examined the strategy underneath. Sooner or later, however, every practitioner encounters a gap — a vertical without a Mode, a product without a Skill, a team convention with no Rule holding it in place. The <strong>asset templates</strong> are the mechanism for filling that gap <em>without breaking the discipline</em> documented in the previous chapter.</p>
+<p>The underlying idea: the templates are the <strong>executable form of the strategy</strong>. Each one encodes its corresponding contract — the MODE core contract, the SKILL design principles and definition of done, the RULE principles and definition of done — as a fill-in skeleton. Author from the template, and the resulting asset conforms to the strategy <em>by construction</em>, rather than by after-the-fact review.</p>
+<table>
+<thead>
+<tr>
+<th>TEMPLATE</th>
+<th>USE IT TO CREATE</th>
+<th>CONFORMS TO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODE.template.yaml</code></td>
+<td>a new general or industry mode → <code>MODES/…</code></td>
+<td>the MODE core contract</td>
+</tr>
+<tr>
+<td><code>SKILL.template.md</code></td>
+<td>a new skill → <code>SKILLS/&lt;name&gt;/SKILL.md</code></td>
+<td>the SKILL principles + definition of done</td>
+</tr>
+<tr>
+<td><code>RULE.template.md</code></td>
+<td>a new ambient rule → <code>rules/rules-&lt;name&gt;/&lt;name&gt;.md</code></td>
+<td>the RULE principles + definition of done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="builder-5-ii-first-decide-which-asset-youre-building"><strong>ii. First: decide which asset you're building</strong></h2>
+<hr />
+<p>The most common authoring mistake is not filling a template in poorly — it is selecting the wrong template entirely. Before copying anything, run your idea through the decision tree:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#builder-5-__codelineno-0-1"></a>&quot;A constraint that must always hold (any mode, any task)?&quot; → RULE  (global / workspace / mode-specific by scope; needs flags/schemas? → it&#39;s a SKILL)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#builder-5-__codelineno-0-2"></a>&quot;How to approach an engagement class&quot;?            → MODE   (vertical &amp; deep? → Industry MODE, replaces a general one)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#builder-5-__codelineno-0-3"></a>&quot;How to use a product / contract / capability&quot;?   → SKILL  (drives an MCP? → SKILL paired with that MCP)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#builder-5-__codelineno-0-4"></a>&quot;How to reach a system from Bob&quot;?                 → SDK/CLI exists &amp; available? yes → use it (document in a SKILL)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#builder-5-__codelineno-0-5"></a>                                                                                no  → MCP (last resort) + paired SKILL
+</code></pre></div>
+<p>Recall the litmus tests from the strategy chapter. If a constraint should hold even when nobody asked for it, it is a Rule. If it constitutes method for a whole engagement class, it is a Mode. If it is product knowledge carrying depth, it is a Skill. And reach is documented first as a Skill describing an SDK or CLI — with an MCP built only as the last resort.</p>
+<hr />
+<h2 id="builder-5-iii-authoring-a-mode"><strong>iii. Authoring a MODE</strong></h2>
+<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#builder-5-__codelineno-1-1"></a>cp MODE.template.yaml MODES/&lt;your-mode&gt;.yaml
+</code></pre></div>
+<p>Fill every <code>&lt;PLACEHOLDER&gt;</code>, delete every <code>[GUIDANCE]</code> note, and keep the section skeleton — <em>it is the contract</em>. Remember the strategy's second golden rule as you write: a mode is <strong>thin</strong>. Persona + lifecycle + gates + non-negotiables + <strong>references to skills</strong> — never duplicated product knowledge.</p>
+<p><strong>MODE core contract checklist:</strong></p>
+<ul>
+<li>[ ] 1. Clear persona + engagement class (<code>roleDefinition</code>, <code>whenToUse</code>).</li>
+<li>[ ] 2. Shared build lifecycle present: intake → mapping → build → document → verify → hand-off.</li>
+<li>[ ] 3. Shared non-negotiables enforced (runnable artifacts; synthetic data; env secrets; mock works with zero deps; accessibility; honest claims; compliance-before-done).</li>
+<li>[ ] 4. Decision gates G0–G5 implemented as optioned questions; autonomous between gates.</li>
+<li>[ ] 5. <strong>References</strong> the skills it depends on — duplicates none of their content.</li>
+<li>[ ] 6. Ships a self-check script (<code>check-compliance.sh</code>, plus <code>check-carveouts.sh</code> if it has guardrails).</li>
+<li>[ ] <code>slug</code> is unique and <strong>does not equal any SKILL name</strong>.</li>
+<li>[ ] Industry mode: states it <strong>replaces</strong> a named general mode; adds only vertical KB / guardrails / blueprints / components / stricter synthetic-data.</li>
+<li>[ ] File parses: <code>python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]))" MODES/&lt;your-mode&gt;.yaml</code></li>
+</ul>
+<p>Make the final line a standing practice: run the parse check with every authoring pass. A Mode that fails to parse will fail silently in the field.</p>
+<hr />
+<h2 id="builder-5-iv-authoring-a-skill"><strong>iv. Authoring a SKILL</strong></h2>
+<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#builder-5-__codelineno-2-1"></a>mkdir SKILLS/&lt;name&gt; <span class="o">&amp;&amp;</span> cp SKILL.template.md SKILLS/&lt;name&gt;/SKILL.md
+</code></pre></div>
+<p><strong>SKILL definition of done:</strong></p>
+<ul>
+<li>[ ] Valid cross-runtime frontmatter: <code>name</code>, <code>description</code>, <code>metadata.enabled: true</code>.</li>
+<li>[ ] <code>name</code> is unique and <strong>does not equal any MODE slug</strong>.</li>
+<li>[ ] <code>description</code> is rich with concrete <strong>trigger terms</strong> (drives auto-discovery).</li>
+<li>[ ] Single responsibility — one product/contract/capability.</li>
+<li>[ ] Content <strong>verified against a real product version</strong>; the "Verified against X, <date>" stamp is filled in.</li>
+<li>[ ] Depth pushed to <code>references/</code>; <code>SKILL.md</code> stays focused (progressive disclosure).</li>
+<li>[ ] States its paired <strong>MCP / SDK / CLI</strong> (or "none").</li>
+<li>[ ] No secrets; credentials via env/connection patterns only.</li>
+</ul>
+<p>Two of these items deserve special attention. The <strong>description</strong> is the single most important line in the file — it is what triggers auto-discovery, so write it in the form of "use this whenever the user mentions or needs X" and be generous with trigger terms. The <strong>verification stamp</strong>, meanwhile, is what separates a field manual from folklore: run the CLI, exercise the API, and then record the version and date that the content was verified against.</p>
+<hr />
+<h2 id="builder-5-v-authoring-a-rule"><strong>v. Authoring a RULE</strong></h2>
+<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#builder-5-__codelineno-3-1"></a>mkdir rules/rules-&lt;name&gt; <span class="o">&amp;&amp;</span> cp RULE.template.md rules/rules-&lt;name&gt;/&lt;name&gt;.md
+</code></pre></div>
+<p>A rule is <strong>always-on and short</strong> — it costs context on every turn, so cut anything optional. It states <em>what must always hold</em>; it never teaches a product API (point to a skill instead). Each rule lives in its own <code>rules-&lt;name&gt;/</code> folder so it can be copied individually into <code>.bob/rules/</code>.</p>
+<p>Pick the scope deliberately: org-wide → <code>~/.bob/rules/</code>; this project → <code>&lt;project&gt;/.bob/rules/</code>; one mode or vertical → <code>.bob/rules-{slug}/</code> (note that <code>rules-{slug}</code> at the top of <code>.bob/</code> is <em>mode-specific</em>).</p>
+<p><strong>RULE definition of done:</strong></p>
+<ul>
+<li>[ ] Short, imperative, <strong>testable</strong> statements (yes/no per line); whole file ≈ &lt; 15 lines.</li>
+<li>[ ] Correct <strong>scope</strong> chosen (global / workspace / mode-specific) and reflected in the metadata line.</li>
+<li>[ ] <strong>No product knowledge</strong> embedded — references a skill for any how-to.</li>
+<li>[ ] No secrets or credentials.</li>
+<li>[ ] <code>Owner</code> + <code>Last-reviewed</code> date filled in; one concern per file.</li>
+</ul>
+<p>The fifteen-line ceiling is not a stylistic preference — it is the context window economics of <strong>Module 4.1</strong> expressed as policy. Every line of an always-on Rule is paid for on every turn, in every session, by every user who inherits it.</p>
+<hr />
+<h2 id="builder-5-vi-the-golden-rule-all-templates-enforce"><strong>vi. The golden rule all templates enforce</strong></h2>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">KNOWLEDGE LIVES ONCE; RULES CONSTRAIN, THEY DON'T TEACH</p>
+<p>Modes reference skills; skills are the single source of truth for product knowledge; MCPs are the last-resort reach; rules state always-on constraints and <em>point</em> to skills for the how. If you're tempted to paste CLI flags or schemas into a mode or a rule, that content is a skill — put it there and reference it.</p>
+</div>
+<p>For a worked example of each asset type done correctly, study <code>SKILLS/watsonx-orchestrate/</code> — a correctly-factored, version-verified Skill — alongside the <code>rules/</code> directory for correctly-factored, constraint-only Rules. Reviewing one well-authored instance of each will teach more than any checklist.</p>
+<hr />
+<h2 id="builder-5-vii-key-takeaways"><strong>vii. Key takeaways</strong></h2>
+<hr />
+<ul>
+<li>Templates are the <strong>executable form of the strategy</strong> — author from them, and conformance comes by construction, not review.</li>
+<li><strong>Choose the asset type first</strong> via the decision tree; the most expensive mistake is the wrong template filled in beautifully.</li>
+<li>Modes stay <strong>thin</strong> (method + references); skills carry the <strong>knowledge</strong> (verified, stamped, single-responsibility); rules stay <strong>short</strong> (&lt; 15 lines, testable, scoped).</li>
+<li>Names matter mechanically: mode slugs and skill names must never collide, and a skill's <code>description</code> is what makes it discoverable at all.</li>
+<li><strong>Knowledge lives once.</strong> When a fact changes, update the skill; when a standard changes, update the rule — everything that references them inherits the fix automatically.</li>
+</ul>
+<p></br>
+As this module closes out, step back and trace the shape of the journey one final time. You began this course accepting Bob's suggestions one keystroke at a time; you conclude it equipped not only to <em>use</em> an organizationally-scaled AI partner, but to <em>extend</em> the very asset library that makes it one. Carry that progression into every conversation and demonstration you have with clients about IBM Bob: an organization whose best engineering judgment scales — where Bob performs the work, and the humans make the decisions.</p>
+<hr /></section><h1 class='nav-section-title-end'>Ended: IBM Bob Demo-Builder Mode</h1></div>
 
 
 

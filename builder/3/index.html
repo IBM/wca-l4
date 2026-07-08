@@ -1,0 +1,1636 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM watsonx Code Assistant Level 4">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>3. Prompting the demo builder - IBM watsonx Code Assistant Level 4</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings2.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings3.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings4.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings5.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-enum-headings6.css">
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../styles/override-print.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prompting-the-demo-builder" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IBM watsonx Code Assistant Level 4" class="md-header__button md-logo" aria-label="IBM watsonx Code Assistant Level 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM watsonx Code Assistant Level 4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Prompting the demo builder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IBM watsonx Code Assistant Level 4" class="md-nav__button md-logo" aria-label="IBM watsonx Code Assistant Level 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM watsonx Code Assistant Level 4
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../toc/" class="md-nav__link">
+        Table of Contents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          On-Premises Installation and Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="On-Premises Installation and Deployment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          On-Premises Installation and Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/1/" class="md-nav__link">
+        1. Objectives and requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/2/" class="md-nav__link">
+        2. Reserve an environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/3/" class="md-nav__link">
+        3. Bastion host setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/4/" class="md-nav__link">
+        4. Cluster preparation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/5/" class="md-nav__link">
+        5. Install prerequisite software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/6/" class="md-nav__link">
+        6. Install IBM Software Hub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../on-premises/7/" class="md-nav__link">
+        7. Install watsonx Code Assistant
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          IBM Cloud (SaaS) Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IBM Cloud (SaaS) Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          IBM Cloud (SaaS) Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../saas/1/" class="md-nav__link">
+        1. Objectives and requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../saas/2/" class="md-nav__link">
+        2. Reserve an environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../saas/3/" class="md-nav__link">
+        3. Configure for enterprise Java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../saas/4/" class="md-nav__link">
+        4. Install WCA extension for Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../saas/5/" class="md-nav__link">
+        5. Install WCA plug-in for Eclipse IDE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Application Modernization - WebSphere to Liberty
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Application Modernization - WebSphere to Liberty" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Application Modernization - WebSphere to Liberty
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/1/" class="md-nav__link">
+        1. Objectives and requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/2/" class="md-nav__link">
+        2. Basic migration capabilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/3/" class="md-nav__link">
+        3. Configuration management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/4/" class="md-nav__link">
+        4. APIs and libraries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/5/" class="md-nav__link">
+        5. EJB modernization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/6/" class="md-nav__link">
+        6. JMS integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/7/" class="md-nav__link">
+        7. Security modernization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appmod/8/" class="md-nav__link">
+        8. Full stack modernization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          IBM Bob Demo-Builder Mode
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IBM Bob Demo-Builder Mode" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          IBM Bob Demo-Builder Mode
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        1. Objectives and requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        2. Setup and registration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3. Prompting the demo builder
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3. Prompting the demo builder
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-the-brief-is-the-demo" class="md-nav__link">
+    i. The brief is the demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-use-case-definition-the-what" class="md-nav__link">
+    ii. Use-case definition — the "what"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-context-data-the-with-what" class="md-nav__link">
+    iii. Context &amp; data — the "with what"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-scope-boundaries-the-what-not-to-build" class="md-nav__link">
+    iv. Scope boundaries — the "what NOT to build"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-ibm-technology-selection-the-with-which-products" class="md-nav__link">
+    v. IBM technology selection — the "with which products"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-quality-checks-the-how-do-i-know-its-done" class="md-nav__link">
+    vi. Quality checks — the "how do I know it's done"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-expected-outcomes-setting-the-quality-bar" class="md-nav__link">
+    vii. Expected outcomes — setting the quality bar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-quick-reference-the-prompt-template" class="md-nav__link">
+    viii. Quick reference — the prompt template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-three-sample-briefs-different-industries" class="md-nav__link">
+    ix. Three sample briefs — different industries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-common-pitfalls-anti-patterns-to-avoid" class="md-nav__link">
+    x. Common pitfalls — anti-patterns to avoid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xi-technology-reference-appendices" class="md-nav__link">
+    xi. Technology reference appendices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xii-key-takeaways" class="md-nav__link">
+    xii. Key takeaways
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        4. Strategies for building better demos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        5. Building consistently with asset templates
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-the-brief-is-the-demo" class="md-nav__link">
+    i. The brief is the demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-use-case-definition-the-what" class="md-nav__link">
+    ii. Use-case definition — the "what"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-context-data-the-with-what" class="md-nav__link">
+    iii. Context &amp; data — the "with what"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-scope-boundaries-the-what-not-to-build" class="md-nav__link">
+    iv. Scope boundaries — the "what NOT to build"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-ibm-technology-selection-the-with-which-products" class="md-nav__link">
+    v. IBM technology selection — the "with which products"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-quality-checks-the-how-do-i-know-its-done" class="md-nav__link">
+    vi. Quality checks — the "how do I know it's done"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-expected-outcomes-setting-the-quality-bar" class="md-nav__link">
+    vii. Expected outcomes — setting the quality bar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-quick-reference-the-prompt-template" class="md-nav__link">
+    viii. Quick reference — the prompt template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-three-sample-briefs-different-industries" class="md-nav__link">
+    ix. Three sample briefs — different industries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-common-pitfalls-anti-patterns-to-avoid" class="md-nav__link">
+    x. Common pitfalls — anti-patterns to avoid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xi-technology-reference-appendices" class="md-nav__link">
+    xi. Technology reference appendices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xii-key-takeaways" class="md-nav__link">
+    xii. Key takeaways
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><strong>MODULE 5 | DEMO BUILDER</strong></p>
+<h1 id="prompting-the-demo-builder"><strong>PROMPTING THE DEMO BUILDER</strong></h1>
+<hr />
+<h2 id="i-the-brief-is-the-demo"><strong>i. The brief is the demo</strong></h2>
+<hr />
+<p>With the Demo Builder installed, the temptation is to submit a prompt along the lines of <em>"build me a watsonx demo"</em> and let Bob take it from there. Such a prompt will produce output — but the single biggest determinant of demo quality is neither the Mode, the model, nor the MCP servers. It is the <strong>brief that you (the user) feed Bob at the start</strong>. This chapter distills the field-tested practices that carry a seller from "use case in your head" to a working, compliant, runnable demo within a single session, without re-prompting six times over.</p>
+<div class="admonition note">
+<p class="admonition-title">THE GOLDEN RULE</p>
+<p>Bob is a <strong>builder</strong>, not an advisor. The richer the brief you feed him, the less he has to invent. A good prompt looks like a <strong>Use-Case Brief</strong>, not a question.</p>
+</div>
+<p>Recall the principle established in the very first pages of this course: generative AI is <em>non-deterministic</em>, and precision is what tips the odds in your favor. Every prompt submitted to the Demo Builder should answer six things:</p>
+<ol>
+<li><strong>WHO</strong> — Industry + persona + audience seniority</li>
+<li><strong>WHAT</strong> — Business problem in one sentence + the "wow moment"</li>
+<li><strong>HOW IT'S CONSUMED</strong> — UI flow, channel, demo duration, scenarios</li>
+<li><strong>DATA</strong> — What synthetic data shape, volume, fields</li>
+<li><strong>TECH STACK</strong> — Which IBM products + which are <em>primary</em> vs. <em>expansion</em></li>
+<li><strong>OUT OF SCOPE</strong> — What Bob must NOT build</li>
+</ol>
+<p>Skip any one of these, and Bob will fill the gap with its defaults — which are good, but generic. Enterprise audiences recognize generic demonstrations quickly, and discount them accordingly.</p>
+<hr />
+<h2 id="ii-use-case-definition-the-what"><strong>ii. Use-case definition — the "what"</strong></h2>
+<hr />
+<p>The single biggest cause of weak demos is a vague problem statement. The Demo Builder's Phase-1 intake expects a <strong>structured brief</strong> — so front-load it.</p>
+<p><strong>Lead with the business pain, not the technology.</strong></p>
+<p>❌ "Build a watsonx.ai demo for a bank."</p>
+<p>✅ "A retail bank loses ~$4M/year on false-positive fraud alerts that block legitimate cardholders. Show how Granite 3 + a transaction-context RAG cuts false positives 40% while keeping recall ≥ 99.2%."</p>
+<p>The first version forces Bob to invent a problem. The second pins the KPI, the baseline, and the target — which then drive the Dashboard KPIs, the ResultsPage before/after, and the PILOT_PLAN success metrics. One sentence of business pain propagates through the entire artifact set.</p>
+<p><strong>Name the persona AND the demo audience — separately.</strong></p>
+<p>These are not the same. The <strong>persona</strong> is who uses the app on screen; the <strong>audience</strong> is who's watching the demo.</p>
+<blockquote>
+<p><em>Persona: Fraud Operations Analyst. Demo audience: CRO + Head of Fraud + 2 IT directors. Duration: 20 min, live, in-person.</em></p>
+</blockquote>
+<p>This one line tells Bob to (a) shape the SolutionPage around an analyst's workflow, (b) keep the DEMO_SCRIPT.md talk-track at exec-friendly altitude, and (c) sequence the three preset scenarios from "obvious win" → "edge case" → "governance moment."</p>
+<p><strong>Specify the "wow moment" explicitly.</strong></p>
+<p>Every Demo Builder demo has a SolutionPage with an interactive AI step. Tell Bob exactly what should happen there.</p>
+<blockquote>
+<p><em>Wow moment: Analyst clicks a flagged transaction, watsonx.ai returns a 3-bullet rationale citing the cardholder's last 30 days of behavior + a confidence score, and the analyst clears it in 8 seconds vs. 6 minutes today.</em></p>
+</blockquote>
+<p>That single sentence becomes the SolutionPage scenario, the AIResponsePanel content, and the ResultsPage delta. One sentence locks three pages.</p>
+<hr />
+<h2 id="iii-context-data-the-with-what"><strong>iii. Context &amp; data — the "with what"</strong></h2>
+<hr />
+<p>The Demo Builder <strong>always</strong> uses synthetic data — a non-negotiable that ships as an ambient Rule, in precisely the pattern you configured within <em>Module 3 | Tailor</em>. The user's (your) responsibility is to shape that synthetic data so the demonstration feels like the client's world.</p>
+<p><strong>Describe data shape, not just data type.</strong></p>
+<p>❌ "Generate transaction data."</p>
+<p>✅ "500 synthetic card transactions over the last 90 days, fields: tx_id, cardholder_id, merchant_category (MCC), amount_usd, country_code, device_fingerprint, is_flagged. ~3% should be flagged. Include 5 'edge case' rows we can demo on (geo-velocity, MCC mismatch, amount anomaly, new-device, fast burst)."</p>
+<p>This maps cleanly to <code>synthetic_data_service.py</code> (Faker seed=42) and hands Bob the exact preset scenarios for the SolutionPage.</p>
+<p><strong>Call out integration <em>boundaries</em> — not implementations.</strong></p>
+<p>Tell Bob what the demo <strong>pretends</strong> to integrate with, so the architecture diagram and mock services are believable:</p>
+<blockquote>
+<p><em>Pretend integrations (mock-only): core banking system (Db2-style REST), case management (ServiceNow-style ticket creation), QRadar (alert ingestion via Kafka topic). Do not build real clients — generate OpenAPI stubs and mark them as mock.</em></p>
+</blockquote>
+<p>Bob will then produce a credible ARCHITECTURE.md with proper subgraphs (Integration Layer, Data Layer) without burning the build window on real connectors.</p>
+<p><strong>Confidentiality is non-negotiable — say it anyway.</strong></p>
+<p>The synthetic-data policy is baked in, but restating it at intake prevents accidental drift:</p>
+<blockquote>
+<p><em>Use code DEMO-FS-042. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails @example.com. Include the DemoBanner on every page.</em></p>
+</blockquote>
+<hr />
+<h2 id="iv-scope-boundaries-the-what-not-to-build"><strong>iv. Scope boundaries — the "what NOT to build"</strong></h2>
+<hr />
+<p>This is the section most users skip — and it's the single biggest accelerator. Bob will happily build everything; your job is to tell him not to.</p>
+<p><strong>Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</strong></p>
+<p>The Demo Builder's defaults are a 5-page React shell (Dashboard, Problem, Solution, Results, Architecture) plus 3 preset scenarios. <strong>Don't expand this for a first build.</strong></p>
+<blockquote>
+<p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on SolutionPage. No user-typed input during live demo.</em></p>
+</blockquote>
+<p><strong>Explicitly defer "real" integrations to the pilot.</strong></p>
+<p>Anything requiring real credentials, real data, or real customer systems belongs in PILOT_PLAN.md, not in the demo build:</p>
+<blockquote>
+<p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in PILOT_PLAN.md as Sprint 2/3 items.</em></p>
+</blockquote>
+<p>This protects the 90-minute build window and keeps the demo runnable on a laptop with <code>docker-compose up</code>.</p>
+<p><strong>Forbid the common scope-creep traps.</strong></p>
+<blockquote>
+<p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email/SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
+</blockquote>
+<p>Each of these is a 2-hour rabbit hole that adds nothing to the storytelling.</p>
+<hr />
+<h2 id="v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection — the "with which products"</strong></h2>
+<hr />
+<p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (you will demo them) versus <strong>expansion</strong> (they appear in the architecture diagram, carrying the land-and-expand story).</p>
+<p><strong>Pick 1–2 primary products. Maximum.</strong></p>
+<p>A 20-minute demo cannot do justice to four products. Pick the hero, name a co-star, and let everything else live in the architecture diagram:</p>
+<blockquote>
+<p><em>Primary: watsonx.ai (Granite 3-8B-instruct) for inference. Co-star: watsonx.data (Iceberg + Milvus) for the RAG context. Expansion-only (architecture diagram, not built): watsonx.governance (FactSheets), Instana (observability), CP4BA (case routing).</em></p>
+</blockquote>
+<p><strong>Specify the model and region — don't let Bob default.</strong></p>
+<p>The default <code>ibm/granite-3-8b-instruct</code> on <code>us-south</code> is fine for most demos, but be explicit when you have a reason:</p>
+<blockquote>
+<p><em>Model: <code>meta-llama/llama-3-405b-instruct</code> (client uses Llama internally for benchmarks). Region: <code>eu-de</code> (client is EU-based, GDPR sensitivity). Project ID will be filled in at runtime — generate <code>.env.example</code> with placeholder.</em></p>
+</blockquote>
+<p><strong>State your access posture: live vs. mock-only.</strong></p>
+<p>The Demo Builder's backend is dual-mode — mock by default, live with credentials. Tell it which one matters:</p>
+<blockquote>
+<p><em>Build mock-mode first and ensure full functionality with zero credentials. Live mode is "nice to have" — keep the SDK calls in <code>watsonx_service.py</code> ready but commented-out fallback paths are fine. I'll add the API key offline before the client meeting.</em></p>
+</blockquote>
+<p>This guarantees the demo runs on the train Wi-Fi.</p>
+<hr />
+<h2 id="vi-quality-checks-the-how-do-i-know-its-done"><strong>vi. Quality checks — the "how do I know it's done"</strong></h2>
+<hr />
+<p>The Demo Builder runs <code>check-compliance.sh</code> at the end of a build. Ask for it explicitly — and then actually read the output.</p>
+<p><strong>Demand the compliance run, then read it.</strong></p>
+<blockquote>
+<p><em>After the build, run <code>scripts/check-compliance.sh</code> and paste the output. I want to see: no PII, no hardcoded keys, Carbon v11 in deps, UBI 9 base images, DemoBanner present, all 4 docs present (README, ARCHITECTURE, PILOT_PLAN, DEMO_SCRIPT).</em></p>
+</blockquote>
+<p>If Bob skips a check, push back: <em>"Re-run check-compliance.sh and confirm item X."</em></p>
+<p><strong>Smoke-test the three "must work" flows yourself.</strong></p>
+<p>Before declaring done, manually verify:</p>
+<ol>
+<li><code>docker-compose up</code> starts both services without errors.</li>
+<li><code>http://localhost:3000</code> renders all 5 pages without console errors.</li>
+<li>The 3 preset scenarios on SolutionPage all return mock responses with latency tags + confidence scores.</li>
+</ol>
+<p>If any of these fails, the demo is not done. Tell Bob: <em>"Scenario 2 errors with <code>undefined.tokens</code> — fix <code>watsonxMocks.js</code> and re-verify."</em></p>
+<p><strong>Verify the storytelling artifacts, not just the code.</strong></p>
+<p>Code that runs but has no narrative is not a demo:</p>
+<blockquote>
+<p><em>DEMO_SCRIPT.md has timed sections (Open 2', Problem 3', Solution 7', Results 2', Close 1') with talk-track sentences I can read out loud. PILOT_PLAN.md has 3 measurable success criteria with baseline + target. ARCHITECTURE.md has a Mermaid diagram with 6+ subgraphs.</em></p>
+</blockquote>
+<hr />
+<h2 id="vii-expected-outcomes-setting-the-quality-bar"><strong>vii. Expected outcomes — setting the quality bar</strong></h2>
+<hr />
+<p>Set the bar at the <em>top</em> of the prompt, so Bob calibrates from the start.</p>
+<p><strong>Anchor on the "Client Engineering pilot in 3–4 weeks" close.</strong> The demo's job is to land the pilot — which makes PILOT_PLAN.md the most important document in the package:</p>
+<blockquote>
+<p><em>Close the demo with the line: "Working pilot in 3–4 weeks with IBM Client Engineering." PILOT_PLAN.md must show: Sprint 0 (env+access), Sprint 1 (data+model), Sprint 2 (integration+governance), Sprint 3 (E2E+handover). Team: 1 Tech Sales, 1–2 Client Engineers, 1 Data Eng, 1 AI Eng, 1 PM.</em></p>
+</blockquote>
+<p><strong>Demand IBM-grade UI fidelity:</strong></p>
+<blockquote>
+<p><em>All UI must use @carbon/react v11. Theme g90. IBM Plex fonts. Color scale: Blue 60 (#0f62fe) for primary, Purple 60 (#6929c4) for watsonx.data accents, Teal 70 (#005d5d) for governance. Branding: "Built with IBM watsonx" — never "Powered by Watson".</em></p>
+</blockquote>
+<p><strong>Make the demo presenter-proof.</strong> The presenter should never type during a live demo:</p>
+<blockquote>
+<p><em>All 3 SolutionPage scenarios pre-filled. Submit button always returns a result within 1.5s (mock latency). Loading, error, and empty states on every page. No flickering. No console errors. WCAG 2.1 AA: keyboard nav works end-to-end.</em></p>
+</blockquote>
+<hr />
+<h2 id="viii-quick-reference-the-prompt-template"><strong>viii. Quick reference — the prompt template</strong></h2>
+<hr />
+<p>Copy, fill in, and paste:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a># CLIENT BRIEF
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- Client Code:        DEMO-XXX-NNN
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>- Industry:           [Financial Services | Healthcare | Manufacturing | Retail | Telco | Energy | Public Sector]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>- Business Challenge: [one sentence: the pain + the $ or % impact]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>- Persona (in app):   [job title]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>- Demo Audience:      [seniority + roles, e.g. CRO + 2 IT Directors]
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>- Demo Duration:      [5 / 15 / 20 / 30 / 60 min]
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>- Delivery Format:    [live | recorded | self-guided]
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>- Wow Moment:         [one sentence: what happens on SolutionPage]
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a># IBM PRODUCTS
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>- Primary (built):    [e.g. watsonx.ai with Granite 3-8B]
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>- Co-star (built):    [e.g. watsonx.data + Milvus for RAG]
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>- Expansion (diagram only): [e.g. watsonx.governance, Instana, CP4BA]
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a># DATA
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>- Volume:    [e.g. 500 records, 90 days]
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>- Schema:    [list fields]
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>- Edge cases for the 3 scenarios: [scenario 1 / 2 / 3]
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a># OUT OF SCOPE — DO NOT BUILD
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>- [e.g. real auth, real DB, CI/CD, anything beyond the 5 standard pages]
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a># QUALITY BAR
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>- Run check-compliance.sh and paste output.
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>- Mock mode must work with zero credentials.
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>- Generate all 4 docs: README, ARCHITECTURE, PILOT_PLAN, DEMO_SCRIPT.
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>- Carbon v11, theme g90, &quot;Built with IBM watsonx&quot; branding.
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a># TECH ACCESS
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>- Region: [us-south | eu-de | eu-gb | jp-tok | au-syd]
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>- Model:  [ibm/granite-3-8b-instruct | meta-llama/llama-3-405b-instruct | ...]
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>- I will provide WATSONX_API_KEY + WATSONX_PROJECT_ID via .env at runtime.
+</code></pre></div>
+<hr />
+<h2 id="ix-three-sample-briefs-different-industries"><strong>ix. Three sample briefs — different industries</strong></h2>
+<hr />
+<p>Three complete, ready-to-adapt Use-Case Briefs follow — one each for Financial Services, Healthcare, and Manufacturing. Study how each fills all six fields of the golden rule, and take note of how much <em>business</em> detail (KPIs, baselines, dollar impacts) each carries relative to technical detail.</p>
+<details class="quote">
+<summary>SAMPLE 1 — FINANCIAL SERVICES (watsonx.ai + watsonx.data RAG)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a># CLIENT BRIEF
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>- Client Code:        DEMO-FS-042
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>- Industry:           Financial Services (mid-size retail bank)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>- Business Challenge: Fraud ops team handles ~12,000 alerts/day with 78% false-positive rate, costing
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                      ~$4M/year in customer attrition and 6 minutes avg disposition time per alert.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>- Persona (in app):   Senior Fraud Operations Analyst
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>- Demo Audience:      CRO, Head of Fraud, 2 IT Directors (live, in-person, 20 min)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>- Wow Moment:         Analyst clicks a flagged transaction; watsonx.ai (with watsonx.data RAG over the
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>                      cardholder&#39;s last 30 days) returns a 3-bullet rationale + confidence score in &lt;2s,
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                      and the analyst clears or escalates in one click.
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a># IBM PRODUCTS
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>- Primary (built):           watsonx.ai — ibm/granite-3-8b-instruct
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>- Co-star (built):           watsonx.data — Iceberg + Milvus vector store for cardholder behavior RAG
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>- Expansion (diagram only):  watsonx.governance (FactSheets, drift), QRadar (alert ingestion),
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                              CP4BA-BAW (case escalation), Instana (APM)
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a># DATA
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>- 500 synthetic card transactions over 90 days
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>- Fields: tx_id, cardholder_id, merchant_category (MCC), amount_usd, country_code,
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>          device_fingerprint, is_flagged, fraud_score
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>- ~3% flagged, with 5 demo-able edge cases:
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>  Scenario 1: Geo-velocity (NYC → Singapore in 2 hrs)
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  Scenario 2: MCC mismatch (luxury jewelry on a college student card)
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>  Scenario 3: Amount anomaly + new device fingerprint
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a># OUT OF SCOPE
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>- No real auth, no real Db2 connection, no real QRadar feed
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>- No multi-tenant, no admin panel
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>- All emails @example.com, all entities fictional (Meridian Financial style)
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a># QUALITY BAR
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>- Mock mode works with zero credentials
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>- check-compliance.sh passes
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>- DEMO_SCRIPT.md times to 20 min exactly
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>- PILOT_PLAN.md shows fraud-rate KPI baseline=78%, target=≤45% in 4 weeks
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a># TECH ACCESS
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>- Region: us-south.ml.cloud.ibm.com
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>- Model: ibm/granite-3-8b-instruct
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>- Vector DB: Milvus (mock in-memory for demo, real Milvus on watsonx.data in pilot)
+</code></pre></div>
+</details>
+<details class="quote">
+<summary>SAMPLE 2 — HEALTHCARE (watsonx Assistant + Discovery + watsonx.ai)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a># CLIENT BRIEF
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>- Client Code:        DEMO-HC-017
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- Industry:           Healthcare (regional hospital network, 12 hospitals)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>- Business Challenge: Clinical staff spend ~45 min/shift searching protocol PDFs and EHR notes for
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                      drug-interaction and dosing guidance. Errors cost an average of $3,200 per
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                      adverse event; ~140 events/year.
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>- Persona (in app):   ER Nurse / Clinical Pharmacist
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>- Demo Audience:      CMIO, Chief Nursing Officer, IT VP (15 min, recorded for committee playback)
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>- Wow Moment:         Nurse types a free-text question (&quot;80yo on warfarin, new Rx amoxicillin, ok?&quot;);
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                      watsonx Assistant routes to a watsonx.ai+Discovery RAG over 200 synthetic
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>                      protocol PDFs and returns a structured answer with citations in &lt;3s.
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a># IBM PRODUCTS
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>- Primary (built):           watsonx.ai — ibm/granite-3-8b-instruct (clinical reasoning)
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>- Co-star (built):           watsonx Assistant (chat UI) + Watson Discovery (mock SDU + enrichment)
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>- Expansion (diagram only):  watsonx.governance (HIPAA audit trail), CP4D Knowledge Catalog,
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>                              Db2 (EHR system of record)
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a># DATA
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>- 200 synthetic clinical protocol &quot;documents&quot; (JSON with title, body, drug_class, last_updated)
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>- 50 synthetic patient records: patient_id, age, weight_kg, current_meds[], allergies[],
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>  conditions[] (CMS-synthetic-patient style — never real PHI)
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>- 3 preset scenarios:
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>  Scenario 1: Drug-drug interaction (warfarin + amoxicillin)
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>  Scenario 2: Renal dosing adjustment (eGFR &lt; 30, metformin)
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>  Scenario 3: Pediatric weight-based dosing
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a># OUT OF SCOPE
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>- No real EHR/FHIR connection
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>- No real PHI under any circumstance — flag this in DemoBanner explicitly
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>- No login flow, no role-based access (mention RBAC in PILOT_PLAN)
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>- All patient names fictional, all emails @demo.ibm.com
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a># QUALITY BAR
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>- Every AI response shows citations with synthetic doc IDs (e.g. PROTO-7a3f9e21)
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>- AIResponsePanel shows confidence + &quot;Reviewed by clinical team — synthetic data only&quot; tag
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>- WCAG 2.1 AA strict: clinical environments have low-vision users
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>- check-compliance.sh passes; explicit &quot;no PHI&quot; check in README
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a># TECH ACCESS
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>- Region: us-south.ml.cloud.ibm.com (eu-de in pilot for any EU sites)
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>- Model: ibm/granite-3-8b-instruct (Granite Guardian as safety filter — mention in architecture)
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>- Assistant: WATSON_ASSISTANT_URL + WATSON_ASSISTANT_ID via .env
+</code></pre></div>
+</details>
+<details class="quote">
+<summary>SAMPLE 3 — MANUFACTURING (watsonx.ai + watsonx.data + Instana)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a># CLIENT BRIEF
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- Client Code:        DEMO-MFG-009
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- Industry:           Manufacturing (Tier-1 automotive supplier, 8 plants)
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>- Business Challenge: Unplanned downtime on stamping presses costs ~$22,000/hr. Current MTBF is
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                      ~340 hrs; OEE sits at 71%. Goal: predictive maintenance to push OEE &gt; 82%.
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>- Persona (in app):   Plant Reliability Engineer
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>- Demo Audience:      VP Operations, Plant Director, OT Security Lead (30 min, in-person)
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>- Wow Moment:         Engineer opens a press-line dashboard; watsonx.ai (Granite Time Series) flags
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>                      Press #4 with a 91%-confidence &quot;bearing wear&quot; signature 14 days before failure,
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>                      and recommends a maintenance window with cost-of-action vs cost-of-failure deltas.
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a># IBM PRODUCTS
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>- Primary (built):           watsonx.ai — Granite Time Series (anomaly + forecast)
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>- Co-star (built):           watsonx.data (Iceberg) — sensor lakehouse with hot/warm tiering
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>- Expansion (diagram only):  Instana (OT-edge sensor APM), Turbonomic (compute right-sizing for
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                              Spark jobs), CP4BA (work-order routing into Maximo), Envizi (ESG)
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a># DATA
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>- 30 days of synthetic telemetry from 8 stamping presses, 1-min granularity
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>- Sensors per press: vibration_rms_g, motor_temp_c, hydraulic_psi, cycle_time_ms, current_amps
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>- Inject 3 demo-able failure signatures:
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  Scenario 1: Press #4 — bearing wear (rising vibration_rms_g + temp drift over 7 days)
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  Scenario 2: Press #7 — hydraulic seal degradation (psi variance increase)
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  Scenario 3: Press #2 — normal (use as the contrast in the wow moment)
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a># OUT OF SCOPE
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>- No real OPC-UA / MQTT broker — generate JSON/Parquet files only
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>- No real OpenShift deploy — Dockerfile + compose only
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>- No mobile app — desktop dashboard only
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a># QUALITY BAR
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>- Charts: Carbon Charts area chart for sensor trends, gauge for OEE, treemap for plant rollup
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>- ResultsPage shows: MTBF before/after, OEE before/after, $ saved per quarter
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>- ARCHITECTURE.md Mermaid: subgraphs for OT Edge, Data Layer (watsonx.data), AI Layer
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>  (watsonx.ai), Action Layer (mock Maximo/CP4BA), Observability (Instana)
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a># TECH ACCESS
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>- Region: us-south.ml.cloud.ibm.com
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>- Model: ibm/granite-timeseries-ttm-v1 for forecasting; ibm/granite-3-8b-instruct for the
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>        natural-language recommendation summary
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>- watsonx.data: Presto endpoint for the Iceberg sensor table (mock-mode = local DuckDB stand-in)
+</code></pre></div>
+</details>
+<hr />
+<h2 id="x-common-pitfalls-anti-patterns-to-avoid"><strong>x. Common pitfalls — anti-patterns to avoid</strong></h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>ANTI-PATTERN</th>
+<th>WHY IT FAILS</th>
+<th>FIX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Just build me a watsonx demo"</td>
+<td>Bob has to invent industry, persona, data, and KPIs. Output is generic.</td>
+<td>Use the prompt template. Fill all 6 fields.</td>
+</tr>
+<tr>
+<td>"Show all the watsonx products"</td>
+<td>20 min cannot cover .ai + .data + .governance + Assistant + Orchestrate.</td>
+<td>Pick 1–2 primary, rest live in the architecture diagram only.</td>
+</tr>
+<tr>
+<td>"Use my client's real numbers / a sample of real data"</td>
+<td>Violates Bob's synthetic-data policy. He'll refuse or sanitize, costing time.</td>
+<td>Provide a synthetic equivalent that matches the <em>shape</em> of the real data.</td>
+</tr>
+<tr>
+<td>"Make it production-ready"</td>
+<td>Bob is a <em>demo</em> builder. Production hardening belongs in the pilot.</td>
+<td>Ask for "demo-grade" + a PILOT_PLAN.md showing the production path.</td>
+</tr>
+<tr>
+<td>Skipping the wow moment</td>
+<td>SolutionPage ends up being three buttons that all do the same thing.</td>
+<td>One sentence: "user does X, AI returns Y in &lt;Zs, business impact is W".</td>
+</tr>
+<tr>
+<td>"Surprise me on the data"</td>
+<td>Synthetic data won't match the demo narrative.</td>
+<td>Specify volume, fields, and which 3 rows drive the 3 scenarios.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="xi-technology-reference-appendices"><strong>xi. Technology reference appendices</strong></h2>
+<hr />
+<p>The collapsible references below carry the exact endpoints, model IDs, sample code, and environment keys that the Demo Builder's generated services rely upon — useful both for briefing Bob with precision and for verifying what it has built.</p>
+<details class="note">
+<summary>APPENDIX A — TECHNOLOGY REFERENCE: watsonx.ai</summary>
+<p><strong>Endpoints by region</strong></p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dallas (default)</td>
+<td><code>https://us-south.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Frankfurt</td>
+<td><code>https://eu-de.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>London</td>
+<td><code>https://eu-gb.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Tokyo</td>
+<td><code>https://jp-tok.ml.cloud.ibm.com</code></td>
+</tr>
+<tr>
+<td>Sydney</td>
+<td><code>https://au-syd.ml.cloud.ibm.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>API path for text generation: <code>POST /ml/v1/text/generation</code> (Bearer token via IBM Cloud IAM).</p>
+<p><strong>Model IDs (most-used in demos)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model ID</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ibm/granite-3-8b-instruct</code></td>
+<td>General instruct, RAG, summarization (default)</td>
+</tr>
+<tr>
+<td><code>ibm/granite-3-2b-instruct</code></td>
+<td>Lower-latency, edge-style demos</td>
+</tr>
+<tr>
+<td><code>ibm/granite-code-34b-instruct</code></td>
+<td>Code generation, watsonx Code Assistant scenarios</td>
+</tr>
+<tr>
+<td><code>ibm/granite-timeseries-ttm-v1</code></td>
+<td>Time-series forecasting (mfg, energy, telco)</td>
+</tr>
+<tr>
+<td><code>ibm/granite-guardian-3-8b</code></td>
+<td>Safety / harm filtering layer</td>
+</tr>
+<tr>
+<td><code>meta-llama/llama-3-405b-instruct</code></td>
+<td>When the client benchmarks on Llama</td>
+</tr>
+<tr>
+<td><code>mistralai/mixtral-8x7b-instruct-v01</code></td>
+<td>Mixture-of-experts, multilingual</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample code — native SDK (recommended for Bob's <code>watsonx_service.py</code>)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai</span> <span class="kn">import</span> <span class="n">Credentials</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai.foundation_models</span> <span class="kn">import</span> <span class="n">ModelInference</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span> <span class="nn">ibm_watsonx_ai.metanames</span> <span class="kn">import</span> <span class="n">GenTextParamsMetaNames</span> <span class="k">as</span> <span class="n">GenParams</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">credentials</span> <span class="o">=</span> <span class="n">Credentials</span><span class="p">(</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_URL&quot;</span><span class="p">],</span>            <span class="c1"># e.g. https://us-south.ml.cloud.ibm.com</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_API_KEY&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">DECODING_METHOD</span><span class="p">:</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">:</span>  <span class="mi">1024</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="n">GenParams</span><span class="o">.</span><span class="n">TEMPERATURE</span><span class="p">:</span>     <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">model</span> <span class="o">=</span> <span class="n">ModelInference</span><span class="p">(</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="n">model_id</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;WATSONX_MODEL_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;ibm/granite-3-8b-instruct&quot;</span><span class="p">),</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="n">params</span>     <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">credentials</span><span class="o">=</span> <span class="n">credentials</span><span class="p">,</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">project_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;WATSONX_PROJECT_ID&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="n">response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate_text</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Summarize the fraud signal for tx_id=...&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Sample code — LangChain wrapper (alternate, for agent-style demos)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span> <span class="nn">langchain_ibm</span> <span class="kn">import</span> <span class="n">WatsonxLLM</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">load_dotenv</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">watsonx_api_key</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_API_KEY&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">watsonx_project_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_PROJECT_ID&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">watsonx_url</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_URL&quot;</span><span class="p">)</span>        <span class="c1"># https://us-south.ml.cloud.ibm.com</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">watsonx_model_id</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WATSONX_MODEL_ID&quot;</span><span class="p">)</span>   <span class="c1"># e.g. meta-llama/llama-3-405b-instruct</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">agent_llm</span> <span class="o">=</span> <span class="n">WatsonxLLM</span><span class="p">(</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">model_id</span>   <span class="o">=</span> <span class="n">watsonx_model_id</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">url</span>        <span class="o">=</span> <span class="n">watsonx_url</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">project_id</span> <span class="o">=</span> <span class="n">watsonx_project_id</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">params</span>     <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Required <code>.env</code> keys</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">WATSONX_API_KEY</span><span class="o">=</span><span class="s">&lt;your IBM Cloud API key&gt;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">WATSONX_PROJECT_ID</span><span class="o">=</span><span class="s">&lt;your watsonx project UUID&gt;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">WATSONX_URL</span><span class="o">=</span><span class="s">https://us-south.ml.cloud.ibm.com</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">WATSONX_MODEL_ID</span><span class="o">=</span><span class="s">ibm/granite-3-8b-instruct</span><span class="w"></span>
+</code></pre></div>
+</details>
+<details class="note">
+<summary>APPENDIX B — TECHNOLOGY REFERENCE: watsonx.data</summary>
+<p><strong>What it is, in one line:</strong> a Presto + Spark lakehouse over <strong>Apache Iceberg</strong> tables, with federation (Db2, PostgreSQL, MongoDB, S3, Netezza) and <strong>Milvus</strong> for vector RAG.</p>
+<p><strong>Sample code — control plane (manage buckets, catalogs, schemas)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">ibm_watsonxdata</span> <span class="kn">import</span> <span class="n">WatsonxDataV2</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">ibm_cloud_sdk_core.authenticators</span> <span class="kn">import</span> <span class="n">IAMAuthenticator</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">authenticator</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="s2">&quot;YOUR_IAM_API_KEY&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">wxd_service</span> <span class="o">=</span> <span class="n">WatsonxDataV2</span><span class="p">(</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">authenticator</span> <span class="o">=</span> <span class="n">authenticator</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">service_url</span>   <span class="o">=</span> <span class="s2">&quot;YOUR_WATSONX_DATA_BASE_URL&quot;</span>     <span class="c1"># e.g. https://&lt;host&gt;:&lt;port&gt;/lakehouse/api</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># Example: list buckets / catalogs / schemas (depending on API version)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># response = wxd_service.list_buckets()</span>
+</code></pre></div>
+<p><strong>Sample code — data plane (query Iceberg via Presto)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">prestodb</span> <span class="kn">import</span> <span class="n">dbapi</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">dbapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">host</span>        <span class="o">=</span> <span class="s2">&quot;YOUR_PRESTO_HOST&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">port</span>        <span class="o">=</span> <span class="mi">8443</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">user</span>        <span class="o">=</span> <span class="s2">&quot;ibmlhuser&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">catalog</span>     <span class="o">=</span> <span class="s2">&quot;iceberg_minio&quot;</span><span class="p">,</span>          <span class="c1"># or your specific catalog</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">schema</span>      <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">http_scheme</span> <span class="o">=</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="n">auth</span>        <span class="o">=</span> <span class="n">dbapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">JWTAuthentication</span><span class="p">(</span><span class="s2">&quot;YOUR_USER_API_KEY&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="n">verify</span>      <span class="o">=</span> <span class="s2">&quot;path/to/ssl_certificate.crt&quot;</span>   <span class="c1"># for self-signed certs</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SHOW CATALOGS&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</code></pre></div>
+<p><strong>Required <code>.env</code> keys</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="na">WATSONXDATA_IAM_API_KEY</span><span class="o">=</span><span class="s">&lt;IBM Cloud IAM key&gt;</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">WATSONXDATA_BASE_URL</span><span class="o">=</span><span class="s">https://&lt;host&gt;:&lt;port&gt;/lakehouse/api</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="na">PRESTO_HOST</span><span class="o">=</span><span class="s">&lt;presto coordinator host&gt;</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="na">PRESTO_PORT</span><span class="o">=</span><span class="s">8443</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="na">PRESTO_USER</span><span class="o">=</span><span class="s">ibmlhuser</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="na">PRESTO_CATALOG</span><span class="o">=</span><span class="s">iceberg_data</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="na">PRESTO_USER_API_KEY</span><span class="o">=</span><span class="s">&lt;JWT for Presto auth&gt;</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="na">PRESTO_SSL_CERT_PATH</span><span class="o">=</span><span class="s">./certs/lh-ssl-ts.crt</span><span class="w"></span>
+</code></pre></div>
+<p><strong>When to demo it</strong></p>
+<ul>
+<li><strong>RAG context store</strong> (with Milvus as vector index) — pair with watsonx.ai</li>
+<li><strong>Unified analytics</strong> across siloed sources (federation story)</li>
+<li><strong>Hot/warm/cold tiering</strong> with IBM Cloud Object Storage (cost-optimization story)</li>
+<li><strong>Open formats</strong> (Iceberg) — vendor-lock-in counter-narrative</li>
+</ul>
+</details>
+<details class="note">
+<summary>APPENDIX C — ONE-PAGE COMPLIANCE CHECKLIST (paste this back to Bob)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[ ] No PII or real client data in any file
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[ ] DemoBanner visible on every page
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>[ ] No hardcoded API keys or secrets
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>[ ] .env.example has placeholder values only
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>[ ] All emails @example.com or @demo.ibm.com
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>[ ] @carbon/react v11 used for all UI
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>[ ] IBM Plex fonts loaded
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>[ ] &quot;Built with IBM watsonx&quot; branding (never &quot;Powered by Watson&quot;)
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>[ ] No competitor product names
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>[ ] No eval() or unsafe HTML
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>[ ] UBI 9 base images in Dockerfiles
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>[ ] Input validation on all forms
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>[ ] WCAG 2.1 AA: keyboard nav, ARIA, contrast
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>[ ] README.md, ARCHITECTURE.md, PILOT_PLAN.md, DEMO_SCRIPT.md all present
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>[ ] Demo works fully in mock mode (zero credentials)
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>[ ] All 5 pages render without errors
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>[ ] 3 preset scenarios load correctly
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>[ ] Charts display with synthetic data
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>[ ] CSV export works on tables
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>[ ] Loading states shown during API calls
+</code></pre></div>
+</details>
+<hr />
+<h2 id="xii-key-takeaways"><strong>xii. Key takeaways</strong></h2>
+<hr />
+<ul>
+<li>A good prompt is a <strong>Use-Case Brief</strong>, not a question — and every brief answers six things: WHO, WHAT, HOW IT'S CONSUMED, DATA, TECH STACK, and OUT OF SCOPE.</li>
+<li>Lead with the <strong>business pain and the KPI</strong>, not the technology; one well-specified "wow moment" locks three pages of the demo.</li>
+<li><strong>Scope boundaries are the biggest accelerator</strong> — 5 pages, 3 scenarios, 1 wow moment; defer everything "real" to PILOT_PLAN.md.</li>
+<li>Pick <strong>1–2 primary products maximum</strong>; the rest of the portfolio earns its place in the architecture diagram.</li>
+<li>Done means <strong>verified</strong>: compliance script green, the three must-work flows smoke-tested, and the storytelling artifacts (DEMO_SCRIPT, PILOT_PLAN, ARCHITECTURE) reviewed by you.</li>
+</ul>
+<p></br>
+In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo Builder behaves the way it does — the strategy and asset model that allow a single, well-formed brief to produce a compliant, runnable solution.</p>
+<hr />
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Setup and registration" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2. Setup and registration
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../4/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Strategies for building better demos" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              4. Strategies for building better demos
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate", "content.code.copy", "content.code.select", "navigation.footer"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+        <script src="../../_static/hide-toc-nav.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
