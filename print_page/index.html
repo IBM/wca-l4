@@ -7162,7 +7162,11 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>A local folder is available to serve as your Bob project workspace</li>
 </ul>
 <p>No additional downloads or staged files are required before you begin.</p>
-<hr />
+<div class="admonition note">
+<p class="admonition-title"><strong>A WORD ON WORKING WITH GENERATIVE AI</strong></p>
+<p>IBM Bob is powered by generative AI and LLMs, and a defining trait of these systems is that they are <em>non-deterministic</em> — unlike the <em>deterministic</em> tools most developers are accustomed to. In practice, that means the same prompt can produce different code from one run to the next. This is both a strength and a quirk of the technology, and it is something to work <em>with</em> rather than against.</p>
+<p><strong>Precision is what tips the odds in your favor.</strong> The more clearly you describe what you want, the more closely Bob's output will mirror your intent; conversely, the smallest change in wording can meaningfully change the generated code. Throughout this lab, your results may differ from the solutions shown — and that is expected, not a defect. Whenever an output diverges, you have three good options: refine the prompt and try again, edit the generated code by hand, or simply proceed if the variation still compiles and runs. Human review remains essential at every step, and never more so than while you are still learning the tool.</p>
+</div>
 <h2 id="builder-1-v-next-steps"><strong>v. Next steps</strong></h2>
 <hr />
 <p>In the chapter ahead, you will install the Client Engineering Bob Marketplace, create the GitHub token that unlocks its catalog, and install the IBM Pre-Sales Demo Builder into a fresh workspace before any demo work begins.</p>
@@ -7194,7 +7198,11 @@ Once again, this recommendation has been specifically tailored for enterprise us
 <li>A local folder is available to serve as your Bob project workspace</li>
 </ul>
 <p>No additional downloads or staged files are required before you begin.</p>
-<hr />
+<div class="admonition note">
+<p class="admonition-title"><strong>A WORD ON WORKING WITH GENERATIVE AI</strong></p>
+<p>IBM Bob is powered by generative AI and LLMs, and a defining trait of these systems is that they are <em>non-deterministic</em> — unlike the <em>deterministic</em> tools most developers are accustomed to. In practice, that means the same prompt can produce different code from one run to the next. This is both a strength and a quirk of the technology, and it is something to work <em>with</em> rather than against.</p>
+<p><strong>Precision is what tips the odds in your favor.</strong> The more clearly you describe what you want, the more closely Bob's output will mirror your intent; conversely, the smallest change in wording can meaningfully change the generated code. Throughout this lab, your results may differ from the solutions shown — and that is expected, not a defect. Whenever an output diverges, you have three good options: refine the prompt and try again, edit the generated code by hand, or simply proceed if the variation still compiles and runs. Human review remains essential at every step, and never more so than while you are still learning the tool.</p>
+</div>
 <h2 id="builder-2-iii-hands-on-install-the-ce-bob-marketplace-demo-builder"><strong>iii. Hands-on: Install the CE Bob Marketplace &amp; Demo Builder</strong></h2>
 <hr />
 <p>The work ahead proceeds in four phases: download the Marketplace extension; create the GitHub PAT that authenticates it; install the extension and register your token; and, finally, install the Demo Builder into a fresh workspace.</p>
@@ -7617,21 +7625,26 @@ With the environment assembled and validated, you will now shift attention to a 
 <hr />
 <h2 id="builder-3-i-the-brief-is-the-demo"><strong>i. The brief is the demo</strong></h2>
 <hr />
-<p>With the Demo Builder installed, the temptation is to submit a prompt along the lines of <em>"build me a watsonx demo"</em> and let Bob take it from there. Such a prompt will produce output — but the single biggest determinant of demo quality is neither the Mode, the model, nor the MCP servers. It is the <strong>brief that you (the user) feed Bob at the start</strong>. This chapter distills the field-tested practices that carry a seller from "use case in your head" to a working, compliant, runnable demo within a single session, without re-prompting six times over.</p>
+<p>With the Demo Builder installed, the temptation is to submit a prompt along the lines of <em>"build me a watsonx demo"</em> and let Bob take it from there. Such a prompt will produce output — but the single biggest determinant of demo quality is neither the Mode, the model, nor the MCP servers.</p>
+<div class="admonition warning">
+<p>The determining factor is the <strong>brief that you (the user) feed Bob at the onset</strong>.</p>
+</div>
+<p>This chapter distills the field-tested practices of IBM Client Engineering and IBM sellers that can bridge the gap between a "use case in your head" — and a working, compliant, runnable demo within a single session. All achieved (ideally) without re-prompting Bob or another LLM six times over.</p>
 <div class="admonition note">
 <p class="admonition-title">THE GOLDEN RULE</p>
-<p>Bob is a <strong>builder</strong>, not an advisor. The richer the brief you feed him, the less he has to invent. A good prompt looks like a <strong>Use-Case Brief</strong>, not a question.</p>
+<p>Bob is a <strong>builder</strong>, not an advisor. The richer the brief you provide, the less Bob has to invent and the more accurately your intent will be mapped into reality.</p>
+<p><strong>A good prompt looks like a use case brief, not a question.</strong></p>
 </div>
-<p>Recall the principle established in the very first pages of this course: generative AI is <em>non-deterministic</em>, and precision is what tips the odds in your favor. Every prompt submitted to the Demo Builder should answer six things:</p>
+<p>Recall the principle established in the very first pages of this hands-on material: IBM Bob and generative AI are <em>non-deterministic</em> systems. <strong>Precision</strong> is what tips the odds in your favor. Every prompt submitted to the Demo Builder should answer six things:</p>
 <ol>
-<li><strong>WHO</strong> — Industry + persona + audience seniority</li>
-<li><strong>WHAT</strong> — Business problem in one sentence + the "wow moment"</li>
-<li><strong>HOW IT'S CONSUMED</strong> — UI flow, channel, demo duration, scenarios</li>
-<li><strong>DATA</strong> — What synthetic data shape, volume, fields</li>
-<li><strong>TECH STACK</strong> — Which IBM products + which are <em>primary</em> vs. <em>expansion</em></li>
-<li><strong>OUT OF SCOPE</strong> — What Bob must NOT build</li>
+<li><strong>WHO</strong> | Industry + persona + audience seniority</li>
+<li><strong>WHAT</strong> | Business problem defined in one sentence and what is the "wow moment"?</li>
+<li><strong>HOW IT'S CONSUMED</strong> | UI flow, channel, demo duration, scenarios</li>
+<li><strong>DATA</strong> | What synthetic data shape, volume, fields</li>
+<li><strong>TECH STACK</strong> | Which IBM products, which are <em>primary</em> vs. <em>expansion</em></li>
+<li><strong>OUT OF SCOPE</strong> | What Bob must <em>not</em> build</li>
 </ol>
-<p>Skip any one of these, and Bob will fill the gap with its defaults — which are good, but generic. Enterprise audiences recognize generic demonstrations quickly, and discount them accordingly.</p>
+<p>Skip any one of these, and Bob will endeavour to fill the gap with its defaults. These might be <em>good enough</em>, but they'll be generic and guesswork at best. Enterprise audiences recognize generic demonstrations quickly, and discredit them accordingly.</p>
 <hr />
 <h2 id="builder-3-ii-use-case-definition-the-what"><strong>ii. Use-case definition — the "what"</strong></h2>
 <hr />
