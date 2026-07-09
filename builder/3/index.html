@@ -1017,42 +1017,52 @@
 <h2 id="iii-context-data-the-with-what"><strong>iii. Context &amp; data: the "with what"</strong></h2>
 <hr />
 <p>The Demo Builder <strong>always</strong> uses synthetic data: a non-negotiable that ships as an ambient Rule. The user's (your) responsibility is to shape that synthetic data so that the demonstration emulates the client's world and business environment.</p>
-<p><strong>Describe data shape, not just data type.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Describe data shape, not just data type.</p>
 <p>❌ "Generate transaction data."</p>
-<p>✅ "500 synthetic card transactions over the last 90 days, fields: tx_id, cardholder_id, merchant_category (MCC), amount_usd, country_code, device_fingerprint, is_flagged. ~3% should be flagged. Include 5 'edge case' rows we can demo on (geo-velocity, MCC mismatch, amount anomaly, new-device, fast burst)."</p>
+<p>✅ "500 synthetic card transactions over the last 90 days, fields: <code>tx_id</code>, <code>cardholder_id</code>, <code>merchant_category</code> (MCC), <code>amount_usd</code>, <code>country_code</code>, <code>device_fingerprint</code>, <code>is_flagged</code>. ~3% should be flagged. Include 5 'edge case' rows we can demo on (geo-velocity, MCC mismatch, amount anomaly, new-device, fast burst)."</p>
 <p>This maps cleanly to <code>synthetic_data_service.py</code> (Faker seed=42) and hands Bob the exact preset scenarios for the SolutionPage.</p>
-<p><strong>Call out integration <em>boundaries</em> — not implementations.</strong></p>
-<p>Tell Bob what the demo <strong>pretends</strong> to integrate with, so the architecture diagram and mock services are believable:</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Call out integration <em>boundaries</em>, not implementations.</p>
+<p>Tell Bob what the demo <em>pretends</em> to integrate with, so the architecture diagram and mock services are believable:</p>
 <blockquote>
-<p><em>Pretend integrations (mock-only): core banking system (Db2-style REST), case management (ServiceNow-style ticket creation), QRadar (alert ingestion via Kafka topic). Do not build real clients — generate OpenAPI stubs and mark them as mock.</em></p>
+<p><em>Pretend integrations (mock-only): core banking system (Db2-style REST), case management (ServiceNow-style ticket creation), QRadar (alert ingestion via Kafka topic). Do not build real clients. Generate OpenAPI stubs and mark them as mock.</em></p>
 </blockquote>
-<p>Bob will then produce a credible ARCHITECTURE.md with proper subgraphs (Integration Layer, Data Layer) without burning the build window on real connectors.</p>
-<p><strong>Confidentiality is non-negotiable — say it anyway.</strong></p>
+<p>Bob will then produce a credible <code>ARCHITECTURE.md</code> with proper subgraphs (Integration Layer, Data Layer) without burning the build window on real connectors.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Confidentiality is non-negotiable.</p>
 <p>The synthetic-data policy is baked in, but restating it at intake prevents accidental drift:</p>
 <blockquote>
-<p><em>Use code DEMO-FS-042. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails @example.com. Include the DemoBanner on every page.</em></p>
+<p><em>Use code <code>DEMO-FS-042</code>. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails <code>@example.com</code>. Include the <code>DemoBanner</code> on every page.</em></p>
 </blockquote>
-<hr />
+</div>
 <h2 id="iv-scope-boundaries-the-what-not-to-build"><strong>iv. Scope boundaries: the "what <em>not</em> to build"</strong></h2>
 <hr />
-<p>This is the section most users skip — and it's the single biggest accelerator. Bob will happily build everything; your job is to tell him not to.</p>
-<p><strong>Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</strong></p>
+<p>This is the criteria that many users will miss (or intentionally skip). It's also the single biggest accelerator. Bob will happily build everything — your responsibility is to tell Bob what <em>not</em> to do.</p>
+<div class="admonition note">
+<p class="admonition-title">Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</p>
 <p>The Demo Builder's defaults are a 5-page React shell (Dashboard, Problem, Solution, Results, Architecture) plus 3 preset scenarios. <strong>Don't expand this for a first build.</strong></p>
 <blockquote>
 <p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on SolutionPage. No user-typed input during live demo.</em></p>
 </blockquote>
-<p><strong>Explicitly defer "real" integrations to the pilot.</strong></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Explicitly defer <em>real</em> integrations to the pilot.</p>
 <p>Anything requiring real credentials, real data, or real customer systems belongs in PILOT_PLAN.md, not in the demo build:</p>
 <blockquote>
 <p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in PILOT_PLAN.md as Sprint 2/3 items.</em></p>
 </blockquote>
 <p>This protects the 90-minute build window and keeps the demo runnable on a laptop with <code>docker-compose up</code>.</p>
-<p><strong>Forbid the common scope-creep traps.</strong></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Forbid the common scope-creep traps.</p>
 <blockquote>
 <p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email/SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
 </blockquote>
 <p>Each of these is a 2-hour rabbit hole that adds nothing to the storytelling.</p>
-<hr />
+</div>
 <h2 id="v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection: the "with which products"</strong></h2>
 <hr />
 <p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (you will demo them) versus <strong>expansion</strong> (they appear in the architecture diagram, carrying the land-and-expand story).</p>
