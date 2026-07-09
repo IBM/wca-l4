@@ -8396,29 +8396,30 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 </tr>
 </tbody>
 </table>
-<p>You have encountered every one of these previously — as an individual practitioner. Custom Modes were the subject of <strong>Module 3.3</strong>; Rules the subject of <strong>Module 3.2</strong>; MCP the subject of <strong>Module 4.3</strong>. What the asset model contributes is the <em>organizational</em> discipline layered above them: who owns each asset type, where each fact lives, and how the layers compose without duplication.</p>
-<hr />
-<h2 id="builder-4-iv-the-golden-rules"><strong>iv. The golden rules</strong></h2>
+<div class="admonition warning">
+<p>You have encountered every one of these previously as an individual practitioner. Custom Modes were the subject of <strong>Module 3.3</strong>; Rules the subject of <strong>Module 3.2</strong>; MCP the subject of <strong>Module 4.3</strong>. What the asset model contributes is the <em>organizational</em> discipline layered above them: who owns each asset type, where each fact lives, and how the layers compose without duplication.</p>
+</div>
+<h2 id="builder-4-iv-six-non-negotiables-for-maintaining-asset-model-coherence"><strong>iv. Six non-negotiables for maintaining asset model coherence</strong></h2>
 <hr />
 <p>Six non-negotiables keep the asset model coherent as it scales past a dozen modes and skills:</p>
 <ol>
-<li><strong>Knowledge lives once.</strong> Deep product/CLI/API knowledge belongs in a <strong>SKILL</strong>, never duplicated into a mode. Modes <em>reference</em> skills. (If you find yourself pasting CLI flags or YAML schemas into a mode, stop — that's a skill.)</li>
-<li><strong>Modes are method, not memory.</strong> A mode carries persona, build lifecycle, non-negotiables, decision gates, and <em>pointers</em> to the skills it relies on.</li>
-<li><strong>MCP is the last resort, not the first.</strong> Prefer a native <strong>SDK or CLI</strong> — deterministic, testable, versionable. Build or adopt an MCP <em>only</em> when no SDK/CLI exists, or it isn't available in the user's environment.</li>
-<li><strong>Rules constrain, they don't teach.</strong> A rule is a short, always-on imperative ("synthetic data only", "Carbon for all UI"). Product <em>know-how</em> stays in a SKILL the rule may point to. If a rule grows flags, schemas, or how-to, it has become a skill — move it. Every line in an always-on rule is paid for on <em>every</em> turn, so the global set stays lean.</li>
-<li><strong>Every asset is verified against reality</strong>, not model memory — and stamped with the product version (skills/modes/MCPs) or owner + review date (rules).</li>
+<li><strong>Knowledge lives once.</strong> Deep product, command-line interface (CLI), and application programming interface (API) knowledge belongs in a <strong>Skill</strong>, never duplicated into a mode. Modes <em>reference</em> Skills. <em>(If you find yourself pasting CLI flags or YAML schemas into a mode, stop. That's a skill.)</em></li>
+<li><strong>Modes are method, not memory.</strong> Modes carry a persona, build lifecycles, provide non-negotiables, serve as decision gates, and give <em>pointers</em> to the Skills it relies on.</li>
+<li><strong>MCP is the last resort, not the first.</strong> Prefer a native <strong>SDK or CLI</strong> where possible, as these are deterministic, testable, and versionable. Build or adopt an MCP <em>only</em> when no SDK/CLI exists, or if it isn't available in the user's environment.</li>
+<li><strong>Rules constrain, they don't teach.</strong> Rules are short, always-on imperatives ("synthetic data only", "Carbon for all UI"). Product <em>know-how</em> stays in a Skill (that the Rule may point to.) If a Rule grows flags, schemas, or how-to, it has become a Skill — move it. Every line in an always-on Rule is paid for on <em>every</em> cycle, so the global set stays lean.</li>
+<li><strong>Every asset is verified against reality, not model memory.</strong> Assets are stamped with the product version (Skills/Modes/MCPs) or owner + review date (Rules).</li>
 <li><strong>One source of distribution.</strong> Assets ship through the EMEA Bob Box (<code>https://ibm.biz/emea-bob-box</code>); the authoring source is the repo.</li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">THE LITMUS THAT PREVENTS THE TWO COMMON MISTAKES</p>
+<div class="admonition warning">
+<p class="admonition-title">THE LITMUS TEST FOR PREVENTING TWO COMMON MISTAKES</p>
 <p><em>Mode vs Skill:</em> method/persona for a whole engagement class → <strong>MODE</strong>; reusable product knowledge → <strong>SKILL</strong>.</p>
 <p><em>Skill vs Rule:</em> "Should this apply even when nobody asked and no trigger fired?" → <strong>RULE</strong> (ambient, by scope). "Does it only matter when a specific product/task comes up, and need depth?" → <strong>SKILL</strong> (pulled by relevance).</p>
 </div>
-<p>Take note of how directly golden rule 4 restates the context window economics of <strong>Module 4.1</strong>: always-on text competes for the same finite attention budget as everything else within a session. The strategy converts that lesson into standing policy.</p>
+<p>Take note of how directly <strong>Rule 4</strong> restates the context window economics of <strong><a href="https://ibm.github.io/bob-l3/scale/4-1/" target="_blank">Module 4.1</a></strong>: always-on text competes for the same finite attention budget as everything else within a session. The strategy converts that lesson into standing policy.</p>
 <hr />
 <h2 id="builder-4-v-modes-three-general-methods-industry-specializations"><strong>v. Modes: three general methods + industry specializations</strong></h2>
 <hr />
-<p>A mode is a <strong>strategic asset</strong> — the codified know-how of how a senior engineer approaches a class of work, potentially carrying IBM IP. A session runs in exactly one mode. Three general (horizontal) modes form the method backbone:</p>
+<p>A Mode is a <strong>strategic asset</strong>, or put another way, the codified know-how of how a senior engineer approaches a class of work (potentially carrying IBM IP.) A session runs in exactly one Mode. Three general (horizontal) Modes form the method backbone:</p>
 <table>
 <thead>
 <tr>
@@ -8431,12 +8432,12 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 <tr>
 <td><strong>General Solution Builder</strong></td>
 <td><code>ibm-presales-demo-builder</code></td>
-<td>Embed IBM platforms into a <em>real</em> full-stack solution — Carbon frontend + FastAPI backend + synthetic data + DevOps — that runs in mock or live mode. The default.</td>
+<td>Embed IBM platforms into a <em>real</em> full-stack solution <em>(Carbon frontend + FastAPI backend + synthetic data + DevOps)</em> that runs in mock or live mode. This is the default approach.</td>
 </tr>
 <tr>
 <td><strong>Application Modernization</strong></td>
 <td><code>ibm-presales-java-modernization</code></td>
-<td>Modernize/refactor application estates (JSphere Suite + Bob): Java/runtime modernization, dependency &amp; CVE remediation, OpenShift targeting.</td>
+<td>Modernize/refactor application estates <em>(JSphere Suite + Bob)</em>: Java/runtime modernization, dependency &amp; CVE remediation, OpenShift targeting.</td>
 </tr>
 <tr>
 <td><strong>Infrastructure</strong></td>
@@ -8445,17 +8446,38 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 </tr>
 </tbody>
 </table>
-<p>Beyond these sit the <strong>industry modes</strong> — Financial Services, Telco, Healthcare, Energy, Manufacturing, Automotive (plus Connected-Vehicle/SDV and EV &amp; Mobility variants), Defense/DIB, and Public Sector. The critical design decision: industry modes are <strong>replacements, not add-ons</strong>. You pick the vertical mode <em>instead of</em> the general one when the engagement is clearly in that domain and depth matters. An industry mode inherits the general mode's method and adds only the vertical knowledge base (standards, regulations, integration landscape), guardrails and carve-outs carried as mode-specific rules, use-case blueprints and mandatory domain artifacts, and stricter synthetic-data rigor.</p>
+<p>Beyond these sit the <strong>Industry Modes</strong>: Financial Services, Telco, Healthcare, Energy, Manufacturing, Automotive (plus Connected-Vehicle/SDV and EV &amp; Mobility variants), Defense/DIB, and Public Sector.</p>
+<p>The critical design decision hinges on the fact that <em>Industry Modes</em> are <strong>replacements, not add-ons</strong>. You select the vertical mode <em>instead of</em> the general one when the engagement is clearly in that domain and depth matters. <em>Industry Modes</em> inherit the general mode's method and adds only the vertical knowledge base (standards, regulations, integration landscape), guardrails and carve-outs carried as <em>Mode</em>-specific rules, use-case blueprints and mandatory domain artifacts, and stricter synthetic-data rigor.</p>
 <div class="admonition note">
 <p class="admonition-title">RULE OF THUMB</p>
-<p><strong>Start in a general mode; switch to an industry mode</strong> when the demo's credibility depends on domain depth — regulatory mapping, standards, sub-vertical templates. Don't fork an industry mode for a one-off; extend via a skill.</p>
+<p><strong>Switch to an <em>Industry Mode</em></strong> when the demo's credibility depends on domain depth in areas such as regulatory mapping, standards, or sub-vertical templates. Don't fork an Industry Mode for a one-off. Instead, extend it via a <em>Skill</em>.</p>
 </div>
-<p>Every mode — general or industry — must satisfy a shared <strong>core contract</strong>: a clear persona and engagement class; the shared build lifecycle (intake → solution mapping → build → document → verify/compliance → hand-off); the shared non-negotiables (runnable artifacts only, synthetic data only, secrets via env vars, mock-mode with zero external dependencies, accessibility, honest capability claims, compliance checklist before "done"); decision gates implemented as optioned questions; references — never duplications — of the skills it depends on; and a self-check script (<code>check-compliance.sh</code> / <code>check-carveouts.sh</code>) that can fail the build. The next chapter shows you the templates that enforce this contract by construction.</p>
+<p>Every <em>Mode</em>— general or industry —must satisfy a shared <strong>core contract</strong>:</p>
+<ul>
+<li>A clear persona and engagement class;</li>
+<li>The shared build lifecycle (intake → solution mapping → build → document → verify/compliance → hand-off);</li>
+<li>The shared non-negotiables (runnable artifacts only, synthetic data only, secrets via env vars, mock-mode with zero external dependencies, accessibility, honest capability claims, compliance checklist before "done");</li>
+<li>Decision gates implemented as optioned questions;</li>
+<li>References <em>to</em> (and never duplications <em>of</em>) the <em>Skills</em> it depends on;</li>
+<li>A self-check script (<code>check-compliance.sh</code> / <code>check-carveouts.sh</code>) that can fail the build.</li>
+</ul>
+<p>The next chapter will demonstrate for you how the <em>Templates</em> enforce this contract by construction.</p>
 <hr />
 <h2 id="builder-4-vi-skills-and-rules-knowledge-pulled-standards-pushed"><strong>vi. Skills and rules: knowledge pulled, standards pushed</strong></h2>
 <hr />
-<p><strong>A skill</strong> is a portable, verified knowledge/capability pack — how Bob "knows" a product, an ingestion contract, an API, or how to drive an MCP. Its design principles will feel familiar from Module 3, sharpened for scale: single responsibility (one product per skill, no mega-skills); <strong>description-driven discovery</strong> (the <code>description</code> field is what triggers the skill — write it as "use this whenever the user mentions/needs X," and be generous with trigger terms; it is the most important line in the file); <strong>progressive disclosure</strong> (keep <code>SKILL.md</code> focused, push depth into <code>references/*.md</code> loaded on demand); verification against reality (run the CLI, hit the API — then stamp the version and date); and pairing with — not merging into — any MCP it drives.</p>
-<p><strong>A rule</strong> is a short, always-on constraint that holds regardless of mode or task. Where modes, skills, and MCPs are <em>pulled</em>, rules are <em>pushed</em>: Bob loads them automatically for their scope and applies them to every response. Rules are the mechanism that makes trust <em>ambient</em> — present even in a quick edit, not just inside a formal mode. Scope is a deliberate choice:</p>
+<p><strong>A <em>Skill</em></strong> is a portable, verified knowledge and capability pack. <em>Skills</em> are essentially how Bob "knows" a product, an ingestion contract, an API, or how to drive an MCP.</p>
+<p>Its design principles will feel familiar from the previous chapter:</p>
+<ul>
+<li>Single responsibility (one product per <em>Skill</em>, no mega-<em>Skills</em>);</li>
+<li><strong>Description-driven discovery</strong> where the <code>description</code> field is what triggers the <em>Skill</em>;</li>
+<li><strong>Progressive disclosure</strong> keeps the <code>SKILL.md</code> focused and pushes depth into <code>references/*.md</code>, which can be loaded on-demand;</li>
+<li><strong>Verification</strong> against reality by running the CLI, hitting the API, and then stamping the version and date;</li>
+<li><strong>Pairing with</strong>, and not merging into, any MCP it drives.</li>
+</ul>
+<hr />
+<p><strong>A <em>Rule</em></strong> is a short, always-on constraint that holds regardless of <em>Mode</em> or task. Whereas all <em>Modes</em>, <em>Skills</em>, and <em>MCPs</em> are <strong>pulled</strong>, <em>Rules</em> are <strong>pushed</strong>. Bob loads them automatically for their scope and applies them to every response. <em>Rules</em> are the mechanism that makes trust ubiquitous across a project: present even in a quick edit, not just inside a formal mode.</p>
+<hr />
+<p><strong>Scope</strong>, therefore, becomes a deliberate choice and design point.</p>
 <table>
 <thead>
 <tr>
@@ -8468,7 +8490,7 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 <tr>
 <td><strong>Global</strong></td>
 <td><code>~/.bob/rules/</code></td>
-<td>Org-wide standards — the non-negotiables, security/debug/db hygiene</td>
+<td>Org-wide standards that include the non-negotiables, security/debug/db hygiene</td>
 </tr>
 <tr>
 <td><strong>Workspace</strong></td>
@@ -8478,7 +8500,7 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 <tr>
 <td><strong>Mode-specific</strong></td>
 <td><code>&lt;project&gt;/.bob/rules-{slug}/</code></td>
-<td>Guardrails owned by one mode/vertical (e.g. FSI data rigor, Defense carve-outs)</td>
+<td>Guard-rails owned by one <em>Mode</em>/vertical (e.g. FSI data rigor, Defense carve-outs)</td>
 </tr>
 <tr>
 <td><strong>Team standard</strong></td>
@@ -8487,11 +8509,13 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 </tr>
 </tbody>
 </table>
-<p>Rules and self-check scripts are <strong>defense in depth</strong>, not redundancy: the rule keeps the constraint in front of Bob continuously, shaping every turn; the script <em>fails the build</em> if the constraint is violated anyway. One reminds; the other blocks.</p>
-<hr />
+<div class="admonition note">
+<p class="admonition-title">"DEFENSE IN DEPTH</p>
+<p><em>Rules</em> and self-check scripts are <strong>defense in depth</strong>, not redundancy. The <em>Rule</em> keeps the constraint in front of Bob continuously, shaping every action. The script <em>fails the build</em> if the constraint is violated. One "reminds," while the other "blocks."</p>
+</div>
 <h2 id="builder-4-vii-decision-gates-the-human-in-the-decision-seat"><strong>vii. Decision gates: the human in the decision seat</strong></h2>
 <hr />
-<p>The decision-gate model is the thread that ties this entire strategy back to the AI Maturity Curve. Bob runs the build; the human steers at <strong>gates</strong> — each gate a crisp, optioned question (recommended option first), after which Bob proceeds autonomously until the next one.</p>
+<p>The <strong>decision gate model</strong> is the thread that ties this entire strategy back to the <strong>AI Maturity Curve</strong>. Bob runs the build whilst the human steers at <strong>gates</strong>. Each gate a crisp, optioned question (where the recommended option is presented first), after which Bob proceeds autonomously until the next such gate is reached.</p>
 <table>
 <thead>
 <tr>
@@ -8506,7 +8530,7 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 <td><strong>G0 Intake</strong></td>
 <td>Start</td>
 <td>Use case, industry, audience, duration</td>
-<td>Formalizes the Use-Case Brief</td>
+<td>Formalizes the <strong>use case brief</strong></td>
 </tr>
 <tr>
 <td><strong>G1 Product fit</strong></td>
@@ -8540,47 +8564,33 @@ In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo
 </tr>
 </tbody>
 </table>
-<p>Between gates, Bob is autonomous: it generates, runs, tests, debugs, and reports — it does not hand back work that it could perform itself. Where <strong>Module 2 | Delegate</strong> taught you to approve <em>the plan</em>, the gate model generalizes that same discipline across an entire engagement: control concentrated at the moments where judgment matters, with autonomy everywhere in between. This is the right-most portion of the AI Maturity Curve, operating as designed.</p>
+<p>Between gates, Bob is autonomous: it generates, runs, tests, debugs, and reports. Bob <em>does not</em> hand back work that it could perform itself (per the 6 rules described earlier.)</p>
+<p>Where <strong><a href="https://ibm.github.io/bob-l3/delegate/2-1/" target="_blank">Module 2 | Delegate</a></strong> taught you to approve <em>the plan</em>, the <strong>decision gate model</strong> generalizes that same discipline across an entire engagement. Control is concentrated at the moments where human-in-the-loop judgment matters most, with autonomy everywhere in-between. This transpires at the right-most portion along of the <strong>AI Maturity Curve</strong>, operating as designed.</p>
 <hr />
 <h2 id="builder-4-viii-trust-compliance-by-construction"><strong>viii. Trust &amp; compliance by construction</strong></h2>
 <hr />
-<p>The most differentiated modes in the portfolio — Defense/DIB, Public Sector — prove a principle that applies to every mode: <strong>guardrails are part of the asset, not an afterthought.</strong> The pillar is delivered through rules (ambient, every session) and backed by self-check scripts (build-time gates):</p>
+<p>The most differentiated <em>Modes</em> in the portfolio— Defense/DIB and Public Sector —demonstrate a principle that applies to every <em>Mode</em>: <strong>guard-rails are part of the asset, not an afterthought.</strong></p>
+<p>The pillar is delivered through <strong>Rules</strong> (ambient and active for every session) and backed by self-check scripts (build-time gates):</p>
 <ul>
-<li><strong>Carve-outs are declared in the persona and enforced by a script.</strong> Prohibited use cases — weapons/targeting, offensive cyber, unlawful surveillance, and the like — are refused regardless of framing, checked as an early build step, with <code>check-carveouts.sh</code> failing the build if prohibited features appear.</li>
+<li><strong>Carve-outs are declared in the persona and enforced by a script.</strong> Prohibited use cases (weapons/targeting, offensive cyber attacks, unlawful surveillance, and the like) are refused regardless of framing and checked as part of an early build stage. Should the prohibited features appear, <code>check-carveouts.sh</code> will fail the build stage.</li>
 <li><strong>Synthetic data only</strong>, with vertical-specific rigor (reserved ID ranges, clearly-fake codes, no real client data or PII), plus a visible disclaimer banner.</li>
-<li><strong>AI never makes the determination — an authorized human does.</strong> Human-in-the-loop is enforced in both UI and backend; no endpoint auto-issues an authoritative decision.</li>
+<li><strong>AI never makes the determination, an authorized human does.</strong> Human-in-the-loop enforcement in both UI and backend.</li>
 <li><strong>Accessibility is a requirement</strong> (WCAG 2.1 AA / Section 508), with its own check.</li>
-<li><strong>Honest capability claims.</strong> Never oversell; flag product gaps explicitly.</li>
-<li><strong>Secrets via environment only</strong>; mock mode runs with zero credentials.</li>
+<li><strong>Honest capability claims.</strong> Never oversell, but rather flag product gaps explicitly.</li>
+<li><strong>Secrets via environment only.</strong> Mock <em>Mode</em> runs with zero credentials.</li>
 </ul>
-<p>For a seller, this section provides the answer to the hardest question in any C-suite AI conversation — <em>"how do we trust it?"</em> The answer offered here is not a promise; it is architecture.</p>
+<p>For a seller, this section provides the answer to the hardest question in any C-suite AI conversation: <em>"how do we trust it?"</em> The answer offered here is not a promise, but rather it is an architecture.</p>
 <hr />
-<h2 id="builder-4-ix-how-the-layers-compose-a-worked-example"><strong>ix. How the layers compose: a worked example</strong></h2>
-<hr />
-<blockquote>
-<p><em>"Build a card-fraud demo for a retail bank; they have a watsonx.ai instance."</em></p>
-</blockquote>
-<ol start="0">
-<li><strong>RULES (ambient, before anything)</strong> → the global rule set — synthetic-data-only, secrets-via-env, accessibility, honest claims, human-in-the-loop — is already loaded and constraining every step, plus the FSI mode-specific rules for vertical data rigor.</li>
-<li><strong>MODE</strong> → switch to <strong>Financial Services</strong> (<code>ibm-presales-demo-builder-fsi</code>) — inherits the general method; adds SR 11-7 / BCBS 239 mapping, mandatory FSI artifacts (MODEL_FACTSHEET, DATA_LINEAGE) and components (ExplainabilityPanel, HumanInLoopActions).</li>
-<li><strong>Decision gates</strong> → G0–G2 confirm scope, products (watsonx.ai + watsonx.governance), and live credentials.</li>
-<li><strong>SKILLS</strong> → Bob pulls <code>watsonx-orchestrate</code> (if an agent is involved), <code>ibm-instana-data-spec</code> (if observability is shown), <code>nvd-security</code> (dependency audit), and the Carbon UI knowledge — each verified, single-source.</li>
-<li><strong>MCPs</strong> → Bob uses the <code>techzone</code> MCP to provision a test environment, <code>tavily</code> for current facts, and <code>external-llm</code> for an adversarial design review — only where no SDK/CLI fits.</li>
-<li><strong>Output</strong> → a real, runnable solution plus ARCHITECTURE/PILOT/DEMO documentation, compliance passed (rules ambient + script green), with the human approving at gates — and with no copy-paste steps and no manual debugging required of that human at any point.</li>
-</ol>
-<p>Across the entire engagement, the human made roughly <strong>six decisions</strong>; Bob performed the remainder of the work — operating within Rules that it never once had to be reminded of.</p>
-<hr />
-<h2 id="builder-4-x-key-takeaways"><strong>x. Key takeaways</strong></h2>
+<h2 id="builder-4-ix-key-takeaways"><strong>ix. Key takeaways</strong></h2>
 <hr />
 <ul>
-<li>The thesis in one line: <strong>Bob does the building; humans do the deciding</strong> — expertise scaled as assets, not headcount.</li>
-<li>Four asset types, cleanly separated: <strong>MODES</strong> (method), <strong>SKILLS</strong> (knowledge), <strong>MCPs</strong> (reach), <strong>RULES</strong> (standards). Three pulled on demand; rules pushed, always on.</li>
-<li>The golden rules keep it coherent: knowledge lives once; modes reference rather than duplicate; MCP is the last resort; rules constrain, they don't teach; every asset is verified against reality.</li>
-<li><strong>Decision gates G0–G5</strong> generalize the plan-approval discipline of Module 2 to whole engagements — control at the branch points, autonomy in between.</li>
-<li>Trust is <strong>by construction</strong>: ambient rules remind; self-check scripts block. That architecture — not any promise — is the enterprise answer to "how do we trust it?"</li>
+<li><strong>Bob does the building; humans-in-the-loop make the call</strong>: expertise scaled as assets, instead of as headcount.</li>
+<li>Four asset types, cleanly separated: <strong>Modes</strong> (method), <strong>Skills</strong> (knowledge), <strong>MCPs</strong> (reach), and <strong>Rules</strong> (standards).</li>
+<li><strong>Decision gates</strong> generalize the plan-approval discipline to whole engagements, lend control at the branch points, and provide Bob-led autonomy for the stages in-between.</li>
+<li>Trust is <strong>by construction</strong>: ambient rules remind; self-check scripts block. That <em>architecture</em> (in lieu of any <em>promise</em>) is the enterprise answer to <em>"how do we trust it?"</em></li>
 </ul>
 <p></br>
-One question remains: when you (the practitioner) wish to add to this library — a new Mode for your industry, a Skill for your product, a Rule for your team — how is that done without breaking the discipline documented here? The asset templates in the chapter ahead exist for precisely this purpose.</p>
+One question remains: when the practitioner (you) wish to contribute to this library— with a new <em>Mode</em> for your industry, a new <em>Skill</em> for your product, or a new <em>Rule</em> for your team —how is that done without breaking the discipline documented here? The asset templates in the chapter ahead exist for precisely this purpose.</p>
 <hr /></section><section class="print-page" id="builder-5"><p><strong>BOB DEMO-BUILDER MODE</strong></p>
 <h1 id="builder-5-build-consistently-with-asset-templates"><strong>BUILD CONSISTENTLY WITH ASSET TEMPLATES</strong></h1>
 <hr />
