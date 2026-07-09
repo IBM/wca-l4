@@ -966,11 +966,11 @@
 <h2 id="i-the-golden-rules"><strong>i. The golden rules</strong></h2>
 <hr />
 <p>With the Demo Builder installed, the temptation is to submit a prompt along the lines of <em>"build me a watsonx demo"</em> and let Bob take it from there. Such a prompt will produce output — but the single biggest determinant of demo quality is neither the Mode, the model, nor the MCP servers.</p>
-<div class="admonition warning">
+<div class="admonition note">
 <p>The determining factor is the <strong>brief that you (the user) feed Bob at the onset</strong>.</p>
 </div>
 <p>This chapter distills the field-tested practices of IBM Client Engineering and IBM sellers that can bridge the gap between a "use case in your head" — and a working, compliant, runnable demo within a single session. All achieved (ideally) without re-prompting Bob or another LLM six times over.</p>
-<div class="admonition warning">
+<div class="admonition note">
 <p>A good prompt looks like a <strong>use case brief</strong>, not a question.</p>
 </div>
 <p>Recall the principle established in the very first pages of this hands-on material: IBM Bob and generative AI are <em>non-deterministic</em> systems. <strong>Precision</strong> is what tips the odds in your favor.</p>
@@ -1184,7 +1184,8 @@
 <hr />
 <h2 id="ix-three-sample-briefs-for-different-industries"><strong>ix. Three sample briefs for different industries</strong></h2>
 <hr />
-<p>Three complete, ready-to-adapt <strong>use case briefs</strong> follow for Financial Services, Healthcare, and Manufacturing. Spend some time now digesting how each fills all six fields of the golden rule, and take note of how much <em>business</em> detail (KPIs, baselines, dollar impacts) each carries relative to technical detail.</p>
+<p>Three complete, ready-to-adapt <strong>use case briefs</strong> follow for Financial Services, Healthcare, and Manufacturing.</p>
+<p>Spend some time now digesting how each fills all <strong><a href="https://ibm.github.io/wca-l4/builder/3/#i-the-golden-rules" target="_blank">six of the golden rules</a></strong>. Take note of how much <em>business</em> detail (KPIs, baselines, dollar impacts) each carries relative to technical detail.</p>
 <details class="quote">
 <summary>SAMPLE 1 — FINANCIAL SERVICES (watsonx.ai + watsonx.data RAG)</summary>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Build a Pre-Sales Demo using the IBM DemoArchitect mode.
@@ -1375,8 +1376,8 @@
 <hr />
 <h2 id="xi-technology-reference-appendices"><strong>xi. Technology reference appendices</strong></h2>
 <hr />
-<p>The collapsible references below carry the exact endpoints, model IDs, sample code, and environment keys that the Demo Builder's generated services rely upon — useful both for briefing Bob with precision and for verifying what it has built.</p>
-<details class="note">
+<p>The collapsible references below carry the exact endpoints, model IDs, sample code, and environment keys that the Demo Builder's generated services rely upon. Utilize these as useful references both for briefing Bob with precision and for verifying what it has built.</p>
+<details class="quote">
 <summary>APPENDIX A — TECHNOLOGY REFERENCE: watsonx.ai</summary>
 <p><strong>Endpoints by region</strong></p>
 <table>
@@ -1501,7 +1502,7 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">WATSONX_MODEL_ID</span><span class="o">=</span><span class="s">ibm/granite-3-8b-instruct</span><span class="w"></span>
 </code></pre></div>
 </details>
-<details class="note">
+<details class="quote">
 <summary>APPENDIX B — TECHNOLOGY REFERENCE: watsonx.data</summary>
 <p><strong>What it is, in one line:</strong> a Presto + Spark lakehouse over <strong>Apache Iceberg</strong> tables, with federation (Db2, PostgreSQL, MongoDB, S3, Netezza) and <strong>Milvus</strong> for vector RAG.</p>
 <p><strong>Sample code — control plane (manage buckets, catalogs, schemas)</strong></p>
@@ -1554,7 +1555,7 @@
 <li><strong>Open formats</strong> (Iceberg) — vendor-lock-in counter-narrative</li>
 </ul>
 </details>
-<details class="note">
+<details class="quote">
 <summary>APPENDIX C — ONE-PAGE COMPLIANCE CHECKLIST (paste this back to Bob)</summary>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[ ] No PII or real client data in any file
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[ ] DemoBanner visible on every page
@@ -1582,14 +1583,15 @@
 <h2 id="xii-key-takeaways"><strong>xii. Key takeaways</strong></h2>
 <hr />
 <ul>
-<li>A good prompt is a <strong>Use-Case Brief</strong>, not a question — and every brief answers six things: WHO, WHAT, HOW IT'S CONSUMED, DATA, TECH STACK, and OUT OF SCOPE.</li>
-<li>Lead with the <strong>business pain and the KPI</strong>, not the technology; one well-specified "wow moment" locks three pages of the demo.</li>
-<li><strong>Scope boundaries are the biggest accelerator</strong> — 5 pages, 3 scenarios, 1 wow moment; defer everything "real" to PILOT_PLAN.md.</li>
-<li>Pick <strong>1–2 primary products maximum</strong>; the rest of the portfolio earns its place in the architecture diagram.</li>
-<li>Done means <strong>verified</strong>: compliance script green, the three must-work flows smoke-tested, and the storytelling artifacts (DEMO_SCRIPT, PILOT_PLAN, ARCHITECTURE) reviewed by you.</li>
+<li>A good prompt is a <strong>use case brief</strong>, not a question.</li>
+<li><strong>The golden rules</strong>: every brief must answer six things: who, what, how it's consumed, data, tech stack, and what's out of scope.</li>
+<li>Lead with <strong>business pain and essential KPIs</strong>, not technology (one well-specified "wow moment" locks three pages of the demo)</li>
+<li><strong>Scope boundaries are the biggest accelerator</strong>:5 pages, 3 scenarios, 1 wow moment; defer everything "real" to <code>PILOT_PLAN.md</code>.</li>
+<li>Pick <strong>1–2 primary products maximum</strong>: the rest of the portfolio earns its place in the architecture diagram.</li>
+<li>"Done" means <strong>verified</strong>: compliance script green, the three must-work flows tested for flaws, and the storytelling artifacts (<code>DEMO_SCRIPT</code>, <code>PILOT_PLAN</code>, <code>ARCHITECTURE</code>) reviewed by the human-in-the-loop (you).</li>
 </ul>
 <p></br>
-In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo Builder behaves the way it does — the strategy and asset model that allow a single, well-formed brief to produce a compliant, runnable solution.</p>
+In the chapter ahead, you will look beneath the surface at <em>why</em> the Demo Builder behaves the way it does: the strategy and asset model that allow a single, well-formed brief to produce a compliant, runnable solution.</p>
 <hr />
 
 
