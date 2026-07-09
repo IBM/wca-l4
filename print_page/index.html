@@ -7705,21 +7705,21 @@ With the environment assembled and validated, you will now shift attention to a 
 <p class="admonition-title">Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</p>
 <p>The Demo Builder's defaults are a 5-page React shell (Dashboard, Problem, Solution, Results, Architecture) plus 3 preset scenarios. <strong>Don't expand this for a first build.</strong></p>
 <blockquote>
-<p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on SolutionPage. No user-typed input during live demo.</em></p>
+<p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on <code>SolutionPage</code>. No user-typed input during live demo.</em></p>
 </blockquote>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Explicitly defer <em>real</em> integrations to the pilot.</p>
-<p>Anything requiring real credentials, real data, or real customer systems belongs in PILOT_PLAN.md, not in the demo build:</p>
+<p>Anything requiring real credentials, real data, or real customer systems belongs in <code>PILOT_PLAN.md</code>, not in the demo build:</p>
 <blockquote>
-<p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in PILOT_PLAN.md as Sprint 2/3 items.</em></p>
+<p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in <code>PILOT_PLAN.md</code> as Sprint 2/3 items.</em></p>
 </blockquote>
 <p>This protects the 90-minute build window and keeps the demo runnable on a laptop with <code>docker-compose up</code>.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Forbid the common scope-creep traps.</p>
 <blockquote>
-<p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email/SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
+<p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email or SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
 </blockquote>
 <p>Each of these is a 2-hour rabbit hole that adds nothing to the storytelling.</p>
 </div>
