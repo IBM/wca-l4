@@ -988,13 +988,13 @@
 <hr />
 <p>The single biggest cause of weak demos is a vague problem statement. The Demo Builder's Phase-1 intake expects a <strong>structured brief</strong>, so front-load it where possible.</p>
 <div class="admonition note">
-<p class="admonition-title">Lead with the business pain, not the technology.</p>
+<p class="admonition-title">TIP #1: Lead with the business pain, not the technology.</p>
 <p>❌ "Build a watsonx.ai demo for a bank."</p>
 <p>✅ "A retail bank loses ~$4M/year on false-positive fraud alerts that block legitimate cardholders. Show how Granite 3 + a transaction-context RAG cuts false positives 40% while keeping recall ≥ 99.2%."</p>
 <p>The first version forces Bob to invent a problem. The second pins the KPI, the baseline, and the target — which then drive the Dashboard KPIs, the <code>ResultsPage</code> before and after, as well as the <code>PILOT_PLAN</code> success metrics. One sentence of business pain propagates through the entire artifact set.</p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Name the persona AND the demo audience — separately.</p>
+<p class="admonition-title">TIP #2: Name the persona <em>and</em> the demo audience, separately.</p>
 <p>These are not the same. The <strong>persona</strong> is who uses the app on screen; the <strong>audience</strong> is who's watching the demo.</p>
 <blockquote>
 <p><em>Persona: Fraud Operations Analyst. Demo audience: CRO + Head of Fraud + 2 IT directors. Duration: 20 min, live, in-person.</em></p>
@@ -1007,7 +1007,7 @@
 </ul>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Specify the <em>wow moment</em> explicitly.</p>
+<p class="admonition-title">TIP #3: Specify the <em>wow moment</em> explicitly.</p>
 <p>Every Demo Builder demo has a <code>SolutionPage</code> with an interactive AI step. Tell Bob exactly what should happen.</p>
 <blockquote>
 <p><em>Wow moment: Analyst clicks a flagged transaction, watsonx.ai returns a 3-bullet rationale citing the cardholder's last 30 days of behavior + a confidence score, and the analyst clears it in 8 seconds vs. 6 minutes today.</em></p>
@@ -1018,13 +1018,13 @@
 <hr />
 <p>The Demo Builder <strong>always</strong> uses synthetic data: a non-negotiable that ships as an ambient Rule. The user's (your) responsibility is to shape that synthetic data so that the demonstration emulates the client's world and business environment.</p>
 <div class="admonition note">
-<p class="admonition-title">Describe data shape, not just data type.</p>
+<p class="admonition-title">TIP #1: Describe data shape, not just data type.</p>
 <p>❌ "Generate transaction data."</p>
 <p>✅ "500 synthetic card transactions over the last 90 days, fields: <code>tx_id</code>, <code>cardholder_id</code>, <code>merchant_category</code> (MCC), <code>amount_usd</code>, <code>country_code</code>, <code>device_fingerprint</code>, <code>is_flagged</code>. ~3% should be flagged. Include 5 'edge case' rows we can demo on (geo-velocity, MCC mismatch, amount anomaly, new-device, fast burst)."</p>
 <p>This maps cleanly to <code>synthetic_data_service.py</code> (Faker seed=42) and hands Bob the exact preset scenarios for the SolutionPage.</p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Call out integration <em>boundaries</em>, not implementations.</p>
+<p class="admonition-title">TIP #2: Call out integration <em>boundaries</em>, not implementations.</p>
 <p>Tell Bob what the demo <em>pretends</em> to integrate with, so the architecture diagram and mock services are believable:</p>
 <blockquote>
 <p><em>Pretend integrations (mock-only): core banking system (Db2-style REST), case management (ServiceNow-style ticket creation), QRadar (alert ingestion via Kafka topic). Do not build real clients. Generate OpenAPI stubs and mark them as mock.</em></p>
@@ -1032,7 +1032,7 @@
 <p>Bob will then produce a credible <code>ARCHITECTURE.md</code> with proper subgraphs (Integration Layer, Data Layer) without burning the build window on real connectors.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Confidentiality is non-negotiable.</p>
+<p class="admonition-title">TIP #3: Confidentiality is non-negotiable.</p>
 <p>The synthetic-data policy is baked in, but restating it at intake prevents accidental drift:</p>
 <blockquote>
 <p><em>Use code <code>DEMO-FS-042</code>. Do not reference any real bank. All entities fictional (Apex, NovaTech, Meridian-style). All emails <code>@example.com</code>. Include the <code>DemoBanner</code> on every page.</em></p>
@@ -1042,14 +1042,14 @@
 <hr />
 <p>This is the criteria that many users will miss (or intentionally skip). It's also the single biggest accelerator. Bob will happily build everything — your responsibility is to tell Bob what <em>not</em> to do.</p>
 <div class="admonition note">
-<p class="admonition-title">Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</p>
+<p class="admonition-title">TIP #1: Cap the surface area: 5 pages, 3 scenarios, 1 wow moment.</p>
 <p>The Demo Builder's defaults are a 5-page React shell (Dashboard, Problem, Solution, Results, Architecture) plus 3 preset scenarios. <strong>Don't expand this for a first build.</strong></p>
 <blockquote>
 <p><em>Scope: the 5 standard pages only. No login screen, no admin panel, no multi-tenant. 3 preset scenarios on <code>SolutionPage</code>. No user-typed input during live demo.</em></p>
 </blockquote>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Explicitly defer <em>real</em> integrations to the pilot.</p>
+<p class="admonition-title">TIP #2: Explicitly defer <em>real</em> integrations to the pilot.</p>
 <p>Anything requiring real credentials, real data, or real customer systems belongs in <code>PILOT_PLAN.md</code>, not in the demo build:</p>
 <blockquote>
 <p><em>DO NOT build: real watsonx.governance integration, real OpenShift deployment, real SSO. Mention these in <code>PILOT_PLAN.md</code> as Sprint 2/3 items.</em></p>
@@ -1057,7 +1057,7 @@
 <p>This protects the 90-minute build window and keeps the demo runnable on a laptop with <code>docker-compose up</code>.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Forbid the common scope-creep traps.</p>
+<p class="admonition-title">TIP #3: Forbid the common scope-creep traps.</p>
 <blockquote>
 <p><em>DO NOT build: a database with migrations (use JSON files), a real auth system (mock a session), email or SMS notifications (just toast in the UI), a CI/CD pipeline (Dockerfile + compose only), unit tests beyond happy-path smoke tests.</em></p>
 </blockquote>
@@ -1065,33 +1065,41 @@
 </div>
 <h2 id="v-ibm-technology-selection-the-with-which-products"><strong>v. IBM technology selection: the "with which products"</strong></h2>
 <hr />
-<p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (you will demo them) versus <strong>expansion</strong> (they appear in the architecture diagram, carrying the land-and-expand story).</p>
-<p><strong>Pick 1–2 primary products. Maximum.</strong></p>
+<p>The Demo Builder covers the full IBM portfolio. Be deliberate about which products are <strong>primary</strong> (what you intend to <em>demo</em>) versus <strong>expansion</strong> (what will <em>appear</em> within architecture diagrams and carry the land-and-expand story).</p>
+<div class="admonition note">
+<p class="admonition-title">TIP #1: Pick 1–2 primary products, maximum.</p>
 <p>A 20-minute demo cannot do justice to four products. Pick the hero, name a co-star, and let everything else live in the architecture diagram:</p>
 <blockquote>
 <p><em>Primary: watsonx.ai (Granite 3-8B-instruct) for inference. Co-star: watsonx.data (Iceberg + Milvus) for the RAG context. Expansion-only (architecture diagram, not built): watsonx.governance (FactSheets), Instana (observability), CP4BA (case routing).</em></p>
 </blockquote>
-<p><strong>Specify the model and region — don't let Bob default.</strong></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">TIP #2: Specify the model and region, don't let Bob default.</p>
 <p>The default <code>ibm/granite-3-8b-instruct</code> on <code>us-south</code> is fine for most demos, but be explicit when you have a reason:</p>
 <blockquote>
 <p><em>Model: <code>meta-llama/llama-3-405b-instruct</code> (client uses Llama internally for benchmarks). Region: <code>eu-de</code> (client is EU-based, GDPR sensitivity). Project ID will be filled in at runtime — generate <code>.env.example</code> with placeholder.</em></p>
 </blockquote>
-<p><strong>State your access posture: live vs. mock-only.</strong></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">TIP #3: State your access posture: live vs. mock-only.</p>
 <p>The Demo Builder's backend is dual-mode — mock by default, live with credentials. Tell it which one matters:</p>
 <blockquote>
 <p><em>Build mock-mode first and ensure full functionality with zero credentials. Live mode is "nice to have" — keep the SDK calls in <code>watsonx_service.py</code> ready but commented-out fallback paths are fine. I'll add the API key offline before the client meeting.</em></p>
 </blockquote>
-<p>This guarantees the demo runs on the train Wi-Fi.</p>
-<hr />
+<p>This guarantees the demo runs on the train or plane wi-fi.</p>
+</div>
 <h2 id="vi-quality-checks-the-how-do-i-know-its-done"><strong>vi. Quality checks: the "how do I know it's done"</strong></h2>
 <hr />
-<p>The Demo Builder runs <code>check-compliance.sh</code> at the end of a build. Ask for it explicitly — and then actually read the output.</p>
-<p><strong>Demand the compliance run, then read it.</strong></p>
+<p>The Demo Builder runs <code>check-compliance.sh</code> at the end of a build. Ask for it explicitly, then read the output to verify.</p>
+<div class="admonition note">
+<p class="admonition-title">TIP #1: Demand the compliance run, then read it.</p>
 <blockquote>
 <p><em>After the build, run <code>scripts/check-compliance.sh</code> and paste the output. I want to see: no PII, no hardcoded keys, Carbon v11 in deps, UBI 9 base images, DemoBanner present, all 4 docs present (README, ARCHITECTURE, PILOT_PLAN, DEMO_SCRIPT).</em></p>
 </blockquote>
 <p>If Bob skips a check, push back: <em>"Re-run check-compliance.sh and confirm item X."</em></p>
-<p><strong>Smoke-test the three "must work" flows yourself.</strong></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">TIP #2: Smoke-test the three <em>must work</em> flows yourself.</p>
 <p>Before declaring done, manually verify:</p>
 <ol>
 <li><code>docker-compose up</code> starts both services without errors.</li>
@@ -1099,28 +1107,37 @@
 <li>The 3 preset scenarios on SolutionPage all return mock responses with latency tags + confidence scores.</li>
 </ol>
 <p>If any of these fails, the demo is not done. Tell Bob: <em>"Scenario 2 errors with <code>undefined.tokens</code> — fix <code>watsonxMocks.js</code> and re-verify."</em></p>
-<p><strong>Verify the storytelling artifacts, not just the code.</strong></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">TIP #3: Verify the storytelling artifacts, not just the code.</p>
 <p>Code that runs but has no narrative is not a demo:</p>
 <blockquote>
 <p><em>DEMO_SCRIPT.md has timed sections (Open 2', Problem 3', Solution 7', Results 2', Close 1') with talk-track sentences I can read out loud. PILOT_PLAN.md has 3 measurable success criteria with baseline + target. ARCHITECTURE.md has a Mermaid diagram with 6+ subgraphs.</em></p>
 </blockquote>
-<hr />
+</div>
 <h2 id="vii-expected-outcomes-setting-the-quality-bar"><strong>vii. Expected outcomes: setting the quality bar</strong></h2>
 <hr />
-<p>Set the bar at the <em>top</em> of the prompt, so Bob calibrates from the start.</p>
-<p><strong>Anchor on the "Client Engineering pilot in 3–4 weeks" close.</strong> The demo's job is to land the pilot — which makes PILOT_PLAN.md the most important document in the package:</p>
+<p>Set the bar at the <em>top</em> of the prompt so that Bob correctly calibrates from the onset.</p>
+<div class="admonition note">
+<p class="admonition-title">TIP #1: Anchor on the <em>Client Engineering pilot in 3–4 weeks</em> close.</p>
+<p>The demo's job is to land the pilot, which makes <code>PILOT_PLAN.md</code> the most important document in the package:</p>
 <blockquote>
 <p><em>Close the demo with the line: "Working pilot in 3–4 weeks with IBM Client Engineering." PILOT_PLAN.md must show: Sprint 0 (env+access), Sprint 1 (data+model), Sprint 2 (integration+governance), Sprint 3 (E2E+handover). Team: 1 Tech Sales, 1–2 Client Engineers, 1 Data Eng, 1 AI Eng, 1 PM.</em></p>
 </blockquote>
-<p><strong>Demand IBM-grade UI fidelity:</strong></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">TIP #2: Demand IBM-grade UI fidelity.</p>
 <blockquote>
 <p><em>All UI must use @carbon/react v11. Theme g90. IBM Plex fonts. Color scale: Blue 60 (#0f62fe) for primary, Purple 60 (#6929c4) for watsonx.data accents, Teal 70 (#005d5d) for governance. Branding: "Built with IBM watsonx" — never "Powered by Watson".</em></p>
 </blockquote>
-<p><strong>Make the demo presenter-proof.</strong> The presenter should never type during a live demo:</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">TIP #3: Make the demo presenter-proof.</p>
+<p>The presenter should never need to type on a keyboard during a live demo:</p>
 <blockquote>
 <p><em>All 3 SolutionPage scenarios pre-filled. Submit button always returns a result within 1.5s (mock latency). Loading, error, and empty states on every page. No flickering. No console errors. WCAG 2.1 AA: keyboard nav works end-to-end.</em></p>
 </blockquote>
-<hr />
+</div>
 <h2 id="viii-quick-reference-the-prompt-template"><strong>viii. Quick reference: the prompt template</strong></h2>
 <hr />
 <p>Copy, fill in, and paste:</p>
