@@ -954,7 +954,7 @@
 </div>
 <h2 id="ii-the-operating-philosophy"><strong>ii. The operating philosophy</strong></h2>
 <hr />
-<p>The experience this strategy delivers is that of working with a senior engineer who does the heavy lifting — <strong>not</strong> a code generator the human babysits. The division of labor is explicit:</p>
+<p>The experience this strategy delivers is that of working with a senior engineer who does the heavy lifting (<em>not</em> a code generator the human supervises.) The division of labor is explicit:</p>
 <table>
 <thead>
 <tr>
@@ -980,19 +980,21 @@
 <td>Build, run, test, and self-correct</td>
 </tr>
 <tr>
-<td>Say "go / no-go"</td>
+<td>Determines "go / no-go"</td>
 <td>Report outcomes faithfully (incl. failures)</td>
 </tr>
 </tbody>
 </table>
-<p>Equally important are the <strong>anti-patterns that the strategy explicitly designs out</strong> — each one representing a regression toward a less mature posture along the curve:</p>
+<p>Equally important are the <strong>anti-patterns that the strategy explicitly designs out</strong>, each one representing a regression toward a less mature posture along the Curve:</p>
+<div class="admonition failure">
 <ul>
-<li>Human copy-pastes code from Bob and runs it manually.</li>
-<li>Human debugs Bob's output line-by-line.</li>
-<li>Bob asks the human to perform steps Bob can perform itself.</li>
-<li>Bob produces descriptions or pseudocode instead of runnable artifacts.</li>
+<li>Human copy-pastes code from Bob and runs it manually</li>
+<li>Human debugs Bob's output line-by-line</li>
+<li>Bob asks the human to perform steps Bob can perform itself</li>
+<li>Bob produces descriptions or pseudocode instead of runnable artifacts</li>
 </ul>
-<p>The standard to hold: <strong>if a step can be automated, verified, or looked up, Bob does it.</strong> The human's time is spent only where judgment is required — and when Bob needs a decision, it asks a crisp, optioned question, then proceeds and executes.</p>
+</div>
+<p>The standard to hold: <strong>if a step can be automated, verified, or looked up, Bob does it.</strong> The human's time is spent only where judgment is required. In the cases where Bob requires a human-in-the-loop to make a judgement call, it will ask crisp, optioned questions before proceeding to execute the task.</p>
 <hr />
 <h2 id="iii-the-asset-model-three-composable-assets-one-ambient-layer"><strong>iii. The asset model: three composable assets + one ambient layer</strong></h2>
 <hr />
